@@ -114,6 +114,9 @@ body {
   padding-bottom: 30px;
 }
 
+.pet-card:hover {
+}
+
 .pet-card__image-wrapper {
   max-width: 270px;
   margin-bottom: 25px;
@@ -180,11 +183,100 @@ body {
 }
 
 .footer {
-  min-height: 350px;
   background: url('../../assets/images/background/noise_transparent@2x.png'),
     radial-gradient(110.67% 538.64% at 5.73% 50%, #513d2f 0%, #1a1a1c 100%), #211f20;
 }
 
 .footer > .container {
+  display: flex;
+  justify-content: space-between;
+
   padding: 40px 40px 0 40px;
+}
+
+.footer__image {
+  vertical-align: top;
+}
+
+.contacts {
+  padding-top: 16px;
+}
+
+.address {
+  padding-top: 16px;
+  margin-left: -8px;
+}
+
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
+  list-style: none;
+}
+
+.address-list {
+  display: flex;
+  flex-direction: column;
+  gap: 33px;
+  list-style: none;
+}
+
+.contacts__title {
+  margin-bottom: 41px;
+}
+
+.address__title {
+  margin-bottom: 31px;
+}
+
+.contacts__title,
+.address__title {
+  color: #ffffff;
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 45px;
+  letter-spacing: 0.06em;
+  padding-top: 3px;
+  padding-right: 1px;
+}
+
+.contacts-link,
+.address-link {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  position: relative;
+}
+
+.contacts-list__item:nth-child(1) .contacts-link::before {
+  content: '';
+  width: 40px;
+  height: 26px;
+  background: url('../../assets/images/svg/mail.svg') 50% 50% / cover no-repeat;
+}
+
+.contacts-list__item:nth-child(2) .contacts-link::before {
+  content: '';
+  width: 40px;
+  height: 32px;
+  background: url('../../assets/images/svg/phone.svg') 50% 50% / cover no-repeat;
+}
+
+.address-link::before {
+  content: '';
+  width: 22px;
+  height: 32px;
+  background: url('../../assets/images/svg/pin.svg') 50% 50% / cover no-repeat;
+}
+
+.contacts-link__title,
+.address-link__title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  color: #f1cdb3;
+  letter-spacing: 0.06em;
 }
