@@ -21,6 +21,7 @@ body {
   --color-dark-3xl: #292929;
   --color-dark-s: #cdcdcd;
   --color-dark-xl: #4c4c4c;
+  --color-dark-m: #b2b2b2;
   --color-primary: #f1cdb3;
   --color-primary-light: #fddcc4;
   --color-light-l: #f6f6f6;
@@ -52,6 +53,7 @@ body {
 .header-logo__link {
   display: grid;
   text-decoration: none;
+  pointer-events: none;
 }
 
 .header-logo__title {
@@ -315,8 +317,82 @@ body {
 }
 
 .pets__btn {
-  background-color: var(--color-primary);
   align-self: center;
+  background-color: var(--color-primary);
+  text-decoration: none;
+}
+
+.donation {
+  background-color: var(--color-light-l);
+}
+
+.donation > .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 80px 40px 100px 40px;
+}
+
+.donation__image > img {
+  vertical-align: top;
+}
+
+.donation__column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.donation__title {
+  max-width: 300px;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: var(--color-dark-l);
+}
+
+.donation__subtitle {
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: var(--color-dark-l);
+}
+
+.donation__description {
+  max-width: 380px;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 150%;
+  color: var(--color-dark-m);
+}
+
+.donation-card {
+  align-self: flex-start;
+  padding: 10px 15px;
+  border-radius: 9px;
+  background-color: var(--color-primary);
+}
+
+.donation-card__number {
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: var(--color-dark-l);
+}
+
+.donation-card__link {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  text-decoration: none;
+}
+
+.donation-card__icon {
+  width: 30px;
+  height: 23px;
+  background: url('../../assets/images/svg/credit-card.svg') 50% 50% / cover no-repeat;
 }
 
 .footer {
