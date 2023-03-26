@@ -395,6 +395,71 @@ body {
   background: url('../../assets/images/svg/credit-card.svg') 50% 50% / cover no-repeat;
 }
 
+.help {
+  background-color: var(--color-light-xl);
+}
+
+.help > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 80px 40px 100px 40px;
+}
+
+.help__title {
+  max-width: 320px;
+  align-self: center;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: var(--color-dark-l);
+  text-align: center;
+}
+
+.help__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 55px 120px;
+  justify-content: center;
+}
+
+.help-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 25px;
+  text-align: center;
+}
+
+.help-item:nth-child(6),
+.help-item:nth-child(8) {
+  padding-top: 4px;
+}
+
+.help-item:nth-child(6) > .help-item__title {
+  padding-left: 4px;
+}
+
+.help-item:nth-child(8) > .help-item__title {
+  padding-right: 1px;
+}
+
+.help-item:nth-child(9) > .help-item__title {
+  padding-top: 1px;
+  padding-right: 2px;
+}
+
+.help-item__image {
+  vertical-align: top;
+}
+
+.help-item__title {
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: var(--color-dark-l);
+}
+
 .footer {
   background: url('../../assets/images/background/noise_transparent@2x.png'),
     radial-gradient(110.67% 538.64% at 5.73% 50%, #513d2f 0%, #1a1a1c 100%), #211f20;
