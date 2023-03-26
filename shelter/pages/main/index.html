@@ -7,9 +7,90 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Cozy House</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Main page</h1>
+    <header class="header">
+      <div class="container">
+        <div class="header__logo header-logo">
+          <a href="#" class="header-logo__link">
+            <span class="header-logo__title">Cozy House</span>
+            <span class="header-logo__subtitle">Shelter for pets in Boston</span>
+          </a>
+        </div>
+        <nav class="nav">
+          <ul class="nav__list nav-list">
+            <li class="nav-list__item">
+              <a href="#" class="nav-list__link active">About the shelter</a>
+            </li>
+            <li class="nav-list__item">
+              <a href="../pets" class="nav-list__link">Our pets</a>
+            </li>
+            <li class="nav-list__item">
+              <a href="#help" class="nav-list__link">Help the shelter</a>
+            </li>
+            <li class="nav-list__item">
+              <a href="#contacts" class="nav-list__link">Contacts</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="main">
+      <section class="hero">
+        <div class="container">
+          <div class="hero__column">
+            <h1 class="hero__title">Not only people<br />need a house</h1>
+            <p class="hero__description">
+              We offer to give a chance to a little and nice puppy with an extremely<br />wide and open heart. He or she
+              will love you more than anybody else<br />in the world, you will see!
+            </p>
+            <a class="hero__btn btn" href="#friends">Make a friend</a>
+          </div>
+          <div class="hero__image">
+            <img src="../../assets/images/decoration/main-puppy.png" alt="Puppy" />
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer" id="contacts">
+      <div class="container">
+        <div class="footer__column contacts">
+          <h3 class="contacts__title">For questions<br />and suggestions</h3>
+          <ul class="contacts__list contacts-list">
+            <li class="contacts-list__item">
+              <a href="mailto:email@shelter.com" class="contacts-list__link contacts-link">
+                <span class="contacts-link__title">email@shelter.com</span>
+              </a>
+            </li>
+            <li class="contacts-list__item">
+              <a href="tel:+13 674 567 75 54" class="contacts-list__link contacts-link">
+                <span class="contacts-link__title">+13 674 567 75 54</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__column address">
+          <h3 class="address__title">We are waiting<br />for your visit</h3>
+          <ul class="address__list address-list">
+            <li class="address-list__item">
+              <a href="https://goo.gl/maps/rGRCNvPFBB79urnq8" target="_blank" class="address-list__link address-link">
+                <span class="address-link__title">1 Central Street, Boston<br />(entrance from the store)</span>
+              </a>
+            </li>
+            <li class="address-list__item">
+              <a href="https://goo.gl/maps/RLKEhiDp365rDvCW6" target="_blank" class="address-list__link address-link">
+                <span class="address-link__title">18 South Park, London</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__column footer-column">
+          <img src="../../assets/images/decoration/puppy.png" alt="Puppy" class="footer__image" />
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

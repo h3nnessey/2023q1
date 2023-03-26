@@ -32,6 +32,10 @@ body {
   margin: 0 auto;
 }
 
+.header {
+  background-color: var(--color-light-xl);
+}
+
 .header > .container {
   display: flex;
   justify-content: space-between;
