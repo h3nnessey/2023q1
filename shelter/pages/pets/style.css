@@ -75,6 +75,7 @@ body {
 
 .nav-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 35px;
   list-style: none;
 }
