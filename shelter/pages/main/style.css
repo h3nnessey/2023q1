@@ -153,6 +153,7 @@ body {
 }
 
 .hero__description {
+  max-width: 460px;
   font-family: Arial, sans-serif;
   font-size: 15px;
   line-height: 160%;
@@ -241,6 +242,8 @@ body {
 }
 
 .pets__title {
+  max-width: 400px;
+  align-self: center;
   font-size: 35px;
   line-height: 130%;
   letter-spacing: var(--ls-6);
@@ -561,11 +564,12 @@ body {
 
 .contacts__title,
 .address__title {
-  color: var(--color-light-xl);
+  max-width: 280px;
+  padding-right: 1px;
   font-size: 35px;
   line-height: 45px;
   letter-spacing: var(--ls-6);
-  padding-right: 1px;
+  color: var(--color-light-xl);
 }
 
 .contacts-link,
@@ -604,6 +608,7 @@ body {
 }
 
 .address-link__title {
+  max-width: 253px;
   padding-top: 2px;
 }
 

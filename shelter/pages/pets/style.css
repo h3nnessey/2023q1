@@ -140,7 +140,7 @@ body {
   margin-bottom: 45px;
   align-self: center;
   font-size: 35px;
-  line-height: 45px;
+  line-height: 130%;
   letter-spacing: var(--ls-6);
   text-align: center;
   color: var(--color-dark-l);
