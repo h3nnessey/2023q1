@@ -9,6 +9,11 @@
   --color-light-l: #f6f6f6;
   --color-light-s: #fafafa;
   --color-light-xl: #ffffff;
-  --ls-6: 0.06em;
-  --ls-10: 0.1em;
+  --font-ls-6: 0.06em;
+  --font-ls-10: 0.1em;
+  --font-lh-110: 110%;
+  --font-lh-115: 115%;
+  --font-lh-130: 130%;
+  --font-lh-150: 150%;
+  --font-lh-160: 160%;
 }
