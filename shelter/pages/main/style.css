@@ -94,23 +94,33 @@ body {
   transition: color 0.3s;
 }
 
-.nav-list__link.active::before {
+.nav-list__link.active {
+  color: var(--color-light-s);
+  pointer-events: none;
+  cursor: default;
+}
+
+.nav-list__link::before {
   content: '';
   display: inline-block;
   position: absolute;
   bottom: -6px;
   height: 3px;
-  width: 100%;
+  width: 0;
   background-color: var(--color-primary);
+  transition: width 0.3s;
 }
 
-.nav-list__link.active {
-  pointer-events: none;
-  cursor: default;
+.nav-list__link.active::before {
+  width: 100%;
 }
 
 .nav-list__link:not(.nav-list__link.active):hover {
   color: var(--color-light-s);
+}
+
+.nav-list__item:has(.nav-list__link:active) .nav-list__link:not(.nav-list__link.active)::before {
+  width: 100%;
 }
 
 .hero {
@@ -162,12 +172,16 @@ body {
   align-self: flex-start;
   background-color: var(--color-primary);
   text-decoration: none;
-  transition: border 0.4s ease-out, background-color 0.4s ease-in-out;
+  transition: border 0.4s ease-out, background-color 0.4s ease-in-out, opacity 0.3s;
 }
 
 .hero__btn:hover {
   border-color: var(--color-primary-light);
   background-color: var(--color-primary-light);
+}
+
+.hero__btn:active {
+  opacity: 0.7;
 }
 
 .hero__image > img {
@@ -242,6 +256,8 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 53px;
+  /*  remove */
+  flex-wrap: wrap;
 }
 
 .pets-slider__btn {
@@ -252,7 +268,7 @@ body {
   background-color: transparent;
   color: var(--color-dark-3xl);
   cursor: pointer;
-  transition: border 0.4s ease-out, background-color 0.4s ease-in-out;
+  transition: border 0.4s ease-out, background-color 0.4s ease-in-out, filter 0.3s;
 }
 
 .pets-slider-btn__left {
@@ -270,10 +286,16 @@ body {
   background-color: var(--color-primary-light);
 }
 
+.pets-slider__btn:active {
+  filter: sepia(15%);
+}
+
 .pets-cards {
   display: flex;
   justify-content: space-between;
   flex: 1;
+  /*  remove */
+  flex-wrap: wrap;
 }
 
 .pet-card {
@@ -353,12 +375,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 30px;
   padding: 80px 40px 100px 40px;
 }
 
 .donation__image > img {
   vertical-align: top;
+  width: 100%;
 }
 
 .donation__column {
@@ -396,7 +420,12 @@ body {
   padding: 10px 15px;
   border-radius: 9px;
   background-color: var(--color-primary);
-  transition: background-color 0.4s ease-in-out;
+  cursor: pointer;
+  transition: background-color 0.4s ease-in-out, opacity 0.3s;
+}
+
+.donation-card:active {
+  opacity: 0.7;
 }
 
 .donation-card:hover {
@@ -547,12 +576,12 @@ body {
 
 .contacts-link,
 .address-link {
+  position: relative;
   display: flex;
   align-content: center;
   align-items: center;
   gap: 20px;
   text-decoration: none;
-  position: relative;
 }
 
 .contacts-list__item:nth-child(1) .contacts-link::before {
@@ -586,10 +615,15 @@ body {
 
 .contacts-list__item,
 .address-list__item {
-  transition: filter 0.4s ease-in-out;
+  transition: filter 0.4s ease-in-out, opacity 0.3s;
 }
 
 .contacts-list__item:hover,
 .address-list__item:hover {
   filter: contrast(170%);
+}
+
+.contacts-list__item:active,
+.address-list__item:active {
+  opacity: 0.65;
 }
