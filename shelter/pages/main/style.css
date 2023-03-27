@@ -293,6 +293,10 @@ body {
   cursor: pointer;
 }
 
+.pet-card:active {
+  box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.12);
+}
+
 .pet-card__image-wrapper {
   max-width: 270px;
   margin-bottom: 25px;
@@ -320,20 +324,25 @@ body {
   background-color: transparent;
   cursor: pointer;
   outline: none;
-  transition: border 0.4s ease-out, background-color 0.4s ease-in-out;
+  transition: border 0.4s ease-out, background-color 0.4s ease-in-out, filter 0.4s ease-in-out;
 }
 
 .pets__btn {
   align-self: center;
   background-color: var(--color-primary);
   text-decoration: none;
-  transition: border 0.4s ease-out, background-color 0.4s ease-in-out;
+  transition: border 0.4s ease-out, background-color 0.4s ease-in-out, filter 0.4s ease-in-out;
 }
 
 .pet-card:hover > .pet-card__action,
 .pets__btn:hover {
   border-color: var(--color-primary-light);
   background-color: var(--color-primary-light);
+}
+
+.pet-card__action:active,
+.pets__btn:active {
+  filter: sepia(15%);
 }
 
 .donation {
