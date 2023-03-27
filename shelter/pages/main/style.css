@@ -337,7 +337,7 @@ body {
 }
 
 .pet-card__action {
-  padding: 15px 43px;
+  padding: 14px 43px;
   border: 2px solid var(--color-primary);
   border-radius: 100px;
   font-size: 17px;
