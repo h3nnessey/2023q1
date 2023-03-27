@@ -136,10 +136,11 @@ body {
 }
 
 .pets__title {
+  max-width: 400px;
   margin-bottom: 45px;
   align-self: center;
   font-size: 35px;
-  line-height: 45px;
+  line-height: 130%;
   letter-spacing: var(--ls-6);
   text-align: center;
   color: var(--color-dark-l);
@@ -306,12 +307,13 @@ body {
 
 .contacts__title,
 .address__title {
-  color: var(--color-light-xl);
+  max-width: 280px;
+  padding-top: 3px;
+  padding-right: 1px;
   font-size: 35px;
   line-height: 45px;
   letter-spacing: var(--ls-6);
-  padding-top: 3px;
-  padding-right: 1px;
+  color: var(--color-light-xl);
 }
 
 .contacts-link,
@@ -343,6 +345,10 @@ body {
   width: 22px;
   height: 32px;
   background: url('../../assets/images/svg/pin.svg') 50% 50% / cover no-repeat;
+}
+
+.address-link__title {
+  max-width: 253px;
 }
 
 .contacts-link__title,
