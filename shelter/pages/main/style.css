@@ -52,7 +52,7 @@ body {
 .header-logo__title {
   margin-bottom: 10px;
   font-size: 32px;
-  letter-spacing: var(--ls-6);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-primary);
   transition: color 0.3s;
 }
@@ -61,7 +61,7 @@ body {
   padding-left: 4px;
   font-family: Arial, sans-serif;
   font-size: 13px;
-  letter-spacing: var(--ls-10);
+  letter-spacing: var(--font-ls-10);
   color: var(--color-light-xl);
 }
 
@@ -110,7 +110,7 @@ body {
   height: 3px;
   width: 0;
   background-color: var(--color-primary);
-  transition: width 0.3s;
+  transition: width 0.15s ease-in-out;
 }
 
 .nav-list__link.active::before {
@@ -148,7 +148,7 @@ body {
 .hero__title {
   max-width: 310px;
   font-size: 44px;
-  line-height: 130%;
+  line-height: var(--font-lh-130);
   color: var(--color-light-xl);
 }
 
@@ -156,7 +156,7 @@ body {
   max-width: 460px;
   font-family: Arial, sans-serif;
   font-size: 15px;
-  line-height: 160%;
+  line-height: var(--font-lh-160);
   color: var(--color-dark-s);
 }
 
@@ -165,7 +165,7 @@ body {
   border: 2px solid var(--color-primary);
   border-radius: 100px;
   font-size: 17px;
-  letter-spacing: var(--ls-6);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-3xl);
   background-color: transparent;
   cursor: pointer;
@@ -216,18 +216,17 @@ body {
 }
 
 .about__title {
-  font-size: 35px;
-  font-weight: 400;
   max-width: 370px;
-  line-height: 130%;
-  letter-spacing: var(--ls-6);
+  font-size: 35px;
+  line-height: var(--font-lh-130);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-l);
 }
 
 .about__paragraph {
   font-family: Arial, sans-serif;
   font-size: 15px;
-  line-height: 160%;
+  line-height: var(--font-lh-160);
   color: var(--color-dark-xl);
 }
 
@@ -245,8 +244,8 @@ body {
   max-width: 400px;
   align-self: center;
   font-size: 35px;
-  line-height: 130%;
-  letter-spacing: var(--ls-6);
+  line-height: var(--font-lh-130);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-l);
   text-align: center;
 }
@@ -332,7 +331,7 @@ body {
 .pet-card__title {
   margin-bottom: 30px;
   font-size: 20px;
-  letter-spacing: var(--ls-6);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-l);
 }
 
@@ -341,7 +340,7 @@ body {
   border: 2px solid var(--color-primary);
   border-radius: 100px;
   font-size: 17px;
-  letter-spacing: var(--ls-6);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-3xl);
   background-color: transparent;
   cursor: pointer;
@@ -393,15 +392,15 @@ body {
 .donation__title {
   max-width: 300px;
   font-size: 35px;
-  line-height: 130%;
-  letter-spacing: var(--ls-6);
+  line-height: var(--font-lh-130);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-l);
 }
 
 .donation__subtitle {
   font-size: 15px;
-  line-height: 110%;
-  letter-spacing: var(--ls-6);
+  line-height: var(--font-lh-110);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-l);
 }
 
@@ -410,7 +409,7 @@ body {
   font-family: Arial, sans-serif;
   font-style: italic;
   font-size: 12px;
-  line-height: 150%;
+  line-height: var(--font-lh-150);
   color: var(--color-dark-m);
 }
 
@@ -433,8 +432,8 @@ body {
 
 .donation-card__number {
   font-size: 20px;
-  line-height: 115%;
-  letter-spacing: var(--ls-6);
+  line-height: var(--font-lh-115);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-l);
 }
 
@@ -465,8 +464,8 @@ body {
   max-width: 320px;
   align-self: center;
   font-size: 35px;
-  line-height: 130%;
-  letter-spacing: var(--ls-6);
+  line-height: var(--font-lh-130);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-l);
   text-align: center;
 }
@@ -510,8 +509,8 @@ body {
 
 .help-item__title {
   font-size: 20px;
-  line-height: 115%;
-  letter-spacing: var(--ls-6);
+  line-height: var(--font-lh-115);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-l);
 }
 
@@ -567,8 +566,8 @@ body {
   max-width: 280px;
   padding-right: 1px;
   font-size: 35px;
-  line-height: 45px;
-  letter-spacing: var(--ls-6);
+  line-height: var(--font-lh-130);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-light-xl);
 }
 
@@ -615,9 +614,9 @@ body {
 .contacts-link__title,
 .address-link__title {
   font-size: 20px;
-  line-height: 23px;
+  line-height: var(--font-lh-115);
   color: var(--color-primary);
-  letter-spacing: var(--ls-6);
+  letter-spacing: var(--font-ls-6);
 }
 
 .contacts-list__item,

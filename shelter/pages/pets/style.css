@@ -49,7 +49,7 @@ body {
 .header-logo__title {
   margin-bottom: 10px;
   font-size: 32px;
-  letter-spacing: var(--ls-6);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-l);
   transition: color 0.3s;
 }
@@ -58,7 +58,7 @@ body {
   padding-left: 4px;
   font-family: Arial, sans-serif;
   font-size: 13px;
-  letter-spacing: var(--ls-10);
+  letter-spacing: var(--font-ls-10);
   color: var(--color-dark-3xl);
   transition: color 0.3s;
 }
@@ -102,7 +102,7 @@ body {
   height: 3px;
   background-color: var(--color-primary);
   width: 0;
-  transition: width 0.3s;
+  transition: width 0.15s ease-in-out;
 }
 
 .nav-list__link.active {
@@ -140,8 +140,8 @@ body {
   margin-bottom: 45px;
   align-self: center;
   font-size: 35px;
-  line-height: 130%;
-  letter-spacing: var(--ls-6);
+  line-height: var(--font-lh-130);
+  letter-spacing: var(--font-ls-6);
   text-align: center;
   color: var(--color-dark-l);
 }
@@ -189,7 +189,7 @@ body {
 .pet-card__title {
   margin-bottom: 30px;
   font-size: 20px;
-  letter-spacing: var(--ls-6);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-l);
 }
 
@@ -198,7 +198,7 @@ body {
   border: 2px solid var(--color-primary);
   border-radius: 100px;
   font-size: 17px;
-  letter-spacing: var(--ls-6);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-3xl);
   background-color: transparent;
   cursor: pointer;
@@ -232,7 +232,7 @@ body {
   border-radius: 50%;
   border: 2px solid var(--color-primary);
   font-size: 20px;
-  letter-spacing: var(--ls-6);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-dark-3xl);
   background: transparent;
   cursor: pointer;
@@ -308,11 +308,9 @@ body {
 .contacts__title,
 .address__title {
   max-width: 280px;
-  padding-top: 3px;
-  padding-right: 1px;
   font-size: 35px;
-  line-height: 45px;
-  letter-spacing: var(--ls-6);
+  line-height: var(--font-lh-130);
+  letter-spacing: var(--font-ls-6);
   color: var(--color-light-xl);
 }
 
@@ -354,9 +352,9 @@ body {
 .contacts-link__title,
 .address-link__title {
   font-size: 20px;
-  line-height: 23px;
+  line-height: var(--font-lh-115);
   color: var(--color-primary);
-  letter-spacing: var(--ls-6);
+  letter-spacing: var(--font-ls-6);
 }
 
 .contacts-list__item,
