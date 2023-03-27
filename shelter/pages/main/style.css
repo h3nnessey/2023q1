@@ -21,6 +21,7 @@ body {
   --color-dark-3xl: #292929;
   --color-dark-s: #cdcdcd;
   --color-dark-xl: #4c4c4c;
+  --color-dark-m: #b2b2b2;
   --color-primary: #f1cdb3;
   --color-primary-light: #fddcc4;
   --color-light-l: #f6f6f6;
@@ -52,6 +53,7 @@ body {
 .header-logo__link {
   display: grid;
   text-decoration: none;
+  pointer-events: none;
 }
 
 .header-logo__title {
@@ -92,23 +94,33 @@ body {
   transition: color 0.3s;
 }
 
-.nav-list__link.active::before {
+.nav-list__link.active {
+  color: var(--color-light-s);
+  pointer-events: none;
+  cursor: default;
+}
+
+.nav-list__link::before {
   content: '';
   display: inline-block;
   position: absolute;
   bottom: -6px;
   height: 3px;
-  width: 100%;
+  width: 0;
   background-color: var(--color-primary);
+  transition: width 0.3s;
 }
 
-.nav-list__link.active {
-  pointer-events: none;
-  cursor: default;
+.nav-list__link.active::before {
+  width: 100%;
 }
 
 .nav-list__link:not(.nav-list__link.active):hover {
   color: var(--color-light-s);
+}
+
+.nav-list__item:has(.nav-list__link:active) .nav-list__link:not(.nav-list__link.active)::before {
+  width: 100%;
 }
 
 .hero {
@@ -160,6 +172,16 @@ body {
   align-self: flex-start;
   background-color: var(--color-primary);
   text-decoration: none;
+  transition: border 0.4s ease-out, background-color 0.4s ease-in-out, opacity 0.3s;
+}
+
+.hero__btn:hover {
+  border-color: var(--color-primary-light);
+  background-color: var(--color-primary-light);
+}
+
+.hero__btn:active {
+  opacity: 0.7;
 }
 
 .hero__image > img {
@@ -234,6 +256,8 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 53px;
+  /*  remove */
+  flex-wrap: wrap;
 }
 
 .pets-slider__btn {
@@ -244,6 +268,7 @@ body {
   background-color: transparent;
   color: var(--color-dark-3xl);
   cursor: pointer;
+  transition: border 0.4s ease-out, background-color 0.4s ease-in-out, filter 0.3s;
 }
 
 .pets-slider-btn__left {
@@ -256,10 +281,21 @@ body {
   background-size: 14px 6px;
 }
 
+.pets-slider__btn:hover {
+  border-color: var(--color-primary-light);
+  background-color: var(--color-primary-light);
+}
+
+.pets-slider__btn:active {
+  filter: sepia(15%);
+}
+
 .pets-cards {
   display: flex;
   justify-content: space-between;
   flex: 1;
+  /*  remove */
+  flex-wrap: wrap;
 }
 
 .pet-card {
@@ -277,6 +313,10 @@ body {
   box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
   background-color: var(--color-light-xl);
   cursor: pointer;
+}
+
+.pet-card:active {
+  box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.12);
 }
 
 .pet-card__image-wrapper {
@@ -306,17 +346,175 @@ body {
   background-color: transparent;
   cursor: pointer;
   outline: none;
-  transition: border 0.4s ease-out, background-color 0.4s ease-in-out;
+  transition: border 0.4s ease-out, background-color 0.4s ease-in-out, filter 0.4s ease-in-out;
 }
 
-.pet-card:hover .pet-card__action {
+.pets__btn {
+  align-self: center;
+  background-color: var(--color-primary);
+  text-decoration: none;
+  transition: border 0.4s ease-out, background-color 0.4s ease-in-out, filter 0.4s ease-in-out;
+}
+
+.pet-card:hover > .pet-card__action,
+.pets__btn:hover {
   border-color: var(--color-primary-light);
   background-color: var(--color-primary-light);
 }
 
-.pets__btn {
+.pet-card__action:active,
+.pets__btn:active {
+  filter: sepia(15%);
+}
+
+.donation {
+  background-color: var(--color-light-l);
+}
+
+.donation > .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 80px 40px 100px 40px;
+}
+
+.donation__image > img {
+  vertical-align: top;
+  width: 100%;
+}
+
+.donation__column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.donation__title {
+  max-width: 300px;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: var(--color-dark-l);
+}
+
+.donation__subtitle {
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: var(--color-dark-l);
+}
+
+.donation__description {
+  max-width: 380px;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 150%;
+  color: var(--color-dark-m);
+}
+
+.donation-card {
+  align-self: flex-start;
+  padding: 10px 15px;
+  border-radius: 9px;
   background-color: var(--color-primary);
+  cursor: pointer;
+  transition: background-color 0.4s ease-in-out, opacity 0.3s;
+}
+
+.donation-card:active {
+  opacity: 0.7;
+}
+
+.donation-card:hover {
+  background-color: var(--color-primary-light);
+}
+
+.donation-card__number {
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: var(--color-dark-l);
+}
+
+.donation-card__link {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  text-decoration: none;
+}
+
+.donation-card__icon {
+  width: 30px;
+  height: 23px;
+  background: url('../../assets/images/svg/credit-card.svg') 50% 50% / cover no-repeat;
+}
+
+.help {
+  background-color: var(--color-light-xl);
+}
+
+.help > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 80px 40px 100px 40px;
+}
+
+.help__title {
+  max-width: 320px;
   align-self: center;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: var(--color-dark-l);
+  text-align: center;
+}
+
+.help__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 55px 120px;
+  justify-content: center;
+}
+
+.help-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 25px;
+  text-align: center;
+}
+
+.help-item:nth-child(6),
+.help-item:nth-child(8) {
+  padding-top: 4px;
+}
+
+.help-item:nth-child(6) > .help-item__title {
+  padding-left: 4px;
+}
+
+.help-item:nth-child(8) > .help-item__title {
+  padding-right: 1px;
+}
+
+.help-item:nth-child(9) > .help-item__title {
+  padding-top: 1px;
+  padding-right: 2px;
+}
+
+.help-item__image {
+  vertical-align: top;
+}
+
+.help-item__title {
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: var(--color-dark-l);
 }
 
 .footer {
@@ -378,12 +576,12 @@ body {
 
 .contacts-link,
 .address-link {
+  position: relative;
   display: flex;
   align-content: center;
   align-items: center;
   gap: 20px;
   text-decoration: none;
-  position: relative;
 }
 
 .contacts-list__item:nth-child(1) .contacts-link::before {
@@ -417,10 +615,15 @@ body {
 
 .contacts-list__item,
 .address-list__item {
-  transition: filter 0.4s ease-in-out;
+  transition: filter 0.4s ease-in-out, opacity 0.3s;
 }
 
 .contacts-list__item:hover,
 .address-list__item:hover {
   filter: contrast(170%);
+}
+
+.contacts-list__item:active,
+.address-list__item:active {
+  opacity: 0.65;
 }
