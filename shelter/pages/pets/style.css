@@ -317,6 +317,12 @@ body {
   padding: 40px 40px 0 40px;
 }
 
+.footer-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .footer__image {
   vertical-align: top;
   width: 100%;
@@ -324,14 +330,14 @@ body {
 }
 
 .contacts {
-  padding-top: 16px;
   width: 100%;
   max-width: 287px;
+  padding-top: 16px;
 }
 
 .address {
   padding-top: 16px;
-  max-width: 301px;
+  max-width: 310px;
   width: 100%;
 }
 
@@ -367,12 +373,11 @@ body {
 
 .contacts-link,
 .address-link {
+  position: relative;
   display: flex;
-  align-content: center;
   align-items: center;
   gap: 20px;
   text-decoration: none;
-  position: relative;
 }
 
 .contacts-list__item:nth-child(1) .contacts-link::before {
@@ -423,6 +428,7 @@ body {
   opacity: 0.65;
 }
 
+/* mb ran'she eto delat', t.k. 50px mezhdu queries*/
 @media screen and (max-width: 1023px) {
   .container {
     padding: 80px 30px 76px 30px;
@@ -435,6 +441,9 @@ body {
   }
   .footer > .container {
     padding: 30px 30px 0 30px;
+  }
+  .address {
+    max-width: 301px;
   }
 }
 
@@ -465,9 +474,33 @@ body {
   .nav > .nav-burger {
     display: block;
   }
+  .container {
+    padding: 42px 10px;
+  }
+  .header > .container {
+    padding: 30px 20px;
+  }
+  .pets__title {
+    margin-bottom: 42px;
+  }
+  .pets-cards {
+    padding: 0 15px;
+  }
+  .footer > .container {
+    padding: 30px 10px 0 10px;
+  }
 }
 
-@media screen and (max-width: 639px) {
+@media screen and (max-width: 656px) {
+  .address__title {
+    max-width: 280px;
+  }
+  .footer > .container {
+    row-gap: 12.7vw;
+  }
+}
+
+@media screen and (max-width: 629px) {
   .pet-card:nth-child(4),
   .pet-card:nth-child(5),
   .pet-card:nth-child(6) {
@@ -480,6 +513,35 @@ body {
     max-width: 340px;
     font-size: 25px;
   }
+  .pets-controls {
+    gap: 10px;
+  }
+  .footer > .container {
+    width: 100%;
+  }
+  .address {
+    display: flex;
+    flex-direction: column;
+  }
+  .address-list {
+    gap: 40px;
+  }
+  .contacts__title,
+  .address__title {
+    font-size: 25px;
+    text-align: center;
+  }
+  .address__title {
+    margin-bottom: 38px;
+    align-self: center;
+  }
+  .contacts__title {
+    margin-bottom: 44px;
+  }
+  .contacts-list__item > .contacts-link {
+    justify-content: center;
+  }
+  .footer__image {
+    width: 86.666%;
+  }
 }
-
-/* column-gap 1rem+ na footer*/
