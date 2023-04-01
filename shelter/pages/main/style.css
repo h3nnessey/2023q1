@@ -566,20 +566,32 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 1rem;
   padding: 40px 40px 0 40px;
+}
+
+.footer-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer__image {
   vertical-align: top;
+  width: 100%;
+  max-width: 100%;
 }
 
 .contacts {
+  width: 100%;
+  max-width: 287px;
   padding-top: 16px;
 }
 
 .address {
   padding-top: 16px;
-  margin-left: -8px;
+  max-width: 310px;
+  width: 100%;
 }
 
 .contacts-list {
@@ -606,8 +618,6 @@ body {
 
 .contacts__title,
 .address__title {
-  max-width: 280px;
-  padding-right: 1px;
   font-size: 35px;
   line-height: var(--font-lh-130);
   letter-spacing: var(--font-ls-6);
@@ -618,7 +628,6 @@ body {
 .address-link {
   position: relative;
   display: flex;
-  align-content: center;
   align-items: center;
   gap: 20px;
   text-decoration: none;
@@ -645,13 +654,8 @@ body {
   background: url('../../assets/images/svg/pin.svg') 50% 50% / cover no-repeat;
 }
 
-.contacts-link__title {
-  padding-top: 4px;
-}
-
 .address-link__title {
   max-width: 253px;
-  padding-top: 2px;
 }
 
 .contacts-link__title,
@@ -696,9 +700,24 @@ body {
   .about__column {
     padding: 0;
   }
+  .footer > .container {
+    padding: 30px 30px 0 30px;
+  }
+  .address {
+    max-width: 301px;
+  }
 }
 
-@media screen and (max-width: 974px) {
+@media screen and (max-width: 988px) {
+  .footer > .container {
+    width: 95%;
+    justify-content: space-around;
+    row-gap: 8.7vw;
+  }
+  .contacts,
+  .address {
+    padding: 0;
+  }
   .donation > .container {
     gap: 60px;
   }
@@ -732,5 +751,48 @@ body {
   }
   .nav-burger__btn {
     display: flex;
+  }
+  .footer > .container {
+    padding: 30px 10px 0 10px;
+  }
+}
+
+@media screen and (max-width: 656px) {
+  .address__title {
+    max-width: 280px;
+  }
+  .footer > .container {
+    row-gap: 12.7vw;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .footer > .container {
+    width: 100%;
+  }
+  .address {
+    display: flex;
+    flex-direction: column;
+  }
+  .address-list {
+    gap: 40px;
+  }
+  .contacts__title,
+  .address__title {
+    font-size: 25px;
+    text-align: center;
+  }
+  .address__title {
+    margin-bottom: 38px;
+    align-self: center;
+  }
+  .contacts__title {
+    margin-bottom: 44px;
+  }
+  .contacts-list__item > .contacts-link {
+    justify-content: center;
+  }
+  .footer__image {
+    width: 86.666%;
   }
 }
