@@ -125,6 +125,49 @@ body {
   width: 100%;
 }
 
+.nav-burger {
+  display: none;
+}
+
+.nav-burger__btn {
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.nav-burger__btn > span {
+  display: inline-block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+}
+
+.nav-burger__btn::before,
+.nav-burger__btn::after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+}
+
+.nav-burger__btn::before {
+  top: 0;
+}
+
+.nav-burger__btn::after {
+  bottom: 0;
+}
+
 .hero {
   background: url('../../assets/images/background/noise_transparent@2x.png'),
     radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
@@ -634,6 +677,15 @@ body {
   opacity: 0.65;
 }
 
+@media screen and (max-width: 1147px) {
+  .pet-card:last-child {
+    display: none;
+  }
+  .pets-cards {
+    justify-content: space-around;
+  }
+}
+
 @media screen and (max-width: 1023px) {
   .container {
     padding: 80px 30px 100px 30px;
@@ -659,5 +711,26 @@ body {
   .help-item {
     width: 100%;
     max-width: 170px;
+  }
+}
+
+@media screen and (max-width: 833px) {
+  .pets-slider {
+    gap: 12px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .pets-cards {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nav > .nav-list {
+    display: none;
+  }
+  .nav-burger__btn {
+    display: flex;
   }
 }

@@ -140,7 +140,7 @@ body {
 
 .nav-burger__btn {
   position: relative;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   outline: none;
@@ -476,8 +476,8 @@ body {
   .nav > .nav-list {
     display: none;
   }
-  .nav > .nav-burger {
-    display: block;
+  .nav > .nav-burger__btn {
+    display: flex;
   }
   .container {
     padding: 42px 10px;
