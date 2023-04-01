@@ -18,6 +18,11 @@ body {
   font-weight: 400;
 }
 
+/* для гениев))) */
+* {
+  transition: all 1s;
+}
+
 .container {
   max-width: 1280px;
   width: 100%;

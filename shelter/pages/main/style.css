@@ -134,7 +134,6 @@ body {
   display: flex;
   padding: 180px 40px 0 40px;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 .hero__column {
@@ -192,6 +191,8 @@ body {
   vertical-align: top;
   width: 100%;
   max-width: 698px;
+  /*object-fit: contain;*/
+  /*width: clamp(260px, 74.089vw, 698px);*/
 }
 
 .about > .container {
@@ -293,8 +294,7 @@ body {
   display: flex;
   justify-content: space-between;
   flex: 1;
-  /*  remove */
-  flex-wrap: wrap;
+  column-gap: 1.5rem;
 }
 
 .pet-card {
