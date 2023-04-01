@@ -197,7 +197,7 @@ body {
 
 .about > .container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   justify-content: center;
   gap: 10%;
 }
@@ -374,7 +374,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   gap: 30px;
 }
 
@@ -632,4 +632,32 @@ body {
 .contacts-list__item:active,
 .address-list__item:active {
   opacity: 0.65;
+}
+
+@media screen and (max-width: 1023px) {
+  .container {
+    padding: 80px 30px 100px 30px;
+  }
+  .about > .container {
+    gap: 80px;
+  }
+  .about__column {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 974px) {
+  .donation > .container {
+    gap: 60px;
+  }
+}
+
+@media screen and (max-width: 866px) {
+  .help__items {
+    gap: 55px 60px;
+  }
+  .help-item {
+    width: 100%;
+    max-width: 170px;
+  }
 }
