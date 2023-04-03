@@ -1,3 +1,6 @@
+@import url('../../css/fonts.css');
+@import url('../../css/variables.css');
+
 * {
   padding: 0;
   margin: 0;
@@ -13,6 +16,11 @@ body {
   font-size: 16px;
   font-family: Georgia, serif;
   font-weight: 400;
+}
+
+/* для гениев))) */
+* {
+  transition: all 1s;
 }
 
 .container {
@@ -124,6 +132,49 @@ body {
 
 .nav-list__item:has(.nav-list__link:active) .nav-list__link:not(.nav-list__link.active) {
   color: var(--color-dark-l);
+}
+
+.nav-burger {
+  display: none;
+}
+
+.nav-burger__btn {
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.nav-burger__btn > span {
+  display: inline-block;
+  width: 100%;
+  height: 2px;
+  background-color: #000000;
+}
+
+.nav-burger__btn::before,
+.nav-burger__btn::after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #000000;
+}
+
+.nav-burger__btn::before {
+  top: 0;
+}
+
+.nav-burger__btn::after {
+  bottom: 0;
 }
 
 .pets {
@@ -267,20 +318,32 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 1rem;
   padding: 40px 40px 0 40px;
+}
+
+.footer-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer__image {
   vertical-align: top;
+  width: 100%;
+  max-width: 100%;
 }
 
 .contacts {
+  width: 100%;
+  max-width: 287px;
   padding-top: 16px;
 }
 
 .address {
   padding-top: 16px;
-  margin-left: -8px;
+  max-width: 310px;
+  width: 100%;
 }
 
 .contacts-list {
@@ -307,7 +370,6 @@ body {
 
 .contacts__title,
 .address__title {
-  max-width: 280px;
   font-size: 35px;
   line-height: var(--font-lh-130);
   letter-spacing: var(--font-ls-6);
@@ -316,12 +378,11 @@ body {
 
 .contacts-link,
 .address-link {
+  position: relative;
   display: flex;
-  align-content: center;
   align-items: center;
   gap: 20px;
   text-decoration: none;
-  position: relative;
 }
 
 .contacts-list__item:nth-child(1) .contacts-link::before {
@@ -370,4 +431,122 @@ body {
 .contacts-list__item:active,
 .address-list__item:active {
   opacity: 0.65;
+}
+
+/* mb ran'she eto delat', t.k. 50px mezhdu queries*/
+@media screen and (max-width: 1023px) {
+  .container {
+    padding: 80px 30px 76px 30px;
+  }
+  .header > .container {
+    padding: 30px;
+  }
+  .pets__title {
+    margin-bottom: 30px;
+  }
+  .footer > .container {
+    padding: 30px 30px 0 30px;
+  }
+  .address {
+    max-width: 301px;
+  }
+}
+
+@media screen and (max-width: 988px) {
+  .pets-cards {
+    padding: 0;
+    margin-bottom: 40px;
+  }
+  .pet-card:nth-child(7),
+  .pet-card:nth-child(8) {
+    display: none;
+  }
+  .footer > .container {
+    width: 95%;
+    justify-content: space-around;
+    row-gap: 8.7vw;
+  }
+  .contacts,
+  .address {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nav > .nav-list {
+    display: none;
+  }
+  .nav > .nav-burger__btn {
+    display: flex;
+  }
+  .container {
+    padding: 42px 10px;
+  }
+  .header > .container {
+    padding: 30px 20px;
+  }
+  .pets__title {
+    margin-bottom: 42px;
+  }
+  .pets-cards {
+    padding: 0 15px;
+  }
+  .footer > .container {
+    padding: 30px 10px 0 10px;
+  }
+}
+
+@media screen and (max-width: 656px) {
+  .address__title {
+    max-width: 280px;
+  }
+  .footer > .container {
+    row-gap: 12.7vw;
+  }
+}
+
+@media screen and (max-width: 629px) {
+  .pet-card:nth-child(4),
+  .pet-card:nth-child(5),
+  .pet-card:nth-child(6) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .pets__title {
+    max-width: 340px;
+    font-size: 25px;
+  }
+  .pets-controls {
+    gap: 10px;
+  }
+  .footer > .container {
+    width: 100%;
+  }
+  .address {
+    display: flex;
+    flex-direction: column;
+  }
+  .address-list {
+    gap: 40px;
+  }
+  .contacts__title,
+  .address__title {
+    font-size: 25px;
+    text-align: center;
+  }
+  .address__title {
+    margin-bottom: 38px;
+    align-self: center;
+  }
+  .contacts__title {
+    margin-bottom: 44px;
+  }
+  .contacts-list__item > .contacts-link {
+    justify-content: center;
+  }
+  .footer__image {
+    width: 86.666%;
+  }
 }
