@@ -1,3 +1,6 @@
+@import url('../../css/fonts.css');
+@import url('../../css/variables.css');
+
 * {
   padding: 0;
   margin: 0;
@@ -249,6 +252,7 @@ body {
   gap: 25px;
   padding: 14px 0;
   max-width: 430px;
+  flex: 1;
 }
 
 .about__image > img {
@@ -719,6 +723,7 @@ body {
     width: clamp(260px, 74vw, 569px);
   }
   .about > .container {
+    max-width: 90%;
     gap: 80px;
   }
   .about__column {
@@ -779,14 +784,14 @@ body {
   .container {
     padding: 42px 10px;
   }
+  .about > .container {
+    padding: 42px 20px;
+  }
   .header > .container {
     padding: 30px 20px 0 20px;
   }
   .hero > .container {
     padding: 150px 10px 0 10px;
-  }
-  .hero__title {
-    max-width: 65vw;
   }
   .hero__description {
     text-align: justify;
@@ -798,7 +803,7 @@ body {
     max-width: 82vw;
   }
   .footer > .container {
-    padding: 30px 10px 0 10px;
+    padding: 27px 10px 0 10px;
   }
 }
 
@@ -844,6 +849,7 @@ body {
   .about > .container {
     max-width: 90%;
     gap: 42px;
+    padding: 42px 10px;
   }
   .about__title {
     font-size: 25px;
