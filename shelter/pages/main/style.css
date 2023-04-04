@@ -124,7 +124,7 @@ body {
   color: var(--color-light-s);
 }
 
-.nav-list__item:has(.nav-list__link:active) .nav-list__link:not(.nav-list__link.active)::before {
+.nav-list__link:not(.nav-list__link.active):active::before {
   width: 100%;
 }
 
