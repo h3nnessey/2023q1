@@ -1,69 +1,113 @@
 import './burger.js';
-import { fetchPets } from '../../js/fetchPets.js';
-
-const pets = await fetchPets();
-
-const shuffle = iterator => {
-  const iteratorCopy = [...iterator];
-  return iteratorCopy.sort((a, b) => 0.5 - Math.random());
-};
-
-const arr = [1, 2, 3, 4, 5, 6, 7, 8];
-
-// {
-//   "id": "1",
-//   "name": "Jennifer",
-//   "img": "../../assets/images/jennifer.png",
-//   "type": "Dog",
-//   "breed": "Labrador",
-//   "description": "Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.",
-//   "age": "2 months",
-//   "inoculations": ["none"],
-//   "diseases": ["none"],
-//   "parasites": ["none"]
-// }
-
-function cardTemplate(card) {
-  const div = document.createElement('div');
-  const cardContent = `
-    <div class="pet-card__image-wrapper">
-      <img src="${card.img}" alt="${card.type}" class="pet-card__image" />
-    </div>
-    <h3 class="pet-card__title">${card.name}</h3>
-    <button class="pet-card__action">Learn more</button>
-  `;
-
-  div.classList.add('pets-cards__item', 'pet-card');
-  div.dataset.id = card.id;
-  div.insertAdjacentHTML('afterbegin', cardContent);
-
-  return div;
-}
+import pets from '../../data/pets.json' assert { type: 'json' };
+import { createCardTemplate, shuffle, getPagesAndCardsCount } from '../../js/helpers/';
 
 const petsContainer = document.querySelector('.pets-cards');
 const nextBtn = document.querySelector('.btn-next');
 const lastBtn = document.querySelector('.btn-last');
+const prevBtn = document.querySelector('.btn-prev');
+const firstBtn = document.querySelector('.btn-first');
 const pageCounter = document.querySelector('.pets-controls__counter');
 let currentPage = 1;
-pageCounter.textContent = currentPage.toString();
 
-const handleNextClick = () => {
-  const shuffledIds = shuffle(arr).map(item => item.toString());
-  shuffledIds.forEach((id, idx) => {
-    const pet = pets.find(pet => pet.id === id);
-    const petCard = cardTemplate(pet);
-    petsContainer.childNodes[idx].replaceWith(petCard);
-  });
+const generateArraysOfRandomIds = (subArraySize, arrLength) => {
+  const size = 6;
+  const result = [shuffle([1, 2, 3, 4, 5, 6, 7, 8])];
+  const ids = [1, 2, 3, 4, 5, 6, 7, 8];
+
+  for (let i = 1; i <= size; i += 1) {
+    while (result.length !== 6) {
+      let shuffledArr = shuffle(ids);
+      let isNoRepeatInResult = result.every(item => item.toString() !== shuffledArr.toString());
+      if (isNoRepeatInResult) {
+        const prevArr = result.at(-1);
+        let isNoIdsAtSamePosition = false;
+        while (isNoIdsAtSamePosition !== true) {
+          let shuffledArrAgain = shuffle(shuffledArr);
+          const mappedShuffledArrAgain = shuffledArrAgain.map((id, i) => prevArr[i] !== id);
+          isNoIdsAtSamePosition = mappedShuffledArrAgain.every(item => item === true);
+          if (isNoIdsAtSamePosition) {
+            result.push(shuffledArrAgain);
+          }
+        }
+      }
+    }
+  }
+  return result;
 };
 
-window.onload = pets.forEach(pet => petsContainer.insertAdjacentElement('beforeend', cardTemplate(pet)));
-nextBtn.addEventListener('click', () => {
-  if (currentPage + 1 === 6) {
+const randomPetsIdsForEachPage = generateArraysOfRandomIds();
+
+console.log(randomPetsIdsForEachPage);
+
+const toggleBtns = () => {
+  firstBtn.disabled = false;
+  prevBtn.disabled = false;
+  nextBtn.disabled = false;
+  lastBtn.disabled = false;
+  if (currentPage >= 6) {
     nextBtn.disabled = true;
     lastBtn.disabled = true;
-  } else {
-    currentPage++;
-    pageCounter.textContent = currentPage.toString();
-    handleNextClick();
   }
-});
+  if (currentPage <= 1) {
+    firstBtn.disabled = true;
+    prevBtn.disabled = true;
+  }
+};
+
+const handleNextClick = () => {
+  currentPage++;
+  toggleBtns();
+  randomPetsIdsForEachPage[currentPage - 1].forEach((id, idx) => {
+    const pet = pets.find(pet => pet.id === id);
+    const petCard = createCardTemplate(pet);
+    petsContainer.childNodes[idx].replaceWith(petCard);
+  });
+  pageCounter.textContent = currentPage.toString();
+};
+
+const handleLastClick = () => {
+  currentPage = 6;
+  toggleBtns();
+  randomPetsIdsForEachPage[currentPage - 1].forEach((id, idx) => {
+    const pet = pets.find(pet => pet.id === id);
+    const petCard = createCardTemplate(pet);
+    petsContainer.childNodes[idx].replaceWith(petCard);
+  });
+  pageCounter.textContent = currentPage.toString();
+};
+
+const handlePrevClick = () => {
+  currentPage--;
+  toggleBtns();
+  randomPetsIdsForEachPage[currentPage - 1].forEach((id, idx) => {
+    const pet = pets.find(pet => pet.id === id);
+    const petCard = createCardTemplate(pet);
+    petsContainer.childNodes[idx].replaceWith(petCard);
+  });
+  pageCounter.textContent = currentPage.toString();
+};
+const handleFirstClick = () => {
+  currentPage = 1;
+  toggleBtns();
+  randomPetsIdsForEachPage[currentPage - 1].forEach((id, idx) => {
+    const pet = pets.find(pet => pet.id === id);
+    const petCard = createCardTemplate(pet);
+    petsContainer.childNodes[idx].replaceWith(petCard);
+  });
+  pageCounter.textContent = currentPage.toString();
+};
+
+window.onload = function () {
+  randomPetsIdsForEachPage[0].forEach((id, idx) => {
+    const pet = pets.find(pet => pet.id === id);
+    const petCard = createCardTemplate(pet);
+    petsContainer.insertAdjacentElement('beforeend', petCard);
+  });
+  toggleBtns();
+};
+
+nextBtn.addEventListener('click', handleNextClick);
+prevBtn.addEventListener('click', handlePrevClick);
+lastBtn.addEventListener('click', handleLastClick);
+firstBtn.addEventListener('click', handleFirstClick);
