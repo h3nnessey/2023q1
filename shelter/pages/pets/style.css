@@ -18,6 +18,10 @@ body {
   font-weight: 400;
 }
 
+body.modal-active {
+  overflow-y: hidden;
+}
+
 .container {
   max-width: 1280px;
   width: 100%;
@@ -30,6 +34,7 @@ body {
 }
 
 .header > .container {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,21 +134,19 @@ body {
   color: var(--color-dark-l);
 }
 
-.nav-burger {
-  display: none;
-}
-
 .nav-burger__btn {
   position: relative;
   display: none;
+  width: 30px;
+  height: 22px;
   justify-content: center;
   align-items: center;
   outline: none;
   border: none;
   background-color: transparent;
-  width: 30px;
-  height: 22px;
   cursor: pointer;
+  transition: transform 0.4s ease-in-out;
+  z-index: 2;
 }
 
 .nav-burger__btn > span {
@@ -170,6 +173,70 @@ body {
 
 .nav-burger__btn::after {
   bottom: 0;
+}
+
+.nav-burger__btn.active > span,
+.nav-burger__btn.active::before,
+.nav-burger__btn.active::after {
+  background-color: var(--color-primary);
+}
+
+.nav-burger__btn.active {
+  transform: rotate(90deg);
+}
+
+.nav-burger__wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(41, 41, 41, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+.nav-burger {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 320px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+  background-color: var(--color-dark-3xl);
+  z-index: 2;
+  transition: right 0.4s ease-in-out;
+}
+
+.nav-burger__wrapper.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-burger__wrapper.active .nav-burger {
+  right: 0;
+}
+
+.nav-burger .nav-list__item {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-burger .nav-list__link {
+  font-size: 32px;
+  line-height: var(--font-lh-160);
+  color: var(--color-dark-s);
+}
+
+.nav-burger .nav-list__link.active {
+  color: var(--color-light-s);
 }
 
 .pets {
@@ -209,7 +276,23 @@ body {
   border-radius: 9px;
   background-color: var(--color-light-s);
   overflow: hidden;
+  opacity: 0;
   transition: box-shadow 0.4s ease-in, background-color 0.4s ease-out;
+  animation-name: onCardRender;
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes onCardRender {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .pet-card:hover {

@@ -7,7 +7,7 @@
     <title>Our Pets</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <script src="script.js" type="module" defer></script>
   </head>
 
   <body>
@@ -38,7 +38,22 @@
           <button class="nav-burger__btn">
             <span></span>
           </button>
-          <ul class="nav__burger nav-burger"></ul>
+          <div class="nav-burger__wrapper overlay">
+            <ul class="nav__burger nav-burger">
+              <li class="nav-list__item">
+                <a href="../main/" class="nav-list__link">About the shelter</a>
+              </li>
+              <li class="nav-list__item">
+                <a href="" class="nav-list__link active">Our pets</a>
+              </li>
+              <li class="nav-list__item">
+                <a href="../main#help" class="nav-list__link">Help the shelter</a>
+              </li>
+              <li class="nav-list__item">
+                <a href="#contacts" class="nav-list__link">Contacts</a>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
     </header>
@@ -47,70 +62,13 @@
       <section class="pets">
         <div class="container">
           <h1 class="pets__title">Our friends who are&nbsp;looking for a house</h1>
-          <div class="pets__cards pets-cards">
-            <div class="pets-cards__item pet-card">
-              <div class="pet-card__image-wrapper">
-                <img src="../../assets/images/pets/katrine.png" alt="Cat" class="pet-card__image" />
-              </div>
-              <h3 class="pet-card__title">Katrine</h3>
-              <button class="pet-card__action">Learn more</button>
-            </div>
-            <div class="pets-cards__item pet-card">
-              <div class="pet-card__image-wrapper">
-                <img src="../../assets/images/pets/jennifer.png" alt="Dog" class="pet-card__image" />
-              </div>
-              <h3 class="pet-card__title">Jennifer</h3>
-              <button class="pet-card__action">Learn more</button>
-            </div>
-            <div class="pets-cards__item pet-card">
-              <div class="pet-card__image-wrapper">
-                <img src="../../assets/images/pets/woody.png" alt="Dog" class="pet-card__image" />
-              </div>
-              <h3 class="pet-card__title">Woody</h3>
-              <button class="pet-card__action">Learn more</button>
-            </div>
-            <div class="pets-cards__item pet-card">
-              <div class="pet-card__image-wrapper">
-                <img src="../../assets/images/pets/sophia.png" alt="Dog" class="pet-card__image" />
-              </div>
-              <h3 class="pet-card__title">Sophia</h3>
-              <button class="pet-card__action">Learn more</button>
-            </div>
-            <div class="pets-cards__item pet-card">
-              <div class="pet-card__image-wrapper">
-                <img src="../../assets/images/pets/timmy.png" alt="Cat" class="pet-card__image" />
-              </div>
-              <h3 class="pet-card__title">Timmy</h3>
-              <button class="pet-card__action">Learn more</button>
-            </div>
-            <div class="pets-cards__item pet-card">
-              <div class="pet-card__image-wrapper">
-                <img src="../../assets/images/pets/charly.png" alt="Dog" class="pet-card__image" />
-              </div>
-              <h3 class="pet-card__title">Charly</h3>
-              <button class="pet-card__action">Learn more</button>
-            </div>
-            <div class="pets-cards__item pet-card">
-              <div class="pet-card__image-wrapper">
-                <img src="../../assets/images/pets/scarlett.png" alt="Dog" class="pet-card__image" />
-              </div>
-              <h3 class="pet-card__title">Scarlett</h3>
-              <button class="pet-card__action">Learn more</button>
-            </div>
-            <div class="pets-cards__item pet-card">
-              <div class="pet-card__image-wrapper">
-                <img src="../../assets/images/pets/freddie.png" alt="Cat" class="pet-card__image" />
-              </div>
-              <h3 class="pet-card__title">Freddie</h3>
-              <button class="pet-card__action">Learn more</button>
-            </div>
-          </div>
+          <div class="pets__cards pets-cards"></div>
           <div class="pets__controls pets-controls">
-            <button class="pets-controls__btn disabled" disabled><span>&lt;&lt;</span></button>
-            <button class="pets-controls__btn disabled" disabled><span>&lt;</span></button>
+            <button class="pets-controls__btn btn-first" disabled><span>&lt;&lt;</span></button>
+            <button class="pets-controls__btn btn-prev" disabled><span>&lt;</span></button>
             <span class="pets-controls__counter"><span>1</span></span>
-            <button class="pets-controls__btn"><span>&gt;</span></button>
-            <button class="pets-controls__btn"><span>&gt;&gt;</span></button>
+            <button class="pets-controls__btn btn-next"><span>&gt;</span></button>
+            <button class="pets-controls__btn btn-last"><span>&gt;&gt;</span></button>
           </div>
         </div>
       </section>
