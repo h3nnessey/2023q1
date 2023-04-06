@@ -10,6 +10,8 @@
 
 html,
 body {
+  position: relative;
+  overflow-x: hidden;
   height: 100%;
   scroll-behavior: smooth;
   min-height: 100vh;
@@ -34,7 +36,6 @@ body.modal-active {
 }
 
 .header > .container {
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -146,7 +147,7 @@ body.modal-active {
   background-color: transparent;
   cursor: pointer;
   transition: transform 0.4s ease-in-out;
-  z-index: 2;
+  z-index: 4;
 }
 
 .nav-burger__btn > span {
@@ -185,7 +186,7 @@ body.modal-active {
   transform: rotate(90deg);
 }
 
-.nav-burger__wrapper {
+.overlay {
   position: fixed;
   top: 0;
   right: 0;
@@ -199,7 +200,7 @@ body.modal-active {
 }
 
 .nav-burger {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: -100%;
   width: 100%;
@@ -215,12 +216,12 @@ body.modal-active {
   transition: right 0.4s ease-in-out;
 }
 
-.nav-burger__wrapper.active {
+.overlay.active {
   opacity: 1;
   visibility: visible;
 }
 
-.nav-burger__wrapper.active .nav-burger {
+.nav-burger.active {
   right: 0;
 }
 
