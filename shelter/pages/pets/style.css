@@ -146,7 +146,7 @@ body.modal-active {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, background-color 0.3s;
   z-index: 4;
 }
 
@@ -238,6 +238,143 @@ body.modal-active {
 
 .nav-burger .nav-list__link.active {
   color: var(--color-light-s);
+}
+
+.pet-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  column-gap: 30px;
+  max-width: 900px;
+  width: 70.333vw;
+  height: 100%;
+  max-height: 500px;
+  border-radius: 9px;
+  background-color: var(--color-light-s);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+.pet-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pet-modal__btn {
+  position: absolute;
+  top: -52px;
+  right: -52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.pet-modal__btn .pet-modal__btn_icon {
+  width: 12px;
+  height: 12px;
+  background: url('../../assets/images/svg/cross.svg') 50% 50% / cover no-repeat;
+}
+
+.pet-modal__image-wrapper {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  width: 100%;
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+  overflow: hidden;
+}
+
+.pet-modal__image {
+  vertical-align: top;
+  width: 100%;
+  height: auto;
+}
+
+.pet-modal__text {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 20px 88px 0;
+  gap: 40px;
+}
+
+.pet-modal__name-type-breed {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pet-modal__name {
+  font-size: 35px;
+  line-height: var(--font-lh-130);
+  letter-spacing: var(--font-ls-6);
+}
+
+.pet-modal__type-breed {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pet-modal__type-breed,
+.pet-modal__type,
+.pet-modal__breed {
+  font-size: 20px;
+  line-height: var(--font-lh-115);
+  letter-spacing: var(--font-ls-6);
+}
+
+.pet-modal__description {
+  max-width: 350px;
+  font-size: 15px;
+  line-height: 113%;
+  letter-spacing: var(--font-ls-6);
+}
+
+.pet-modal__about {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.pet-modal__about-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.pet-modal__about-item span:last-child {
+  margin-left: -4px;
+}
+
+.pet-modal__about-item_dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+.pet-modal__bold-text {
+  font-weight: 700;
+  line-height: var(--font-lh-110);
+  letter-spacing: var(--font-ls-10);
+}
+
+.pet-modal__about li {
+  list-style: none;
 }
 
 .pets {

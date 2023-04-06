@@ -1,4 +1,5 @@
-import '../../js/burger.js';
+import '../../js/burger-menu.js';
+import '../../js/overlay.js';
 import pets from '../../data/pets.json' assert { type: 'json' };
 import { createCardTemplate, shuffle, getPagesAndCardsCount } from '../../js/helpers/';
 
