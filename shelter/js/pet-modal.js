@@ -1,4 +1,6 @@
-import pets from '../data/pets.json' assert { type: 'json' };
+// import pets from '../data/pets.json' assert { type: 'json' };
+import pets from '../data/pets.js';
+// refactor this shit
 
 const modal = document.querySelector('.pet-modal');
 const overlay = document.querySelector('.overlay');
@@ -38,26 +40,3 @@ const petModal = id => {
 };
 
 export { petModal };
-
-// <div className="pet-modal">
-//   <button className="pet-modal__btn">
-//     <span className="pet-modal__btn_icon"></span>
-//   </button>
-//
-//   <div className="pet-modal__image-wrapper"></div>
-//
-//   <div className="pet-modal__text">
-//     <div className="pet-modal__name-type-breed">
-//       <h3 className="pet-modal__name"></h3>
-//       <h4 className="pet-modal__type-breed"></h4>
-//     </div>
-//
-//     <p className="pet-modal__description"></p>
-//
-//     <div className="pet-modal__about">
-//       <h4 className="pet-modal__age"></h4>
-//       <h4 className="pet-modal__inoculations"></h4>
-//       <h4 className="pet-modal__parasites"></h4>
-//     </div>
-//   </div>
-// </div>

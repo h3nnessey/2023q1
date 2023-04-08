@@ -1,5 +1,5 @@
 import pets from '../../data/pets.json' assert { type: 'json' };
-import { shuffle } from '../../js/helpers';
+import { shuffle } from '../../js/helpers/index.js';
 
 const cards = document.querySelectorAll('.pet-card');
 const nextBtn = document.querySelector('.pets-slider-btn__right');

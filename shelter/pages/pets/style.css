@@ -264,6 +264,10 @@ body.modal-active {
   visibility: visible;
 }
 
+.pet-modal.active ~ .header .nav-burger__btn {
+  z-index: 0;
+}
+
 .pet-modal__btn {
   position: absolute;
   top: -52px;
@@ -410,7 +414,7 @@ body.modal-active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 30px;
+  min-height: 435px;
   border-radius: 9px;
   background-color: var(--color-light-s);
   overflow: hidden;

@@ -17,6 +17,7 @@ const createCardTemplate = obj => {
     // рефактор
     modal.classList.add('active');
     overlay.classList.add('active');
+    document.body.classList.add('modal-active');
     petModal(obj.id);
   };
 
@@ -24,6 +25,7 @@ const createCardTemplate = obj => {
   div.dataset.id = obj.id;
   div.insertAdjacentHTML('afterbegin', cardContent);
 
+  // делегировать на контейнер пагинации
   div.addEventListener('click', handleCardClick);
 
   return div;

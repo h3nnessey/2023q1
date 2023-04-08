@@ -1,8 +1,13 @@
 import '../../js/burger-menu.js';
 import '../../js/overlay.js';
-import pets from '../../data/pets.json' assert { type: 'json' };
-import { createCardTemplate } from '../../js/helpers/';
-import { getArrayOfRandomIds, getCardsCount, getPagesCount, getPagesFromFlatArray } from '../../js/pagination-helpers/';
+import pets from '../../data/pets.js';
+import { createCardTemplate } from '../../js/helpers/index.js';
+import {
+  getArrayOfRandomIds,
+  getCardsCount,
+  getPagesCount,
+  getPagesFromFlatArray,
+} from '../../js/pagination-helpers/index.js';
 
 const petsContainer = document.querySelector('.pets-cards');
 const pageCounter = document.querySelector('.pets-controls__counter');
@@ -22,14 +27,12 @@ const initPagination = () => {
   pagesCount = getPagesCount();
   pages = getPagesFromFlatArray(arrayOfRandomIds, cardsCount);
   renderPage(pages[0], true);
-  toggleButtons();
 };
 
 const rerenderPagination = () => {
   currentPage = 1;
   pages = getPagesFromFlatArray(arrayOfRandomIds, cardsCount);
   renderPage(pages[0]);
-  toggleButtons();
 };
 
 const renderPage = (pageIds, initial) => {
@@ -38,12 +41,13 @@ const renderPage = (pageIds, initial) => {
     const petCard = createCardTemplate(pet);
     petsContainer.insertAdjacentElement('beforeend', petCard);
   };
-  if (typeof initial === 'boolean' && initial === true) {
+  if (typeof initial === 'boolean' && initial) {
     pageIds.forEach(id => renderCard(id));
   } else {
     petsContainer.innerHTML = '';
     pageIds.forEach(id => renderCard(id));
   }
+  toggleButtons();
   pageCounter.textContent = currentPage.toString();
 };
 
@@ -84,6 +88,7 @@ const handleFirstClick = () => {
 
 window.onload = initPagination;
 
+// feature for more flexible breakpoints (not static)
 window.addEventListener('resize', () => {
   const howMuchCardsShouldBe = getCardsCount();
   const howMuchPagesShouldBe = getPagesCount();

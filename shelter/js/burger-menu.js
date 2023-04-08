@@ -23,7 +23,9 @@
       overlay.classList.contains('active') && !modal.classList.contains('active') && overlay.classList.remove('active');
       burger.classList.contains('active') && burger.classList.remove('active');
       burgerBtn.classList.contains('active') && burgerBtn.classList.remove('active');
-      document.body.classList.contains('modal-active') && document.body.classList.remove('modal-active');
+      document.body.classList.contains('modal-active') &&
+        !modal.classList.contains('active') &&
+        document.body.classList.remove('modal-active');
     }
   };
 
