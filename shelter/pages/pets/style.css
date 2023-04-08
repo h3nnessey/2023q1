@@ -683,13 +683,6 @@ body.modal-active {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .pet-card:nth-child(7),
-  .pet-card:nth-child(8) {
-    display: none;
-  }
-}
-
 @media screen and (max-width: 767px) {
   .nav > .nav-list {
     display: none;
@@ -761,13 +754,5 @@ body.modal-active {
   }
   .footer__image {
     width: 86.666%;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .pet-card:nth-child(4),
-  .pet-card:nth-child(5),
-  .pet-card:nth-child(6) {
-    display: none;
   }
 }

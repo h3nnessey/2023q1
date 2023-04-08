@@ -1,52 +1,58 @@
 import '../../js/burger-menu.js';
 import '../../js/overlay.js';
 import pets from '../../data/pets.json' assert { type: 'json' };
-import { createCardTemplate, shuffle, getPagesAndCardsCount } from '../../js/helpers/';
+import { createCardTemplate } from '../../js/helpers/';
+import { getArrayOfRandomIds, getCardsCount, getPagesCount, getPagesFromFlatArray } from '../../js/pagination-helpers/';
 
 const petsContainer = document.querySelector('.pets-cards');
+const pageCounter = document.querySelector('.pets-controls__counter');
 const nextBtn = document.querySelector('.btn-next');
 const lastBtn = document.querySelector('.btn-last');
 const prevBtn = document.querySelector('.btn-prev');
 const firstBtn = document.querySelector('.btn-first');
-const pageCounter = document.querySelector('.pets-controls__counter');
-let currentPage = 1;
 
-const generateArraysOfRandomIds = (subArraySize, arrLength) => {
-  const size = 6;
-  const result = [shuffle([1, 2, 3, 4, 5, 6, 7, 8])];
-  const ids = [1, 2, 3, 4, 5, 6, 7, 8];
+const idPool = pets.reduce((acc, curr) => [...acc, curr.id], []);
+const arrayOfRandomIds = getArrayOfRandomIds(idPool);
 
-  for (let i = 1; i <= size; i += 1) {
-    while (result.length !== 6) {
-      let shuffledArr = shuffle(ids);
-      let isNoRepeatInResult = result.every(item => item.toString() !== shuffledArr.toString());
-      if (isNoRepeatInResult) {
-        const prevArr = result.at(-1);
-        let isNoIdsAtSamePosition = false;
-        while (isNoIdsAtSamePosition !== true) {
-          let shuffledArrAgain = shuffle(shuffledArr);
-          const mappedShuffledArrAgain = shuffledArrAgain.map((id, i) => prevArr[i] !== id);
-          isNoIdsAtSamePosition = mappedShuffledArrAgain.every(item => item === true);
-          if (isNoIdsAtSamePosition) {
-            result.push(shuffledArrAgain);
-          }
-        }
-      }
-    }
-  }
-  return result;
+let currentPage, cardsCount, pages, pagesCount;
+
+const initPagination = () => {
+  currentPage = 1;
+  cardsCount = getCardsCount();
+  pagesCount = getPagesCount();
+  pages = getPagesFromFlatArray(arrayOfRandomIds, cardsCount);
+  renderPage(pages[0], true);
+  toggleButtons();
 };
 
-const randomPetsIdsForEachPage = generateArraysOfRandomIds();
+const rerenderPagination = () => {
+  currentPage = 1;
+  pages = getPagesFromFlatArray(arrayOfRandomIds, cardsCount);
+  renderPage(pages[0]);
+  toggleButtons();
+};
 
-console.log(randomPetsIdsForEachPage);
+const renderPage = (pageIds, initial) => {
+  const renderCard = id => {
+    const pet = pets.find(pet => pet.id === id);
+    const petCard = createCardTemplate(pet);
+    petsContainer.insertAdjacentElement('beforeend', petCard);
+  };
+  if (typeof initial === 'boolean' && initial === true) {
+    pageIds.forEach(id => renderCard(id));
+  } else {
+    petsContainer.innerHTML = '';
+    pageIds.forEach(id => renderCard(id));
+  }
+  pageCounter.textContent = currentPage.toString();
+};
 
-const toggleBtns = () => {
+const toggleButtons = () => {
   firstBtn.disabled = false;
   prevBtn.disabled = false;
   nextBtn.disabled = false;
   lastBtn.disabled = false;
-  if (currentPage >= 6) {
+  if (currentPage >= pagesCount) {
     nextBtn.disabled = true;
     lastBtn.disabled = true;
   }
@@ -55,58 +61,39 @@ const toggleBtns = () => {
     prevBtn.disabled = true;
   }
 };
-
+const handleClick = () => {
+  renderPage(pages[currentPage - 1]);
+  toggleButtons();
+};
 const handleNextClick = () => {
   currentPage++;
-  toggleBtns();
-  randomPetsIdsForEachPage[currentPage - 1].forEach((id, idx) => {
-    const pet = pets.find(pet => pet.id === id);
-    const petCard = createCardTemplate(pet);
-    petsContainer.childNodes[idx].replaceWith(petCard);
-  });
-  pageCounter.textContent = currentPage.toString();
+  handleClick();
 };
-
 const handleLastClick = () => {
-  currentPage = 6;
-  toggleBtns();
-  randomPetsIdsForEachPage[currentPage - 1].forEach((id, idx) => {
-    const pet = pets.find(pet => pet.id === id);
-    const petCard = createCardTemplate(pet);
-    petsContainer.childNodes[idx].replaceWith(petCard);
-  });
-  pageCounter.textContent = currentPage.toString();
+  currentPage = pagesCount;
+  handleClick();
 };
-
 const handlePrevClick = () => {
   currentPage--;
-  toggleBtns();
-  randomPetsIdsForEachPage[currentPage - 1].forEach((id, idx) => {
-    const pet = pets.find(pet => pet.id === id);
-    const petCard = createCardTemplate(pet);
-    petsContainer.childNodes[idx].replaceWith(petCard);
-  });
-  pageCounter.textContent = currentPage.toString();
+  handleClick();
 };
 const handleFirstClick = () => {
   currentPage = 1;
-  toggleBtns();
-  randomPetsIdsForEachPage[currentPage - 1].forEach((id, idx) => {
-    const pet = pets.find(pet => pet.id === id);
-    const petCard = createCardTemplate(pet);
-    petsContainer.childNodes[idx].replaceWith(petCard);
-  });
-  pageCounter.textContent = currentPage.toString();
+  handleClick();
 };
 
-window.onload = function () {
-  randomPetsIdsForEachPage[0].forEach((id, idx) => {
-    const pet = pets.find(pet => pet.id === id);
-    const petCard = createCardTemplate(pet);
-    petsContainer.insertAdjacentElement('beforeend', petCard);
-  });
-  toggleBtns();
-};
+window.onload = initPagination;
+
+window.addEventListener('resize', () => {
+  const howMuchCardsShouldBe = getCardsCount();
+  const howMuchPagesShouldBe = getPagesCount();
+
+  if (cardsCount !== howMuchCardsShouldBe || pagesCount !== howMuchPagesShouldBe) {
+    cardsCount = howMuchCardsShouldBe;
+    pagesCount = howMuchPagesShouldBe;
+    rerenderPagination();
+  }
+});
 
 nextBtn.addEventListener('click', handleNextClick);
 prevBtn.addEventListener('click', handlePrevClick);
