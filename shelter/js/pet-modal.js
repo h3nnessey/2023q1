@@ -23,6 +23,7 @@ const petModal = id => {
   const handleCloseBtnClick = () => {
     modal.classList.remove('active');
     overlay.classList.remove('active');
+    document.body.classList.remove('modal-active');
   };
 
   modalImage.src = `../../assets/images/modal/${name.toLowerCase()}.png`;
