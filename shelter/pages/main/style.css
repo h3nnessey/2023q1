@@ -336,17 +336,24 @@ body {
   filter: sepia(15%);
 }
 
+.pets-slider__track {
+  min-width: 270px;
+  flex: 1;
+  overflow: hidden;
+}
+
 .pets-cards {
   display: flex;
   justify-content: space-between;
-  flex: 1;
-  column-gap: 1.5rem;
+  /*column-gap: 1.5rem;*/
+  column-gap: 9%;
 }
 
 .pet-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 270px;
   padding-bottom: 30px;
   border-radius: 9px;
   background-color: var(--color-light-s);
