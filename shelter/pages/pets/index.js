@@ -104,3 +104,5 @@ nextBtn.addEventListener('click', handleNextClick);
 prevBtn.addEventListener('click', handlePrevClick);
 lastBtn.addEventListener('click', handleLastClick);
 firstBtn.addEventListener('click', handleFirstClick);
+
+// todo: если текущая страница существует при ререндере, то оставлять ее, если она больше - кидать на последнюю

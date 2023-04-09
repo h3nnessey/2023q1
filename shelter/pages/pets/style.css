@@ -350,21 +350,42 @@ body.modal-active {
 .pet-modal__about {
   display: flex;
   flex-direction: column;
+  padding-left: 14px;
   gap: 9px;
 }
 
 .pet-modal__about-item {
   position: relative;
   display: flex;
-  align-items: center;
-  column-gap: 10px;
+  align-items: flex-start;
+  column-gap: 4px;
 }
 
-.pet-modal__about-item span:last-child {
-  margin-left: -4px;
+.pet-modal__about-item::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 4px;
+  height: 4px;
+  top: 7px;
+  left: -14px;
+  background-color: var(--color-primary);
 }
+
+.pet-modal__inoculations,
+.pet-modal__diseases,
+.pet-modal__parasites {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 5px;
+}
+
+/*.pet-modal__about-item span:last-child {*/
+/*  margin-left: -4px;*/
+/*}*/
 
 .pet-modal__about-item_dot {
+  display: none;
   width: 4px;
   height: 4px;
   border-radius: 50%;
@@ -714,10 +735,10 @@ body.modal-active {
 
 @media screen and (max-width: 740px) {
   .pet-modal {
-    max-width: 280px;
+    max-width: max-content;
   }
   .pet-modal__btn {
-    right: -26px;
+    right: -30px;
   }
   .pet-modal__image-wrapper {
     display: none;
@@ -725,8 +746,15 @@ body.modal-active {
   .pet-modal__text {
     padding: 10px;
   }
+  .pet-modal__about {
+    gap: 6px;
+  }
   .pet-modal__name-type-breed {
     text-align: center;
+    align-self: center;
+  }
+  .pet-modal__breed {
+    max-width: 130px;
   }
   .pet-modal__description {
     max-width: 220px;

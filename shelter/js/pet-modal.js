@@ -1,4 +1,3 @@
-// import pets from '../data/pets.json' assert { type: 'json' };
 import pets from '../data/pets.js';
 // refactor this shit
 
@@ -16,9 +15,7 @@ const modalPetDiseases = document.querySelector('.pet-modal__diseases');
 const modalPetParasites = document.querySelector('.pet-modal__parasites');
 
 const petModal = id => {
-  const { petId, name, img, type, breed, description, age, inoculations, diseases, parasites } = pets.find(
-    item => item.id === id
-  );
+  const pet = pets.find(item => item.id === id);
 
   const handleCloseBtnClick = () => {
     modal.classList.remove('active');
@@ -26,16 +23,21 @@ const petModal = id => {
     document.body.classList.remove('modal-active');
   };
 
-  modalImage.src = `../../assets/images/modal/${name.toLowerCase()}.png`;
-  modalImage.alt = type;
-  modalPetName.textContent = name;
-  modalPetType.textContent = type;
-  modalPetBreed.textContent = breed;
-  modalPetDescription.textContent = description;
-  modalPetAge.textContent = age;
-  modalPetInoculations.textContent = inoculations;
-  modalPetDiseases.textContent = diseases;
-  modalPetParasites.textContent = parasites;
+  const insertMultiplySpans = array => {
+    return array.map((item, i) => `<span>${i !== array.length - 1 ? `${item},` : item}</span>`).join('');
+  };
+
+  modalImage.src = `../../assets/images/modal/${pet.name.toLowerCase()}.png`;
+  modalImage.alt = pet.type;
+  modalPetName.textContent = pet.name;
+  modalPetType.textContent = pet.type;
+  modalPetBreed.textContent = pet.breed;
+  modalPetDescription.textContent = pet.description;
+  modalPetAge.textContent = pet.age;
+  modalPetInoculations.innerHTML =
+    pet.inoculations.length > 1 ? insertMultiplySpans(pet.inoculations) : pet.inoculations;
+  modalPetDiseases.innerHTML = pet.diseases.length > 1 ? insertMultiplySpans(pet.diseases) : pet.diseases;
+  modalPetParasites.innerHTML = pet.parasites.length > 1 ? insertMultiplySpans(pet.parasites) : pet.parasites;
 
   closeBtn.addEventListener('click', handleCloseBtnClick);
 };
