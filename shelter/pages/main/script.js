@@ -1,8 +1,7 @@
-import pets from '../../data/pets.json' assert { type: 'json' };
+import pets from '../../data/pets.js';
 import { shuffle } from '../../js/helpers/index.js';
 
-const cardsContainer = document.querySelector('.pets-cards');
-const cards = document.querySelectorAll('.pet-card');
+let cardsContainer = document.querySelector('.pets-cards');
 const nextBtn = document.querySelector('.pets-slider-btn__right');
 const prevBtn = document.querySelector('.pets-slider-btn__left');
 
@@ -22,7 +21,6 @@ const initRandomIds = () => {
 };
 
 const initSlider = () => {
-  cardsContainer.innerHTML = '';
   state.previous.forEach(id => {
     const pet = pets.find(pet => pet.id === id);
     cardsContainer.insertAdjacentElement('beforeend', createCardTemplate(pet));
@@ -31,14 +29,15 @@ const initSlider = () => {
     const pet = pets.find(pet => pet.id === id);
     cardsContainer.insertAdjacentElement('beforeend', createCardTemplate(pet));
   });
-  state.current.forEach(id => {
+  state.next.forEach(id => {
     const pet = pets.find(pet => pet.id === id);
     cardsContainer.insertAdjacentElement('beforeend', createCardTemplate(pet));
   });
-};
 
-// сделать чтобы пред и след слайды никогда не повторялись
-// min-height/width для картинок (превент прыжков)
+  cardsContainer.addEventListener('animationend', () => {
+    rerenderCards();
+  });
+};
 
 const createCardTemplate = obj => {
   const div = document.createElement('div');
@@ -57,15 +56,36 @@ const createCardTemplate = obj => {
   return div;
 };
 
-const rerenderCards = () => {};
+const rerenderCards = () => {
+  const newCardsContainer = document.createElement('div');
+
+  newCardsContainer.classList.add('pets__cards', 'pets-cards');
+
+  state.previous.forEach(id => {
+    const pet = pets.find(pet => pet.id === id);
+    newCardsContainer.insertAdjacentElement('beforeend', createCardTemplate(pet));
+  });
+
+  state.current.forEach(id => {
+    const pet = pets.find(pet => pet.id === id);
+    newCardsContainer.insertAdjacentElement('beforeend', createCardTemplate(pet));
+  });
+
+  state.next.forEach(id => {
+    const pet = pets.find(pet => pet.id === id);
+    newCardsContainer.insertAdjacentElement('beforeend', createCardTemplate(pet));
+  });
+
+  cardsContainer.replaceWith(newCardsContainer);
+};
 
 const handleNextClick = () => {
   state.previous = state.current;
   state.current = state.next;
   state.next = shuffle(petsId.filter(id => !state.current.includes(id))).slice(0, 3);
   console.log(state.previous, state.current, state.next, 'next');
-  // initSlider();
-  cardsContainer.style.left = '-182%';
+
+  cardsContainer.style.animation = '0.4s ease-in-out 0s 1 forwards slide-to-right';
 };
 
 const handlePrevClick = () => {
@@ -73,15 +93,38 @@ const handlePrevClick = () => {
   state.current = state.previous;
   state.previous = shuffle(petsId.filter(id => !state.current.includes(id))).slice(0, 3);
   console.log(state.previous, state.current, state.next, 'prev');
-  cardsContainer.style.left = '0';
+
+  cardsContainer.style.animation = '0.4s ease-in-out 0s 1 forwards slide-to-left';
 };
 
 initRandomIds();
 initSlider();
 
-cardsContainer.addEventListener('transitionend', () => {
-  console.log(window.getComputedStyle(cardsContainer).width);
-});
+// for the first rerender when link to dom element is correct
+cardsContainer.addEventListener('animationend', rerenderCards);
+
+const mutationTarget = document.querySelector('.pets-slider__track');
+
+const mutationConfig = {
+  childList: true,
+};
+
+const mutationCallback = (mutationsList, observer) => {
+  mutationsList.forEach(mutation => {
+    if (mutation.type === 'childList') {
+      cardsContainer.removeEventListener('animationend', rerenderCards);
+      cardsContainer = document.querySelector('.pets-cards');
+      cardsContainer.addEventListener('animationend', () => {
+        rerenderCards();
+      });
+    }
+  });
+};
+const mutationObserver = new MutationObserver(mutationCallback);
+
+mutationObserver.observe(mutationTarget, mutationConfig);
 
 nextBtn.addEventListener('click', handleNextClick);
 prevBtn.addEventListener('click', handlePrevClick);
+
+// todo: no repeat cards in prev and next, add min-width/min-height to pet image for prevent blinking, fix shadows (its hidden at Y-axis rn), refactor a whole file
