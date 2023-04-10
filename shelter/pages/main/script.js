@@ -1,5 +1,7 @@
-import pets from '../../data/pets.js';
+import '../../js/burger-menu.js';
+import '../../js/overlay.js';
 import { shuffle } from '../../js/helpers/index.js';
+import { getPets } from '../../js/helpers/getPets.js';
 
 const slider = document.querySelector('.pets-slider__track');
 let cardsContainer = document.querySelector('.pets-cards');
@@ -7,6 +9,8 @@ const nextBtn = document.querySelector('.pets-slider-btn__right');
 const prevBtn = document.querySelector('.pets-slider-btn__left');
 const btns = [nextBtn, prevBtn];
 const root = document.querySelector(':root');
+
+const pets = await getPets('../../data/pets.json');
 
 const idPool = shuffle(pets.map(pet => pet.id));
 
@@ -140,6 +144,5 @@ window.addEventListener('resize', () => {
   }
 });
 
-// todo: no repeat cards in prev and next, add min-width/min-height to pet image for prevent blinking, fix shadows (its hidden at Y-axis rn), refactor a whole file
+// todo: fix shadows (its hidden at Y-axis rn), refactor a whole file
 // write fetch for get pets
-// вынести в отдельный файл/файлы логику функции типа крейтов карточки и рандомайзера

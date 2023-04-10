@@ -380,10 +380,6 @@ body.modal-active {
   column-gap: 5px;
 }
 
-/*.pet-modal__about-item span:last-child {*/
-/*  margin-left: -4px;*/
-/*}*/
-
 .pet-modal__about-item_dot {
   display: none;
   width: 4px;
