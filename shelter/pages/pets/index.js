@@ -1,7 +1,6 @@
 import '../../js/burger-menu.js';
 import '../../js/overlay.js';
-import pets from '../../data/pets.js';
-import { createCardTemplate } from '../../js/helpers/index.js';
+import { createCardTemplate, getPets } from '../../js/helpers/index.js';
 import {
   getArrayOfRandomIds,
   getCardsCount,
@@ -15,8 +14,8 @@ const nextBtn = document.querySelector('.btn-next');
 const lastBtn = document.querySelector('.btn-last');
 const prevBtn = document.querySelector('.btn-prev');
 const firstBtn = document.querySelector('.btn-first');
-
-const idPool = pets.reduce((acc, curr) => [...acc, curr.id], []);
+const pets = await getPets('../../data/pets.json');
+const idPool = pets.map(pet => pet.id);
 const arrayOfRandomIds = getArrayOfRandomIds(idPool);
 
 let currentPage, cardsCount, pages, pagesCount;
@@ -27,11 +26,29 @@ const initPagination = () => {
   pagesCount = getPagesCount();
   pages = getPagesFromFlatArray(arrayOfRandomIds, cardsCount);
   renderPage(pages[0], true);
+
+  nextBtn.addEventListener('click', handleNextClick);
+  prevBtn.addEventListener('click', handlePrevClick);
+  lastBtn.addEventListener('click', handleLastClick);
+  firstBtn.addEventListener('click', handleFirstClick);
+
+  window.addEventListener('resize', () => {
+    const howMuchCardsShouldBe = getCardsCount();
+    const howMuchPagesShouldBe = getPagesCount();
+
+    if (cardsCount !== howMuchCardsShouldBe || pagesCount !== howMuchPagesShouldBe) {
+      cardsCount = howMuchCardsShouldBe;
+      pagesCount = howMuchPagesShouldBe;
+      rerenderPagination();
+    }
+  });
 };
 
 const rerenderPagination = () => {
-  currentPage = 1;
   pages = getPagesFromFlatArray(arrayOfRandomIds, cardsCount);
+  if (currentPage > pages.length) {
+    currentPage = pages.length;
+  }
   renderPage(pages[0]);
 };
 
@@ -65,44 +82,30 @@ const toggleButtons = () => {
     prevBtn.disabled = true;
   }
 };
+
 const handleClick = () => {
   renderPage(pages[currentPage - 1]);
   toggleButtons();
 };
+
 const handleNextClick = () => {
   currentPage++;
   handleClick();
 };
+
 const handleLastClick = () => {
   currentPage = pagesCount;
   handleClick();
 };
+
 const handlePrevClick = () => {
   currentPage--;
   handleClick();
 };
+
 const handleFirstClick = () => {
   currentPage = 1;
   handleClick();
 };
 
-window.onload = initPagination;
-
-// feature for more flexible breakpoints (not static)
-window.addEventListener('resize', () => {
-  const howMuchCardsShouldBe = getCardsCount();
-  const howMuchPagesShouldBe = getPagesCount();
-
-  if (cardsCount !== howMuchCardsShouldBe || pagesCount !== howMuchPagesShouldBe) {
-    cardsCount = howMuchCardsShouldBe;
-    pagesCount = howMuchPagesShouldBe;
-    rerenderPagination();
-  }
-});
-
-nextBtn.addEventListener('click', handleNextClick);
-prevBtn.addEventListener('click', handlePrevClick);
-lastBtn.addEventListener('click', handleLastClick);
-firstBtn.addEventListener('click', handleFirstClick);
-
-// todo: если текущая страница существует при ререндере, то оставлять ее, если она больше - кидать на последнюю
+initPagination();

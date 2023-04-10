@@ -1,21 +1,14 @@
-import pets from '../data/pets.js';
-// refactor this shit
-
 const modal = document.querySelector('.pet-modal');
 const overlay = document.querySelector('.overlay');
-const closeBtn = document.querySelector('.pet-modal__btn');
-const modalImage = document.querySelector('.pet-modal__image');
-const modalPetName = document.querySelector('.pet-modal__name');
-const modalPetType = document.querySelector('.pet-modal__type');
-const modalPetBreed = document.querySelector('.pet-modal__breed');
-const modalPetDescription = document.querySelector('.pet-modal__description');
-const modalPetAge = document.querySelector('.pet-modal__age');
-const modalPetInoculations = document.querySelector('.pet-modal__inoculations');
-const modalPetDiseases = document.querySelector('.pet-modal__diseases');
-const modalPetParasites = document.querySelector('.pet-modal__parasites');
 
-const petModal = id => {
-  const pet = pets.find(item => item.id === id);
+const petModal = pet => {
+  const button = document.createElement('button');
+  button.classList.add('pet-modal__btn');
+  button.insertAdjacentHTML('afterbegin', '<span class="pet-modal__btn_icon"></span>');
+
+  const insertMultiplySpans = array => {
+    return array.map((item, i) => `<span>${i !== array.length - 1 ? `${item},` : item}</span>`).join('');
+  };
 
   const handleCloseBtnClick = () => {
     modal.classList.remove('active');
@@ -23,23 +16,50 @@ const petModal = id => {
     document.body.classList.remove('modal-active');
   };
 
-  const insertMultiplySpans = array => {
-    return array.map((item, i) => `<span>${i !== array.length - 1 ? `${item},` : item}</span>`).join('');
-  };
+  modal.innerHTML = '';
+  const modalContent = `
+    <div class="pet-modal__image-wrapper">
+      <img class="pet-modal__image" src="../../assets/images/modal/${pet.name.toLowerCase()}.png" alt="${pet.type}" />
+    </div>
+    <div class="pet-modal__text">
+      <div class="pet-modal__name-type-breed">
+        <h3 class="pet-modal__name">${pet.name}</h3>
+        <h4 class="pet-modal__type-breed">
+          <span class="pet-modal__type">${pet.type}</span><span>-</span><span class="pet-modal__breed">${
+    pet.breed
+  }</span>
+        </h4>
+      </div>
+      <p class="pet-modal__description">${pet.description}</p>
+      <ul class="pet-modal__about">
+        <li class="pet-modal__about-item">
+          <span class="pet-modal__about-item_dot"></span>
+          <span class="pet-modal__bold-text">Age: </span><span class="pet-modal__age">${pet.age}</span>
+        </li>
+        <li class="pet-modal__about-item">
+          <span class="pet-modal__about-item_dot"></span>
+          <span class="pet-modal__bold-text">Inoculations: </span><span class="pet-modal__inoculations">${
+            pet.inoculations.length > 1 ? insertMultiplySpans(pet.inoculations) : pet.inoculations
+          }</span>
+        </li>
+        <li class="pet-modal__about-item">
+          <span class="pet-modal__about-item_dot"></span>
+          <span class="pet-modal__bold-text">Diseases: </span><span class="pet-modal__diseases">${
+            pet.diseases.length > 1 ? insertMultiplySpans(pet.diseases) : pet.diseases
+          }</span>
+        </li>
+        <li class="pet-modal__about-item">
+          <span class="pet-modal__about-item_dot"></span>
+          <span class="pet-modal__bold-text">Parasites: </span><span class="pet-modal__parasites">${
+            pet.parasites.length > 1 ? insertMultiplySpans(pet.parasites) : pet.parasites
+          }</span>
+        </li>
+      </ul>
+    </div>`;
 
-  modalImage.src = `../../assets/images/modal/${pet.name.toLowerCase()}.png`;
-  modalImage.alt = pet.type;
-  modalPetName.textContent = pet.name;
-  modalPetType.textContent = pet.type;
-  modalPetBreed.textContent = pet.breed;
-  modalPetDescription.textContent = pet.description;
-  modalPetAge.textContent = pet.age;
-  modalPetInoculations.innerHTML =
-    pet.inoculations.length > 1 ? insertMultiplySpans(pet.inoculations) : pet.inoculations;
-  modalPetDiseases.innerHTML = pet.diseases.length > 1 ? insertMultiplySpans(pet.diseases) : pet.diseases;
-  modalPetParasites.innerHTML = pet.parasites.length > 1 ? insertMultiplySpans(pet.parasites) : pet.parasites;
-
-  closeBtn.addEventListener('click', handleCloseBtnClick);
+  button.addEventListener('click', handleCloseBtnClick);
+  modal.insertAdjacentElement('afterbegin', button);
+  modal.insertAdjacentHTML('beforeend', modalContent);
 };
 
 export { petModal };

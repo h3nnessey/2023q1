@@ -20,6 +20,10 @@ body {
   font-weight: 400;
 }
 
+body {
+  overflow-y: overlay;
+}
+
 body.modal-active {
   overflow-y: hidden;
 }
@@ -282,6 +286,7 @@ body.modal-active {
   outline: none;
   background-color: transparent;
   cursor: pointer;
+  transition: 0.3s background-color ease-in-out, 0.3s filter ease-in-out, 0.2s transform ease-in-out;
 }
 
 .pet-modal__btn .pet-modal__btn_icon {
@@ -290,6 +295,14 @@ body.modal-active {
   background: url('../../assets/images/svg/cross.svg') 50% 50% / cover no-repeat;
 }
 
+.pet-modal__btn:hover {
+  background-color: var(--color-primary);
+  transform: rotate(90deg);
+}
+
+.pet-modal__btn:active {
+  transform: scale(0.95) rotate(90deg);
+}
 .pet-modal__image-wrapper {
   align-self: center;
   display: flex;
