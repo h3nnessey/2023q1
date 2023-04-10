@@ -20,6 +20,10 @@ body {
   font-weight: 400;
 }
 
+body {
+  overflow-y: overlay;
+}
+
 body.modal-active {
   overflow-y: hidden;
 }
@@ -248,7 +252,7 @@ body.modal-active {
   column-gap: 30px;
   max-width: 900px;
   width: 70.333vw;
-  height: 100%;
+  height: fit-content;
   max-height: 500px;
   border-radius: 9px;
   background-color: var(--color-light-s);
@@ -262,6 +266,10 @@ body.modal-active {
 .pet-modal.active {
   opacity: 1;
   visibility: visible;
+}
+
+.pet-modal.active ~ .header .nav-burger__btn {
+  z-index: 0;
 }
 
 .pet-modal__btn {
@@ -278,6 +286,7 @@ body.modal-active {
   outline: none;
   background-color: transparent;
   cursor: pointer;
+  transition: 0.3s background-color ease-in-out, 0.3s filter ease-in-out, 0.2s transform ease-in-out;
 }
 
 .pet-modal__btn .pet-modal__btn_icon {
@@ -286,6 +295,14 @@ body.modal-active {
   background: url('../../assets/images/svg/cross.svg') 50% 50% / cover no-repeat;
 }
 
+.pet-modal__btn:hover {
+  background-color: var(--color-primary);
+  transform: rotate(90deg);
+}
+
+.pet-modal__btn:active {
+  transform: scale(0.95) rotate(90deg);
+}
 .pet-modal__image-wrapper {
   align-self: center;
   display: flex;
@@ -346,21 +363,38 @@ body.modal-active {
 .pet-modal__about {
   display: flex;
   flex-direction: column;
+  padding-left: 14px;
   gap: 9px;
 }
 
 .pet-modal__about-item {
   position: relative;
   display: flex;
-  align-items: center;
-  column-gap: 10px;
+  align-items: flex-start;
+  column-gap: 4px;
 }
 
-.pet-modal__about-item span:last-child {
-  margin-left: -4px;
+.pet-modal__about-item::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 4px;
+  height: 4px;
+  top: 7px;
+  left: -14px;
+  background-color: var(--color-primary);
+}
+
+.pet-modal__inoculations,
+.pet-modal__diseases,
+.pet-modal__parasites {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 5px;
 }
 
 .pet-modal__about-item_dot {
+  display: none;
   width: 4px;
   height: 4px;
   border-radius: 50%;
@@ -410,7 +444,7 @@ body.modal-active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 30px;
+  min-height: 435px;
   border-radius: 9px;
   background-color: var(--color-light-s);
   overflow: hidden;
@@ -680,6 +714,59 @@ body.modal-active {
   .contacts,
   .address {
     padding: 0;
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  .pet-modal {
+    width: 82.333vw;
+    max-width: 630px;
+    height: fit-content;
+    column-gap: 11px;
+  }
+  .pet-modal__image-wrapper {
+    max-width: 350px;
+  }
+  .pet-modal__text {
+    padding: 10px 9px 37px 0;
+    gap: 20px;
+  }
+  .pet-modal__about {
+    gap: 3px;
+  }
+  .pet-modal__description {
+    max-width: 261px;
+    width: 100%;
+    font-size: 13px;
+    line-height: var(--font-lh-110);
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .pet-modal {
+    max-width: max-content;
+  }
+  .pet-modal__btn {
+    right: -30px;
+  }
+  .pet-modal__image-wrapper {
+    display: none;
+  }
+  .pet-modal__text {
+    padding: 10px;
+  }
+  .pet-modal__about {
+    gap: 6px;
+  }
+  .pet-modal__name-type-breed {
+    text-align: center;
+    align-self: center;
+  }
+  .pet-modal__breed {
+    max-width: 130px;
+  }
+  .pet-modal__description {
+    max-width: 220px;
   }
 }
 
