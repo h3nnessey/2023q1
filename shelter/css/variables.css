@@ -16,4 +16,6 @@
   --font-lh-130: 130%;
   --font-lh-150: 150%;
   --font-lh-160: 160%;
+  --slider-left-initial: -109%;
+  --slider-left-end: -218%;
 }
