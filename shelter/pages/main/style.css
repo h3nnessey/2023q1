@@ -20,10 +20,6 @@ body {
   font-style: normal;
 }
 
-body {
-  overflow-y: overlay;
-}
-
 body.modal-active {
   overflow-y: hidden;
 }
