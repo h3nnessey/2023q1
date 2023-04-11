@@ -35,7 +35,33 @@ const initState = () => {
 const initSlider = () => {
   initState();
   renderCards(cardsContainer);
+
+  const mutationCallback = (mutationsList, observer) => {
+    mutationsList.forEach(mutation => {
+      if (mutation.type === 'childList') {
+        cardsContainer.removeEventListener('animationend', rerenderCards);
+        cardsContainer = document.querySelector('.pets-cards');
+        cardsContainer.addEventListener('animationend', rerenderCards);
+      }
+    });
+  };
+
+  const mutationObserver = new MutationObserver(mutationCallback);
+  mutationObserver.observe(slider, {
+    childList: true,
+  });
+
   cardsContainer.addEventListener('animationend', rerenderCards);
+  nextBtn.addEventListener('click', handleNextClick);
+  prevBtn.addEventListener('click', handlePrevClick);
+
+  window.addEventListener('resize', () => {
+    const howMuchCardsShouldBe = getCardsCount();
+    if (cardsCount !== howMuchCardsShouldBe) {
+      cardsCount = howMuchCardsShouldBe;
+      rerenderSlider();
+    }
+  });
 };
 
 const rerenderSlider = () => {
@@ -80,31 +106,4 @@ const handlePrevClick = () => {
   addSliderAnimation('left');
 };
 
-const mutationCallback = (mutationsList, observer) => {
-  mutationsList.forEach(mutation => {
-    if (mutation.type === 'childList') {
-      cardsContainer.removeEventListener('animationend', rerenderCards);
-      cardsContainer = document.querySelector('.pets-cards');
-      cardsContainer.addEventListener('animationend', rerenderCards);
-    }
-  });
-};
-
-const mutationObserver = new MutationObserver(mutationCallback);
-
-mutationObserver.observe(slider, {
-  childList: true,
-});
-
 initSlider();
-
-nextBtn.addEventListener('click', handleNextClick);
-prevBtn.addEventListener('click', handlePrevClick);
-
-window.addEventListener('resize', () => {
-  const howMuchCardsShouldBe = getCardsCount();
-  if (cardsCount !== howMuchCardsShouldBe) {
-    cardsCount = howMuchCardsShouldBe;
-    rerenderSlider();
-  }
-});
