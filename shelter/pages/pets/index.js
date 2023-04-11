@@ -14,9 +14,11 @@ const nextBtn = document.querySelector('.btn-next');
 const lastBtn = document.querySelector('.btn-last');
 const prevBtn = document.querySelector('.btn-prev');
 const firstBtn = document.querySelector('.btn-first');
+
 const pets = await getPets('../../data/pets.json');
 const idPool = pets.map(pet => pet.id);
 const arrayOfRandomIds = getArrayOfRandomIds(idPool);
+const arrayOfPetsObjects = arrayOfRandomIds.map(id => pets.find(pet => pet.id === id));
 
 let currentPage, cardsCount, pages, pagesCount;
 
@@ -24,7 +26,7 @@ const initPagination = () => {
   currentPage = 1;
   cardsCount = getCardsCount();
   pagesCount = getPagesCount();
-  pages = getPagesFromFlatArray(arrayOfRandomIds, cardsCount);
+  pages = getPagesFromFlatArray(arrayOfPetsObjects, cardsCount);
   renderPage(pages[0], true);
 
   nextBtn.addEventListener('click', handleNextClick);
@@ -45,24 +47,22 @@ const initPagination = () => {
 };
 
 const rerenderPagination = () => {
-  pages = getPagesFromFlatArray(arrayOfRandomIds, cardsCount);
+  pages = getPagesFromFlatArray(arrayOfPetsObjects, cardsCount);
   if (currentPage > pages.length) {
     currentPage = pages.length;
   }
-  renderPage(pages[0]);
+  renderPage(pages[currentPage - 1]);
 };
 
-const renderPage = (pageIds, initial) => {
-  const renderCard = id => {
-    const pet = pets.find(pet => pet.id === id);
-    const petCard = createCardTemplate(pet);
-    petsContainer.insertAdjacentElement('beforeend', petCard);
+const renderPage = (page, initial) => {
+  const renderCard = card => {
+    petsContainer.insertAdjacentElement('beforeend', createCardTemplate(card));
   };
   if (typeof initial === 'boolean' && initial) {
-    pageIds.forEach(id => renderCard(id));
+    page.forEach(object => renderCard(object));
   } else {
     petsContainer.innerHTML = '';
-    pageIds.forEach(id => renderCard(id));
+    page.forEach(object => renderCard(object));
   }
   toggleButtons();
   pageCounter.textContent = currentPage.toString();
