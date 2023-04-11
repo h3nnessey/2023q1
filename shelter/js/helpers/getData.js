@@ -1,4 +1,4 @@
-const getPets = async url => {
+const getData = async url => {
   try {
     const res = await fetch(url);
     return await res.json();
@@ -7,4 +7,4 @@ const getPets = async url => {
   }
 };
 
-export { getPets };
+export { getData };

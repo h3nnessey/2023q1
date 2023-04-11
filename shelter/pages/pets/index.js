@@ -1,6 +1,6 @@
 import '../../js/burger-menu.js';
 import '../../js/overlay.js';
-import { createCardTemplate, getPets } from '../../js/helpers/index.js';
+import { createCardTemplate, getData } from '../../js/helpers/index.js';
 import {
   getArrayOfRandomIds,
   getCardsCount,
@@ -15,7 +15,7 @@ const lastBtn = document.querySelector('.btn-last');
 const prevBtn = document.querySelector('.btn-prev');
 const firstBtn = document.querySelector('.btn-first');
 
-const pets = await getPets('../../data/pets.json');
+const pets = await getData('../../data/pets.json');
 const arrayOfRandomIds = getArrayOfRandomIds(pets.map(pet => pet.id));
 const arrayOfPetsObjects = arrayOfRandomIds.map(id => pets.find(pet => pet.id === id));
 
