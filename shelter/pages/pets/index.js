@@ -16,13 +16,13 @@ const prevBtn = document.querySelector('.btn-prev');
 const firstBtn = document.querySelector('.btn-first');
 
 const pets = await getPets('../../data/pets.json');
-const idPool = pets.map(pet => pet.id);
-const arrayOfRandomIds = getArrayOfRandomIds(idPool);
+const arrayOfRandomIds = getArrayOfRandomIds(pets.map(pet => pet.id));
 const arrayOfPetsObjects = arrayOfRandomIds.map(id => pets.find(pet => pet.id === id));
 
 let currentPage, cardsCount, pages, pagesCount;
 
 const initPagination = () => {
+  console.log(arrayOfPetsObjects);
   currentPage = 1;
   cardsCount = getCardsCount();
   pagesCount = getPagesCount();
