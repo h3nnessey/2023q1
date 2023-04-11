@@ -1,7 +1,7 @@
 import '../../js/burger-menu.js';
 import '../../js/overlay.js';
 import { createCardTemplate, shuffle } from '../../js/helpers/index.js';
-import { getPets } from '../../js/helpers/getPets.js';
+import { getData } from '../../js/helpers/getData.js';
 import { getCardsCount } from '../../js/slider-helpers/index.js';
 
 const slider = document.querySelector('.pets-slider__track');
@@ -10,7 +10,7 @@ const nextBtn = document.querySelector('.pets-slider-btn__right');
 const prevBtn = document.querySelector('.pets-slider-btn__left');
 const sliderButtons = [nextBtn, prevBtn];
 
-const pets = await getPets('../../data/pets.json');
+const pets = await getData('../../data/pets.json');
 const petsPool = shuffle(pets);
 
 let state = {
