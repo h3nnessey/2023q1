@@ -1,4 +1,4 @@
-import { shuffle } from '../helpers/index.js';
+import { getPets, shuffle } from '../helpers/index.js';
 
 const getCardsCount = () => {
   const windowWidth = window.innerWidth;
