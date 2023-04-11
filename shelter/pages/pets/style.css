@@ -20,10 +20,6 @@ body {
   font-weight: 400;
 }
 
-body {
-  overflow-y: overlay;
-}
-
 body.modal-active {
   overflow-y: hidden;
 }
@@ -241,6 +237,10 @@ body.modal-active {
 }
 
 .nav-burger .nav-list__link.active {
+  color: var(--color-light-s);
+}
+
+.nav-list__link:not(.nav-list__link.active):hover {
   color: var(--color-light-s);
 }
 
