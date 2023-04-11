@@ -1,4 +1,4 @@
-import { getPets, shuffle } from '../helpers/index.js';
+import { shuffle } from '../helpers/index.js';
 
 const getCardsCount = () => {
   const windowWidth = window.innerWidth;
@@ -54,14 +54,12 @@ const getArrayOfRandomIds = idPool => {
   const firstThreeResult = getNoRepeatIdsBetweenPages(firstThree);
   const secondThreeResult = getNoRepeatIdsBetweenPages(secondThree);
   const restResult = getNoRepeatIdsBetweenPages(rest);
-  const result = Array(6)
+  return Array(6)
     .fill(null)
     .map((_, i) => {
       return [...firstThreeResult[i], ...secondThreeResult[i], ...restResult[i]].flat();
     })
     .flat();
-  console.log(result);
-  return result;
 };
 
 const getPagesFromFlatArray = (array, size) => {
