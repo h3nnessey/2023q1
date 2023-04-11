@@ -11,7 +11,7 @@ const prevBtn = document.querySelector('.pets-slider-btn__left');
 const sliderButtons = [nextBtn, prevBtn];
 
 const pets = await getPets('../../data/pets.json');
-const idPool = shuffle(pets.map(pet => pet.id));
+const petsPool = shuffle(pets);
 
 let state = {
   previous: [],
@@ -21,10 +21,15 @@ let state = {
 
 let cardsCount = getCardsCount();
 
+const getRandomPetsWhichAreNotInCollection = collection => {
+  const collectionIds = collection.map(item => item.id);
+  return shuffle(petsPool.filter(pet => !collectionIds.includes(pet.id))).slice(0, cardsCount);
+};
+
 const initState = () => {
-  state.previous = shuffle(idPool.slice(0, cardsCount));
-  state.current = getRandomIdsWhichAreNotInCollection(state.previous);
-  state.next = getRandomIdsWhichAreNotInCollection(state.current);
+  state.previous = shuffle(petsPool.slice(0, cardsCount));
+  state.current = getRandomPetsWhichAreNotInCollection(state.previous);
+  state.next = getRandomPetsWhichAreNotInCollection(state.current);
 };
 
 const initSlider = () => {
@@ -41,9 +46,8 @@ const rerenderSlider = () => {
 
 const renderCards = container => {
   for (const array in state) {
-    state[array].forEach(id => {
-      const pet = pets.find(pet => pet.id === id);
-      container.insertAdjacentElement('beforeend', createCardTemplate(pet));
+    state[array].forEach(card => {
+      container.insertAdjacentElement('beforeend', createCardTemplate(card));
     });
   }
 };
@@ -60,14 +64,10 @@ const addSliderAnimation = direction => {
   cardsContainer.style.animation = `0.4s ease 0s 1 forwards slide-to-${direction}`;
 };
 
-const getRandomIdsWhichAreNotInCollection = collection => {
-  return shuffle(idPool.filter(id => !collection.includes(id))).slice(0, cardsCount);
-};
-
 const handleNextClick = () => {
   state.previous = state.current;
   state.current = state.next;
-  state.next = getRandomIdsWhichAreNotInCollection(state.current);
+  state.next = getRandomPetsWhichAreNotInCollection(state.current);
   nextBtn.disabled = true;
   addSliderAnimation('right');
 };
@@ -75,7 +75,7 @@ const handleNextClick = () => {
 const handlePrevClick = () => {
   state.next = state.current;
   state.current = state.previous;
-  state.previous = getRandomIdsWhichAreNotInCollection(state.current);
+  state.previous = getRandomPetsWhichAreNotInCollection(state.current);
   prevBtn.disabled = true;
   addSliderAnimation('left');
 };
