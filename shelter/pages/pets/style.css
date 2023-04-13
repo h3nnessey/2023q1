@@ -240,7 +240,7 @@ body.modal-active {
   color: var(--color-light-s);
 }
 
-.nav-list__link:not(.nav-list__link.active):hover {
+.nav-burger .nav-list__link:not(.nav-list__link.active):hover {
   color: var(--color-light-s);
 }
 
