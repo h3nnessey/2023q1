@@ -1,12 +1,12 @@
 {
-    "extends": "airbnb-base",
-    "env": {
-      "browser": true
-    },
-    "parserOptions": {
-        "ecmaVersion": 2022
-      },
-    "rules": {
-      "import/extensions": "off"
-    }
+  "extends": "airbnb-base",
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022
+  },
+  "rules": {
+    "import/extensions": "off"
+  }
 }
