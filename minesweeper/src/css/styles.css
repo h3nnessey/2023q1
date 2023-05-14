@@ -47,4 +47,13 @@ body {
   background-color: #dadada;
   border-color: #8f8f8f #c1c1c1 #e9e9e9 #a4a8a9;
   cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.grid__cell.opened {
+  background-color: grey;
+}
+
+.grid__cell.bomb {
+  background-color: red;
 }
