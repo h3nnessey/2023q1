@@ -42,6 +42,15 @@ body {
   padding: 0.5rem;
 }
 
+.flag-counter,
+.timer,
+.step-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .reset-btn {
   font-size: 1.5rem;
   cursor: pointer;

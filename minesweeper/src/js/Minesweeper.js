@@ -48,27 +48,54 @@ class Minesweeper {
   }
 
   createTimer() {
-    const timer = document.createElement('div');
-    timer.classList.add('timer');
-    timer.textContent = this.state.time.toString();
+    const container = document.createElement('div');
+    const title = document.createElement('span');
+    const count = document.createElement('span');
 
-    this.elements.gameControls.timer = timer;
+    container.classList.add('timer');
+    title.classList.add('timer__title');
+    count.classList.add('timer__count');
+
+    title.textContent = '⏲:';
+    count.textContent = this.state.time.toString().padStart(3, '0');
+
+    container.append(title, count);
+
+    this.elements.gameControls.timer = container;
   }
 
   createFlagCounter() {
-    const flagCounter = document.createElement('div');
-    flagCounter.classList.add('flag-counter');
-    flagCounter.textContent = this.state.flagsCount;
+    const container = document.createElement('div');
+    const title = document.createElement('span');
+    const count = document.createElement('span');
 
-    this.elements.gameControls.flagCounter = flagCounter;
+    container.classList.add('flag-counter');
+    title.classList.add('flag-counter__title');
+    count.classList.add('flag-counter__count');
+
+    title.textContent = '🚩:';
+    count.textContent = this.state.flagsCount;
+
+    container.append(title, count);
+
+    this.elements.gameControls.flagCounter = container;
   }
 
   createStepCounter() {
-    const stepCounter = document.createElement('div');
-    stepCounter.classList.add('step-counter');
-    stepCounter.textContent = this.state.stepsCount.toString();
+    const container = document.createElement('div');
+    const title = document.createElement('span');
+    const count = document.createElement('span');
 
-    this.elements.gameControls.stepCounter = stepCounter;
+    container.classList.add('step-counter');
+    title.classList.add('step-counter__title');
+    count.classList.add('step-counter__count');
+
+    title.textContent = 'Steps:';
+    count.textContent = this.state.stepsCount.toString();
+
+    container.append(title, count);
+
+    this.elements.gameControls.stepCounter = container;
   }
 
   createResetGameButton() {
@@ -144,12 +171,14 @@ class Minesweeper {
 
       if (this.isBomb(target)) {
         target.classList.add('opened', 'bomb');
+        this.state.stepsCount += 1;
+        this.elements.gameControls.stepCounter.lastChild.textContent = this.state.stepsCount;
         this.gameOver(target);
         return;
       }
 
       this.state.stepsCount += 1;
-      this.elements.gameControls.stepCounter.textContent = this.state.stepsCount;
+      this.elements.gameControls.stepCounter.lastChild.textContent = this.state.stepsCount;
 
       this.openCell(target);
     }
@@ -182,17 +211,21 @@ class Minesweeper {
       flagsCount: this.bombsCount,
       stepsCount: 0,
     };
+
+    this.elements.gameControls.timer.lastChild.textContent = this.state.time
+      .toString()
+      .padStart(3, '0');
+    this.elements.gameControls.flagCounter.lastChild.textContent = this.state.flagsCount.toString();
+    this.elements.gameControls.stepCounter.lastChild.textContent = this.state.stepsCount.toString();
+
     this.elements.grid = null;
     this.elements.matrix = null;
     this.minefields.booleanFlat = null;
     this.minefields.booleanMatrix = null;
 
-    this.elements.gameControls.timer.textContent = this.state.time.toString();
-    this.elements.gameControls.flagCounter.textContent = this.state.flagsCount.toString();
-    this.elements.gameControls.stepCounter.textContent = this.state.stepsCount.toString();
-
     this.createMinefields();
     this.elements.grid = this.createGrid();
+
     const grid = document.querySelector('.grid');
     grid.replaceWith(this.elements.grid);
   }
@@ -200,7 +233,9 @@ class Minesweeper {
   setTimer() {
     this.timerRef = setInterval(() => {
       this.state.time += 1;
-      this.elements.gameControls.timer.textContent = this.state.time.toString();
+      this.elements.gameControls.timer.lastChild.textContent = this.state.time
+        .toString()
+        .padStart(3, '0');
     }, 1000);
   }
 
@@ -232,13 +267,13 @@ class Minesweeper {
       lastChild.textContent = '';
       dataset.flaged = 'false';
       this.state.flagsCount += 1;
-      this.elements.gameControls.flagCounter.textContent = this.state.flagsCount.toString();
     } else {
       dataset.flaged = 'true';
       lastChild.textContent = '🚩';
       this.state.flagsCount -= 1;
-      this.elements.gameControls.flagCounter.textContent = this.state.flagsCount.toString();
     }
+
+    this.elements.gameControls.flagCounter.lastChild.textContent = this.state.flagsCount.toString();
   }
 
   getCellsAround(row, column) {
