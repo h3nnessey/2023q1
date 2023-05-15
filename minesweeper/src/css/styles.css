@@ -33,6 +33,20 @@ body {
   flex-direction: column;
 }
 
+.controls {
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.reset-btn {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -96,11 +110,4 @@ body {
 
 .grid__cell[data-bombs='8'] {
   color: #bec91b;
-}
-
-.controls {
-  color: red;
-  display: flex;
-  gap: 1rem;
-  padding: 0.5rem;
 }
