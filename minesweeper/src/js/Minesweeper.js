@@ -53,16 +53,20 @@ class Minesweeper {
         cell.dataset.pos = `${row}:${column}`;
 
         cell.addEventListener('click', (e) => {
-          const { target } = e;
+          const target = e.target.closest('.grid__cell');
 
-          if (target.classList.contains('opened')) return;
+          if (target) {
+            // мб проверять клетку в отдельной функции, потому что будут флаги
 
-          if (this.isBomb(target)) {
-            this.gameOver(target);
-            return;
+            if (target.classList.contains('opened')) return;
+
+            if (this.isBomb(target)) {
+              this.gameOver(target);
+              return;
+            }
+
+            this.openCell(target);
           }
-
-          this.openCell(target);
         });
 
         return cell;
@@ -85,7 +89,12 @@ class Minesweeper {
 
     !bombsAroundCount && cellsAround.forEach((target) => this.openCell(target, row, column));
     // добавить dataset или класс с кол-вом бомб вокруг (максимум 8)
-    cell.lastChild.textContent = bombsAroundCount || cell.lastChild.textContent;
+
+    if (bombsAroundCount) {
+      const { dataset, lastChild } = cell;
+      dataset.bombs = bombsAroundCount;
+      lastChild.textContent = bombsAroundCount;
+    }
   }
 
   getCellsAround(row, column) {
