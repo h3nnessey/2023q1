@@ -17,14 +17,15 @@ class Minesweeper {
   }
 
   init() {
-    // wrong formula or css issues
-    this.minefields.booleanFlat = shuffleArray(
-      Array(this.size * this.size - this.bombsCount)
-        .fill(false)
-        .concat(Array(this.size).fill(true)),
-    );
+    const emptyCellsArray = Array(this.size * this.size - this.bombsCount).fill(false);
+    const bombsArray = Array(this.bombsCount).fill(true);
+
+    this.minefields.booleanFlat = shuffleArray(bombsArray.concat(emptyCellsArray));
+
     this.minefields.booleanMatrix = sliceArrayBySize(this.minefields.booleanFlat, this.size);
+    // remove from elements if will not being used in future
     this.elements.grid = this.createGrid();
+
     this.elements.container.append(this.elements.grid);
     document.body.append(this.elements.container);
   }
@@ -83,6 +84,7 @@ class Minesweeper {
     const bombsAroundCount = this.getBombsAroundCount(cellsAround);
 
     !bombsAroundCount && cellsAround.forEach((target) => this.openCell(target, row, column));
+    // добавить dataset или класс с кол-вом бомб вокруг (максимум 8)
     cell.lastChild.textContent = bombsAroundCount || cell.lastChild.textContent;
   }
 
@@ -119,8 +121,6 @@ class Minesweeper {
   gameOver(cell) {
     const { lastChild } = cell;
     lastChild.textContent = '💣';
-    window.alert('GAME OVER!');
-    window.location.reload();
   }
 }
 
