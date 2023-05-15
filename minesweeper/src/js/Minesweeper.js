@@ -59,13 +59,25 @@ class Minesweeper {
             // мб проверять клетку в отдельной функции, потому что будут флаги
 
             if (target.classList.contains('opened')) return;
+            if (target.dataset.flaged === 'true') return;
 
             if (this.isBomb(target)) {
+              target.classList.add('opened', 'bomb');
               this.gameOver(target);
               return;
             }
 
             this.openCell(target);
+          }
+        });
+
+        cell.addEventListener('contextmenu', (e) => {
+          e.preventDefault();
+          const target = e.target.closest('.grid__cell');
+
+          if (target) {
+            if (target.classList.contains('opened')) return;
+            this.toggleFlag(target);
           }
         });
 
@@ -81,6 +93,7 @@ class Minesweeper {
     const [row, column] = this.getCellPosition(cell);
 
     if (cell.classList.contains('opened')) return;
+    if (cell.dataset.flaged === 'true') return;
 
     cell.classList.add('opened');
 
@@ -88,12 +101,24 @@ class Minesweeper {
     const bombsAroundCount = this.getBombsAroundCount(cellsAround);
 
     !bombsAroundCount && cellsAround.forEach((target) => this.openCell(target, row, column));
-    // добавить dataset или класс с кол-вом бомб вокруг (максимум 8)
 
     if (bombsAroundCount) {
       const { dataset, lastChild } = cell;
       dataset.bombs = bombsAroundCount;
       lastChild.textContent = bombsAroundCount;
+    }
+  }
+
+  toggleFlag(cell) {
+    const { lastChild, dataset } = cell;
+    const isFlaged = cell.dataset.flaged === 'true';
+
+    if (isFlaged) {
+      lastChild.textContent = '';
+      dataset.flaged = 'false';
+    } else {
+      dataset.flaged = 'true';
+      lastChild.textContent = '🚩';
     }
   }
 
@@ -127,9 +152,36 @@ class Minesweeper {
     return cell.dataset.pos.split(':').map(Number);
   }
 
+  showAllBombs() {
+    const bombs = [];
+    this.elements.matrix.forEach((row) => {
+      Array.from(row.children).forEach((c) => {
+        if (this.isBomb(c)) {
+          bombs.push(c);
+        }
+      });
+    });
+    bombs.forEach((bomb) => {
+      bomb.classList.add('opened');
+      bomb.textContent = '💣';
+    });
+  }
+
   gameOver(cell) {
     const { lastChild } = cell;
     lastChild.textContent = '💣';
+
+    // нужно состояние isGameOver чтобы клики после луза не проходили и тд
+    this.showAllBombs();
+
+    // setTimeout(() => {
+    //   this.elements.grid.innerHTML = null;
+    //   this.elements.matrix.innerHTML = null;
+    //   this.minefields.booleanFlat = [];
+    //   this.minefields.booleanMatrix = [];
+    //
+    //   this.init();
+    // }, 1000);
   }
 }
 
