@@ -181,6 +181,7 @@ class Minesweeper {
       this.elements.gameControls.stepCounter.lastChild.textContent = this.state.stepsCount;
 
       this.openCell(target);
+      this.checkMinefieldForWin();
     }
   };
 
@@ -326,9 +327,32 @@ class Minesweeper {
     this.state.gameOver = true;
     this.state.gameStarted = false;
     clearInterval(this.timerRef);
-    const { lastChild } = cell;
-    lastChild.textContent = '💣';
-    this.showAllBombs();
+
+    if (cell) {
+      const { lastChild } = cell;
+      lastChild.textContent = '💣';
+      this.showAllBombs();
+    }
+  }
+
+  checkMinefieldForWin() {
+    // надо ли считать falsy флаги?
+
+    const openedCells = this.elements.matrix.reduce((count, row) => {
+      const rowArr = Array.from(row.children);
+      const openedInRow = rowArr.reduce(
+        (acc, cell) => (cell.classList.contains('opened') && !this.isBomb(cell) ? acc + 1 : acc),
+        0,
+      );
+
+      return count + openedInRow;
+    }, 0);
+
+    const cellsToOpenLeft = this.size * this.size - openedCells - this.bombsCount;
+
+    if (cellsToOpenLeft === 0) {
+      this.gameOver();
+    }
   }
 }
 
