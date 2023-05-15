@@ -30,6 +30,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .grid {
@@ -95,4 +96,11 @@ body {
 
 .grid__cell[data-bombs='8'] {
   color: #bec91b;
+}
+
+.controls {
+  color: red;
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
 }

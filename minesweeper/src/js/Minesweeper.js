@@ -3,6 +3,12 @@ import sliceArrayBySize from './sliceArrayBySize.js';
 
 class Minesweeper {
   constructor(size, bombsCount, container) {
+    this.state = {
+      time: 0,
+      gameOver: false,
+      flagsCount: bombsCount,
+      stepsCount: 0,
+    };
     this.size = size;
     this.bombsCount = bombsCount;
     this.elements = {
@@ -26,8 +32,48 @@ class Minesweeper {
     // remove from elements if will not being used in future
     this.elements.grid = this.createGrid();
 
-    this.elements.container.append(this.elements.grid);
+    this.elements.container.append(this.createGameControls(), this.elements.grid);
+
     document.body.append(this.elements.container);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') window.location.reload();
+    });
+  }
+
+  createGameControls() {
+    const controlsContainer = document.createElement('div');
+    controlsContainer.classList.add('controls');
+
+    const timer = document.createElement('div');
+    const timerTime = document.createElement('span');
+
+    timer.classList.add('timer');
+    timerTime.classList.add('timer__time');
+    timerTime.textContent = this.state.time.toString();
+
+    timer.appendChild(timerTime);
+
+    setInterval(() => {
+      this.state.time += 1;
+      timerTime.textContent = this.state.time.toString();
+    }, 1000);
+
+    const flagsCounter = document.createElement('div');
+    flagsCounter.classList.add('flags-counter');
+    flagsCounter.textContent = this.state.flagsCount;
+
+    const stepsCounter = document.createElement('div');
+    stepsCounter.classList.add('steps-counter');
+    stepsCounter.textContent = this.state.stepsCount.toString();
+
+    controlsContainer.append(flagsCounter, timer, stepsCounter);
+
+    return controlsContainer;
+  }
+
+  resetGame() {
+    // prevent using init func on lose or something
   }
 
   createGrid() {
@@ -53,6 +99,8 @@ class Minesweeper {
         cell.dataset.pos = `${row}:${column}`;
 
         cell.addEventListener('click', (e) => {
+          if (this.state.gameOver) return;
+
           const target = e.target.closest('.grid__cell');
 
           if (target) {
@@ -67,12 +115,16 @@ class Minesweeper {
               return;
             }
 
+            this.state.stepsCount += 1;
+            document.querySelector('.steps-counter').textContent = this.state.stepsCount.toString();
+
             this.openCell(target);
           }
         });
 
         cell.addEventListener('contextmenu', (e) => {
           e.preventDefault();
+          if (this.state.gameOver) return;
           const target = e.target.closest('.grid__cell');
 
           if (target) {
@@ -116,9 +168,13 @@ class Minesweeper {
     if (isFlaged) {
       lastChild.textContent = '';
       dataset.flaged = 'false';
+      this.state.flagsCount += 1;
+      document.querySelector('.flags-counter').textContent = this.state.flagsCount.toString();
     } else {
       dataset.flaged = 'true';
       lastChild.textContent = '🚩';
+      this.state.flagsCount -= 1;
+      document.querySelector('.flags-counter').textContent = this.state.flagsCount.toString();
     }
   }
 
@@ -153,6 +209,7 @@ class Minesweeper {
   }
 
   showAllBombs() {
+    // refactor
     const bombs = [];
     this.elements.matrix.forEach((row) => {
       Array.from(row.children).forEach((c) => {
@@ -168,6 +225,7 @@ class Minesweeper {
   }
 
   gameOver(cell) {
+    this.state.gameOver = true;
     const { lastChild } = cell;
     lastChild.textContent = '💣';
 
