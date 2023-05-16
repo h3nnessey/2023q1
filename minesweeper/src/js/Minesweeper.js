@@ -28,7 +28,10 @@ class Minesweeper {
         flagCounter: null,
         stepCounter: null,
         resetGameButton: null,
+        settingsButton: null,
+        saveButton: null,
       },
+      settings: null,
     };
   }
 
@@ -193,6 +196,7 @@ class Minesweeper {
     const resetGameButton = document.createElement('div');
     resetGameButton.textContent = '🔃';
     resetGameButton.classList.add('reset-btn');
+
     resetGameButton.addEventListener('click', () => {
       this.resetGame();
     });
@@ -200,11 +204,105 @@ class Minesweeper {
     this.elements.gameControls.resetGameButton = resetGameButton;
   }
 
+  createSettingsButton() {
+    const settingsButton = document.createElement('div');
+    settingsButton.textContent = '⚙';
+    settingsButton.classList.add('settings-btn');
+
+    settingsButton.addEventListener('click', () => {
+      this.elements.settings.classList.toggle('settings_active');
+    });
+
+    this.elements.gameControls.settingsButton = settingsButton;
+  }
+
+  createSettings() {
+    const settingsContainer = document.createElement('div');
+    const sizeSelector = document.createElement('select');
+    const sizeSelectorLabel = document.createElement('label');
+    const selectOption = document.createElement('option');
+    selectOption.classList.add('select__option');
+    const sizeOptionEasy = selectOption.cloneNode();
+    const sizeOptionMedium = selectOption.cloneNode();
+    const sizeOptionHard = selectOption.cloneNode();
+
+    const rangeInput = document.createElement('input');
+    const rangeInputLabel = document.createElement('label');
+
+    rangeInputLabel.classList.add('range-input__label');
+    rangeInputLabel.textContent = 'Bombs: ';
+
+    rangeInput.classList.add('range-input');
+    rangeInput.type = 'range';
+    rangeInput.step = '1';
+    rangeInput.min = '10';
+    rangeInput.max = '99';
+
+    rangeInput.value = this.state.bombsCount || '10';
+
+    rangeInputLabel.append(rangeInput);
+
+    settingsContainer.classList.add('settings');
+    sizeSelector.classList.add('select');
+    sizeSelector.name = 'size';
+
+    sizeOptionEasy.value = '10';
+    sizeOptionEasy.selected = this.state.size === 10;
+    sizeOptionEasy.textContent = '10⨉10';
+
+    sizeOptionMedium.value = '15';
+    sizeOptionMedium.selected = this.state.size === 15;
+    sizeOptionMedium.textContent = '15⨉15';
+
+    sizeOptionHard.value = '25';
+    sizeOptionHard.selected = this.state.size === 25;
+    sizeOptionHard.textContent = '25⨉25';
+
+    sizeSelectorLabel.classList.add('select__label');
+    sizeSelectorLabel.textContent = 'Field size: ';
+
+    sizeSelector.append(sizeOptionEasy, sizeOptionMedium, sizeOptionHard);
+    sizeSelectorLabel.append(sizeSelector);
+    settingsContainer.append(sizeSelectorLabel, rangeInputLabel);
+
+    sizeSelector.addEventListener('change', (e) => {
+      const size = Number(e.currentTarget.value);
+      this.resetGame(size, null);
+      this.saveState();
+    });
+
+    rangeInput.addEventListener('input', (e) => {
+      const bombsCount = Number(e.currentTarget.value);
+      this.resetGame(null, bombsCount);
+    });
+
+    this.elements.settings = settingsContainer;
+  }
+
+  createSaveButton() {
+    const saveButton = document.createElement('div');
+    saveButton.textContent = '💾';
+    saveButton.title = 'Save game and pause it!';
+    saveButton.classList.add('save-btn');
+
+    saveButton.addEventListener('click', () => {
+      // надо ли ставить паузу в игре?
+      this.state.gameStarted = false;
+      clearInterval(this.timerRef);
+      this.saveState();
+    });
+
+    this.elements.gameControls.saveButton = saveButton;
+  }
+
   createGameControls() {
     this.createTimer();
     this.createResetGameButton();
     this.createStepCounter();
     this.createFlagCounter();
+    this.createSettingsButton();
+    this.createSaveButton();
+    this.createSettings();
 
     const controlsContainer = document.createElement('div');
     controlsContainer.classList.add('controls');
@@ -213,6 +311,10 @@ class Minesweeper {
       this.elements.gameControls.timer,
       this.elements.gameControls.stepCounter,
       this.elements.gameControls.resetGameButton,
+      this.elements.gameControls.settingsButton,
+      this.elements.gameControls.saveButton,
+
+      this.elements.settings,
     );
 
     return controlsContainer;
@@ -366,15 +468,16 @@ class Minesweeper {
     return cell.dataset.pos.split(':').map(Number);
   }
 
-  resetGame() {
+  resetGame(size, bombsCount) {
     clearInterval(this.timerRef);
 
     this.state = {
-      ...this.state,
+      size: size || this.state.size,
+      bombsCount: bombsCount || this.state.bombsCount,
       time: 0,
       gameOver: false,
       gameStarted: false,
-      flagsCount: this.state.bombsCount,
+      flagsCount: bombsCount || this.state.bombsCount,
       stepsCount: 0,
       bombPosition: [],
       booleanMatrix: [],

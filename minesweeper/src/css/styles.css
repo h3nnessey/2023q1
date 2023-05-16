@@ -28,30 +28,8 @@ body {
   flex-direction: column;
 }
 
-.controls {
-  color: red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.5rem;
-}
-
-.flag-counter,
-.timer,
-.step-counter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.reset-btn {
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
 .grid {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   max-width: 1000px;
@@ -114,4 +92,44 @@ body {
 
 .grid__cell[data-bombs='8'] {
   color: #bec91b;
+}
+
+.controls {
+  display: flex;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: red;
+}
+
+.flag-counter,
+.timer,
+.step-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reset-btn,
+.settings-btn,
+.save-btn {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.settings {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  min-height: 400px;
+  min-width: 300px;
+  background-color: white;
+  z-index: 1;
+}
+
+.settings.settings_active {
+  display: block;
 }
