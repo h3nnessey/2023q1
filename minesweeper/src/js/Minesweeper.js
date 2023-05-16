@@ -40,7 +40,7 @@ class Minesweeper {
       return;
     }
 
-    this.createMinefields();
+    this.state.booleanMatrix = this.createBooleanMatrix();
     this.elements.grid = this.createGrid();
     this.elements.container.append(this.createGameControls(), this.elements.grid);
     document.body.append(this.elements.container);
@@ -72,7 +72,7 @@ class Minesweeper {
     window.addEventListener('beforeunload', this.saveState);
   }
 
-  createMinefields() {
+  createBooleanMatrix() {
     const { size, bombsCount } = this.state;
     const initialBooleanFlatArray = shuffleArray(
       Array(size * size - bombsCount)
@@ -80,7 +80,7 @@ class Minesweeper {
         .concat(Array(bombsCount).fill(true)),
     );
 
-    this.state.booleanMatrix = sliceArrayBySize(initialBooleanFlatArray, size);
+    return sliceArrayBySize(initialBooleanFlatArray, size);
   }
 
   createMatrix() {
@@ -128,14 +128,13 @@ class Minesweeper {
         }
       });
     });
-
-    return this.elements.matrix;
   }
 
   createGrid() {
     const grid = document.createElement('div');
     grid.classList.add('grid');
-    grid.append(...this.createMatrix());
+    this.createMatrix();
+    grid.append(...this.elements.matrix);
     return grid;
   }
 
@@ -252,15 +251,15 @@ class Minesweeper {
   handleCellRightClick = (e) => {
     e.preventDefault();
 
-    if (this.state.gameOver) return;
-
-    if (!this.state.gameStarted) {
-      this.setTimer();
-    }
-
     const target = e.target.closest('.grid__cell');
 
     if (target) {
+      if (this.state.gameOver) return;
+
+      if (!this.state.gameStarted) {
+        this.setTimer();
+      }
+
       if (target.classList.contains('opened')) return;
       this.toggleFlag(target);
     }
@@ -369,6 +368,7 @@ class Minesweeper {
 
   resetGame() {
     clearInterval(this.timerRef);
+
     this.state = {
       ...this.state,
       time: 0,
@@ -382,22 +382,18 @@ class Minesweeper {
       flagedCells: [],
     };
 
+    this.elements.grid.innerHTML = null;
+    this.elements.matrix = null;
+
     this.elements.gameControls.timer.lastChild.textContent = this.state.time
       .toString()
       .padStart(3, '0');
     this.elements.gameControls.flagCounter.lastChild.textContent = this.state.flagsCount.toString();
     this.elements.gameControls.stepCounter.lastChild.textContent = this.state.stepsCount.toString();
 
-    this.elements.grid = null;
-    this.elements.matrix = null;
-
-    this.state.booleanMatrix = null;
-
-    this.createMinefields();
+    this.state.booleanMatrix = this.createBooleanMatrix();
     this.elements.grid = this.createGrid();
-
-    const grid = document.querySelector('.grid');
-    grid.replaceWith(this.elements.grid);
+    this.elements.container.querySelector('.grid').replaceWith(this.elements.grid);
   }
 
   gameOver(cell) {
