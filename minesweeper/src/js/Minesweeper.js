@@ -3,16 +3,21 @@ import sliceArrayBySize from './sliceArrayBySize.js';
 
 class Minesweeper {
   constructor(size, bombsCount, container) {
-    this.size = size;
-    this.bombsCount = bombsCount;
     this.state = {
+      size,
+      bombsCount,
       time: 0,
       gameOver: false,
       gameStarted: false,
       flagsCount: bombsCount,
       stepsCount: 0,
+      booleanMatrix: [],
+      openedCells: [],
+      flagedCells: [],
     };
+
     this.timerRef = null;
+
     this.elements = {
       container,
       grid: null,
@@ -24,28 +29,40 @@ class Minesweeper {
         resetGameButton: null,
       },
     };
-    this.minefields = {
-      booleanFlat: null,
-      booleanMatrix: null,
-    };
   }
 
   createMinefields() {
-    this.minefields.booleanFlat = shuffleArray(
-      Array(this.size * this.size - this.bombsCount)
+    const { size, bombsCount } = this.state;
+    const initialBooleanFlatArray = shuffleArray(
+      Array(size * size - bombsCount)
         .fill(false)
-        .concat(Array(this.bombsCount).fill(true)),
+        .concat(Array(bombsCount).fill(true)),
     );
 
-    this.minefields.booleanMatrix = sliceArrayBySize(this.minefields.booleanFlat, this.size);
+    this.state.booleanMatrix = sliceArrayBySize(initialBooleanFlatArray, size);
   }
 
   init() {
+    const state = this.getState();
+
     this.createMinefields();
+
     this.elements.grid = this.createGrid();
     this.elements.container.append(this.createGameControls(), this.elements.grid);
     document.body.append(this.elements.container);
+
+    window.addEventListener('beforeunload', this.saveState);
+    console.log(state);
   }
+
+  saveState = () => {
+    localStorage.setItem('game-state', JSON.stringify(this.state));
+  };
+
+  getState = () => {
+    const json = localStorage.getItem('game-state');
+    return json ? JSON.parse(json) : null;
+  };
 
   createTimer() {
     const container = document.createElement('div');
@@ -136,7 +153,7 @@ class Minesweeper {
   }
 
   createMatrix() {
-    return this.minefields.booleanMatrix.map((matrixRow, row) => {
+    return this.state.booleanMatrix.map((matrixRow, row) => {
       const div = document.createElement('div');
       div.classList.add('grid__row');
       const cells = matrixRow.map((_, column) => {
@@ -206,11 +223,15 @@ class Minesweeper {
   resetGame() {
     clearInterval(this.timerRef);
     this.state = {
+      ...this.state,
       time: 0,
       gameOver: false,
       gameStarted: false,
-      flagsCount: this.bombsCount,
+      flagsCount: this.state.bombsCount,
       stepsCount: 0,
+      booleanMatrix: [],
+      openedCells: [],
+      flagedCells: [],
     };
 
     this.elements.gameControls.timer.lastChild.textContent = this.state.time
@@ -221,8 +242,8 @@ class Minesweeper {
 
     this.elements.grid = null;
     this.elements.matrix = null;
-    this.minefields.booleanFlat = null;
-    this.minefields.booleanMatrix = null;
+
+    this.state.booleanMatrix = null;
 
     this.createMinefields();
     this.elements.grid = this.createGrid();
@@ -248,6 +269,8 @@ class Minesweeper {
 
     cell.classList.add('opened');
 
+    this.state.openedCells.push([row, column]);
+
     const cellsAround = this.getCellsAround(row, column);
     const bombsAroundCount = this.getBombsAroundCount(cellsAround);
 
@@ -263,15 +286,18 @@ class Minesweeper {
   toggleFlag(cell) {
     const { lastChild, dataset } = cell;
     const isFlaged = cell.dataset.flaged === 'true';
+    const [row, column] = this.getCellPosition(cell);
 
     if (isFlaged) {
       lastChild.textContent = '';
       dataset.flaged = 'false';
       this.state.flagsCount += 1;
+      this.state.flagedCells.pop();
     } else {
       dataset.flaged = 'true';
       lastChild.textContent = '🚩';
       this.state.flagsCount -= 1;
+      this.state.flagedCells.push([row, column]);
     }
 
     this.elements.gameControls.flagCounter.lastChild.textContent = this.state.flagsCount.toString();
@@ -300,7 +326,7 @@ class Minesweeper {
 
   isBomb(cell) {
     const [row, column] = this.getCellPosition(cell);
-    return this.minefields.booleanMatrix[row][column];
+    return this.state.booleanMatrix[row][column];
   }
 
   getCellPosition(cell) {
@@ -331,26 +357,26 @@ class Minesweeper {
     if (cell) {
       const { lastChild } = cell;
       lastChild.textContent = '💣';
-      this.showAllBombs();
     }
+    this.showAllBombs();
   }
 
   checkMinefieldForWin() {
     // надо ли считать falsy флаги?
 
-    const openedCells = this.elements.matrix.reduce((count, row) => {
+    const openedCellsCount = this.elements.matrix.reduce((count, row) => {
       const rowArr = Array.from(row.children);
-      const openedInRow = rowArr.reduce(
+      const openedInRowCount = rowArr.reduce(
         (acc, cell) => (cell.classList.contains('opened') && !this.isBomb(cell) ? acc + 1 : acc),
         0,
       );
 
-      return count + openedInRow;
+      return count + openedInRowCount;
     }, 0);
+    const { size, bombsCount } = this.state;
+    const cellsToOpenLeftCount = size * size - openedCellsCount - bombsCount;
 
-    const cellsToOpenLeft = this.size * this.size - openedCells - this.bombsCount;
-
-    if (cellsToOpenLeft === 0) {
+    if (cellsToOpenLeftCount === 0) {
       this.gameOver();
     }
   }
