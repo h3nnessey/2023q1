@@ -7,6 +7,7 @@ class Minesweeper {
       size,
       bombsCount,
       time: 0,
+      volume: 1,
       gameOver: false,
       gameStarted: false,
       flagsCount: bombsCount,
@@ -16,7 +17,7 @@ class Minesweeper {
       openedCells: [],
       flagedCells: [],
     };
-
+    this.isSoundPlaying = false;
     this.timerRef = null;
 
     this.elements = {
@@ -211,12 +212,15 @@ class Minesweeper {
 
     settingsButton.addEventListener('click', () => {
       this.elements.settings.classList.toggle('settings_active');
+      this.state.gameStarted = false;
+      clearInterval(this.timerRef);
     });
 
     this.elements.gameControls.settingsButton = settingsButton;
   }
 
   createSettings() {
+    // рефактор))))))))))))))))))))))
     const settingsContainer = document.createElement('div');
     const sizeSelector = document.createElement('select');
     const sizeSelectorLabel = document.createElement('label');
@@ -227,8 +231,12 @@ class Minesweeper {
     const sizeOptionHard = selectOption.cloneNode();
 
     const rangeInput = document.createElement('input');
-    const rangeInputNumber = document.createElement('input');
+    const numberInput = document.createElement('input');
     const rangeInputLabel = document.createElement('label');
+
+    const volumeInput = document.createElement('input');
+    const volumeNumberInput = document.createElement('input');
+    const volumeLabel = document.createElement('label');
 
     const saveSettingsBtn = document.createElement('button');
     saveSettingsBtn.classList.add('settings-btn_save');
@@ -236,70 +244,119 @@ class Minesweeper {
 
     rangeInputLabel.classList.add('range-input__label');
     rangeInputLabel.textContent = 'Bombs: ';
-
     rangeInput.classList.add('range-input');
     rangeInput.type = 'range';
     rangeInput.step = '1';
     rangeInput.min = '10';
     rangeInput.max = '99';
     rangeInput.value = this.state.bombsCount || '10';
+    numberInput.type = 'number';
+    numberInput.step = '1';
+    numberInput.min = '10';
+    numberInput.max = '99';
+    numberInput.value = this.state.bombsCount || '10';
+    rangeInputLabel.append(rangeInput, numberInput);
 
-    rangeInputNumber.type = 'number';
-    rangeInputNumber.step = '1';
-    rangeInputNumber.min = '10';
-    rangeInputNumber.max = '99';
-    rangeInputNumber.maxLength = 2;
-    rangeInputNumber.value = this.state.bombsCount || '10';
-
-    rangeInputLabel.append(rangeInput, rangeInputNumber);
+    volumeLabel.classList.add('range-input__label');
+    volumeLabel.textContent = 'Volume:';
+    volumeInput.classList.add('range-input');
+    volumeInput.type = 'range';
+    volumeInput.step = '0.01';
+    volumeInput.min = '0';
+    volumeInput.max = '1';
+    volumeInput.value = this.state.volume;
+    volumeNumberInput.type = 'number';
+    volumeNumberInput.step = '1';
+    volumeNumberInput.min = '0';
+    volumeNumberInput.max = '100';
+    volumeNumberInput.value = (this.state.volume * 100).toString();
+    volumeLabel.append(volumeInput, volumeNumberInput);
 
     settingsContainer.classList.add('settings');
     sizeSelector.classList.add('select');
     sizeSelector.name = 'size';
-
     sizeOptionEasy.value = '10';
     sizeOptionEasy.selected = this.state.size === 10;
     sizeOptionEasy.textContent = '10⨉10';
-
     sizeOptionMedium.value = '15';
     sizeOptionMedium.selected = this.state.size === 15;
     sizeOptionMedium.textContent = '15⨉15';
-
     sizeOptionHard.value = '25';
     sizeOptionHard.selected = this.state.size === 25;
     sizeOptionHard.textContent = '25⨉25';
-
     sizeSelectorLabel.classList.add('select__label');
     sizeSelectorLabel.textContent = 'Field size: ';
-
     sizeSelector.append(sizeOptionEasy, sizeOptionMedium, sizeOptionHard);
     sizeSelectorLabel.append(sizeSelector);
-    settingsContainer.append(sizeSelectorLabel, rangeInputLabel, saveSettingsBtn);
+    settingsContainer.append(sizeSelectorLabel, rangeInputLabel, volumeLabel, saveSettingsBtn);
 
     sizeSelector.addEventListener('change', (e) => {
       const size = e.currentTarget.value;
-      // add notes to user info about this default values
       const bombsCountMap = {
         10: 10,
         15: 40,
         25: 99,
       };
-
       rangeInput.value = bombsCountMap[size];
+      numberInput.value = bombsCountMap[size];
     });
 
     rangeInput.addEventListener('input', (e) => {
-      rangeInputNumber.value = e.currentTarget.value;
+      numberInput.value = e.currentTarget.value;
     });
 
-    rangeInputNumber.addEventListener('focusout', (e) => {
+    numberInput.addEventListener('focusout', (e) => {
       const bombsCount = Number(e.target.value);
-      if (bombsCount > 99) rangeInputNumber.value = '99';
-      if (bombsCount < 10) rangeInputNumber.value = '10';
+      if (bombsCount > 99) numberInput.value = '99';
+      if (bombsCount < 10) numberInput.value = '10';
       rangeInput.value = bombsCount.toString();
     });
 
+    numberInput.addEventListener('input', (e) => {
+      const bombsCount = Number(e.target.value);
+      if (bombsCount > 99) numberInput.value = '99';
+      if (bombsCount < 10) numberInput.value = '10';
+      rangeInput.value = bombsCount.toString();
+    });
+
+    numberInput.addEventListener('keydown', (e) => {
+      if (e.code === 'Enter' && !e.repeat) {
+        const bombsCount = Number(e.target.value);
+        if (bombsCount > 99) numberInput.value = '99';
+        if (bombsCount < 10) numberInput.value = '10';
+        rangeInput.value = bombsCount.toString();
+      }
+    });
+
+    volumeInput.addEventListener('input', (e) => {
+      volumeNumberInput.value = Math.trunc(+e.target.value * 100).toString();
+    });
+
+    volumeNumberInput.addEventListener('input', (e) => {
+      const volume = Number(e.target.value);
+      if (volume < 0) volumeNumberInput.value = '0';
+      if (volume > 100) volumeNumberInput.value = '100';
+      volumeInput.value = (volume / 100).toString();
+    });
+
+    volumeNumberInput.addEventListener('focusout', (e) => {
+      const volume = Number(e.target.value);
+      if (volume < 0) volumeNumberInput.value = '0';
+      if (volume > 100) volumeNumberInput.value = '100';
+      volumeInput.value = (volume / 100).toString();
+    });
+
+    volumeNumberInput.addEventListener('keydown', (e) => {
+      if (e.code === 'Enter' && !e.repeat) {
+        const volume = Number(e.target.value);
+        if (volume < 0) volumeNumberInput.value = '0';
+        if (volume > 100) volumeNumberInput.value = '100';
+        volumeInput.value = (volume / 100).toString();
+      }
+    });
+
     saveSettingsBtn.addEventListener('click', () => {
+      this.state.volume = volumeInput.value;
       this.resetGame(+sizeSelector.value, +rangeInput.value);
       this.saveState();
     });
@@ -314,7 +371,6 @@ class Minesweeper {
     saveButton.classList.add('save-btn');
 
     saveButton.addEventListener('click', () => {
-      // надо ли ставить паузу в игре?
       this.state.gameStarted = false;
       clearInterval(this.timerRef);
       this.saveState();
@@ -348,6 +404,22 @@ class Minesweeper {
     return controlsContainer;
   }
 
+  playAudio(type) {
+    if (this.isSoundPlaying) return;
+    const paths = {
+      win: './assets/audio/win.mp3',
+      loss: './assets/audio/loss.mp3',
+      open: './assets/audio/open.mp3',
+      flagPlaced: './assets/audio/flag-place.mp3',
+      flagRemoved: './assets/audio/flag-remove.mp3',
+    };
+
+    const audio = new Audio();
+    audio.volume = this.state.volume;
+    audio.src = paths[type];
+    audio.play().then();
+  }
+
   handleCellClick = (e) => {
     const target = e.target.closest('.grid__cell');
 
@@ -367,6 +439,7 @@ class Minesweeper {
         this.elements.gameControls.stepCounter.lastChild.textContent = this.state.stepsCount;
         this.state.bombPosition = Minesweeper.getCellPosition(target);
         this.gameOver();
+        this.playAudio('loss');
         return;
       }
 
@@ -374,6 +447,7 @@ class Minesweeper {
       this.elements.gameControls.stepCounter.lastChild.textContent = this.state.stepsCount;
 
       this.openCell(target);
+      this.playAudio('open');
       this.checkMinefieldForWin();
     }
   };
@@ -410,6 +484,7 @@ class Minesweeper {
 
     if (cellsToOpenLeftCount === 0) {
       this.gameOver();
+      this.playAudio('win');
     }
   }
 
@@ -423,11 +498,13 @@ class Minesweeper {
       dataset.flaged = 'false';
       this.state.flagsCount += 1;
       this.state.flagedCells.pop();
+      this.playAudio('flagRemoved');
     } else {
       dataset.flaged = 'true';
       lastChild.textContent = '🚩';
       this.state.flagsCount -= 1;
       this.state.flagedCells.push([row, column]);
+      this.playAudio('flagPlaced');
     }
 
     this.elements.gameControls.flagCounter.lastChild.textContent = this.state.flagsCount.toString();
@@ -500,6 +577,7 @@ class Minesweeper {
     clearInterval(this.timerRef);
 
     this.state = {
+      ...this.state,
       size: size || this.state.size,
       bombsCount: bombsCount || this.state.bombsCount,
       time: 0,

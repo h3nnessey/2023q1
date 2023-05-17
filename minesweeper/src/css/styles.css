@@ -121,15 +121,22 @@ body {
 
 .settings {
   position: absolute;
-  /*display: none;*/
+  display: flex;
   top: 20%;
   left: 10%;
   min-height: 400px;
   min-width: 300px;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
   background-color: white;
   z-index: 1;
 }
 
+.settings-btn_save {
+  align-self: center;
+}
+
 .settings.settings_active {
-  display: block;
+  display: flex;
 }
