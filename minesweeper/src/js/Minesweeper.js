@@ -227,7 +227,12 @@ class Minesweeper {
     const sizeOptionHard = selectOption.cloneNode();
 
     const rangeInput = document.createElement('input');
+    const rangeInputNumber = document.createElement('input');
     const rangeInputLabel = document.createElement('label');
+
+    const saveSettingsBtn = document.createElement('button');
+    saveSettingsBtn.classList.add('settings-btn_save');
+    saveSettingsBtn.textContent = 'Save & Update';
 
     rangeInputLabel.classList.add('range-input__label');
     rangeInputLabel.textContent = 'Bombs: ';
@@ -237,10 +242,16 @@ class Minesweeper {
     rangeInput.step = '1';
     rangeInput.min = '10';
     rangeInput.max = '99';
-
     rangeInput.value = this.state.bombsCount || '10';
 
-    rangeInputLabel.append(rangeInput);
+    rangeInputNumber.type = 'number';
+    rangeInputNumber.step = '1';
+    rangeInputNumber.min = '10';
+    rangeInputNumber.max = '99';
+    rangeInputNumber.maxLength = 2;
+    rangeInputNumber.value = this.state.bombsCount || '10';
+
+    rangeInputLabel.append(rangeInput, rangeInputNumber);
 
     settingsContainer.classList.add('settings');
     sizeSelector.classList.add('select');
@@ -263,17 +274,34 @@ class Minesweeper {
 
     sizeSelector.append(sizeOptionEasy, sizeOptionMedium, sizeOptionHard);
     sizeSelectorLabel.append(sizeSelector);
-    settingsContainer.append(sizeSelectorLabel, rangeInputLabel);
+    settingsContainer.append(sizeSelectorLabel, rangeInputLabel, saveSettingsBtn);
 
     sizeSelector.addEventListener('change', (e) => {
-      const size = Number(e.currentTarget.value);
-      this.resetGame(size, null);
-      this.saveState();
+      const size = e.currentTarget.value;
+      // add notes to user info about this default values
+      const bombsCountMap = {
+        10: 10,
+        15: 40,
+        25: 99,
+      };
+
+      rangeInput.value = bombsCountMap[size];
     });
 
     rangeInput.addEventListener('input', (e) => {
-      const bombsCount = Number(e.currentTarget.value);
-      this.resetGame(null, bombsCount);
+      rangeInputNumber.value = e.currentTarget.value;
+    });
+
+    rangeInputNumber.addEventListener('focusout', (e) => {
+      const bombsCount = Number(e.target.value);
+      if (bombsCount > 99) rangeInputNumber.value = '99';
+      if (bombsCount < 10) rangeInputNumber.value = '10';
+      rangeInput.value = bombsCount.toString();
+    });
+
+    saveSettingsBtn.addEventListener('click', () => {
+      this.resetGame(+sizeSelector.value, +rangeInput.value);
+      this.saveState();
     });
 
     this.elements.settings = settingsContainer;
@@ -338,7 +366,7 @@ class Minesweeper {
         this.state.stepsCount += 1;
         this.elements.gameControls.stepCounter.lastChild.textContent = this.state.stepsCount;
         this.state.bombPosition = Minesweeper.getCellPosition(target);
-        this.gameOver(target);
+        this.gameOver();
         return;
       }
 
@@ -499,16 +527,10 @@ class Minesweeper {
     this.elements.container.querySelector('.grid').replaceWith(this.elements.grid);
   }
 
-  gameOver(cell) {
+  gameOver() {
     this.state.gameOver = true;
     this.state.gameStarted = false;
     clearInterval(this.timerRef);
-
-    if (cell) {
-      const { lastChild } = cell;
-      lastChild.textContent = '💣';
-    }
-
     this.showAllBombs();
   }
 
