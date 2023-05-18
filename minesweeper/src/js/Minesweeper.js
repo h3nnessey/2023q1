@@ -15,10 +15,9 @@ class Minesweeper {
       booleanMatrix: [],
       openedCells: [],
       flagedCells: [],
+      theme: 'app_theme-light',
     };
-
     this.timerRef = null;
-
     this.elements = {
       appContainer,
       app: null,
@@ -45,7 +44,7 @@ class Minesweeper {
 
     this.state.booleanMatrix = this.createBooleanMatrix();
     this.elements.app = document.createElement('div');
-    this.elements.app.classList.add('app');
+    this.elements.app.classList.add('app', this.state.theme);
     this.elements.grid = this.createGrid();
     this.elements.app.append(this.createGameControls(), this.elements.grid, this.elements.settings);
     this.elements.appContainer.append(this.elements.app);
@@ -58,7 +57,7 @@ class Minesweeper {
     this.state = state;
 
     this.elements.app = document.createElement('div');
-    this.elements.app.classList.add('app');
+    this.elements.app.classList.add('app', this.state.theme);
 
     if (this.state.gameOver) {
       this.state.gameOver = false;
@@ -228,9 +227,10 @@ class Minesweeper {
     const settingsContainer = document.createElement('div');
     const sizeSelector = document.createElement('select');
     const sizeSelectorLabel = document.createElement('label');
-
     const bombsCountLabel = document.createElement('label');
     const volumeLabel = document.createElement('label');
+    const saveSettingsBtn = document.createElement('button');
+    const themeChanger = document.createElement('input');
 
     const optionsTemplate = `
         <option class='select__option' value='10'
@@ -243,17 +243,6 @@ class Minesweeper {
           ${this.state.size === 25 ? 'selected' : ''}
         >25⨉25</option>
     `;
-
-    sizeSelector.insertAdjacentHTML('afterbegin', optionsTemplate);
-    sizeSelector.name = 'size';
-    sizeSelector.classList.add('select');
-    sizeSelectorLabel.classList.add('select__label');
-    sizeSelectorLabel.textContent = 'Field size: ';
-    sizeSelectorLabel.append(sizeSelector);
-
-    const saveSettingsBtn = document.createElement('button');
-    saveSettingsBtn.classList.add('settings-btn_save');
-    saveSettingsBtn.textContent = '💾';
 
     const bombsCountTemplate = `
       <input class='range-input' type='range'
@@ -269,6 +258,19 @@ class Minesweeper {
         value=${this.state.bombsCount || '10'}
       >
     `;
+
+    themeChanger.type = 'checkbox';
+    themeChanger.checked = this.state.theme === 'app_theme-dark';
+
+    saveSettingsBtn.classList.add('settings-btn_save');
+    saveSettingsBtn.textContent = '💾';
+
+    sizeSelector.insertAdjacentHTML('afterbegin', optionsTemplate);
+    sizeSelector.name = 'size';
+    sizeSelector.classList.add('select');
+    sizeSelectorLabel.classList.add('select__label');
+    sizeSelectorLabel.textContent = 'Field size: ';
+    sizeSelectorLabel.append(sizeSelector);
 
     bombsCountLabel.classList.add('range-input__label');
     bombsCountLabel.textContent = 'Bombs: ';
@@ -300,7 +302,6 @@ class Minesweeper {
     const volumeNumberInput = volumeLabel.querySelector('.number-input');
 
     settingsContainer.classList.add('settings');
-    settingsContainer.append(sizeSelectorLabel, bombsCountLabel, volumeLabel, saveSettingsBtn);
 
     sizeSelector.addEventListener('change', (e) => {
       const size = e.currentTarget.value;
@@ -333,10 +334,18 @@ class Minesweeper {
     };
 
     bombsNumberInput.addEventListener('focusout', handleBombsCountChange);
-
     bombsNumberInput.addEventListener('keydown', (e) => {
       if (e.code === 'Enter' && !e.repeat) {
         handleBombsCountChange(e);
+      }
+    });
+
+    volumeNumberInput.addEventListener('input', handleVolumeChange);
+    volumeNumberInput.addEventListener('focusout', handleVolumeChange);
+
+    volumeNumberInput.addEventListener('keydown', (e) => {
+      if (e.code === 'Enter' && !e.repeat) {
+        handleVolumeChange(e);
       }
     });
 
@@ -346,20 +355,21 @@ class Minesweeper {
       volumeNumberInput.value = Math.trunc(volume * 100).toString();
     });
 
-    volumeNumberInput.addEventListener('input', handleVolumeChange);
-
-    volumeNumberInput.addEventListener('focusout', handleVolumeChange);
-
-    volumeNumberInput.addEventListener('keydown', (e) => {
-      if (e.code === 'Enter' && !e.repeat) {
-        handleVolumeChange(e);
-      }
+    themeChanger.addEventListener('change', (e) => {
+      this.state.theme = e.target.checked ? 'app_theme-dark' : 'app_theme-light';
     });
 
     saveSettingsBtn.addEventListener('click', () => {
-      this.elements.settings.classList.toggle('settings_active');
       this.resetGame(+sizeSelector.value, +bombsRangeInput.value);
     });
+
+    settingsContainer.append(
+      sizeSelectorLabel,
+      bombsCountLabel,
+      volumeLabel,
+      themeChanger,
+      saveSettingsBtn,
+    );
 
     this.elements.settings = settingsContainer;
   }
@@ -380,6 +390,26 @@ class Minesweeper {
     audio.play().then();
   }
 
+  firstStepHandler(cell) {
+    const [row, column] = Minesweeper.getCellPosition(cell);
+    const isBomb = this.isBomb(cell);
+    let isFound = false;
+
+    if (isBomb) {
+      this.state.booleanMatrix.forEach((r, i) => {
+        r.forEach((c, j) => {
+          if (c === false && !isFound) {
+            isFound = true;
+            [this.state.booleanMatrix[i][j], this.state.booleanMatrix[row][column]] = [
+              this.state.booleanMatrix[row][column],
+              this.state.booleanMatrix[i][j],
+            ];
+          }
+        });
+      });
+    }
+  }
+
   handleCellClick = (e) => {
     const target = e.target.closest('.grid__cell');
 
@@ -388,6 +418,10 @@ class Minesweeper {
 
       if (!this.state.gameStarted) {
         this.setTimer();
+      }
+
+      if (!this.state.openedCells.length) {
+        this.firstStepHandler(target);
       }
 
       if (target.classList.contains('opened')) return;
