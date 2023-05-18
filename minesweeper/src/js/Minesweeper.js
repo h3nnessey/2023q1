@@ -47,7 +47,7 @@ class Minesweeper {
     this.elements.app = document.createElement('div');
     this.elements.app.classList.add('app');
     this.elements.grid = this.createGrid();
-    this.elements.app.append(this.createGameControls(), this.elements.grid);
+    this.elements.app.append(this.createGameControls(), this.elements.grid, this.elements.settings);
     this.elements.appContainer.append(this.elements.app);
 
     document.body.append(this.elements.appContainer);
@@ -65,8 +65,12 @@ class Minesweeper {
       this.state.booleanMatrix = this.createBooleanMatrix();
     }
 
+    if (!this.state.gameOver && !this.state.gameStarted) {
+      this.state.booleanMatrix = this.createBooleanMatrix();
+    }
+
     this.elements.grid = this.createGrid();
-    this.elements.app.append(this.createGameControls(), this.elements.grid);
+    this.elements.app.append(this.createGameControls(), this.elements.grid, this.elements.settings);
     this.elements.appContainer.append(this.elements.app);
 
     if (!this.state.gameOver && this.state.gameStarted) {
@@ -149,55 +153,63 @@ class Minesweeper {
     return grid;
   }
 
-  createTimer() {
+  createGameInfoElement(containerClass, titleClass, infoClass, titleText, infoText, element) {
     const container = document.createElement('div');
     const title = document.createElement('span');
-    const count = document.createElement('span');
+    const info = document.createElement('span');
 
-    container.classList.add('timer');
-    title.classList.add('timer__title');
-    count.classList.add('timer__count');
+    container.classList.add(containerClass);
+    title.classList.add(titleClass);
+    info.classList.add(infoClass);
 
-    title.textContent = '⏲:';
-    count.textContent = this.state.time.toString().padStart(3, '0');
+    title.textContent = titleText;
+    info.textContent = infoText;
 
-    container.append(title, count);
+    container.append(title, info);
 
-    this.elements.gameControls.timer = container;
+    this.elements.gameControls[element] = container;
   }
 
-  createFlagCounter() {
-    const container = document.createElement('div');
-    const title = document.createElement('span');
-    const count = document.createElement('span');
+  createGameControls() {
+    this.createGameInfoElement(
+      'timer',
+      'timer__title',
+      'timer__count',
+      '⏲:',
+      this.state.time.toString().padStart(3, '0'),
+      'timer',
+    );
+    this.createGameInfoElement(
+      'flag-counter',
+      'flag-counter__title',
+      'flag-counter__count',
+      '🚩:',
+      `${this.state.flagsCount.toString()} / ${this.state.bombsCount}`,
+      'flagCounter',
+    );
 
-    container.classList.add('flag-counter');
-    title.classList.add('flag-counter__title');
-    count.classList.add('flag-counter__count');
+    this.createGameInfoElement(
+      'step-counter',
+      'step-counter__title',
+      'step-counter__count',
+      'Steps:',
+      this.state.stepsCount.toString(),
+      'stepCounter',
+    );
 
-    title.textContent = '🚩:';
-    count.textContent = this.state.flagsCount;
+    this.createResetGameButton();
+    this.createSettings();
 
-    container.append(title, count);
+    const controlsContainer = document.createElement('div');
+    controlsContainer.classList.add('controls');
+    controlsContainer.append(
+      this.elements.gameControls.flagCounter,
+      this.elements.gameControls.timer,
+      this.elements.gameControls.stepCounter,
+      this.elements.gameControls.resetGameButton,
+    );
 
-    this.elements.gameControls.flagCounter = container;
-  }
-
-  createStepCounter() {
-    const container = document.createElement('div');
-    const title = document.createElement('span');
-    const count = document.createElement('span');
-
-    container.classList.add('step-counter');
-    title.classList.add('step-counter__title');
-    count.classList.add('step-counter__count');
-
-    title.textContent = 'Steps:';
-    count.textContent = this.state.stepsCount.toString();
-
-    container.append(title, count);
-
-    this.elements.gameControls.stepCounter = container;
+    return controlsContainer;
   }
 
   createResetGameButton() {
@@ -212,89 +224,83 @@ class Minesweeper {
     this.elements.gameControls.resetGameButton = resetGameButton;
   }
 
-  createSettingsButton() {
-    const settingsButton = document.createElement('div');
-    settingsButton.textContent = '⚙';
-    settingsButton.classList.add('settings-btn');
-
-    settingsButton.addEventListener('click', () => {
-      this.elements.settings.classList.toggle('settings_active');
-      this.state.gameStarted = false;
-      clearInterval(this.timerRef);
-    });
-
-    this.elements.gameControls.settingsButton = settingsButton;
-  }
-
   createSettings() {
     const settingsContainer = document.createElement('div');
     const sizeSelector = document.createElement('select');
     const sizeSelectorLabel = document.createElement('label');
-    const selectOption = document.createElement('option');
-    selectOption.classList.add('select__option');
-    const sizeOptionEasy = selectOption.cloneNode();
-    const sizeOptionMedium = selectOption.cloneNode();
-    const sizeOptionHard = selectOption.cloneNode();
 
-    const rangeInput = document.createElement('input');
-    const numberInput = document.createElement('input');
-    const rangeInputLabel = document.createElement('label');
-
-    const volumeInput = document.createElement('input');
-    const volumeNumberInput = document.createElement('input');
+    const bombsCountLabel = document.createElement('label');
     const volumeLabel = document.createElement('label');
+
+    const optionsTemplate = `
+        <option class='select__option' value='10'
+          ${this.state.size === 10 ? 'selected' : ''}
+        >10⨉10</option>
+        <option class='select__option' value='15'
+          ${this.state.size === 15 ? 'selected' : ''}
+        >15⨉15</option>
+        <option class='select__option' value='25'
+          ${this.state.size === 25 ? 'selected' : ''}
+        >25⨉25</option>
+    `;
+
+    sizeSelector.insertAdjacentHTML('afterbegin', optionsTemplate);
+    sizeSelector.name = 'size';
+    sizeSelector.classList.add('select');
+    sizeSelectorLabel.classList.add('select__label');
+    sizeSelectorLabel.textContent = 'Field size: ';
+    sizeSelectorLabel.append(sizeSelector);
 
     const saveSettingsBtn = document.createElement('button');
     saveSettingsBtn.classList.add('settings-btn_save');
-    saveSettingsBtn.textContent = 'Save & Update';
+    saveSettingsBtn.textContent = '💾';
 
-    rangeInputLabel.classList.add('range-input__label');
-    rangeInputLabel.textContent = 'Bombs: ';
-    rangeInput.classList.add('range-input');
-    rangeInput.type = 'range';
-    rangeInput.step = '1';
-    rangeInput.min = '10';
-    rangeInput.max = '99';
-    rangeInput.value = this.state.bombsCount || '10';
-    numberInput.type = 'number';
-    numberInput.step = '1';
-    numberInput.min = '10';
-    numberInput.max = '99';
-    numberInput.value = this.state.bombsCount || '10';
-    rangeInputLabel.append(rangeInput, numberInput);
+    const bombsCountTemplate = `
+      <input class='range-input' type='range'
+        step='1'
+        min='10'
+        max='99'
+        value=${this.state.bombsCount || '10'}
+      >
+      <input class='number-input' type='number'
+        step='1'
+        min='10'
+        max='99'
+        value=${this.state.bombsCount || '10'}
+      >
+    `;
+
+    bombsCountLabel.classList.add('range-input__label');
+    bombsCountLabel.textContent = 'Bombs: ';
+    bombsCountLabel.insertAdjacentHTML('beforeend', bombsCountTemplate);
+
+    const bombsRangeInput = bombsCountLabel.querySelector('.range-input');
+    const bombsNumberInput = bombsCountLabel.querySelector('.number-input');
+
+    const volumeTemplate = `
+      <input class='range-input' type='range'
+        step='0.01'
+        min='0'
+        max='1'
+        value=${this.state.volume}
+      >
+      <input class='number-input' type='number'
+        step='1'
+        min='0'
+        max='100'
+        value=${Math.trunc(this.state.volume * 100)}
+      >
+    `;
 
     volumeLabel.classList.add('range-input__label');
     volumeLabel.textContent = 'Volume:';
-    volumeInput.classList.add('range-input');
-    volumeInput.type = 'range';
-    volumeInput.step = '0.01';
-    volumeInput.min = '0';
-    volumeInput.max = '1';
-    volumeInput.value = this.state.volume;
-    volumeNumberInput.type = 'number';
-    volumeNumberInput.step = '1';
-    volumeNumberInput.min = '0';
-    volumeNumberInput.max = '100';
-    volumeNumberInput.value = (this.state.volume * 100).toString();
-    volumeLabel.append(volumeInput, volumeNumberInput);
+    volumeLabel.insertAdjacentHTML('beforeend', volumeTemplate);
+
+    const volumeRangeInput = volumeLabel.querySelector('.range-input');
+    const volumeNumberInput = volumeLabel.querySelector('.number-input');
 
     settingsContainer.classList.add('settings');
-    sizeSelector.classList.add('select');
-    sizeSelector.name = 'size';
-    sizeOptionEasy.value = '10';
-    sizeOptionEasy.selected = this.state.size === 10;
-    sizeOptionEasy.textContent = '10⨉10';
-    sizeOptionMedium.value = '15';
-    sizeOptionMedium.selected = this.state.size === 15;
-    sizeOptionMedium.textContent = '15⨉15';
-    sizeOptionHard.value = '25';
-    sizeOptionHard.selected = this.state.size === 25;
-    sizeOptionHard.textContent = '25⨉25';
-    sizeSelectorLabel.classList.add('select__label');
-    sizeSelectorLabel.textContent = 'Field size: ';
-    sizeSelector.append(sizeOptionEasy, sizeOptionMedium, sizeOptionHard);
-    sizeSelectorLabel.append(sizeSelector);
-    settingsContainer.append(sizeSelectorLabel, rangeInputLabel, volumeLabel, saveSettingsBtn);
+    settingsContainer.append(sizeSelectorLabel, bombsCountLabel, volumeLabel, saveSettingsBtn);
 
     sizeSelector.addEventListener('change', (e) => {
       const size = e.currentTarget.value;
@@ -303,94 +309,59 @@ class Minesweeper {
         15: 40,
         25: 99,
       };
-      rangeInput.value = bombsCountMap[size];
-      numberInput.value = bombsCountMap[size];
+      bombsRangeInput.value = bombsCountMap[size];
+      bombsNumberInput.value = bombsCountMap[size];
     });
 
-    rangeInput.addEventListener('input', (e) => {
-      numberInput.value = e.currentTarget.value;
+    bombsRangeInput.addEventListener('input', (e) => {
+      bombsNumberInput.value = e.currentTarget.value;
     });
 
-    numberInput.addEventListener('focusout', (e) => {
+    const handleBombsCountChange = (e) => {
       const bombsCount = Number(e.target.value);
-      if (bombsCount > 99) numberInput.value = '99';
-      if (bombsCount < 10) numberInput.value = '10';
-      rangeInput.value = bombsCount.toString();
-    });
+      if (bombsCount > 99) bombsNumberInput.value = '99';
+      if (bombsCount < 10) bombsNumberInput.value = '10';
+      bombsRangeInput.value = bombsCount.toString();
+    };
 
-    // numberInput.addEventListener('input', (e) => {
-    //   const bombsCount = Number(e.target.value);
-    //   if (bombsCount > 99) numberInput.value = '99';
-    //   if (bombsCount < 10) numberInput.value = '10';
-    //   rangeInput.value = bombsCount.toString();
-    // });
+    const handleVolumeChange = (e) => {
+      const volume = Number(e.target.value);
+      if (volume < 0) volumeNumberInput.value = '0';
+      if (volume > 100) volumeNumberInput.value = '100';
+      this.state.volume = volume / 100;
+      volumeRangeInput.value = (volume / 100).toString();
+    };
 
-    numberInput.addEventListener('keydown', (e) => {
+    bombsNumberInput.addEventListener('focusout', handleBombsCountChange);
+
+    bombsNumberInput.addEventListener('keydown', (e) => {
       if (e.code === 'Enter' && !e.repeat) {
-        const bombsCount = Number(e.target.value);
-        if (bombsCount > 99) numberInput.value = '99';
-        if (bombsCount < 10) numberInput.value = '10';
-        rangeInput.value = bombsCount.toString();
+        handleBombsCountChange(e);
       }
     });
 
-    volumeInput.addEventListener('input', (e) => {
-      volumeNumberInput.value = Math.trunc(+e.target.value * 100).toString();
+    volumeRangeInput.addEventListener('input', (e) => {
+      const volume = Number(e.target.value);
+      this.state.volume = volume;
+      volumeNumberInput.value = Math.trunc(volume * 100).toString();
     });
 
-    volumeNumberInput.addEventListener('input', (e) => {
-      const volume = Number(e.target.value);
-      if (volume < 0) volumeNumberInput.value = '0';
-      if (volume > 100) volumeNumberInput.value = '100';
-      volumeInput.value = (volume / 100).toString();
-    });
+    volumeNumberInput.addEventListener('input', handleVolumeChange);
 
-    volumeNumberInput.addEventListener('focusout', (e) => {
-      const volume = Number(e.target.value);
-      if (volume < 0) volumeNumberInput.value = '0';
-      if (volume > 100) volumeNumberInput.value = '100';
-      volumeInput.value = (volume / 100).toString();
-    });
+    volumeNumberInput.addEventListener('focusout', handleVolumeChange);
 
     volumeNumberInput.addEventListener('keydown', (e) => {
       if (e.code === 'Enter' && !e.repeat) {
-        const volume = Number(e.target.value);
-        if (volume < 0) volumeNumberInput.value = '0';
-        if (volume > 100) volumeNumberInput.value = '100';
-        volumeInput.value = (volume / 100).toString();
+        handleVolumeChange(e);
       }
     });
 
     saveSettingsBtn.addEventListener('click', () => {
       this.elements.settings.classList.toggle('settings_active');
-      this.state.volume = volumeInput.value;
-      this.resetGame(+sizeSelector.value, +rangeInput.value);
-      this.saveState();
+      this.resetGame(+sizeSelector.value, +bombsRangeInput.value);
     });
 
     this.elements.settings = settingsContainer;
-  }
-
-  createGameControls() {
-    this.createTimer();
-    this.createResetGameButton();
-    this.createStepCounter();
-    this.createFlagCounter();
-    this.createSettingsButton();
-    this.createSettings();
-
-    const controlsContainer = document.createElement('div');
-    controlsContainer.classList.add('controls');
-    controlsContainer.append(
-      this.elements.gameControls.flagCounter,
-      this.elements.gameControls.timer,
-      this.elements.gameControls.stepCounter,
-      this.elements.gameControls.resetGameButton,
-      this.elements.gameControls.settingsButton,
-    );
-    this.elements.app.append(this.elements.settings);
-
-    return controlsContainer;
   }
 
   playAudio(type) {
@@ -495,7 +466,9 @@ class Minesweeper {
       this.playAudio('flagPlaced');
     }
 
-    this.elements.gameControls.flagCounter.lastChild.textContent = this.state.flagsCount.toString();
+    this.elements.gameControls.flagCounter.lastChild.textContent = `${this.state.flagsCount.toString()} / ${
+      this.state.bombsCount
+    }`;
   }
 
   setTimer() {
@@ -583,7 +556,9 @@ class Minesweeper {
     this.elements.gameControls.timer.lastChild.textContent = this.state.time
       .toString()
       .padStart(3, '0');
-    this.elements.gameControls.flagCounter.lastChild.textContent = this.state.flagsCount.toString();
+    this.elements.gameControls.flagCounter.lastChild.textContent = `${this.state.flagsCount.toString()} / ${
+      this.state.bombsCount
+    }`;
     this.elements.gameControls.stepCounter.lastChild.textContent = this.state.stepsCount.toString();
 
     this.state.booleanMatrix = this.createBooleanMatrix();
@@ -616,17 +591,19 @@ class Minesweeper {
   }
 
   saveState = () => {
-    // НЕ СОХРАНЯТЬ ЛУЗ ИЛИ ПОБЕДУ (ВСЕ ПО ТЗ)   )))))
-    if (this.state.gameOver) {
-      this.state.size = 10;
-      this.state.bombsCount = 10;
-      this.state.flagsCount = 10;
-      this.state.openedCells = [];
-      this.state.flagedCells = [];
-      this.state.booleanMatrix = [];
-      this.state.gameStarted = false;
-      this.state.time = 0;
-      this.state.stepsCount = 0;
+    if (this.state.gameOver || (!this.state.gameOver && !this.state.gameStarted)) {
+      this.state = {
+        ...this.state,
+        size: 10,
+        bombsCount: 10,
+        flagsCount: 10,
+        openedCells: [],
+        flagedCells: [],
+        booleanMatrix: [],
+        gameStarted: false,
+        time: 0,
+        stepsCount: 0,
+      };
     }
 
     localStorage.setItem(

@@ -123,33 +123,20 @@ body {
 }
 
 .settings {
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  transform: translate(-50%, -50%);
+  display: flex;
   flex-direction: column;
   color: yellow;
   gap: 1rem;
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.65);
   border-radius: 5px;
-  transition: 0.2s right ease-in-out, 0.2s width, 0.2s height, 0.2s opacity, 0.2s visibility;
-  z-index: -1;
+}
+
+.settings input,
+.settings button {
+  cursor: pointer;
 }
 
 .settings-btn_save {
   align-self: center;
-}
-
-.settings.settings_active {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  visibility: visible;
-  opacity: 1;
-  z-index: 1;
 }
