@@ -13,6 +13,7 @@ class Minesweeper {
       gameStarted: false,
       flagsCount: bombsCount,
       stepsCount: 0,
+      bombPosition: [],
       booleanMatrix: [],
       openedCells: [],
       flagedCells: [],
@@ -59,19 +60,13 @@ class Minesweeper {
 
     this.elements.app = document.createElement('div');
     this.elements.app.classList.add('app', this.state.theme);
-
-    if (this.state.gameOver) {
-      this.state.gameOver = false;
-      this.state.booleanMatrix = this.createBooleanMatrix();
-    }
-
-    if (!this.state.gameOver && !this.state.gameStarted) {
-      this.state.booleanMatrix = this.createBooleanMatrix();
-    }
-
     this.elements.grid = this.createGrid();
     this.elements.app.append(this.createGameInfo(), this.elements.grid, this.elements.settings);
     this.elements.appContainer.append(this.elements.app);
+
+    if (this.state.gameOver) {
+      this.showAllBombs();
+    }
 
     if (!this.state.gameOver && this.state.gameStarted) {
       this.elements.gameInfo.timer.lastChild.textContent = (this.state.time / 1000)
@@ -80,6 +75,12 @@ class Minesweeper {
     }
 
     if (this.state.gameStarted) this.state.gameStarted = false;
+
+    if (this.state.bombPosition.length) {
+      const [row, column] = this.state.bombPosition;
+      const bombClicked = this.elements.matrix[+row].children[+column];
+      bombClicked.classList.add('bomb');
+    }
 
     document.body.append(this.elements.appContainer);
     window.addEventListener('beforeunload', this.saveState);
@@ -115,34 +116,32 @@ class Minesweeper {
       return div;
     });
 
-    if (this.state.gameStarted) {
-      this.elements.matrix.forEach((matrixRow) => {
-        const row = Array.from(matrixRow.children);
+    this.elements.matrix.forEach((matrixRow) => {
+      const row = Array.from(matrixRow.children);
 
-        row.forEach((cell) => {
-          const [r, c] = Minesweeper.getCellPosition(cell);
-          const { lastChild, dataset } = cell;
-          const isOpened = this.state.openedCells.find(([i, j]) => i === r && j === c);
-          const isFlaged = this.state.flagedCells.find(([i, j]) => i === r && j === c);
+      row.forEach((cell) => {
+        const [r, c] = Minesweeper.getCellPosition(cell);
+        const { lastChild, dataset } = cell;
+        const isOpened = this.state.openedCells.find(([i, j]) => i === r && j === c);
+        const isFlaged = this.state.flagedCells.find(([i, j]) => i === r && j === c);
 
-          if (isFlaged) {
-            dataset.flaged = 'true';
-            lastChild.textContent = '🚩';
+        if (isFlaged) {
+          dataset.flaged = 'true';
+          lastChild.textContent = '🚩';
+        }
+
+        if (isOpened) {
+          cell.classList.add('opened');
+          const cellsAround = this.getCellsAround(r, c);
+          const bombsAroundCount = this.getBombsAroundCount(cellsAround);
+
+          if (bombsAroundCount) {
+            dataset.bombs = bombsAroundCount.toString();
+            lastChild.textContent = bombsAroundCount.toString();
           }
-
-          if (isOpened) {
-            cell.classList.add('opened');
-            const cellsAround = this.getCellsAround(r, c);
-            const bombsAroundCount = this.getBombsAroundCount(cellsAround);
-
-            if (bombsAroundCount) {
-              dataset.bombs = bombsAroundCount.toString();
-              lastChild.textContent = bombsAroundCount.toString();
-            }
-          }
-        });
+        }
       });
-    }
+    });
   }
 
   createGrid() {
@@ -430,6 +429,7 @@ class Minesweeper {
         target.classList.add('opened', 'bomb');
         this.state.stepsCount += 1;
         this.elements.gameInfo.stepCounter.lastChild.textContent = this.state.stepsCount;
+        this.state.bombPosition = Minesweeper.getCellPosition(target);
         this.gameOver();
         this.playAudio('loss');
         return;
@@ -594,6 +594,7 @@ class Minesweeper {
       gameStarted: false,
       flagsCount: bombsCount || this.state.bombsCount,
       stepsCount: 0,
+      bombPosition: [],
       booleanMatrix: [],
       openedCells: [],
       flagedCells: [],
@@ -640,21 +641,6 @@ class Minesweeper {
   }
 
   saveState = () => {
-    if (this.state.gameOver || (!this.state.gameOver && !this.state.gameStarted)) {
-      this.state = {
-        ...this.state,
-        size: 10,
-        bombsCount: 10,
-        flagsCount: 10,
-        openedCells: [],
-        flagedCells: [],
-        booleanMatrix: [],
-        gameStarted: false,
-        time: 0,
-        stepsCount: 0,
-      };
-    }
-
     localStorage.setItem(
       '34a7a71c2290f0e145d0448dde6bc1ab2628c1d02d31a45702792a829321cf17',
       JSON.stringify(this.state),
