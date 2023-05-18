@@ -24,7 +24,7 @@ class Minesweeper {
       app: null,
       grid: null,
       matrix: null,
-      gameControls: {
+      gameInfo: {
         timer: null,
         flagCounter: null,
         stepCounter: null,
@@ -47,7 +47,7 @@ class Minesweeper {
     this.elements.app = document.createElement('div');
     this.elements.app.classList.add('app', this.state.theme);
     this.elements.grid = this.createGrid();
-    this.elements.app.append(this.createGameControls(), this.elements.grid, this.elements.settings);
+    this.elements.app.append(this.createGameInfo(), this.elements.grid, this.elements.settings);
     this.elements.appContainer.append(this.elements.app);
 
     document.body.append(this.elements.appContainer);
@@ -70,13 +70,13 @@ class Minesweeper {
     }
 
     this.elements.grid = this.createGrid();
-    this.elements.app.append(this.createGameControls(), this.elements.grid, this.elements.settings);
+    this.elements.app.append(this.createGameInfo(), this.elements.grid, this.elements.settings);
     this.elements.appContainer.append(this.elements.app);
 
     if (!this.state.gameOver && this.state.gameStarted) {
-      this.elements.gameControls.timer.lastChild.textContent = this.state.time
-        .toString()
-        .padStart(3, '0');
+      this.elements.gameInfo.timer.lastChild.textContent = (this.state.time / 1000)
+        .toFixed(2)
+        .toString();
     }
 
     if (this.state.gameStarted) this.state.gameStarted = false;
@@ -157,7 +157,6 @@ class Minesweeper {
     const container = document.createElement('div');
     const title = document.createElement('span');
     const info = document.createElement('span');
-
     container.classList.add(containerClass);
     title.classList.add(titleClass);
     info.classList.add(infoClass);
@@ -167,46 +166,42 @@ class Minesweeper {
 
     container.append(title, info);
 
-    this.elements.gameControls[element] = container;
+    this.elements.gameInfo[element] = container;
+
+    return this.elements.gameInfo[element];
   }
 
-  createGameControls() {
-    this.createGameInfoElement(
-      'timer',
-      'timer__title',
-      'timer__count',
-      '⏲:',
-      this.state.time.toString().padStart(3, '0'),
-      'timer',
-    );
-    this.createGameInfoElement(
-      'flag-counter',
-      'flag-counter__title',
-      'flag-counter__count',
-      '🚩:',
-      `${this.state.flagsCount.toString()} / ${this.state.bombsCount}`,
-      'flagCounter',
-    );
-
-    this.createGameInfoElement(
-      'step-counter',
-      'step-counter__title',
-      'step-counter__count',
-      'Steps:',
-      this.state.stepsCount.toString(),
-      'stepCounter',
-    );
-
-    this.createResetGameButton();
+  createGameInfo() {
     this.createSettings();
 
     const controlsContainer = document.createElement('div');
     controlsContainer.classList.add('controls');
     controlsContainer.append(
-      this.elements.gameControls.flagCounter,
-      this.elements.gameControls.timer,
-      this.elements.gameControls.stepCounter,
-      this.elements.gameControls.resetGameButton,
+      this.createGameInfoElement(
+        'flag-counter',
+        'flag-counter__title',
+        'flag-counter__count',
+        '🚩:',
+        `${this.state.flagsCount.toString()} / ${this.state.bombsCount}`,
+        'flagCounter',
+      ),
+      this.createGameInfoElement(
+        'timer',
+        'timer__title',
+        'timer__count',
+        '⏲:',
+        (this.state.time / 1000).toFixed(2).toString(),
+        'timer',
+      ),
+      this.createGameInfoElement(
+        'step-counter',
+        'step-counter__title',
+        'step-counter__count',
+        'Steps:',
+        this.state.stepsCount.toString(),
+        'stepCounter',
+      ),
+      this.createResetGameButton(),
     );
 
     return controlsContainer;
@@ -221,7 +216,9 @@ class Minesweeper {
       this.resetGame();
     });
 
-    this.elements.gameControls.resetGameButton = resetGameButton;
+    this.elements.gameInfo.resetGameButton = resetGameButton;
+
+    return this.elements.gameInfo.resetGameButton;
   }
 
   createSettings() {
@@ -432,14 +429,14 @@ class Minesweeper {
       if (this.isBomb(target)) {
         target.classList.add('opened', 'bomb');
         this.state.stepsCount += 1;
-        this.elements.gameControls.stepCounter.lastChild.textContent = this.state.stepsCount;
+        this.elements.gameInfo.stepCounter.lastChild.textContent = this.state.stepsCount;
         this.gameOver();
         this.playAudio('loss');
         return;
       }
 
       this.state.stepsCount += 1;
-      this.elements.gameControls.stepCounter.lastChild.textContent = this.state.stepsCount;
+      this.elements.gameInfo.stepCounter.lastChild.textContent = this.state.stepsCount;
 
       this.openCell(target);
       this.playAudio('open');
@@ -517,7 +514,7 @@ class Minesweeper {
       this.playAudio('flagPlaced');
     }
 
-    this.elements.gameControls.flagCounter.lastChild.textContent = `${this.state.flagsCount.toString()} / ${
+    this.elements.gameInfo.flagCounter.lastChild.textContent = `${this.state.flagsCount.toString()} / ${
       this.state.bombsCount
     }`;
   }
@@ -525,11 +522,12 @@ class Minesweeper {
   setTimer() {
     this.state.gameStarted = true;
     this.timerRef = setInterval(() => {
-      this.state.time += 1;
-      this.elements.gameControls.timer.lastChild.textContent = this.state.time
-        .toString()
-        .padStart(3, '0');
-    }, 1000);
+      this.state.time += 10;
+
+      this.elements.gameInfo.timer.lastChild.textContent = (this.state.time / 1000)
+        .toFixed(2)
+        .toString();
+    }, 10);
   }
 
   openCell(cell) {
@@ -604,13 +602,13 @@ class Minesweeper {
     this.elements.grid = null;
     this.elements.matrix = null;
 
-    this.elements.gameControls.timer.lastChild.textContent = this.state.time
+    this.elements.gameInfo.timer.lastChild.textContent = this.state.time
       .toString()
       .padStart(3, '0');
-    this.elements.gameControls.flagCounter.lastChild.textContent = `${this.state.flagsCount.toString()} / ${
+    this.elements.gameInfo.flagCounter.lastChild.textContent = `${this.state.flagsCount.toString()} / ${
       this.state.bombsCount
     }`;
-    this.elements.gameControls.stepCounter.lastChild.textContent = this.state.stepsCount.toString();
+    this.elements.gameInfo.stepCounter.lastChild.textContent = this.state.stepsCount.toString();
 
     this.state.booleanMatrix = this.createBooleanMatrix();
     this.elements.grid = this.createGrid();
