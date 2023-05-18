@@ -8,6 +8,7 @@ class Minesweeper {
       bombsCount,
       time: 0,
       volume: 1,
+      theme: 'app_theme-light',
       gameOver: false,
       gameStarted: false,
       flagsCount: bombsCount,
@@ -15,7 +16,7 @@ class Minesweeper {
       booleanMatrix: [],
       openedCells: [],
       flagedCells: [],
-      theme: 'app_theme-light',
+      lastResults: [],
     };
     this.timerRef = null;
     this.elements = {
@@ -425,6 +426,7 @@ class Minesweeper {
       }
 
       if (target.classList.contains('opened')) return;
+
       if (target.dataset.flaged === 'true') return;
 
       if (this.isBomb(target)) {
@@ -478,7 +480,22 @@ class Minesweeper {
     if (cellsToOpenLeftCount === 0) {
       this.gameOver();
       this.playAudio('win');
+      this.saveWinResult();
     }
+  }
+
+  saveWinResult() {
+    if (this.state.lastResults.length === 10) {
+      this.state.lastResults.shift();
+    }
+
+    this.state.lastResults.push({
+      timestamp: Date.now(),
+      timeSpent: this.state.time,
+      steps: this.state.stepsCount,
+      fieldSize: this.state.size,
+      bombsCount: this.state.bombsCount,
+    });
   }
 
   toggleFlag(cell) {
@@ -620,7 +637,7 @@ class Minesweeper {
       .forEach((cell) => {
         const bomb = cell;
         bomb.textContent = '💣';
-        bomb.classList.add('opened');
+        bomb.classList.add('opened', 'exploded');
       });
   }
 
