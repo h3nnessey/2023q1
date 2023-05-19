@@ -8,6 +8,7 @@ class Minesweeper {
       bombsCount,
       time: 0,
       volume: 1,
+      currentVolume: 1,
       theme: 'app_theme-light',
       gameOver: false,
       gameStarted: false,
@@ -29,10 +30,10 @@ class Minesweeper {
         timer: null,
         flagCounter: null,
         stepCounter: null,
-        resetGameButton: null,
       },
       settings: null,
       notification: null,
+      leaderboard: null,
     };
   }
 
@@ -52,7 +53,7 @@ class Minesweeper {
     this.elements.appContainer.append(this.elements.app);
 
     document.body.classList.add(this.state.theme);
-    document.body.append(this.elements.appContainer);
+    document.body.append(this.elements.appContainer, this.createLeaderboard());
     window.addEventListener('beforeunload', this.saveState);
   }
 
@@ -88,7 +89,7 @@ class Minesweeper {
     if (this.state.gameStarted) this.state.gameStarted = false;
 
     document.body.classList.add(this.state.theme);
-    document.body.append(this.elements.appContainer);
+    document.body.append(this.elements.appContainer, this.createLeaderboard());
     window.addEventListener('beforeunload', this.saveState);
   }
 
@@ -152,7 +153,7 @@ class Minesweeper {
 
   createGrid() {
     const grid = document.createElement('div');
-    grid.classList.add('grid');
+    grid.classList.add('grid', `grid_size-${this.state.size}`);
     this.createMatrix();
     grid.append(...this.elements.matrix);
     return grid;
@@ -177,10 +178,9 @@ class Minesweeper {
   }
 
   createGameInfo() {
-    this.createSettings();
-
     const controlsContainer = document.createElement('div');
     controlsContainer.classList.add('controls');
+
     controlsContainer.append(
       this.createGameInfoElement(
         'flag-counter',
@@ -206,22 +206,32 @@ class Minesweeper {
         this.state.stepsCount.toString(),
         'stepCounter',
       ),
-      this.createResetGameButton(),
+      this.createButton('reset', () => {
+        this.resetGame();
+      }),
+      this.createButton('save', () => {
+        this.state.gameStarted = false;
+        clearInterval(this.timerRef);
+        this.saveState();
+      }),
     );
+
+    this.createSettings();
 
     return controlsContainer;
   }
 
-  createResetGameButton() {
-    const resetGameButton = document.createElement('div');
-    resetGameButton.textContent = '🔃';
-    resetGameButton.classList.add('reset-btn');
+  createButton(classMod, handler) {
+    const button = document.createElement('button');
 
-    resetGameButton.addEventListener('click', () => this.resetGame());
+    button.classList.add('btn', `btn_${classMod}`);
+    button.insertAdjacentHTML('afterbegin', '<span class="btn__icon"></span>');
 
-    this.elements.gameInfo.resetGameButton = resetGameButton;
+    button.addEventListener('click', (e) => {
+      handler(e);
+    });
 
-    return this.elements.gameInfo.resetGameButton;
+    return button;
   }
 
   createSettings() {
@@ -229,9 +239,8 @@ class Minesweeper {
     const sizeSelector = document.createElement('select');
     const sizeSelectorLabel = document.createElement('label');
     const bombsCountLabel = document.createElement('label');
-    const volumeLabel = document.createElement('label');
-    const saveSettingsBtn = document.createElement('button');
-    const themeChanger = document.createElement('input');
+    const volumeControls = document.createElement('div');
+    const themeChangerLabel = document.createElement('label');
 
     const optionsTemplate = `
         <option class='select__option' value='10'
@@ -246,25 +255,29 @@ class Minesweeper {
     `;
 
     const bombsCountTemplate = `
-      <input class='range-input' type='range'
+      <input class='bombs-count-input' type='range'
         step='1'
         min='10'
         max='99'
         value=${this.state.bombsCount || '10'}
       >
-      <input class='number-input' type='number'
-        step='1'
-        min='10'
-        max='99'
-        value=${this.state.bombsCount || '10'}
-      >
+      <span class='bombs-count-input__count'>${this.state.bombsCount || '10'}</span>
     `;
 
-    themeChanger.type = 'checkbox';
-    themeChanger.checked = this.state.theme === 'app_theme-dark';
+    themeChangerLabel.classList.add('theme-changer__label');
+    themeChangerLabel.insertAdjacentHTML(
+      'afterbegin',
+      `<input class='theme-changer' type='checkbox' ${
+        this.state.theme === 'app_theme-dark' ? 'checked' : ''
+      }>`,
+    );
 
-    saveSettingsBtn.classList.add('settings-btn_save');
-    saveSettingsBtn.textContent = '💾';
+    themeChangerLabel.addEventListener('change', (e) => {
+      const theme = e.target.checked ? 'app_theme-dark' : 'app_theme-light';
+      this.state.theme = theme;
+      document.body.className = '';
+      document.body.classList.add(theme);
+    });
 
     sizeSelector.insertAdjacentHTML('afterbegin', optionsTemplate);
     sizeSelector.name = 'size';
@@ -277,17 +290,17 @@ class Minesweeper {
     bombsCountLabel.textContent = 'Bombs: ';
     bombsCountLabel.insertAdjacentHTML('beforeend', bombsCountTemplate);
 
-    const bombsRangeInput = bombsCountLabel.querySelector('.range-input');
-    const bombsNumberInput = bombsCountLabel.querySelector('.number-input');
+    const bombsRangeInput = bombsCountLabel.querySelector('.bombs-count-input');
+    const bombsRangeInputValue = bombsCountLabel.querySelector('.bombs-count-input__count');
 
     const volumeTemplate = `
-      <input class='range-input' type='range'
+      <input class='volume__range-input' type='range'
         step='0.01'
         min='0'
         max='1'
         value=${this.state.volume}
       >
-      <input class='number-input' type='number'
+      <input class='volume__number-input' type='number'
         step='1'
         min='0'
         max='100'
@@ -295,12 +308,39 @@ class Minesweeper {
       >
     `;
 
-    volumeLabel.classList.add('range-input__label');
-    volumeLabel.textContent = 'Volume:';
-    volumeLabel.insertAdjacentHTML('beforeend', volumeTemplate);
+    volumeControls.classList.add('volume');
+    volumeControls.insertAdjacentHTML('afterbegin', volumeTemplate);
 
-    const volumeRangeInput = volumeLabel.querySelector('.range-input');
-    const volumeNumberInput = volumeLabel.querySelector('.number-input');
+    const volumeRangeInput = volumeControls.querySelector('.volume__range-input');
+    const volumeNumberInput = volumeControls.querySelector('.volume__number-input');
+
+    const volumeButton = this.createButton('volume', () => {
+      if (this.state.volume) {
+        this.state.currentVolume = this.state.volume;
+        this.state.volume = 0;
+        volumeRangeInput.value = '0';
+        volumeNumberInput.value = '0';
+        volumeButton.classList.add('btn_volume-muted');
+      } else {
+        this.state.volume = this.state.currentVolume;
+        volumeRangeInput.value = `${this.state.volume}`;
+        volumeNumberInput.value = `${this.state.volume * 100}`;
+        volumeButton.classList.remove('btn_volume-muted');
+      }
+
+      if (!this.state.currentVolume) {
+        this.state.volume = 0.3;
+        volumeRangeInput.value = '0.3';
+        volumeNumberInput.value = '30';
+        volumeButton.classList.toggle('btn_volume-muted');
+      }
+    });
+
+    if (!this.state.volume) {
+      volumeButton.classList.add('btn_volume-muted');
+    }
+
+    volumeControls.insertAdjacentElement('afterbegin', volumeButton);
 
     settingsContainer.classList.add('settings');
 
@@ -311,35 +351,33 @@ class Minesweeper {
         15: 40,
         25: 99,
       };
-      bombsRangeInput.value = bombsCountMap[size];
-      bombsNumberInput.value = bombsCountMap[size];
+      const bombsCount = bombsCountMap[size];
+      bombsRangeInput.value = `${bombsCount}`;
+      bombsRangeInputValue.textContent = `${bombsCount}`;
+      this.resetGame(+size, bombsCount);
     });
 
     bombsRangeInput.addEventListener('input', (e) => {
-      bombsNumberInput.value = e.currentTarget.value;
+      const bombsCount = e.currentTarget.value;
+      bombsRangeInputValue.textContent = `${bombsCount}`;
+      this.resetGame(null, Number(bombsCount));
     });
-
-    const handleBombsCountChange = (e) => {
-      const bombsCount = Number(e.target.value);
-      if (bombsCount > 99) bombsNumberInput.value = '99';
-      if (bombsCount < 10) bombsNumberInput.value = '10';
-      bombsRangeInput.value = bombsCount.toString();
-    };
 
     const handleVolumeChange = (e) => {
       const volume = Number(e.target.value);
       if (volume < 0) volumeNumberInput.value = '0';
       if (volume > 100) volumeNumberInput.value = '100';
-      this.state.volume = volume / 100;
       volumeRangeInput.value = (volume / 100).toString();
-    };
 
-    bombsNumberInput.addEventListener('focusout', handleBombsCountChange);
-    bombsNumberInput.addEventListener('keydown', (e) => {
-      if (e.code === 'Enter' && !e.repeat) {
-        handleBombsCountChange(e);
+      this.state.volume = volume / 100;
+      this.state.currentVolume = volume;
+
+      if (!this.state.volume) {
+        volumeButton.classList.add('btn_volume-muted');
+      } else {
+        volumeButton.classList.remove('btn_volume-muted');
       }
-    });
+    };
 
     volumeNumberInput.addEventListener('input', handleVolumeChange);
     volumeNumberInput.addEventListener('focusout', handleVolumeChange);
@@ -352,28 +390,34 @@ class Minesweeper {
 
     volumeRangeInput.addEventListener('input', (e) => {
       const volume = Number(e.target.value);
-      this.state.volume = volume;
+
       volumeNumberInput.value = Math.trunc(volume * 100).toString();
+      this.state.volume = volume;
+      this.state.currentVolume = volume;
+
+      if (!volume) {
+        volumeButton.classList.add('muted');
+      } else {
+        volumeButton.classList.remove('muted');
+      }
     });
 
-    themeChanger.addEventListener('change', (e) => {
-      const theme = e.target.checked ? 'app_theme-dark' : 'app_theme-light';
-      this.state.theme = theme;
-      document.body.className = '';
-      document.body.classList.add(theme);
-    });
+    const firstRow = document.createElement('div');
+    firstRow.classList.add('settings__row');
+    const secondRow = firstRow.cloneNode(true);
 
-    saveSettingsBtn.addEventListener('click', () => {
-      this.resetGame(+sizeSelector.value, +bombsRangeInput.value);
-    });
-
-    settingsContainer.append(
-      sizeSelectorLabel,
-      bombsCountLabel,
-      volumeLabel,
-      themeChanger,
-      saveSettingsBtn,
+    firstRow.append(sizeSelectorLabel, bombsCountLabel);
+    secondRow.append(
+      volumeControls,
+      themeChangerLabel,
+      this.createButton('toggle-leaderboard', () => {
+        this.elements.leaderboard.classList.toggle('leaderboard_opened');
+        this.state.gameStarted = false;
+        clearInterval(this.timerRef);
+      }),
     );
+
+    settingsContainer.append(firstRow, secondRow);
 
     this.elements.settings = settingsContainer;
   }
@@ -382,22 +426,31 @@ class Minesweeper {
     const container = document.createElement('div');
     container.classList.add('result');
 
-    const resetBtn = document.createElement('button');
-    resetBtn.textContent = '🔃';
-    resetBtn.addEventListener('click', () => this.resetGame());
+    const templates = {
+      win: `
+        <h2 class='result__title'>
+          Hooray!
+        </h2>
+        <p class='result__info'>
+          You found all mines in ${(this.state.time / 1000).toFixed(2)} seconds and
+          ${this.state.stepsCount} moves!
+        </p>`,
+      loss: `
+        <h2 class='result__title'>
+          Game over.
+        </h2>
+        <p class='result__info'>
+          Try Again!
+        </p>`,
+    };
 
-    const notificationTemplate = `
-      <h2 class='result__title'>You ${type.toUpperCase()}!</h2>
-      <ul class='result-list'>
-        <li class='result-list__item'>Time spent: ${(this.state.time / 1000).toFixed(2)}s</li>
-        <li class='result-list__item'>Steps: ${this.state.stepsCount}</li>
-        <li class='result-list__item'>Field size: ${this.state.size}X${this.state.size}</li>
-        <li class='result-list__item'>Bombs count: ${this.state.bombsCount}</li>
-      </ul>
-    `;
+    container.insertAdjacentHTML('afterbegin', templates[type]);
 
-    container.insertAdjacentHTML('afterbegin', notificationTemplate);
-    container.append(resetBtn);
+    container.append(
+      this.createButton('reset', () => {
+        this.resetGame();
+      }),
+    );
 
     if (this.elements.notification) {
       this.elements.grid('.result').replaceWith(container);
@@ -408,8 +461,42 @@ class Minesweeper {
     this.elements.notification = container;
   }
 
+  createLeaderboard() {
+    const container = document.createElement('div');
+    const ul = document.createElement('ul');
+    const li = document.createElement('li');
+
+    container.classList.add('leaderboard');
+    ul.classList.add('leaderboard__list', 'leaderboard-list');
+    li.classList.add('leaderboard-list__item');
+
+    this.state.lastResults.forEach(({ timestamp, timeSpent, steps, fieldSize, bombsCount }, i) => {
+      const result = li.cloneNode();
+      result.textContent = `${i + 1}. ⏲: ${(timeSpent / 1000).toFixed(
+        2,
+      )}s; steps: ${steps}; size: ${fieldSize}X${fieldSize}; 💣: ${bombsCount}`;
+      ul.append(result);
+    });
+
+    container.append(
+      ul,
+      this.createButton('close', () => {
+        this.elements.leaderboard.classList.remove('leaderboard_opened');
+      }),
+    );
+
+    container.addEventListener('click', (e) => {
+      const isClickOnOverlay = e.target.classList.contains('leaderboard');
+      if (isClickOnOverlay) this.elements.leaderboard.classList.remove('leaderboard_opened');
+    });
+
+    this.elements.leaderboard = container;
+
+    return container;
+  }
+
   playAudio(type) {
-    if (this.isSoundPlaying) return;
+    // вынести на глобальный уровень, чтобы тоггл громкости работал
     const paths = {
       win: './assets/audio/win.mp3',
       loss: './assets/audio/loss.mp3',
@@ -421,6 +508,7 @@ class Minesweeper {
     const audio = new Audio();
     audio.volume = this.state.volume;
     audio.src = paths[type];
+    audio.load();
     audio.play().then();
   }
 
