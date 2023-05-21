@@ -358,7 +358,7 @@ class Minesweeper {
         volumeButton.classList.remove('btn_volume-muted');
       }
     });
-    // initial
+
     if (!this.state.volume) {
       volumeButton.classList.add('btn_volume-muted');
     }
@@ -455,15 +455,28 @@ class Minesweeper {
     ul.classList.add('leaderboard__list', 'leaderboard-list');
     li.classList.add('leaderboard-list__item');
 
-    this.state.lastResults
-      .reverse()
-      .forEach(({ timestamp, timeSpent, steps, fieldSize, bombsCount }, i) => {
-        const result = li.cloneNode();
-        result.textContent = `${i + 1}. ⏲: ${(timeSpent / 1000).toFixed(
-          2,
-        )}s; steps: ${steps}; size: ${fieldSize}X${fieldSize}; 💣: ${bombsCount}`;
-        ul.append(result);
-      });
+    const titles = `
+      <li class="leaderboard__fields">
+        <span>Time</span>
+        <span>Steps</span>
+        <span>Field size</span>
+        <span>Bombs</span>
+      </li>`;
+    const results = this.state.lastResults.slice(0);
+
+    results.reverse().forEach(({ timestamp, timeSpent, steps, fieldSize, bombsCount }, i) => {
+      const result = li.cloneNode();
+      const liTemplate = `
+            <span>${(timeSpent / 1000).toFixed(2)}s</span>
+            <span>${steps}</span>
+            <span>${fieldSize}X${fieldSize}</span>
+            <span>${bombsCount}</span>
+        `;
+      result.insertAdjacentHTML('afterbegin', liTemplate);
+      ul.append(result);
+    });
+
+    ul.insertAdjacentHTML('afterbegin', titles);
 
     container.append(
       ul,
@@ -490,10 +503,11 @@ class Minesweeper {
       flagPlaced: './assets/audio/flag-place.mp3',
       flagRemoved: './assets/audio/flag-remove.mp3',
     };
+    this.audio = null;
+    this.audio = new Audio(paths[type]);
     this.audio.volume = this.state.volume;
-    this.audio.src = paths[type];
     this.audio.load();
-    this.audio.play().then();
+    this.audio.play().then().catch();
   }
 
   firstStepHandler(cell) {
@@ -594,7 +608,7 @@ class Minesweeper {
 
   saveWinResult() {
     if (this.state.lastResults.length === 10) {
-      this.state.lastResults.shift();
+      this.state.lastResults = this.state.lastResults.slice(1);
     }
 
     this.state.lastResults.push({
@@ -710,6 +724,7 @@ class Minesweeper {
       flaggedCells: [],
     };
 
+    this.audio.src = '';
     this.elements.grid = null;
     this.elements.matrix = null;
     this.elements.notification = null;

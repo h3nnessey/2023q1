@@ -24,7 +24,7 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 1440px;
+  max-width: 900px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -161,6 +161,30 @@ li {
 
 .leaderboard.leaderboard_opened {
   display: flex;
+  flex-direction: column;
+}
+
+.leaderboard-list {
+  min-width: 400px;
+}
+
+.leaderboard__fields {
+  display: flex;
+}
+
+.leaderboard__fields span {
+  flex: 1;
+  text-align: center;
+}
+
+.leaderboard-list__item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leaderboard-list__item span {
+  text-align: center;
+  flex: 1;
 }
 
 .grid__row {
