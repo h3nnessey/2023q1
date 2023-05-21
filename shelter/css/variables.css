@@ -1,0 +1,21 @@
+:root {
+  --color-dark-l: #545454;
+  --color-dark-s: #cdcdcd;
+  --color-dark-xl: #4c4c4c;
+  --color-dark-3xl: #292929;
+  --color-dark-m: #b2b2b2;
+  --color-primary: #f1cdb3;
+  --color-primary-light: #fddcc4;
+  --color-light-l: #f6f6f6;
+  --color-light-s: #fafafa;
+  --color-light-xl: #ffffff;
+  --font-ls-6: 0.06em;
+  --font-ls-10: 0.1em;
+  --font-lh-110: 110%;
+  --font-lh-115: 115%;
+  --font-lh-130: 130%;
+  --font-lh-150: 150%;
+  --font-lh-160: 160%;
+  --slider-left-initial: -109%;
+  --slider-left-end: -218%;
+}
