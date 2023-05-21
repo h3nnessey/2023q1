@@ -7,8 +7,8 @@ class Minesweeper {
       size,
       bombsCount,
       time: 0,
-      volume: 1,
-      currentVolume: 1,
+      volume: 0.3,
+      currentVolume: 0.3,
       theme: 'app_theme-light',
       gameOver: false,
       gameStarted: false,
@@ -20,6 +20,7 @@ class Minesweeper {
       flaggedCells: [],
       lastResults: [],
     };
+    this.audio = new Audio();
     this.timerRef = null;
     this.elements = {
       appContainer,
@@ -214,6 +215,7 @@ class Minesweeper {
         clearInterval(this.timerRef);
         this.saveState();
       }),
+      this.createThemeChanger(),
     );
 
     this.createSettings();
@@ -234,13 +236,32 @@ class Minesweeper {
     return button;
   }
 
+  createThemeChanger() {
+    const themeChangerLabel = document.createElement('label');
+    themeChangerLabel.classList.add('theme-changer__label');
+    themeChangerLabel.insertAdjacentHTML(
+      'afterbegin',
+      `<input class='theme-changer' type='checkbox' ${
+        this.state.theme === 'app_theme-dark' ? 'checked' : ''
+      }>`,
+    );
+
+    themeChangerLabel.addEventListener('change', (e) => {
+      const theme = e.target.checked ? 'app_theme-dark' : 'app_theme-light';
+      this.state.theme = theme;
+      document.body.className = '';
+      document.body.classList.add(theme);
+    });
+
+    return themeChangerLabel;
+  }
+
   createSettings() {
     const settingsContainer = document.createElement('div');
     const sizeSelector = document.createElement('select');
     const sizeSelectorLabel = document.createElement('label');
     const bombsCountLabel = document.createElement('label');
     const volumeControls = document.createElement('div');
-    const themeChangerLabel = document.createElement('label');
 
     const optionsTemplate = `
         <option class='select__option' value='10'
@@ -264,21 +285,6 @@ class Minesweeper {
       <span class='bombs-count-input__count'>${this.state.bombsCount || '10'}</span>
     `;
 
-    themeChangerLabel.classList.add('theme-changer__label');
-    themeChangerLabel.insertAdjacentHTML(
-      'afterbegin',
-      `<input class='theme-changer' type='checkbox' ${
-        this.state.theme === 'app_theme-dark' ? 'checked' : ''
-      }>`,
-    );
-
-    themeChangerLabel.addEventListener('change', (e) => {
-      const theme = e.target.checked ? 'app_theme-dark' : 'app_theme-light';
-      this.state.theme = theme;
-      document.body.className = '';
-      document.body.classList.add(theme);
-    });
-
     sizeSelector.insertAdjacentHTML('afterbegin', optionsTemplate);
     sizeSelector.name = 'size';
     sizeSelector.classList.add('select');
@@ -292,57 +298,6 @@ class Minesweeper {
 
     const bombsRangeInput = bombsCountLabel.querySelector('.bombs-count-input');
     const bombsRangeInputValue = bombsCountLabel.querySelector('.bombs-count-input__count');
-
-    const volumeTemplate = `
-      <input class='volume__range-input' type='range'
-        step='0.01'
-        min='0'
-        max='1'
-        value=${this.state.volume}
-      >
-      <input class='volume__number-input' type='number'
-        step='1'
-        min='0'
-        max='100'
-        value=${Math.trunc(this.state.volume * 100)}
-      >
-    `;
-
-    volumeControls.classList.add('volume');
-    volumeControls.insertAdjacentHTML('afterbegin', volumeTemplate);
-
-    const volumeRangeInput = volumeControls.querySelector('.volume__range-input');
-    const volumeNumberInput = volumeControls.querySelector('.volume__number-input');
-
-    const volumeButton = this.createButton('volume', () => {
-      if (this.state.volume) {
-        this.state.currentVolume = this.state.volume;
-        this.state.volume = 0;
-        volumeRangeInput.value = '0';
-        volumeNumberInput.value = '0';
-        volumeButton.classList.add('btn_volume-muted');
-      } else {
-        this.state.volume = this.state.currentVolume;
-        volumeRangeInput.value = `${this.state.volume}`;
-        volumeNumberInput.value = `${this.state.volume * 100}`;
-        volumeButton.classList.remove('btn_volume-muted');
-      }
-
-      if (!this.state.currentVolume) {
-        this.state.volume = 0.3;
-        volumeRangeInput.value = '0.3';
-        volumeNumberInput.value = '30';
-        volumeButton.classList.toggle('btn_volume-muted');
-      }
-    });
-
-    if (!this.state.volume) {
-      volumeButton.classList.add('btn_volume-muted');
-    }
-
-    volumeControls.insertAdjacentElement('afterbegin', volumeButton);
-
-    settingsContainer.classList.add('settings');
 
     sizeSelector.addEventListener('change', (e) => {
       const size = e.currentTarget.value;
@@ -363,61 +318,91 @@ class Minesweeper {
       this.resetGame(null, Number(bombsCount));
     });
 
-    const handleVolumeChange = (e) => {
-      const volume = Number(e.target.value);
-      if (volume < 0) volumeNumberInput.value = '0';
-      if (volume > 100) volumeNumberInput.value = '100';
-      volumeRangeInput.value = (volume / 100).toString();
+    const volumeTemplate = `
+      <input class='volume__range-input' type='range'
+        step='0.01'
+        min='0'
+        max='1'
+        value=${this.state.volume}
+      >
+      <span class='volume__range-input__value'>${Math.trunc(this.state.volume * 100)}</span>
+    `;
 
-      this.state.volume = volume / 100;
-      this.state.currentVolume = volume;
+    volumeControls.classList.add('volume');
+    volumeControls.insertAdjacentHTML('afterbegin', volumeTemplate);
 
-      if (!this.state.volume) {
+    const volumeRangeInput = volumeControls.querySelector('.volume__range-input');
+    const volumeValue = volumeControls.querySelector('.volume__range-input__value');
+
+    const volumeButton = this.createButton('volume', () => {
+      if (this.state.volume) {
+        this.state.currentVolume = this.state.volume;
+        this.state.volume = 0;
+        this.audio.volume = 0;
+        volumeRangeInput.value = '0';
+        volumeValue.textContent = '0';
         volumeButton.classList.add('btn_volume-muted');
       } else {
+        this.state.volume = this.state.currentVolume;
+        this.audio.volume = this.state.currentVolume;
+        volumeRangeInput.value = `${this.state.volume}`;
+        volumeValue.textContent = `${Math.trunc(this.state.volume * 100)}`;
         volumeButton.classList.remove('btn_volume-muted');
       }
-    };
 
-    volumeNumberInput.addEventListener('input', handleVolumeChange);
-    volumeNumberInput.addEventListener('focusout', handleVolumeChange);
-
-    volumeNumberInput.addEventListener('keydown', (e) => {
-      if (e.code === 'Enter' && !e.repeat) {
-        handleVolumeChange(e);
+      if (!this.state.currentVolume) {
+        this.state.volume = 0.3;
+        this.audio.volume = 0.3;
+        volumeRangeInput.value = '0.3';
+        volumeValue.textContent = '30';
+        volumeButton.classList.remove('btn_volume-muted');
       }
     });
+    // initial
+    if (!this.state.volume) {
+      volumeButton.classList.add('btn_volume-muted');
+    }
+
+    volumeControls.insertAdjacentElement('afterbegin', volumeButton);
+
+    settingsContainer.classList.add('settings');
 
     volumeRangeInput.addEventListener('input', (e) => {
       const volume = Number(e.target.value);
 
-      volumeNumberInput.value = Math.trunc(volume * 100).toString();
+      volumeValue.textContent = `${Math.trunc(volume * 100)}`;
       this.state.volume = volume;
+      this.audio.volume = volume;
       this.state.currentVolume = volume;
 
       if (!volume) {
-        volumeButton.classList.add('muted');
+        volumeButton.classList.add('btn_volume-muted');
       } else {
-        volumeButton.classList.remove('muted');
+        volumeButton.classList.remove('btn_volume-muted');
       }
     });
 
-    const firstRow = document.createElement('div');
-    firstRow.classList.add('settings__row');
-    const secondRow = firstRow.cloneNode(true);
+    const settingsColumn = document.createElement('div');
+    const settingsRow = document.createElement('div');
+    settingsRow.classList.add('settings__row');
+    settingsColumn.classList.add('settings__column');
 
-    firstRow.append(sizeSelectorLabel, bombsCountLabel);
-    secondRow.append(
-      volumeControls,
-      themeChangerLabel,
-      this.createButton('toggle-leaderboard', () => {
-        this.elements.leaderboard.classList.toggle('leaderboard_opened');
-        this.state.gameStarted = false;
-        clearInterval(this.timerRef);
-      }),
-    );
+    const firstColumn = settingsColumn.cloneNode();
+    const secondColumn = settingsColumn.cloneNode();
 
-    settingsContainer.append(firstRow, secondRow);
+    const btn = this.createButton('toggle-leaderboard', () => {
+      this.elements.leaderboard.classList.toggle('leaderboard_opened');
+      this.state.gameStarted = false;
+      clearInterval(this.timerRef);
+    });
+
+    btn.lastChild.textContent = 'View Leaderboard';
+
+    settingsRow.append(volumeControls);
+    firstColumn.append(bombsCountLabel, sizeSelectorLabel);
+    secondColumn.append(settingsRow, btn);
+
+    settingsContainer.append(firstColumn, secondColumn);
 
     this.elements.settings = settingsContainer;
   }
@@ -470,13 +455,15 @@ class Minesweeper {
     ul.classList.add('leaderboard__list', 'leaderboard-list');
     li.classList.add('leaderboard-list__item');
 
-    this.state.lastResults.forEach(({ timestamp, timeSpent, steps, fieldSize, bombsCount }, i) => {
-      const result = li.cloneNode();
-      result.textContent = `${i + 1}. ⏲: ${(timeSpent / 1000).toFixed(
-        2,
-      )}s; steps: ${steps}; size: ${fieldSize}X${fieldSize}; 💣: ${bombsCount}`;
-      ul.append(result);
-    });
+    this.state.lastResults
+      .reverse()
+      .forEach(({ timestamp, timeSpent, steps, fieldSize, bombsCount }, i) => {
+        const result = li.cloneNode();
+        result.textContent = `${i + 1}. ⏲: ${(timeSpent / 1000).toFixed(
+          2,
+        )}s; steps: ${steps}; size: ${fieldSize}X${fieldSize}; 💣: ${bombsCount}`;
+        ul.append(result);
+      });
 
     container.append(
       ul,
@@ -496,7 +483,6 @@ class Minesweeper {
   }
 
   playAudio(type) {
-    // вынести на глобальный уровень, чтобы тоггл громкости работал
     const paths = {
       win: './assets/audio/win.mp3',
       loss: './assets/audio/loss.mp3',
@@ -504,12 +490,10 @@ class Minesweeper {
       flagPlaced: './assets/audio/flag-place.mp3',
       flagRemoved: './assets/audio/flag-remove.mp3',
     };
-
-    const audio = new Audio();
-    audio.volume = this.state.volume;
-    audio.src = paths[type];
-    audio.load();
-    audio.play().then();
+    this.audio.volume = this.state.volume;
+    this.audio.src = paths[type];
+    this.audio.load();
+    this.audio.play().then();
   }
 
   firstStepHandler(cell) {
@@ -603,6 +587,8 @@ class Minesweeper {
       this.playAudio('win');
       this.createNotification('win');
       this.saveWinResult();
+      this.elements.leaderboard = null;
+      document.body.querySelector('.leaderboard').replaceWith(this.createLeaderboard());
     }
   }
 
