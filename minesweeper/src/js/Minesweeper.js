@@ -55,7 +55,7 @@ class Minesweeper {
 
     document.body.classList.add(this.state.theme);
     document.body.append(this.elements.appContainer, this.createLeaderboard());
-    // window.addEventListener('beforeunload', this.saveState);
+    window.addEventListener('beforeunload', this.saveState);
   }
 
   initWithState(state) {
@@ -67,7 +67,6 @@ class Minesweeper {
     this.elements.app.append(this.createGameInfo(), this.elements.grid, this.elements.settings);
     this.elements.appContainer.append(this.elements.app);
 
-    // loss
     if (this.state.gameOver && this.state.bombPosition.length) {
       const [row, column] = this.state.bombPosition;
       const bombClicked = this.elements.matrix[+row].children[+column];
@@ -75,12 +74,12 @@ class Minesweeper {
       this.showAllBombs();
       this.createNotification('loss');
     }
-    // win
+
     if (this.state.gameOver && !this.state.bombPosition.length) {
       this.showAllBombs();
       this.createNotification('win');
     }
-    // still playing
+
     if (!this.state.gameOver && this.state.gameStarted) {
       this.elements.gameInfo.timer.lastChild.textContent = (this.state.time / 1000)
         .toFixed(2)
@@ -91,7 +90,7 @@ class Minesweeper {
 
     document.body.classList.add(this.state.theme);
     document.body.append(this.elements.appContainer, this.createLeaderboard());
-    // window.addEventListener('beforeunload', this.saveState);
+    window.addEventListener('beforeunload', this.saveState);
   }
 
   createBooleanMatrix() {
@@ -431,11 +430,17 @@ class Minesweeper {
 
     container.insertAdjacentHTML('afterbegin', templates[type]);
 
-    container.append(
+    const buttons = document.createElement('div');
+    buttons.classList.add('result__buttons');
+    buttons.append(
+      this.createButton('ok', () => {
+        container.remove();
+      }),
       this.createButton('reset', () => {
         this.resetGame();
       }),
     );
+    container.append(buttons);
 
     if (this.elements.notification) {
       this.elements.grid('.result').replaceWith(container);
@@ -457,7 +462,7 @@ class Minesweeper {
 
     const titles = `
       <li class="leaderboard__fields">
-        <span>Time</span>
+        <span>Time (s)</span>
         <span>Steps</span>
         <span>Field size</span>
         <span>Bombs</span>
@@ -471,7 +476,7 @@ class Minesweeper {
 
       if (item) {
         liTemplate = `
-            <span>${(item.timeSpent / 1000).toFixed(2)}s</span>
+            <span>${(item.timeSpent / 1000).toFixed(2)}</span>
             <span>${item.steps}</span>
             <span>${item.fieldSize}X${item.fieldSize}</span>
             <span>${item.bombsCount}</span>
