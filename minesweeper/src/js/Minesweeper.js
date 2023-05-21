@@ -12,7 +12,7 @@ class Minesweeper {
       theme: 'app_theme-light',
       gameOver: false,
       gameStarted: false,
-      flagsCount: bombsCount,
+      flagsCount: 0,
       stepsCount: 0,
       bombPosition: [],
       booleanMatrix: [],
@@ -180,14 +180,13 @@ class Minesweeper {
   createGameInfo() {
     const controlsContainer = document.createElement('div');
     controlsContainer.classList.add('controls');
-
     controlsContainer.append(
       this.createGameInfoElement(
         'flag-counter',
         'flag-counter__title',
         'flag-counter__count',
-        '🚩:',
-        `${this.state.flagsCount.toString()} / ${this.state.bombsCount}`,
+        '🚩',
+        `${this.state.flagsCount.toString()} / ${this.state.bombsCount - this.state.flagsCount} 💣`,
         'flagCounter',
       ),
       this.createGameInfoElement(
@@ -643,20 +642,20 @@ class Minesweeper {
     if (isFlagged) {
       lastChild.textContent = '';
       cell.classList.remove('flagged');
-      this.state.flagsCount += 1;
+      this.state.flagsCount -= 1;
       this.state.flaggedCells.pop();
       this.playAudio('flagRemoved');
     } else {
       cell.classList.add('flagged');
       lastChild.textContent = '🚩';
-      this.state.flagsCount -= 1;
+      this.state.flagsCount += 1;
       this.state.flaggedCells.push([row, column]);
       this.playAudio('flagPlaced');
     }
 
     this.elements.gameInfo.flagCounter.lastChild.textContent = `${this.state.flagsCount.toString()} / ${
-      this.state.bombsCount
-    }`;
+      this.state.bombsCount - this.state.flagsCount
+    } 💣`;
   }
 
   setTimer() {
@@ -731,7 +730,7 @@ class Minesweeper {
       time: 0,
       gameOver: false,
       gameStarted: false,
-      flagsCount: bombsCount || this.state.bombsCount,
+      flagsCount: 0,
       stepsCount: 0,
       bombPosition: [],
       booleanMatrix: [],
@@ -746,8 +745,8 @@ class Minesweeper {
 
     this.elements.gameInfo.timer.lastChild.textContent = '0.00';
     this.elements.gameInfo.flagCounter.lastChild.textContent = `${this.state.flagsCount.toString()} / ${
-      this.state.bombsCount
-    }`;
+      this.state.bombsCount - this.state.flagsCount
+    } 💣`;
     this.elements.gameInfo.stepCounter.lastChild.textContent = this.state.stepsCount.toString();
 
     this.state.booleanMatrix = this.createBooleanMatrix();
