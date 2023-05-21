@@ -103,8 +103,5 @@ dist
 # TernJS port file
 .tern-port
 
-# JetBrains IDE files
+# WebStorm IDE config files
 .idea
-
-# Prettier config
-.prettierrc
