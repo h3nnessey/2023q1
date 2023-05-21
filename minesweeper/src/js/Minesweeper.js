@@ -18,7 +18,7 @@ class Minesweeper {
       booleanMatrix: [],
       openedCells: [],
       flaggedCells: [],
-      lastResults: [],
+      lastResults: Array(10).fill(null),
     };
     this.audio = new Audio();
     this.timerRef = null;
@@ -55,7 +55,7 @@ class Minesweeper {
 
     document.body.classList.add(this.state.theme);
     document.body.append(this.elements.appContainer, this.createLeaderboard());
-    window.addEventListener('beforeunload', this.saveState);
+    // window.addEventListener('beforeunload', this.saveState);
   }
 
   initWithState(state) {
@@ -91,7 +91,7 @@ class Minesweeper {
 
     document.body.classList.add(this.state.theme);
     document.body.append(this.elements.appContainer, this.createLeaderboard());
-    window.addEventListener('beforeunload', this.saveState);
+    // window.addEventListener('beforeunload', this.saveState);
   }
 
   createBooleanMatrix() {
@@ -462,16 +462,29 @@ class Minesweeper {
         <span>Field size</span>
         <span>Bombs</span>
       </li>`;
-    const results = this.state.lastResults.slice(0);
 
-    results.reverse().forEach(({ timestamp, timeSpent, steps, fieldSize, bombsCount }, i) => {
+    let results = this.state.lastResults.slice(0);
+
+    results.reverse().forEach((item) => {
       const result = li.cloneNode();
-      const liTemplate = `
-            <span>${(timeSpent / 1000).toFixed(2)}s</span>
-            <span>${steps}</span>
-            <span>${fieldSize}X${fieldSize}</span>
-            <span>${bombsCount}</span>
+      let liTemplate = '';
+
+      if (item) {
+        liTemplate = `
+            <span>${(item.timeSpent / 1000).toFixed(2)}s</span>
+            <span>${item.steps}</span>
+            <span>${item.fieldSize}X${item.fieldSize}</span>
+            <span>${item.bombsCount}</span>
         `;
+      } else {
+        liTemplate = `
+            <span>--</span>
+            <span>--</span>
+            <span>--</span>
+            <span>--</span>
+        `;
+      }
+
       result.insertAdjacentHTML('afterbegin', liTemplate);
       ul.append(result);
     });
@@ -607,10 +620,7 @@ class Minesweeper {
   }
 
   saveWinResult() {
-    if (this.state.lastResults.length === 10) {
-      this.state.lastResults = this.state.lastResults.slice(1);
-    }
-
+    this.state.lastResults = this.state.lastResults.slice(1);
     this.state.lastResults.push({
       timestamp: Date.now(),
       timeSpent: this.state.time,
