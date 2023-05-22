@@ -1,6 +1,6 @@
 1. [Link to video](https://youtu.be/_mS42hqtvKg)
 2. [Link to text](https://docs.google.com/document/d/16cJxye1QcGUNR4WoaFTgHjb4PJZScv5DxirxqL6PzZM/edit?usp=sharing)
-___
+<hr>
 Hi, my name is Vitaly, I'm 25 years old and this is my self-introduction video.
 
 This presentation is made in Q&A format, so I will read the questions and answer them by myself.
