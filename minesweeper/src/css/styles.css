@@ -30,7 +30,6 @@ body {
 .container {
   margin: 0 auto;
   max-width: 900px;
-  /*height: 100%;*/
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -60,8 +59,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   outline: none;
   border: none;
   cursor: pointer;
@@ -123,10 +122,17 @@ body {
   border-color: #ffffff #808080 #868686 #ffffff;
 }
 
-.btn.btn_ok {
+.result .btn.btn_ok {
+  width: 30px;
+  height: 30px;
   background: url('../assets/svg/ok.svg') 50% 50% / cover no-repeat;
   opacity: 0.7;
   transition: opacity 0.2s ease-in-out;
+}
+
+.result .btn.btn_reset {
+  width: 30px;
+  height: 30px;
 }
 
 .app_theme-dark .btn.btn_ok {
@@ -140,6 +146,7 @@ body {
 .result__buttons {
   display: flex;
   gap: 2rem;
+  padding: 0.5rem 0;
 }
 
 .volume {
@@ -238,6 +245,8 @@ body {
 
 .btn.btn_close {
   background: url('../assets/svg/close.svg') 50% 50% / cover no-repeat;
+  width: 35px;
+  height: 35px;
   filter: invert(100%);
   opacity: 0.7;
   transition: opacity 0.2s ease-in-out;
@@ -426,7 +435,7 @@ body {
   background-color: #ff0000;
 }
 
-.controls {
+.app__info {
   display: flex;
   width: 100%;
   padding: 0.5rem 0;
@@ -435,13 +444,13 @@ body {
   color: #dadada;
 }
 
-.app_theme-dark .controls {
+.app_theme-dark .app__info {
   background: #181818;
   border: 4px solid;
   border-color: #0c0c0c #000000 #1e1e1e #242424;
 }
 
-.app_theme-light .controls {
+.app_theme-light .app__info {
   color: #000000;
   background: #c6c6c6;
   border: 4px solid;
@@ -449,12 +458,37 @@ body {
 }
 
 .flag-counter,
+.bomb-counter,
 .timer,
 .step-counter {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+}
+
+.flag-counter__icon,
+.bomb-counter__icon,
+.timer__icon,
+.step-counter__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.flag-counter .flag-counter__icon {
+  background: url('../assets/svg/flag.svg') 50% 50% / cover no-repeat;
+}
+
+.bomb-counter .bomb-counter__icon {
+  background: url('../assets/svg/bomb.svg') 50% 50% / cover no-repeat;
+}
+
+.timer .timer__icon {
+  background: url('../assets/svg/timer.svg') 50% 50% / cover no-repeat;
+}
+
+.step-counter .step-counter__icon {
+  background: url('../assets/svg/footprints.svg') 50% 50% / cover no-repeat;
 }
 
 input[type='checkbox'] {
@@ -531,6 +565,7 @@ input[type='checkbox'] {
 .settings__column {
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 1rem;
 }
 
@@ -538,6 +573,7 @@ input[type='checkbox'] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  align-self: flex-end;
   gap: 1rem;
 }
 
@@ -552,7 +588,7 @@ input[type='checkbox'] {
 }
 
 .btn.btn_toggle-leaderboard {
-  align-self: center;
+  align-self: flex-end;
   width: fit-content;
   padding: 10px;
   transition: color 0.2s;
@@ -576,7 +612,7 @@ input[type='checkbox'] {
 }
 
 .app_theme-light .btn.btn_toggle-leaderboard:hover {
-  color: #ff6d18;
+  color: #0014ff;
 }
 
 input[type='range'] {
@@ -650,6 +686,14 @@ select option {
   color: #ffffff;
 }
 
+.app_theme-light select:hover {
+  color: #0014ff;
+}
+
+.app_theme-light select option {
+  color: #000000;
+}
+
 .app_theme-dark select option {
   color: #dadada;
 }
@@ -685,5 +729,6 @@ select option {
   .grid.grid_size-25 .grid__cell {
     width: 20px;
     height: 20px;
+    font-size: 10px;
   }
 }

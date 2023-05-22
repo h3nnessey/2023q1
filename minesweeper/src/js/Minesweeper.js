@@ -28,8 +28,9 @@ class Minesweeper {
       grid: null,
       matrix: null,
       gameInfo: {
-        timer: null,
         flagCounter: null,
+        bombCounter: null,
+        timer: null,
         stepCounter: null,
       },
       settings: null,
@@ -42,7 +43,12 @@ class Minesweeper {
     this.elements.app = document.createElement('div');
     this.elements.app.classList.add('app');
     this.elements.grid = this.createGrid();
-    this.elements.app.append(this.createGameInfo(), this.elements.grid, this.elements.settings);
+    this.elements.app.append(
+      this.createGameInfo(),
+      this.elements.grid,
+      this.elements.settings,
+      this.createLeaderboard(),
+    );
     this.elements.appContainer.append(this.elements.app);
   }
 
@@ -57,7 +63,7 @@ class Minesweeper {
     this.state.booleanMatrix = this.createBooleanMatrix();
     this.fillContainer();
     document.body.classList.add(this.state.theme);
-    document.body.append(this.elements.appContainer, this.createLeaderboard());
+    document.body.append(this.elements.appContainer);
     window.addEventListener('beforeunload', this.saveState);
   }
 
@@ -87,7 +93,7 @@ class Minesweeper {
     if (this.state.gameStarted) this.state.gameStarted = false;
 
     document.body.classList.add(this.state.theme);
-    document.body.append(this.elements.appContainer, this.createLeaderboard());
+    document.body.append(this.elements.appContainer);
     window.addEventListener('beforeunload', this.saveState);
   }
 
@@ -156,18 +162,18 @@ class Minesweeper {
     return grid;
   }
 
-  createGameInfoElement(containerClass, titleClass, infoClass, titleText, infoText, element) {
+  createGameInfoElement(elementClass, count, element) {
     const container = document.createElement('div');
-    const title = document.createElement('span');
-    const info = document.createElement('span');
-    container.classList.add(containerClass);
-    title.classList.add(titleClass);
-    info.classList.add(infoClass);
+    const icon = document.createElement('span');
+    const counter = document.createElement('span');
 
-    title.textContent = titleText;
-    info.textContent = infoText;
+    container.classList.add(elementClass);
+    icon.classList.add(`${elementClass}__icon`);
+    counter.classList.add(`${elementClass}__count`);
 
-    container.append(title, info);
+    counter.textContent = count;
+
+    container.append(icon, counter);
 
     this.elements.gameInfo[element] = container;
 
@@ -176,32 +182,20 @@ class Minesweeper {
 
   createGameInfo() {
     const controlsContainer = document.createElement('div');
-    controlsContainer.classList.add('controls');
+    controlsContainer.classList.add('app__info');
     controlsContainer.append(
       this.createGameInfoElement(
         'flag-counter',
-        'flag-counter__title',
-        'flag-counter__count',
-        '🚩',
-        `${this.state.flagsCount.toString()} / ${this.state.bombsCount - this.state.flagsCount} 💣`,
+        `${this.state.flagsCount.toString()}`,
         'flagCounter',
       ),
       this.createGameInfoElement(
-        'timer',
-        'timer__title',
-        'timer__count',
-        '⏲:',
-        (this.state.time / 1000).toFixed(2).toString(),
-        'timer',
+        'bomb-counter',
+        `${this.state.bombsCount - this.state.flagsCount}`,
+        'bombCounter',
       ),
-      this.createGameInfoElement(
-        'step-counter',
-        'step-counter__title',
-        'step-counter__count',
-        'Steps:',
-        this.state.stepsCount.toString(),
-        'stepCounter',
-      ),
+      this.createGameInfoElement('timer', (this.state.time / 1000).toFixed(2).toString(), 'timer'),
+      this.createGameInfoElement('step-counter', this.state.stepsCount.toString(), 'stepCounter'),
       Minesweeper.createButton('reset', () => {
         this.resetGame();
       }),
@@ -261,13 +255,13 @@ class Minesweeper {
     const optionsTemplate = `
         <option class='select__option' value='10'
           ${this.state.size === 10 ? 'selected' : ''}
-        >10⨉10</option>
+        >Easy (10⨉10)</option>
         <option class='select__option' value='15'
           ${this.state.size === 15 ? 'selected' : ''}
-        >15⨉15</option>
+        >Medium (15⨉15)</option>
         <option class='select__option' value='25'
           ${this.state.size === 25 ? 'selected' : ''}
-        >25⨉25</option>
+        >Hard (25⨉25)</option>
     `;
 
     const bombsCountTemplate = `
@@ -284,7 +278,7 @@ class Minesweeper {
     sizeSelector.name = 'size';
     sizeSelector.classList.add('select');
     sizeSelectorLabel.classList.add('select__label');
-    sizeSelectorLabel.textContent = 'Field size: ';
+    sizeSelectorLabel.textContent = 'Difficulty: ';
     sizeSelectorLabel.append(sizeSelector);
 
     bombsCountLabel.classList.add('range-input__label');
@@ -586,13 +580,14 @@ class Minesweeper {
     const target = e.target.closest('.grid__cell');
 
     if (target) {
-      if (this.state.gameOver) return;
+      if (this.state.gameOver || !this.state.openedCells.length) return;
 
       if (!this.state.gameStarted) {
         this.setTimer();
       }
 
       if (target.classList.contains('opened')) return;
+
       this.toggleFlag(target);
     }
   };
@@ -616,7 +611,7 @@ class Minesweeper {
       this.createNotification('win');
       this.saveWinResult();
       this.elements.leaderboard = null;
-      document.body.querySelector('.leaderboard').replaceWith(this.createLeaderboard());
+      this.elements.app.querySelector('.leaderboard').replaceWith(this.createLeaderboard());
     }
   }
 
@@ -649,9 +644,10 @@ class Minesweeper {
       this.playAudio('flagPlaced');
     }
 
-    this.elements.gameInfo.flagCounter.lastChild.textContent = `${this.state.flagsCount.toString()} / ${
+    this.elements.gameInfo.flagCounter.lastChild.textContent = `${this.state.flagsCount}`;
+    this.elements.gameInfo.bombCounter.lastChild.textContent = `${
       this.state.bombsCount - this.state.flagsCount
-    } 💣`;
+    }`;
   }
 
   setTimer() {
@@ -740,15 +736,15 @@ class Minesweeper {
     this.elements.notification = null;
 
     this.elements.gameInfo.timer.lastChild.textContent = '0.00';
-    this.elements.gameInfo.flagCounter.lastChild.textContent = `${this.state.flagsCount.toString()} / ${
+    this.elements.gameInfo.flagCounter.lastChild.textContent = `${this.state.flagsCount}`;
+    this.elements.gameInfo.bombCounter.lastChild.textContent = `${
       this.state.bombsCount - this.state.flagsCount
-    } 💣`;
+    }`;
     this.elements.gameInfo.stepCounter.lastChild.textContent = this.state.stepsCount.toString();
 
     this.state.booleanMatrix = this.createBooleanMatrix();
     this.elements.grid = this.createGrid();
     this.elements.app.querySelector('.grid').replaceWith(this.elements.grid);
-    // this.elements.grid.querySelector('.result').remove();
   }
 
   gameOver() {
