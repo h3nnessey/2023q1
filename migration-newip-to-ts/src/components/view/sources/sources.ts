@@ -11,8 +11,10 @@ class Sources {
         data.forEach((item) => {
             if (sourceItemTemp) {
                 const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLElement;
-                const sourceName = sourceClone.querySelector('.source__item-name');
-                const sourceItem = sourceClone.querySelector('.source__item');
+                const sourceName: HTMLSpanElement | null = sourceClone.querySelector<HTMLSpanElement>(
+                    '.source__item-name'
+                );
+                const sourceItem: HTMLDivElement | null = sourceClone.querySelector<HTMLDivElement>('.source__item');
 
                 sourceName && (sourceName.textContent = item.name);
                 sourceItem?.setAttribute('data-source-id', item.id);
