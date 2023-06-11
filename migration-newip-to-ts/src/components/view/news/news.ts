@@ -10,7 +10,7 @@ class News {
 
         news.forEach((item, idx) => {
             if (newsItemTemp) {
-                const newsClone = newsItemTemp.content.cloneNode(true) as HTMLElement;
+                const newsClone = newsItemTemp.content.cloneNode(true) as typeof newsItemTemp;
 
                 if (idx % 2) {
                     const newsItem: HTMLDivElement | null = newsClone.querySelector<HTMLDivElement>('.news__item');

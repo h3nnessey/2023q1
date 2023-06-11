@@ -10,7 +10,7 @@ class Sources {
 
         data.forEach((item) => {
             if (sourceItemTemp) {
-                const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLElement;
+                const sourceClone = sourceItemTemp.content.cloneNode(true) as typeof sourceItemTemp;
                 const sourceName: HTMLSpanElement | null = sourceClone.querySelector<HTMLSpanElement>(
                     '.source__item-name'
                 );
