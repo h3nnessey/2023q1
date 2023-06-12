@@ -12,11 +12,9 @@ export interface NewsArticle {
     content: string;
 }
 
-export interface NewsSource {
-    id: string;
-    name: string;
-    description: string;
-    url: string;
+export interface NewsSource
+    extends Pick<NewsArticle['source'], 'id' | 'name'>,
+        Pick<NewsArticle, 'url' | 'description'> {
     category: string;
     language: string;
     country: string;
