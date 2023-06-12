@@ -21,7 +21,7 @@ export type NewsSource = {
     language: string;
     country: string;
 };
-// todo: change status type
+
 export type NewsArticlesResponse = {
     status: string;
     totalResults: number;
@@ -38,11 +38,8 @@ export enum ResponseErrorCodes {
     'Unauthorized' = 401,
 }
 
-export enum Endpoint {
-    Everything = 'everything',
-    Sources = 'sources',
-}
+export type Endpoint = 'everything' | 'sources';
 
 export type UrlOptions = Record<string, string>;
 
-export type FetchCallback = <T>(data: T) => void;
+export type FetchCallback<T> = (data: T) => void;
