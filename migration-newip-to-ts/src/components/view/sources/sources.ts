@@ -2,13 +2,13 @@ import './sources.css';
 import { NewsSource } from '../../../types';
 
 class Sources {
-    draw(data: NewsSource[]) {
+    public draw(data: NewsSource[]): void {
         const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp: HTMLTemplateElement | null = document.querySelector<HTMLTemplateElement>(
             '#sourceItemTemp'
         );
 
-        data.forEach((item) => {
+        data.forEach((item: NewsSource): void => {
             if (sourceItemTemp) {
                 const sourceClone = sourceItemTemp.content.cloneNode(true) as typeof sourceItemTemp;
                 const sourceName: HTMLSpanElement | null = sourceClone.querySelector<HTMLSpanElement>(

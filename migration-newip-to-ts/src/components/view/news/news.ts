@@ -2,13 +2,14 @@ import './news.css';
 import { NewsArticle } from '../../../types';
 
 class News {
-    draw(data: NewsArticle[]) {
-        const news: NewsArticle[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    public draw(data: NewsArticle[]): void {
+        const news: NewsArticle[] =
+            data.length >= 10 ? data.filter((_item: NewsArticle, idx: number): boolean => idx < 10) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemp: HTMLTemplateElement | null = document.querySelector<HTMLTemplateElement>('#newsItemTemp');
 
-        news.forEach((item, idx) => {
+        news.forEach((item: NewsArticle, idx: number): void => {
             if (newsItemTemp) {
                 const newsClone = newsItemTemp.content.cloneNode(true) as typeof newsItemTemp;
 
