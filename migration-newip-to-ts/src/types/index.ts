@@ -1,4 +1,4 @@
-export type NewsArticle = {
+export interface NewsArticle {
     source: {
         id: string;
         name: string;
@@ -10,9 +10,9 @@ export type NewsArticle = {
     urlToImage: string;
     publishedAt: string;
     content: string;
-};
+}
 
-export type NewsSource = {
+export interface NewsSource {
     id: string;
     name: string;
     description: string;
@@ -20,18 +20,18 @@ export type NewsSource = {
     category: string;
     language: string;
     country: string;
-};
+}
 
-export type NewsArticlesResponse = {
+export interface NewsArticlesResponse {
     status: string;
     totalResults: number;
     articles: NewsArticle[];
-};
+}
 
-export type NewsSourcesResponse = {
+export interface NewsSourcesResponse {
     status: string;
     sources: NewsSource[];
-};
+}
 
 export enum ResponseErrorCodes {
     'BadRequest' = 400,

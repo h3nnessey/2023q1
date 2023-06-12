@@ -1,8 +1,8 @@
 import { Endpoint, ResponseErrorCodes, UrlOptions, FetchCallback } from '../../types';
 
 class Loader {
-    private baseLink: string;
-    private options: UrlOptions;
+    private readonly baseLink: string;
+    private readonly options: UrlOptions;
 
     constructor(baseLink: string, options: UrlOptions) {
         this.baseLink = baseLink;
@@ -10,7 +10,7 @@ class Loader {
     }
 
     public getResp<T>(
-        { endpoint, options = {} }: { endpoint: Endpoint; options?: UrlOptions },
+        { endpoint, options = {} }: { endpoint: Endpoint } & Partial<{ options: UrlOptions }>,
         callback: FetchCallback<T> = () => {
             console.error('No callback for GET response');
         }
@@ -18,7 +18,7 @@ class Loader {
         this.load<T>('GET', endpoint, callback, options);
     }
 
-    private errorHandler(res: Response): Response | never {
+    private errorHandler(res: Response): Response {
         if (!res.ok) {
             if (res.status === ResponseErrorCodes.BadRequest || res.status === ResponseErrorCodes.Unauthorized)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
