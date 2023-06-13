@@ -24,7 +24,14 @@ class Sources {
         });
 
         const sources: HTMLDivElement | null = document.querySelector<HTMLDivElement>('.sources');
+        const toggleSourcesBtn: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(
+            '.sources-toggle-btn'
+        );
         sources?.append(fragment);
+        toggleSourcesBtn?.addEventListener('click', () => {
+            sources?.classList.toggle('sources_hidden');
+            toggleSourcesBtn?.classList.toggle('active');
+        });
     }
 }
 

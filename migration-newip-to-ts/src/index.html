@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>NewsPortal</title>
+        <title>News Portal</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
     </head>
     <body>
         <header>
@@ -12,10 +15,20 @@
         </header>
         <main>
             <div class="sources buttons"></div>
+            <button class="sources-toggle-btn" title="Show/Hide News Sources"></button>
             <div class="news"></div>
         </main>
         <footer>
-            <p class="copyright">Copyright <a href="https://newsapi.org">NewsAPI</a></p>
+            <ul class="list">
+                <li class="list__item">
+                    <a href="https://github.com/h3nnessey" class="list__item-link">h3nnessey © 2023</a>
+                </li>
+                <li class="list__item">
+                    <a href="https://rs.school/js/" class="list__item-link">
+                        <span class="list__item-link__icon"></span>
+                    </a>
+                </li>
+            </ul>
         </footer>
 
         <template id="sourceItemTemp">

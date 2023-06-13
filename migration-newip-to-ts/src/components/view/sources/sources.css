@@ -1,31 +1,84 @@
 .sources {
-    display: flex;
-    flex-wrap: nowrap;
+    position: relative;
+    display: grid;
+    visibility: visible;
     width: 100%;
-    height: 120px;
-    overflow: auto;
-    align-items: center;
+    height: auto;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     font: 300 1em 'Fira Sans', sans-serif;
+    max-height: 340px;
+    overflow-y: scroll;
+}
+
+.sources.sources_hidden {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.sources-toggle-btn {
+    margin-top: 10px;
+    align-self: center;
+    width: 30px;
+    height: 30px;
+    background: url('../../../img/cross.svg') 50% 50% / cover no-repeat;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    filter: invert(100%);
+    opacity: 0.7;
+    transition: transform 0.25s, opacity 0.25s;
+}
+
+.sources-toggle-btn:hover {
+    opacity: 1;
+    transform: rotate(180deg);
+}
+
+.sources-toggle-btn.active {
+    transform: rotate(-45deg);
+}
+
+.sources-toggle-btn.active:hover {
+    opacity: 1;
+    transform: rotate(225deg);
+}
+
+.sources::-webkit-scrollbar {
+    width: 13px;
+}
+
+.sources::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.sources::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
 }
 
 .source__item {
     background: none;
-    border: 2px solid #30c5ff;
+    border: 2px solid #a9a9a9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
     font: inherit;
     line-height: 1;
     margin: 0.5em;
     padding: 1em 2em;
-    color: #70d6ff;
+    color: #fff;
     transition: 0.25s;
     cursor: pointer;
+    backdrop-filter: blur(2px);
 }
 
 .source__item:hover,
 .source__item:focus {
-    border-color: #3fcc59;
-    color: #69db7e;
-    box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
-    transform: translateY(-0.25em);
+    color: #fff700;
+    box-shadow: 0 0 10px;
+    border: 2px solid #d8ff00;
+    border-radius: 5px;
+    transform: translateY(-4px);
 }
 
 .source__item-name {

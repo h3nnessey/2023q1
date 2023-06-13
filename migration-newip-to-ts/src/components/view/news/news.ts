@@ -1,4 +1,5 @@
 import './news.css';
+import placeholderImg from '../../../img/placeholder.png';
 import { NewsArticle } from '../../../types';
 
 class News {
@@ -34,8 +35,7 @@ class News {
                 );
                 const newsLink: HTMLLinkElement | null = newsClone.querySelector<HTMLLinkElement>('.news__read-more a');
 
-                newsPhoto &&
-                    (newsPhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`);
+                newsPhoto && (newsPhoto.style.backgroundImage = `url(${item.urlToImage || placeholderImg})`);
                 newsAuthor && (newsAuthor.textContent = item.author || item.source.name);
                 newsDate && (newsDate.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-'));
                 newsTitle && (newsTitle.textContent = item.title);
