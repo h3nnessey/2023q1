@@ -1,9 +1,10 @@
 import Loader from './loader';
+import { API_BASE_LINK, API_KEY } from '../../env';
 
 class AppLoader extends Loader {
     constructor() {
-        super('https://rss-news-api.onrender.com/', {
-            apiKey: '15ee06e2d86546829c720dbd181da42c', // получите свой ключ https://newsapi.org/
+        super(API_BASE_LINK, {
+            apiKey: API_KEY, // получите свой ключ https://newsapi.org/
         });
     }
 }
