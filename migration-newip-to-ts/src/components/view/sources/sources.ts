@@ -1,36 +1,31 @@
 import './sources.css';
 import { NewsSource } from '../../../types';
+import { getHtmlElement } from '../../../utils';
 
 class Sources {
     public draw(data: NewsSource[]): void {
         const fragment: DocumentFragment = document.createDocumentFragment();
-        const sourceItemTemp: HTMLTemplateElement | null = document.querySelector<HTMLTemplateElement>(
-            '#sourceItemTemp'
-        );
+        const sourceItemTemp: HTMLTemplateElement = getHtmlElement<HTMLTemplateElement>('#sourceItemTemp');
 
         data.forEach((item: NewsSource): void => {
-            if (sourceItemTemp) {
-                const sourceClone = sourceItemTemp.content.cloneNode(true) as typeof sourceItemTemp;
-                const sourceName: HTMLSpanElement | null = sourceClone.querySelector<HTMLSpanElement>(
-                    '.source__item-name'
-                );
-                const sourceItem: HTMLDivElement | null = sourceClone.querySelector<HTMLDivElement>('.source__item');
+            const sourceClone = sourceItemTemp.content.cloneNode(true) as typeof sourceItemTemp.content;
+            const sourceName: HTMLSpanElement = getHtmlElement<HTMLSpanElement>('.source__item-name', sourceClone);
+            const sourceItem: HTMLDivElement = getHtmlElement<HTMLDivElement>('.source__item', sourceClone);
 
-                sourceName && (sourceName.textContent = item.name);
-                sourceItem?.setAttribute('data-source-id', item.id);
+            sourceName.textContent = item.name;
+            sourceItem.setAttribute('data-source-id', item.id);
 
-                fragment.append(sourceClone);
-            }
+            fragment.append(sourceClone);
         });
 
-        const sources: HTMLDivElement | null = document.querySelector<HTMLDivElement>('.sources');
-        const toggleSourcesBtn: HTMLButtonElement | null = document.querySelector<HTMLButtonElement>(
-            '.sources-toggle-btn'
-        );
-        sources?.append(fragment);
-        toggleSourcesBtn?.addEventListener('click', () => {
-            sources?.classList.toggle('sources_hidden');
-            toggleSourcesBtn?.classList.toggle('active');
+        const sources: HTMLDivElement = getHtmlElement<HTMLDivElement>('.sources');
+        const toggleSourcesBtn: HTMLButtonElement = getHtmlElement<HTMLButtonElement>('.sources-toggle-btn');
+
+        sources.append(fragment);
+
+        toggleSourcesBtn.addEventListener('click', (): void => {
+            sources.classList.toggle('sources_hidden');
+            toggleSourcesBtn.classList.toggle('active');
         });
     }
 }

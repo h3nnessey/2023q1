@@ -11,7 +11,7 @@ class Loader {
 
     public getResp<T>(
         { endpoint, options = {} }: { endpoint: Endpoint } & Partial<{ options: UrlOptions }>,
-        callback: FetchCallback<T> = () => {
+        callback: FetchCallback<T> = (): void => {
             console.error('No callback for GET response');
         }
     ): void {
