@@ -15,8 +15,10 @@ class App {
     public start(): void {
         const sources: HTMLDivElement = getHtmlElement<HTMLDivElement>('.sources');
 
-        sources.addEventListener('click', (e: MouseEvent) =>
-            this.controller.getNews<NewsArticlesResponse>(e, (data: NewsArticlesResponse) => this.view.drawNews(data))
+        sources.addEventListener('click', (event: MouseEvent) =>
+            this.controller.getNews<NewsArticlesResponse>(event, (data: NewsArticlesResponse) =>
+                this.view.drawNews(data)
+            )
         );
 
         this.controller.getSources<NewsSourcesResponse>((data: NewsSourcesResponse) => this.view.drawSources(data));

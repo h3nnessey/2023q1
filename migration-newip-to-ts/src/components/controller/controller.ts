@@ -11,9 +11,9 @@ class AppController extends AppLoader {
         );
     }
 
-    public getNews<T>(e: MouseEvent, callback: FetchCallback<T>): void {
-        let target: EventTarget | null = e.target;
-        const newsContainer: EventTarget | null = e.currentTarget;
+    public getNews<T>(event: MouseEvent, callback: FetchCallback<T>): void {
+        let target: EventTarget | null = event.target;
+        const newsContainer: EventTarget | null = event.currentTarget;
 
         while (target !== newsContainer) {
             if (target && target instanceof HTMLElement && newsContainer && newsContainer instanceof HTMLElement) {
