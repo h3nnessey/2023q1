@@ -1,4 +1,5 @@
 import { LessonNode } from '../data/LessonNode';
+import { BaseComponent } from '../components/baseComponent/BaseComponent';
 
 export interface Lesson {
   id: number;
@@ -23,4 +24,10 @@ export enum LessonNodeAttributes {
   Id = 'rounded',
   ClassName = 'border-red',
   TargetClass = 'target',
+}
+
+export interface BaseComponentConstructor {
+  tagName?: string;
+  classNames?: string[];
+  parent?: BaseComponent;
 }

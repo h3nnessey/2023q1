@@ -1,0 +1,14 @@
+.line-numbers {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  background: black;
+}
+
+.line-numbers__item {
+  padding: 0 10px;
+  font-family: Consolas, monospace;
+  line-height: 120%;
+  color: #818181;
+  text-align: right;
+}
