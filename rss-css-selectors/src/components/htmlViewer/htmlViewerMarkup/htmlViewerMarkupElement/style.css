@@ -1,0 +1,15 @@
+.pl-20 {
+  padding-left: 20px;
+}
+
+.ct {
+  display: block;
+}
+
+.ct:not(.active) {
+  color: #818181;
+}
+
+.active {
+  color: white;
+}
