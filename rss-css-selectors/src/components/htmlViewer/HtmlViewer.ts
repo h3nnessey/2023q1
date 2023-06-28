@@ -8,15 +8,14 @@ export class HtmlViewer extends BaseComponent {
   private readonly lineNumbers: LineNumbers;
   private readonly htmlViewerMarkup: HtmlViewerMarkup;
 
-  constructor(private nodes: LessonNode[]) {
-    super({ classNames: ['html-viewer'] });
+  constructor(private nodes: LessonNode[], parent: BaseComponent) {
+    super({ classNames: ['html-viewer'], parent });
 
     this.lineNumbers = new LineNumbers(this);
     this.htmlViewerMarkup = new HtmlViewerMarkup(nodes, this);
   }
 
   public render(): void {
-    this.lineNumbers.render();
     this.htmlViewerMarkup.render(this.nodes);
   }
 
