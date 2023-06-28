@@ -65,6 +65,10 @@ export class BaseComponent {
     });
   }
 
+  public delete(): void {
+    this.element.remove();
+  }
+
   public addEventListener(eventType: keyof GlobalEventHandlersEventMap, callback: (event: Event) => void): void {
     this.element.addEventListener(eventType, callback);
   }
