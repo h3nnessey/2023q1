@@ -1,0 +1,13 @@
+.lesson-selector__item {
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 2rem;
+  border: 1px solid #818181;
+  height: fit-content;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.lesson-selector__item:hover {
+  color: greenyellow;
+}

@@ -1,0 +1,39 @@
+.table {
+  display: flex;
+  gap: 2rem;
+  flex-basis: 100%;
+  order: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #182932;
+}
+
+.table > .ct {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  width: 100px;
+  z-index: 1;
+}
+
+.table > .ct > .ct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(10deg);
+  transform-origin: bottom;
+  width: 100%;
+  z-index: 2;
+}
+
+.table > .ct > .ct > .ct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(10deg);
+  transform-origin: bottom;
+  width: 100%;
+  z-index: 3;
+}

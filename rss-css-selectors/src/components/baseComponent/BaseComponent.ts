@@ -1,4 +1,5 @@
 import { BaseComponentConstructor } from '../../types';
+import { CSS_CLASSES_TO_EXCLUDE } from '../../constants';
 
 export class BaseComponent {
   private readonly element: HTMLElement;
@@ -6,13 +7,18 @@ export class BaseComponent {
   public parent: BaseComponent | null = null;
   public classNames: string[] = [];
 
-  constructor({ tagName = 'div', classNames = [], parent }: BaseComponentConstructor) {
+  constructor({ tagName = 'div', classNames = [], parent, text }: BaseComponentConstructor) {
     this.element = document.createElement(tagName);
     this.tag = tagName;
     this.addClass(...classNames);
+
     if (parent) {
       this.parent = parent;
       parent.appendChild(this);
+    }
+
+    if (text) {
+      this.insertTextNodes([['afterbegin', text]]);
     }
   }
 
@@ -71,5 +77,13 @@ export class BaseComponent {
 
   public addEventListener(eventType: keyof GlobalEventHandlersEventMap, callback: (event: Event) => void): void {
     this.element.addEventListener(eventType, callback);
+  }
+
+  public getNodeClassName(): string {
+    const classes = this.classNames.filter((className) => {
+      return !CSS_CLASSES_TO_EXCLUDE.includes(className);
+    });
+
+    return `${classes.length ? '.' + classes.join(' ') : ''}`;
   }
 }

@@ -1,25 +1,28 @@
 import './style.css';
+import classNames from '../../../../classNames';
 import { BaseComponent } from '../../../baseComponent/BaseComponent';
 import { LessonNode } from '../../../../data/LessonNode';
-import {
-  CSS_CLASSES_TO_EXCLUDE,
-  LESSON_TARGET_CLASS,
-  HTML_VIEWER_MARKUP_ELEMENT_CLASS_LIST,
-} from '../../../../constants';
+import { LESSON_TARGET_CLASS } from '../../../../constants';
 
 export class HtmlViewerMarkupElement extends BaseComponent {
   private attributes: string[] = [];
 
-  constructor(node: LessonNode, parent: BaseComponent, private readonly htmlViewerElements: BaseComponent[]) {
+  constructor(
+    node: LessonNode,
+    parent: BaseComponent,
+    private readonly htmlViewerElements: BaseComponent[],
+    private readonly index: number
+  ) {
     super({
       tagName: node.tagName,
       classNames: node.classNames
         .filter((className) => className !== LESSON_TARGET_CLASS)
-        .concat(HTML_VIEWER_MARKUP_ELEMENT_CLASS_LIST),
+        .concat(Object.values(classNames.htmlViewer.element)),
       parent,
     });
 
     this.setNodeAttributes(node.classNames, node.id);
+    this.setAttribute('data-index', index.toString());
     this.setHoverHandler();
   }
 
@@ -56,37 +59,42 @@ export class HtmlViewerMarkupElement extends BaseComponent {
     this.addEventListener('mouseover', (event: Event) => {
       event.stopPropagation();
 
-      this.htmlViewerElements.forEach((el) => el.removeClass('active'));
+      this.htmlViewerElements.forEach((el) => el.removeClass(classNames.htmlViewer.activeElement));
 
-      this.addClass('active');
+      this.addClass(classNames.htmlViewer.activeElement);
 
       let current = this.parentElement;
 
       let selector =
-        this.tagName + this.getNodeClassName() + `${this.getAttribute('id') ? '#' + this.getAttribute('id') : ''}`;
+        this.tagName +
+        this.getNodeClassName() +
+        (this.getAttribute('id') ? '#' + this.getAttribute('id') : '') +
+        (this.getAttribute('data-index') ? `[data-index="${this.getAttribute('data-index')}"]` : '');
 
       while (current) {
-        if (current.hasClass('html')) {
+        if (current.hasClass(classNames.htmlViewer.markup)) {
           break;
         }
 
-        selector += ' ' + current.tagName;
+        selector +=
+          ' ' +
+          current.tagName +
+          (current.getAttribute('id') ? '#' + current.getAttribute('id') : '') +
+          (current.getAttribute('data-index') ? `[data-index="${current.getAttribute('data-index')}"]` : '');
+
         current = current.parentElement;
       }
 
-      console.log(selector.split(' ').reverse().join(' '));
+      selector = selector.split(' ').reverse().join(' ');
+
+      console.log(selector);
+      document.querySelectorAll(`.table *`).forEach((el) => el.classList.remove('hovered'));
+      document.querySelector(`.table ${selector}`)?.classList.add('hovered');
     });
 
     this.addEventListener('mouseleave', () => {
-      this.htmlViewerElements.forEach((el) => el.removeClass('active'));
+      this.htmlViewerElements.forEach((el) => el.removeClass(classNames.htmlViewer.activeElement));
+      document.querySelectorAll(`.table *`).forEach((el) => el.classList.remove('hovered'));
     });
-  }
-
-  private getNodeClassName(): string {
-    const classes = this.classNames.filter((className) => {
-      return !CSS_CLASSES_TO_EXCLUDE.includes(className);
-    });
-
-    return `${classes.length ? '.' + classes.join(' ') : ''}`;
   }
 }

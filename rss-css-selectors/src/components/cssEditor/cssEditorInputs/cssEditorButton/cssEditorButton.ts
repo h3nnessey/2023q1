@@ -1,16 +1,12 @@
-import './style.css';
+import './styles.css';
+import classNames from '../../../../classNames';
 import { BaseComponent } from '../../../baseComponent/BaseComponent';
-import { HtmlViewer } from '../../../htmlViewer/HtmlViewer';
 import { CssEditorTextInput } from '../cssEditorTextInput/CssEditorTextInput';
+import { Store } from '../../../../store/Store';
 
 export class CssEditorButton extends BaseComponent {
-  constructor(
-    private readonly cssEditorTextInput: CssEditorTextInput,
-    private readonly htmlViewer: HtmlViewer,
-    private readonly lessonAnswer: string,
-    parent: BaseComponent
-  ) {
-    super({ tagName: 'button', classNames: ['css-editor__button'], parent });
+  constructor(private readonly cssEditorTextInput: CssEditorTextInput, parent: BaseComponent) {
+    super({ tagName: 'button', classNames: [classNames.cssEditor.button], parent });
 
     this.insertTextNodes([['afterbegin', 'Enter']]);
 
@@ -19,7 +15,7 @@ export class CssEditorButton extends BaseComponent {
         try {
           const input = this.cssEditorTextInput.node as HTMLInputElement;
 
-          const selected = htmlViewer.node.querySelectorAll(`.html ${input.value.trim()}`);
+          const selected = Store.htmlViewer.node.querySelectorAll(`.html ${input.value.trim()}`);
           let html = '';
 
           selected.forEach((el) => {
@@ -27,7 +23,7 @@ export class CssEditorButton extends BaseComponent {
             html += el.innerHTML;
           });
 
-          console.log(html === this.lessonAnswer ? 'You WIN!' : 'Wrong selector');
+          console.log(html === Store.currentLessonAnswer ? 'You WIN!' : 'Wrong selector');
         } catch (err) {
           console.log('Not valid css-selector');
         }

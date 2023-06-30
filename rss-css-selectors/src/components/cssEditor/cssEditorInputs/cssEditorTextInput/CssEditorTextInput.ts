@@ -1,9 +1,11 @@
+import './style.css';
+import classNames from '../../../../classNames';
 import { BaseComponent } from '../../../baseComponent/BaseComponent';
-import { HtmlViewer } from '../../../htmlViewer/HtmlViewer';
+import { Store } from '../../../../store/Store';
 
 export class CssEditorTextInput extends BaseComponent {
-  constructor(private readonly htmlViewer: HtmlViewer, private readonly lessonAnswer: string, parent: BaseComponent) {
-    super({ tagName: 'input', classNames: ['css-editor__input'], parent });
+  constructor(parent: BaseComponent) {
+    super({ tagName: 'input', classNames: [classNames.cssEditor.textInput], parent });
 
     this.setAttribute('type', 'text');
 
@@ -12,7 +14,7 @@ export class CssEditorTextInput extends BaseComponent {
         try {
           const node = this.node as HTMLInputElement;
 
-          const selected = htmlViewer.node.querySelectorAll(`.html ${node.value.trim()}`);
+          const selected = Store.htmlViewer.node.querySelectorAll(`.html ${node.value.trim()}`);
           let html = '';
 
           selected.forEach((el) => {
@@ -20,7 +22,7 @@ export class CssEditorTextInput extends BaseComponent {
             html += el.innerHTML;
           });
 
-          console.log(html === this.lessonAnswer ? 'You WIN!' : 'Wrong selector');
+          console.log(html === Store.currentLessonAnswer ? 'You WIN!' : 'Wrong selector');
         } catch (err) {
           console.log('Not valid css-selector');
         }

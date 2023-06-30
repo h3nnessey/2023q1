@@ -1,3 +1,5 @@
 .html-viewer {
   display: flex;
+  flex-basis: 50%;
+  order: 3;
 }

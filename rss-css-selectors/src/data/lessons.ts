@@ -1,4 +1,4 @@
-import { Lesson, LessonNodeAttributes, Shapes } from '../types';
+import { CardRanks, CardSuits, Lesson, LessonNodeAttributes } from '../types';
 import { LessonNode } from './LessonNode';
 
 export const lessons: Lesson[] = [
@@ -9,11 +9,13 @@ export const lessons: Lesson[] = [
     selector: 'A',
     description:
       'Selects all elements of type A. Type refers to the type of tag, so div, p and ul are all different element types.',
-    examples: ['div selects all div elements.', 'p selects all p elements.'],
+    example: 'div selects all div elements.',
     answer: '&lt;rectangle /&gt;&lt;rectangle /&gt;',
     nodes: [
-      new LessonNode(Shapes.Rectangle, null, [LessonNodeAttributes.TargetClass]),
-      new LessonNode(Shapes.Rectangle, null, [LessonNodeAttributes.TargetClass]),
+      new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
+      new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Hearts]),
+      new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Diamonds]),
+      new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
     ],
   },
   {
@@ -23,12 +25,12 @@ export const lessons: Lesson[] = [
     selector: 'A',
     description:
       'Selects all elements of type A. Type refers to the type of tag, so div, p and ul are all different element types.',
-    examples: ['div selects all div elements.', 'p selects all p elements.'],
+    example: 'div selects all div elements.',
     answer: '&lt;rectangle /&gt;&lt;rectangle /&gt;',
     nodes: [
-      new LessonNode(Shapes.Rectangle, null, [LessonNodeAttributes.TargetClass]),
-      new LessonNode(Shapes.Square),
-      new LessonNode(Shapes.Rectangle, null, [LessonNodeAttributes.TargetClass]),
+      new LessonNode(CardRanks.Jack, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
+      new LessonNode(CardRanks.Queen, null, [CardSuits.Hearts]),
+      new LessonNode(CardRanks.Jack, null, [LessonNodeAttributes.TargetClass, CardSuits.Diamonds]),
     ],
   },
   {
@@ -37,12 +39,17 @@ export const lessons: Lesson[] = [
     subtitle: 'Select elements with an ID',
     selector: '#id',
     description: 'Selects the element with a specific id. You can also combine the ID selector with the type selector.',
-    examples: ['#cool selects any element with id="cool"', 'ul#long selects ul id="long"'],
+    example: '#cool selects any element with id="cool"',
     answer: '&lt;square id="rounded" /&gt;',
     nodes: [
-      new LessonNode(Shapes.Square, null, [LessonNodeAttributes.TargetClass], LessonNodeAttributes.Id),
-      new LessonNode(Shapes.Square),
-      new LessonNode(Shapes.Rectangle),
+      new LessonNode(
+        CardRanks.Five,
+        null,
+        [LessonNodeAttributes.TargetClass, CardSuits.Diamonds],
+        LessonNodeAttributes.Id
+      ),
+      new LessonNode(CardRanks.Eight, null, [CardSuits.Clubs]),
+      new LessonNode(CardRanks.Four, [new LessonNode(CardRanks.Queen, null, [CardSuits.Spades])], [CardSuits.Clubs]),
     ],
   },
   {
@@ -51,15 +58,16 @@ export const lessons: Lesson[] = [
     subtitle: 'Select an element inside another element',
     selector: 'A B',
     description: 'Selects all B inside of A. B is called a descendant because it is inside of another element.',
-    examples: [
-      'p  strong selects all strong elements that are inside of any p',
-      '#rounded  span selects any span elements that are inside of the element with id="rounded"',
-    ],
+    example: 'p  strong selects all strong elements that are inside of any p',
     answer: '&lt;circle /&gt;',
     nodes: [
-      new LessonNode(Shapes.Rectangle),
-      new LessonNode(Shapes.Square, [new LessonNode(Shapes.Circle, null, [LessonNodeAttributes.TargetClass])]),
-      new LessonNode(Shapes.Circle),
+      new LessonNode(
+        CardRanks.King,
+        [new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Diamonds])],
+        [CardSuits.Hearts]
+      ),
+      new LessonNode(CardRanks.Nine, [new LessonNode(CardRanks.Ten, null, [CardSuits.Clubs])], [CardSuits.Spades]),
+      new LessonNode(CardRanks.Three, null, [CardSuits.Hearts]),
     ],
   },
   {
@@ -68,17 +76,17 @@ export const lessons: Lesson[] = [
     subtitle: 'Combine the Descendant & ID Selectors',
     selector: '#id  A',
     description: 'You can combine any selector with the descendent selector.',
-    examples: ['#cool span selects all span elements that are inside of elements with id="cool"'],
+    example: '#cool span selects all span elements that are inside of elements with id="cool"',
     answer: '&lt;triangle /&gt;',
     nodes: [
-      new LessonNode(Shapes.Rectangle, [new LessonNode(Shapes.Hexagon)]),
+      new LessonNode(CardRanks.Two, [new LessonNode(CardRanks.Six, null, [CardSuits.Spades])], [CardSuits.Diamonds]),
+      new LessonNode(CardRanks.King, null, [CardSuits.Clubs]),
       new LessonNode(
-        Shapes.Square,
-        [new LessonNode(Shapes.Triangle, null, [LessonNodeAttributes.TargetClass])],
-        [],
+        CardRanks.Seven,
+        [new LessonNode(CardRanks.Ten, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs])],
+        [CardSuits.Hearts],
         LessonNodeAttributes.Id
       ),
-      new LessonNode(Shapes.Square, [new LessonNode(Shapes.Triangle)]),
     ],
   },
   {
@@ -88,15 +96,17 @@ export const lessons: Lesson[] = [
     selector: '.classname',
     description:
       'The class selector selects all elements with that class attribute. Elements can only have one ID, but many classes.',
-    examples: ['.neato selects all elements with class="neato"'],
+    example: '.neato selects all elements with class="neato"',
     answer: '&lt;circle class="border-red" /&gt;&lt;circle class="border-red" /&gt;',
     nodes: [
-      new LessonNode(Shapes.Circle),
-      new LessonNode(Shapes.Circle, null, [LessonNodeAttributes.TargetClass, LessonNodeAttributes.ClassName]),
-      new LessonNode(Shapes.Square, [
-        new LessonNode(Shapes.Circle, null, [LessonNodeAttributes.TargetClass, LessonNodeAttributes.ClassName]),
-      ]),
-      new LessonNode(Shapes.Square),
+      new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
+      new LessonNode(CardRanks.Eight, null, [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]),
+      new LessonNode(
+        CardRanks.Five,
+        [new LessonNode(CardRanks.Seven, null, [CardSuits.Clubs])],
+        [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]
+      ),
+      new LessonNode(CardRanks.Queen, [new LessonNode(CardRanks.Ace, null, [CardSuits.Spades])], [CardSuits.Hearts]),
     ],
   },
   {
@@ -105,21 +115,22 @@ export const lessons: Lesson[] = [
     subtitle: 'Combine the Class Selector',
     selector: 'A.className',
     description: 'You can combine the class selector with other selectors, like the type selector.',
-    examples: [
-      'ul.important selects all ul elements that have class="important"',
-      '#big.wide selects all elements with id="big" that also have class="wide"',
-    ],
+    example: 'ul.important selects all ul elements that have class="important"',
     answer: '&lt;hexagon class="border-red" /&gt;&lt;hexagon class="border-red" /&gt;',
     nodes: [
-      new LessonNode(Shapes.Circle),
-      new LessonNode(Shapes.Circle, null, [LessonNodeAttributes.ClassName]),
-      new LessonNode(Shapes.Rectangle, [
-        new LessonNode(Shapes.Hexagon, null, [LessonNodeAttributes.TargetClass, LessonNodeAttributes.ClassName]),
-      ]),
-      new LessonNode(Shapes.Square, [new LessonNode(Shapes.Hexagon)]),
-      new LessonNode(Shapes.Square, [
-        new LessonNode(Shapes.Hexagon, null, [LessonNodeAttributes.TargetClass, LessonNodeAttributes.ClassName]),
-      ]),
+      new LessonNode(CardRanks.Seven, null, [CardSuits.Hearts]),
+      new LessonNode(CardRanks.Three, null, [CardSuits.Spades]),
+      new LessonNode(
+        CardRanks.Four,
+        [new LessonNode(CardRanks.Jack, null, [CardSuits.Diamonds])],
+        [CardSuits.Diamonds]
+      ),
+      new LessonNode(
+        CardRanks.King,
+        [new LessonNode(CardRanks.Eight, null, [CardSuits.Hearts])],
+        [CardSuits.Spades, LessonNodeAttributes.TargetClass]
+      ),
+      new LessonNode(CardRanks.King, [new LessonNode(CardRanks.Queen, null, [CardSuits.Clubs])], [CardSuits.Diamonds]),
     ],
   },
   {
@@ -128,18 +139,36 @@ export const lessons: Lesson[] = [
     subtitle: 'You can do it...',
     selector: 'Put your back into it!',
     description: 'Combine what you learned in the last few levels to solve this one!',
-    examples: [],
+    example: '',
     answer: '&lt;hexagon class="border-red" /&gt;&lt;hexagon class="border-red" /&gt;',
     nodes: [
-      new LessonNode(Shapes.Rectangle, [new LessonNode(Shapes.Hexagon)]),
-      new LessonNode(Shapes.Hexagon, null, [LessonNodeAttributes.ClassName]),
-      new LessonNode(Shapes.Rectangle, [
-        new LessonNode(Shapes.Hexagon, null, [LessonNodeAttributes.TargetClass, LessonNodeAttributes.ClassName]),
-      ]),
-      new LessonNode(Shapes.Rectangle, [new LessonNode(Shapes.Circle, null, [LessonNodeAttributes.ClassName])]),
-      new LessonNode(Shapes.Rectangle, [
-        new LessonNode(Shapes.Hexagon, null, [LessonNodeAttributes.TargetClass, LessonNodeAttributes.ClassName]),
-      ]),
+      new LessonNode(
+        CardRanks.Ace,
+        [
+          new LessonNode(
+            CardRanks.Ace,
+            [new LessonNode(CardRanks.Queen, null, [CardSuits.Hearts])],
+            [CardSuits.Diamonds]
+          ),
+        ],
+        [CardSuits.Clubs]
+      ),
+      new LessonNode(CardRanks.King, [new LessonNode(CardRanks.Eight, null, [CardSuits.Hearts])], [CardSuits.Spades]),
+      new LessonNode(
+        CardRanks.Jack,
+        [new LessonNode(CardRanks.Queen, null, [LessonNodeAttributes.TargetClass, CardSuits.Diamonds])],
+        [CardSuits.Hearts]
+      ),
+      new LessonNode(
+        CardRanks.Jack,
+        [new LessonNode(CardRanks.Queen, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades])],
+        [CardSuits.Hearts]
+      ),
+      new LessonNode(
+        CardRanks.Jack,
+        [new LessonNode(CardRanks.Queen, null, [CardSuits.Clubs], LessonNodeAttributes.Id)],
+        [CardSuits.Spades]
+      ),
     ],
   },
   {
@@ -149,20 +178,28 @@ export const lessons: Lesson[] = [
     selector: 'A, B',
     description:
       'Thanks to Shatner technology, this selects all A and B elements. You can combine any selectors this way, and you can specify more than two.',
-    examples: [
-      'p, .fun selects all p elements as well as all elements with class="fun"',
-      'a, p, div selects all a, p and div elements',
-    ],
+    example: 'p, .fun selects all p elements as well as all elements with class="fun"',
     answer:
       '&lt;square&gt;<triangle class="pl-20 ct">&lt;triangle /&gt;</triangle>&lt;/square&gt;&lt;rectangle&gt;<triangle class="pl-20 ct">&lt;triangle /&gt;</triangle>&lt;/rectangle&gt;&lt;square&gt;<triangle class="pl-20 ct">&lt;triangle /&gt;</triangle>&lt;/square&gt;',
     nodes: [
-      new LessonNode(Shapes.Triangle, null, [LessonNodeAttributes.ClassName]),
-      new LessonNode(Shapes.Triangle),
-      new LessonNode(Shapes.Square, [new LessonNode(Shapes.Triangle)], [LessonNodeAttributes.TargetClass]),
-      new LessonNode(Shapes.Rectangle, [new LessonNode(Shapes.Triangle)], [LessonNodeAttributes.TargetClass]),
-      new LessonNode(Shapes.Square, [new LessonNode(Shapes.Triangle)], [LessonNodeAttributes.TargetClass]),
-      new LessonNode(Shapes.Triangle),
-      new LessonNode(Shapes.Triangle, null, [LessonNodeAttributes.ClassName]),
+      new LessonNode(CardRanks.Ten, null, [CardSuits.Diamonds]),
+      new LessonNode(
+        CardRanks.Ten,
+        [new LessonNode(CardRanks.Two, null, [CardSuits.Spades])],
+        [CardSuits.Clubs, LessonNodeAttributes.TargetClass]
+      ),
+      new LessonNode(
+        CardRanks.Ten,
+        [new LessonNode(CardRanks.Two, null, [CardSuits.Spades])],
+        [CardSuits.Clubs, LessonNodeAttributes.TargetClass]
+      ),
+      new LessonNode(
+        CardRanks.Ace,
+        [new LessonNode(CardRanks.Two, null, [CardSuits.Spades])],
+        [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]
+      ),
+      new LessonNode(CardRanks.Queen, null, [CardSuits.Clubs]),
+      new LessonNode(CardRanks.Ace, null, [CardSuits.Spades]),
     ],
   },
   {
@@ -171,23 +208,33 @@ export const lessons: Lesson[] = [
     subtitle: 'You can select everything!',
     selector: '*',
     description: 'You can select all elements with the universal selector!',
-    examples: ['p * selects any element inside all p elements.'],
+    example: 'p * selects any element inside all p elements.',
     answer:
       '&lt;circle /&gt;&lt;square&gt;<hexagon class="border-red pl-20 ct">&lt;hexagon class="border-red" /&gt;</hexagon>&lt;/square&gt;&lt;hexagon class="border-red" /&gt;&lt;rectangle /&gt;&lt;rectangle&gt;<hexagon class="pl-20 ct">&lt;hexagon /&gt;</hexagon>&lt;/rectangle&gt;&lt;hexagon /&gt;&lt;square id="rounded" /&gt;',
     nodes: [
-      new LessonNode(Shapes.Circle, null, [LessonNodeAttributes.TargetClass]),
       new LessonNode(
-        Shapes.Square,
-        [new LessonNode(Shapes.Hexagon, null, [LessonNodeAttributes.TargetClass, LessonNodeAttributes.ClassName])],
-        [LessonNodeAttributes.TargetClass]
+        CardRanks.Jack,
+        [new LessonNode(CardRanks.Jack, null, [CardSuits.Hearts, LessonNodeAttributes.TargetClass])],
+        [CardSuits.Spades, LessonNodeAttributes.TargetClass]
       ),
-      new LessonNode(Shapes.Rectangle, null, [LessonNodeAttributes.TargetClass]),
       new LessonNode(
-        Shapes.Rectangle,
-        [new LessonNode(Shapes.Hexagon, null, [LessonNodeAttributes.TargetClass])],
-        [LessonNodeAttributes.TargetClass]
+        CardRanks.Queen,
+        [
+          new LessonNode(
+            CardRanks.Five,
+            [new LessonNode(CardRanks.Three, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs])],
+            [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]
+          ),
+        ],
+        [LessonNodeAttributes.TargetClass, CardSuits.Clubs]
       ),
-      new LessonNode(Shapes.Square, null, [LessonNodeAttributes.TargetClass], LessonNodeAttributes.Id),
+      new LessonNode(CardRanks.King, null, [LessonNodeAttributes.TargetClass, CardSuits.Hearts]),
+      new LessonNode(
+        CardRanks.Ace,
+        [new LessonNode(CardRanks.Eight, null, [LessonNodeAttributes.TargetClass, CardSuits.Diamonds])],
+        [LessonNodeAttributes.TargetClass, CardSuits.Hearts]
+      ),
+      new LessonNode(CardRanks.Nine, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
     ],
   },
 ];

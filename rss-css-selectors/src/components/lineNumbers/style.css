@@ -3,6 +3,7 @@
   flex-direction: column;
   list-style: none;
   background: black;
+  user-select: none;
 }
 
 .line-numbers__item {

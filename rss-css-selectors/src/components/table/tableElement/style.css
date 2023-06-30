@@ -1,0 +1,225 @@
+.table .ct {
+  height: 145px;
+}
+
+.table ace.clubs {
+  background: url('../../../assets/cards/ace_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table ace.diamonds {
+  background: url('../../../assets/cards/ace_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table ace.hearts {
+  background: url('../../../assets/cards/ace_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table ace.spades {
+  background: url('../../../assets/cards/ace_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table jack.clubs {
+  background: url('../../../assets/cards/jack_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table jack.diamonds {
+  background: url('../../../assets/cards/jack_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table jack.hearts {
+  background: url('../../../assets/cards/jack_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table jack.spades {
+  background: url('../../../assets/cards/jack_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table queen.clubs {
+  background: url('../../../assets/cards/queen_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table queen.diamonds {
+  background: url('../../../assets/cards/queen_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table queen.hearts {
+  background: url('../../../assets/cards/queen_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table queen.spades {
+  background: url('../../../assets/cards/queen_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table five.clubs {
+  background: url('../../../assets/cards/5_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table five.diamonds {
+  background: url('../../../assets/cards/5_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table five.hearts {
+  background: url('../../../assets/cards/5_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table five.spades {
+  background: url('../../../assets/cards/5_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table four.clubs {
+  background: url('../../../assets/cards/4_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table four.diamonds {
+  background: url('../../../assets/cards/4_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table four.hearts {
+  background: url('../../../assets/cards/4_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table four.spades {
+  background: url('../../../assets/cards/4_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table eight.clubs {
+  background: url('../../../assets/cards/8_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table eight.diamonds {
+  background: url('../../../assets/cards/8_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table eight.hearts {
+  background: url('../../../assets/cards/8_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table eight.spades {
+  background: url('../../../assets/cards/8_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table king.clubs {
+  background: url('../../../assets/cards/king_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table king.diamonds {
+  background: url('../../../assets/cards/king_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table king.hearts {
+  background: url('../../../assets/cards/king_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table king.spades {
+  background: url('../../../assets/cards/king_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table nine.clubs {
+  background: url('../../../assets/cards/9_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table nine.diamonds {
+  background: url('../../../assets/cards/9_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table nine.hearts {
+  background: url('../../../assets/cards/9_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table nine.spades {
+  background: url('../../../assets/cards/9_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table ten.clubs {
+  background: url('../../../assets/cards/10_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table ten.diamonds {
+  background: url('../../../assets/cards/10_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table ten.hearts {
+  background: url('../../../assets/cards/10_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table ten.spades {
+  background: url('../../../assets/cards/10_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table three.clubs {
+  background: url('../../../assets/cards/3_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table three.diamonds {
+  background: url('../../../assets/cards/3_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table three.hearts {
+  background: url('../../../assets/cards/3_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table three.spades {
+  background: url('../../../assets/cards/3_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table two.clubs {
+  background: url('../../../assets/cards/2_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table two.diamonds {
+  background: url('../../../assets/cards/2_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table two.hearts {
+  background: url('../../../assets/cards/2_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table two.spades {
+  background: url('../../../assets/cards/2_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table six.clubs {
+  background: url('../../../assets/cards/6_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table six.diamonds {
+  background: url('../../../assets/cards/6_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table six.hearts {
+  background: url('../../../assets/cards/6_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table six.spades {
+  background: url('../../../assets/cards/6_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table seven.clubs {
+  background: url('../../../assets/cards/7_of_clubs.svg') 50% 50% / cover no-repeat;
+}
+
+.table seven.diamonds {
+  background: url('../../../assets/cards/7_of_diamonds.svg') 50% 50% / cover no-repeat;
+}
+
+.table seven.hearts {
+  background: url('../../../assets/cards/7_of_hearts.svg') 50% 50% / cover no-repeat;
+}
+
+.table seven.spades {
+  background: url('../../../assets/cards/7_of_spades.svg') 50% 50% / cover no-repeat;
+}
+
+.table .ct .border-red {
+  border: 2px dashed deeppink;
+}
+
+.target {
+  box-shadow: 0 0 5px 5px rgba(152, 22, 80, 0.74);
+}
+
+.table .hovered {
+  position: relative;
+  box-shadow: 0 0 5px 5px rgb(19 211 96 / 70%);
+  z-index: 999;
+}
