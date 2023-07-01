@@ -206,4 +206,22 @@ export const lessons: Lesson[] = [
       ),
     ],
   },
+  {
+    id: 10,
+    title: 'Empty selector',
+    subtitle: 'You can select elements which do not have children',
+    selector: 'Syntax: <span class="text-code">T:empty</span>',
+    description: 'Selects all elements of type <span class="text-code">T</span> without children',
+    example:
+      'Selector <span class="text-code">ul:empty</span> selects all empty elements of type <span class="text-code">ul</span>',
+    target: `Select all empty ${CardRanks.King} cards`,
+    answer:
+      '<king class="target spades ct" data-index="1"></king><king class="target spades ct" data-index="3"></king>',
+    nodes: [
+      new LessonNode(CardRanks.King, [new LessonNode(CardRanks.Queen, null, [CardSuits.Hearts])], [CardSuits.Spades]),
+      new LessonNode(CardRanks.King, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
+      new LessonNode(CardRanks.King, [new LessonNode(CardRanks.Jack, null, [CardSuits.Clubs])], [CardSuits.Spades]),
+      new LessonNode(CardRanks.King, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
+    ],
+  },
 ];
