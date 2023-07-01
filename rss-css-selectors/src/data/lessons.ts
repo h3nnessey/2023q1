@@ -10,7 +10,7 @@ export const lessons: Lesson[] = [
     description: 'Selects all elements with <span class="text-code">T</span> tag name',
     example:
       'Selector <span class="text-code">queen</span> selects all elements with <span class="text-code">queen</span> tag name',
-    target: 'Select all Ace cards',
+    target: `Select all ${CardRanks.Ace} cards`,
     answer:
       '<ace class="target clubs ct" data-index="0"></ace><ace class="target hearts ct" data-index="1"></ace><ace class="target diamonds ct" data-index="2"></ace><ace class="target spades ct" data-index="3"></ace>',
     nodes: [
@@ -23,13 +23,13 @@ export const lessons: Lesson[] = [
   {
     id: 2,
     title: 'ID Selector',
-    subtitle: 'Select elements by their ID',
+    subtitle: 'Select elements with an ID',
     selector: 'Syntax: <span class="text-code">#T</span>',
     description: 'Selects all elements with <span class="text-code">id="T"</span>',
     example:
       'Selector <span class="text-code">#main</span> selects all elements with <span class="text-code">id="main"</span>',
     answer: '<jack class="target spades ct" id="blurred" data-index="3"></jack>',
-    target: `Select ${LessonNodeAttributes.Id} card`,
+    target: `Select a ${LessonNodeAttributes.Id} card`,
     nodes: [
       new LessonNode(CardRanks.Ace, null, [CardSuits.Diamonds]),
       new LessonNode(CardRanks.King, null, [CardSuits.Hearts]),
@@ -44,22 +44,19 @@ export const lessons: Lesson[] = [
   },
   {
     id: 3,
-    title: 'ID Selector',
-    subtitle: 'Select elements with an ID',
-    selector: '#id',
-    description: 'Selects the element with a specific id. You can also combine the ID selector with the type selector.',
-    example: '#cool selects any element with id="cool"',
-    answer: '&lt;square id="rounded" /&gt;',
-    target: `Select ${LessonNodeAttributes.Id} card`,
+    title: 'Class Selector',
+    subtitle: 'Select elements with a specific class',
+    selector: 'Syntax: <span class="text-code">.T</span>',
+    description: 'Selects all elements with a <span class="text-code">class="T"</span>',
+    example:
+      'Selector <span class="text-code">.active</span> selects all elements which contains <span class="text-code">class="active"</span>',
+    target: `Select all ${CardSuits.Clubs} cards`,
+    answer: '<four class="target clubs ct" data-index="1"></four><nine class="target clubs ct" data-index="2"></nine>',
     nodes: [
-      new LessonNode(
-        CardRanks.Five,
-        null,
-        [LessonNodeAttributes.TargetClass, CardSuits.Diamonds],
-        LessonNodeAttributes.Id
-      ),
-      new LessonNode(CardRanks.Eight, null, [CardSuits.Clubs]),
-      new LessonNode(CardRanks.Four, [new LessonNode(CardRanks.Queen, null, [CardSuits.Spades])], [CardSuits.Clubs]),
+      new LessonNode(CardRanks.Five, null, [CardSuits.Spades]),
+      new LessonNode(CardRanks.Four, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
+      new LessonNode(CardRanks.Nine, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
+      new LessonNode(CardRanks.Ace, null, [CardSuits.Spades]),
     ],
   },
   {
