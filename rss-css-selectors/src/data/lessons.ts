@@ -224,4 +224,31 @@ export const lessons: Lesson[] = [
       new LessonNode(CardRanks.King, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
     ],
   },
+  {
+    id: 11,
+    title: 'Negation selector',
+    subtitle: 'Select all elements which do not match negation selector',
+    selector: 'Syntax: <span class="text-code">T:not(K)</span>',
+    description:
+      'Selects all elements of type <span class="text-code">T</span> which do not match selector <span class="text-code">K</span>',
+    example:
+      'Selector <span class="text-code">button:not(button.active)</span> selects all elements of type <span class="text-code">button</span> which do not have <span class="text-code">active</span> class',
+    target: `Select all not empty ${CardRanks.King} cards`,
+    answer:
+      '<king class="target spades ct" data-index="0"><queen class="hearts ct" data-index="0"></queen></king><king class="target spades ct" data-index="2"><jack class="clubs ct" data-index="0"></jack></king>',
+    nodes: [
+      new LessonNode(
+        CardRanks.King,
+        [new LessonNode(CardRanks.Queen, null, [CardSuits.Hearts])],
+        [LessonNodeAttributes.TargetClass, CardSuits.Spades]
+      ),
+      new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
+      new LessonNode(
+        CardRanks.King,
+        [new LessonNode(CardRanks.Jack, null, [CardSuits.Clubs])],
+        [LessonNodeAttributes.TargetClass, CardSuits.Spades]
+      ),
+      new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
+    ],
+  },
 ];
