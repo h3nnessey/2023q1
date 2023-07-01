@@ -5,11 +5,11 @@ export const lessons: Lesson[] = [
   {
     id: 1,
     title: 'Type Selector',
-    subtitle: 'Select elements by their tag name',
+    subtitle: 'Selects all elements of specific type (tag name)',
     selector: 'Syntax: <span class="text-code">T</span>',
-    description: 'Selects all elements with <span class="text-code">T</span> tag name',
+    description: 'Selects all elements of type <span class="text-code">T</span>',
     example:
-      'Selector <span class="text-code">queen</span> selects all elements with <span class="text-code">queen</span> tag name',
+      'Selector <span class="text-code">queen</span> selects all elements of type <span class="text-code">queen</span>',
     target: `Select all ${CardRanks.Ace} cards`,
     answer:
       '<ace class="target clubs ct" data-index="0"></ace><ace class="target hearts ct" data-index="1"></ace><ace class="target diamonds ct" data-index="2"></ace><ace class="target spades ct" data-index="3"></ace>',
@@ -23,7 +23,7 @@ export const lessons: Lesson[] = [
   {
     id: 2,
     title: 'ID Selector',
-    subtitle: 'Select elements with an ID',
+    subtitle: 'Selects all elements with an specific ID',
     selector: 'Syntax: <span class="text-code">#T</span>',
     description: 'Selects all elements with <span class="text-code">id="T"</span>',
     example:
@@ -45,7 +45,7 @@ export const lessons: Lesson[] = [
   {
     id: 3,
     title: 'Class Selector',
-    subtitle: 'Select elements with a specific class',
+    subtitle: 'Selects all elements with a specific class',
     selector: 'Syntax: <span class="text-code">.T</span>',
     description: 'Selects all elements with a <span class="text-code">class="T"</span>',
     example:
@@ -92,22 +92,21 @@ export const lessons: Lesson[] = [
   },
   {
     id: 5,
-    title: '',
-    subtitle: 'Combine the Descendant & ID Selectors',
-    selector: '#id  A',
-    description: 'You can combine any selector with the descendent selector.',
-    example: '#cool span selects all span elements that are inside of elements with id="cool"',
-    answer: '&lt;triangle /&gt;',
-    target: 'Select all Ace cards',
+    title: 'Combined selector',
+    subtitle: 'Combines the type and class selectors in single one',
+    selector: 'Syntax: <span class="text-code">T.K</span>',
+    description:
+      'Selects all elements of type <span class="text-code">T</span> with class <span class="text-code">K</span>',
+    example:
+      'Selector <span class="text-code">button.active</span> selects all elements of type <span class="text-code">button</span> with class <span class="text-code">active</span>',
+    answer:
+      '<three class="target clubs ct" data-index="1"></three><three class="target clubs ct" data-index="3"></three>',
+    target: `Select all ${CardRanks.Three} of ${CardSuits.Clubs}`,
     nodes: [
-      new LessonNode(CardRanks.Two, [new LessonNode(CardRanks.Six, null, [CardSuits.Spades])], [CardSuits.Diamonds]),
+      new LessonNode(CardRanks.Three, null, [CardSuits.Diamonds]),
+      new LessonNode(CardRanks.Three, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
       new LessonNode(CardRanks.King, null, [CardSuits.Clubs]),
-      new LessonNode(
-        CardRanks.Seven,
-        [new LessonNode(CardRanks.Ten, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs])],
-        [CardSuits.Hearts],
-        LessonNodeAttributes.Id
-      ),
+      new LessonNode(CardRanks.Three, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
     ],
   },
   {
