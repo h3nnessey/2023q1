@@ -158,93 +158,43 @@ export const lessons: Lesson[] = [
   },
   {
     id: 8,
-    title: '',
-    subtitle: 'You can do it...',
-    selector: 'Put your back into it!',
-    description: 'Combine what you learned in the last few levels to solve this one!',
-    example: '',
-    answer: '&lt;hexagon class="border-red" /&gt;&lt;hexagon class="border-red" /&gt;',
-    target: 'Select all Ace cards',
+    title: 'Selector with comma',
+    subtitle: 'You can combine any selectors with commas and you will able to write less lines of code',
+    selector: 'Syntax: <span class="text-code">T, K, V</span> and more',
+    description:
+      'Select all elements of types <span class="text-code">T</span>, <span class="text-code">K</span> and <span class="text-code">V</span>',
+    example:
+      'Selector <span class="text-code">h1, h2, h3</span> selects all elements of types <span class="text-code">h1</span>, <span class="text-code">h2</span> and <span class="text-code">h3</span>',
+    target: 'Select all cards',
+    answer:
+      '<ace class="spades target ct" data-index="0"></ace><four class="clubs target ct" data-index="1"></four><five class="hearts target ct" data-index="2"></five><six class="diamonds target ct" data-index="3"></six><seven class="spades target ct" data-index="4"></seven>',
     nodes: [
-      new LessonNode(
-        CardRanks.Ace,
-        [
-          new LessonNode(
-            CardRanks.Ace,
-            [new LessonNode(CardRanks.Queen, null, [CardSuits.Hearts])],
-            [CardSuits.Diamonds]
-          ),
-        ],
-        [CardSuits.Clubs]
-      ),
-      new LessonNode(CardRanks.King, [new LessonNode(CardRanks.Eight, null, [CardSuits.Hearts])], [CardSuits.Spades]),
-      new LessonNode(
-        CardRanks.Jack,
-        [new LessonNode(CardRanks.Queen, null, [LessonNodeAttributes.TargetClass, CardSuits.Diamonds])],
-        [CardSuits.Hearts]
-      ),
-      new LessonNode(
-        CardRanks.Jack,
-        [new LessonNode(CardRanks.Queen, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades])],
-        [CardSuits.Hearts]
-      ),
-      new LessonNode(
-        CardRanks.Jack,
-        [new LessonNode(CardRanks.Queen, null, [CardSuits.Clubs], LessonNodeAttributes.Id)],
-        [CardSuits.Spades]
-      ),
+      new LessonNode(CardRanks.Ace, null, [CardSuits.Spades, LessonNodeAttributes.TargetClass]),
+      new LessonNode(CardRanks.Four, null, [CardSuits.Clubs, LessonNodeAttributes.TargetClass]),
+      new LessonNode(CardRanks.Five, null, [CardSuits.Hearts, LessonNodeAttributes.TargetClass]),
+      new LessonNode(CardRanks.Six, null, [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]),
+      new LessonNode(CardRanks.Seven, null, [CardSuits.Spades, LessonNodeAttributes.TargetClass]),
     ],
   },
   {
     id: 9,
-    title: 'Comma Combinator',
-    subtitle: 'Combine, selectors, with... commas!',
-    selector: 'A, B',
-    description:
-      'Thanks to Shatner technology, this selects all A and B elements. You can combine any selectors this way, and you can specify more than two.',
-    example: 'p, .fun selects all p elements as well as all elements with class="fun"',
-    target: 'Select all Ace cards',
+    title: 'Universal Selector',
+    subtitle: 'You can select all elements everywhere',
+    selector: 'Syntax: <span class="text-code">*</span>',
+    description: 'Selects all elements on the page',
+    example:
+      'Selector <span class="text-code">ul *</span> selects all elements inside of <span class="text-code">ul</span>',
+    target: `Select all cards inside of ${CardRanks.King}`,
     answer:
-      '&lt;square&gt;<triangle class="pl-20 ct">&lt;triangle /&gt;</triangle>&lt;/square&gt;&lt;rectangle&gt;<triangle class="pl-20 ct">&lt;triangle /&gt;</triangle>&lt;/rectangle&gt;&lt;square&gt;<triangle class="pl-20 ct">&lt;triangle /&gt;</triangle>&lt;/square&gt;',
-    nodes: [
-      new LessonNode(CardRanks.Ten, null, [CardSuits.Diamonds]),
-      new LessonNode(
-        CardRanks.Ten,
-        [new LessonNode(CardRanks.Two, null, [CardSuits.Spades])],
-        [CardSuits.Clubs, LessonNodeAttributes.TargetClass]
-      ),
-      new LessonNode(
-        CardRanks.Ten,
-        [new LessonNode(CardRanks.Two, null, [CardSuits.Spades])],
-        [CardSuits.Clubs, LessonNodeAttributes.TargetClass]
-      ),
-      new LessonNode(
-        CardRanks.Ace,
-        [new LessonNode(CardRanks.Two, null, [CardSuits.Spades])],
-        [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]
-      ),
-      new LessonNode(CardRanks.Queen, null, [CardSuits.Clubs]),
-      new LessonNode(CardRanks.Ace, null, [CardSuits.Spades]),
-    ],
-  },
-  {
-    id: 10,
-    title: 'The Universal Selector',
-    subtitle: 'You can select everything!',
-    selector: '*',
-    description: 'You can select all elements with the universal selector!',
-    example: 'p * selects any element inside all p elements.',
-    target: 'Select all Ace cards',
-    answer:
-      '&lt;circle /&gt;&lt;square&gt;<hexagon class="border-red pl-20 ct">&lt;hexagon class="border-red" /&gt;</hexagon>&lt;/square&gt;&lt;hexagon class="border-red" /&gt;&lt;rectangle /&gt;&lt;rectangle&gt;<hexagon class="pl-20 ct">&lt;hexagon /&gt;</hexagon>&lt;/rectangle&gt;&lt;hexagon /&gt;&lt;square id="rounded" /&gt;',
+      '<jack class="hearts target ct" data-index="0"></jack><five class="diamonds target ct" data-index="0"><three class="target clubs ct" data-index="0"></three></five><three class="target clubs ct" data-index="0"></three>',
     nodes: [
       new LessonNode(
-        CardRanks.Jack,
+        CardRanks.King,
         [new LessonNode(CardRanks.Jack, null, [CardSuits.Hearts, LessonNodeAttributes.TargetClass])],
-        [CardSuits.Spades, LessonNodeAttributes.TargetClass]
+        [CardSuits.Spades]
       ),
       new LessonNode(
-        CardRanks.Queen,
+        CardRanks.King,
         [
           new LessonNode(
             CardRanks.Five,
@@ -252,15 +202,8 @@ export const lessons: Lesson[] = [
             [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]
           ),
         ],
-        [LessonNodeAttributes.TargetClass, CardSuits.Clubs]
+        [CardSuits.Clubs]
       ),
-      new LessonNode(CardRanks.King, null, [LessonNodeAttributes.TargetClass, CardSuits.Hearts]),
-      new LessonNode(
-        CardRanks.Ace,
-        [new LessonNode(CardRanks.Eight, null, [LessonNodeAttributes.TargetClass, CardSuits.Diamonds])],
-        [LessonNodeAttributes.TargetClass, CardSuits.Hearts]
-      ),
-      new LessonNode(CardRanks.Nine, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
     ],
   },
 ];
