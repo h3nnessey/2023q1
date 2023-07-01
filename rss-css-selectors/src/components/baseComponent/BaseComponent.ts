@@ -7,7 +7,7 @@ export class BaseComponent {
   public parent: BaseComponent | null = null;
   public classNames: string[] = [];
 
-  constructor({ tagName = 'div', classNames = [], parent, text }: BaseComponentConstructor) {
+  constructor({ tagName = 'div', classNames = [], parent, text, html }: BaseComponentConstructor) {
     this.element = document.createElement(tagName);
     this.tag = tagName;
     this.addClass(...classNames);
@@ -19,6 +19,10 @@ export class BaseComponent {
 
     if (text) {
       this.setTextContent(text);
+    }
+
+    if (html) {
+      this.setHtml(html);
     }
   }
 
@@ -69,6 +73,11 @@ export class BaseComponent {
     config.forEach(([where, data]) => {
       this.element.insertAdjacentText(where, data);
     });
+  }
+
+  public setHtml(html: string): void {
+    this.element.innerHTML = '';
+    this.element.insertAdjacentHTML('afterbegin', html);
   }
 
   public setTextContent(text: string) {

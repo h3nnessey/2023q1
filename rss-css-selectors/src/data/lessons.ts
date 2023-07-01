@@ -5,13 +5,14 @@ export const lessons: Lesson[] = [
   {
     id: 1,
     title: 'Type Selector',
-    subtitle: 'Select elements by their type',
-    selector: 'A',
-    description:
-      'Selects all elements of type A. Type refers to the type of tag, so div, p and ul are all different element types.',
-    example: 'div selects all div elements.',
-    answer: '&lt;rectangle /&gt;&lt;rectangle /&gt;',
+    subtitle: 'Select elements by their tag name',
+    selector: 'Syntax: <span class="text-code">T</span> or <span class="text-code">t</span>',
+    description: 'Selects all elements with <span class="text-code">T</span> tag name.',
+    example:
+      'Selector <span class="text-code">queen</span> selects all elements with <span class="text-code">queen</span> tag name.',
     target: 'Select all Ace cards',
+    answer:
+      '<ace class="target clubs ct" data-index="0"></ace><ace class="target hearts ct" data-index="1"></ace><ace class="target diamonds ct" data-index="2"></ace><ace class="target spades ct" data-index="3"></ace>',
     nodes: [
       new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
       new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Hearts]),

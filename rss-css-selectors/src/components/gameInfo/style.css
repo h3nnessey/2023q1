@@ -3,3 +3,9 @@
   color: white;
   background: #0d0e1e;
 }
+
+.text-code {
+  display: inline-block;
+  background: grey;
+  padding: 2px 5px;
+}

@@ -10,18 +10,18 @@ export class CssEditorTextInput extends BaseComponent {
     this.setAttribute('type', 'text');
 
     this.addEventListener('keydown', (event: Event) => {
+      // add prevent cheating handlers (like select .target)
       if (event instanceof KeyboardEvent && event.key === 'Enter') {
         try {
           const node = this.node as HTMLInputElement;
 
-          const selected = Store.htmlViewer.node.querySelectorAll(`.html ${node.value.trim()}`);
+          const selected = Store.cardsTable.node.querySelectorAll(`${node.value.trim()}`);
           let html = '';
 
-          selected.forEach((el) => {
-            el.classList.add('selected');
-            html += el.innerHTML;
+          Array.from(selected).forEach((el) => {
+            html += el.outerHTML;
           });
-
+          console.log(html);
           console.log(html === Store.currentLessonAnswer ? 'You WIN!' : 'Wrong selector');
         } catch (err) {
           console.log('Not valid css-selector');

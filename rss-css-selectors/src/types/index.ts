@@ -47,4 +47,5 @@ export interface BaseComponentConstructor {
   classNames?: string[];
   parent?: BaseComponent;
   text?: string;
+  html?: string;
 }

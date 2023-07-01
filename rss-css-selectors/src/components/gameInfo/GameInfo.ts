@@ -6,44 +6,53 @@ export class GameInfo extends BaseComponent {
   private title: BaseComponent;
   private subtitle: BaseComponent;
   private selector: BaseComponent;
+  private description: BaseComponent;
   private example: BaseComponent;
 
   constructor() {
     super({ classNames: ['game-info'] });
 
     this.title = new BaseComponent({
-      tagName: 'h1',
+      tagName: 'h2',
       classNames: ['game-info__title'],
       parent: this,
       text: Store.currentLesson.title,
     });
 
     this.subtitle = new BaseComponent({
-      tagName: 'h2',
+      tagName: 'h3',
       classNames: ['game-info__subtitle'],
       parent: this,
       text: Store.currentLesson.subtitle,
     });
 
     this.selector = new BaseComponent({
-      tagName: 'h3',
+      tagName: 'p',
       classNames: ['game-info__selector'],
       parent: this,
-      text: Store.currentLesson.selector,
+      html: Store.currentLesson.selector,
+    });
+
+    this.description = new BaseComponent({
+      tagName: 'p',
+      classNames: ['game-info__description'],
+      parent: this,
+      html: Store.currentLesson.description,
     });
 
     this.example = new BaseComponent({
-      tagName: 'h4',
+      tagName: 'p',
       classNames: ['game-info__example'],
       parent: this,
-      text: Store.currentLesson.example,
+      html: Store.currentLesson.example,
     });
   }
 
   public render(): void {
     this.title.setTextContent(Store.currentLesson.title);
     this.subtitle.setTextContent(Store.currentLesson.subtitle);
-    this.selector.setTextContent(Store.currentLesson.selector);
-    this.example.setTextContent(Store.currentLesson.example);
+    this.selector.setHtml(Store.currentLesson.selector);
+    this.description.setHtml(Store.currentLesson.description);
+    this.example.setHtml(Store.currentLesson.example);
   }
 }
