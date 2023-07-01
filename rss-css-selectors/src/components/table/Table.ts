@@ -10,6 +10,19 @@ export class Table extends BaseComponent {
 
   constructor(parent: BaseComponent) {
     super({ classNames: [classNames.table.root], parent });
+
+    this.node.addEventListener('mouse-in', (event: Event) => {
+      if (event instanceof CustomEvent) {
+        this.elements.forEach((element) => element.removeClass('hovered'));
+        this.node.querySelector(event.detail.selector)?.classList.add('hovered');
+      }
+    });
+
+    this.node.addEventListener('mouse-out', (event: Event) => {
+      if (event instanceof CustomEvent) {
+        this.elements.forEach((element) => element.removeClass('hovered'));
+      }
+    });
   }
 
   private createTableDom(nodeList: LessonNode[], parent: BaseComponent): void {
@@ -30,6 +43,7 @@ export class Table extends BaseComponent {
   }
 
   public render() {
+    this.elements.forEach((element) => element.delete());
     this.createTableDom(Store.currentLessonNodes, this);
   }
 }

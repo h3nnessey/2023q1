@@ -9,6 +9,7 @@ export class LessonSelectorElement extends BaseComponent {
     this.addEventListener('click', (event: Event) => {
       if (event instanceof MouseEvent) {
         const selectedLesson = Store.lessons.find((lesson) => lesson.id === this.id);
+
         Store.app.node.dispatchEvent(
           new CustomEvent('rerender', {
             detail: {

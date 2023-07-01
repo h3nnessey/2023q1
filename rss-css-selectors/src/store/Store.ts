@@ -16,4 +16,10 @@ export class Store {
   static htmlViewer: HtmlViewer;
   static cssEditor: CssEditor;
   static cardsTable: Table;
+
+  static updateCurrentLesson(newLesson: Lesson) {
+    Store.currentLesson = newLesson;
+    Store.currentLessonNodes = newLesson.nodes;
+    Store.currentLessonAnswer = newLesson.answer;
+  }
 }

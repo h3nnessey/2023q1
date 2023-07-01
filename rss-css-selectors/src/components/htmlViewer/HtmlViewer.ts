@@ -6,7 +6,7 @@ import { LineNumbers } from '../lineNumbers/LineNumbers';
 
 export class HtmlViewer extends BaseComponent {
   private readonly lineNumbers: LineNumbers;
-  private readonly htmlViewerMarkup: HtmlViewerMarkup;
+  public readonly htmlViewerMarkup: HtmlViewerMarkup;
 
   constructor(parent: BaseComponent) {
     super({ classNames: [classNames.htmlViewer.root], parent });
@@ -16,10 +16,6 @@ export class HtmlViewer extends BaseComponent {
   }
 
   public render(): void {
-    this.htmlViewerMarkup.render();
-  }
-
-  public rerender(): void {
     this.htmlViewerMarkup.render();
   }
 }

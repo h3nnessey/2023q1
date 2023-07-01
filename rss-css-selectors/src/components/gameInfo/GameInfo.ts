@@ -39,4 +39,11 @@ export class GameInfo extends BaseComponent {
       text: Store.currentLesson.example,
     });
   }
+
+  public render(): void {
+    this.title.setTextContent(Store.currentLesson.title);
+    this.subtitle.setTextContent(Store.currentLesson.subtitle);
+    this.selector.setTextContent(Store.currentLesson.selector);
+    this.example.setTextContent(Store.currentLesson.example);
+  }
 }

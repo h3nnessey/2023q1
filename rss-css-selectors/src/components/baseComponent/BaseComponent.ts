@@ -18,7 +18,7 @@ export class BaseComponent {
     }
 
     if (text) {
-      this.insertTextNodes([['afterbegin', text]]);
+      this.setTextContent(text);
     }
   }
 
@@ -69,6 +69,10 @@ export class BaseComponent {
     config.forEach(([where, data]) => {
       this.element.insertAdjacentText(where, data);
     });
+  }
+
+  public setTextContent(text: string) {
+    this.element.textContent = text;
   }
 
   public delete(): void {

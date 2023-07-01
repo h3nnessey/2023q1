@@ -3,6 +3,7 @@ import classNames from '../../../classNames';
 import { BaseComponent } from '../../baseComponent/BaseComponent';
 import { LessonNode } from '../../../data/LessonNode';
 import { LESSON_TARGET_CLASS } from '../../../constants';
+import { Store } from '../../../store/Store';
 
 export class TableElement extends BaseComponent {
   constructor(
@@ -39,16 +40,6 @@ export class TableElement extends BaseComponent {
 
       this.addClass('hovered');
 
-      let data = '';
-
-      if (this.node.children.length) {
-        data = `<${this.tagName}></${this.tagName}>`;
-      } else {
-        data = `<${this.tagName} />`;
-      }
-
-      this.setAttribute('data-value', data);
-
       let current = this.parentElement;
 
       let selector =
@@ -74,13 +65,19 @@ export class TableElement extends BaseComponent {
       selector = selector.split(' ').reverse().join(' ');
 
       console.log(selector);
-      document.querySelectorAll(`.html *`).forEach((el) => el.classList.remove('active'));
-      document.querySelector(`.html ${selector}`)?.classList.add('active');
+
+      Store.htmlViewer.htmlViewerMarkup.node.dispatchEvent(
+        new CustomEvent('mouse-in', {
+          detail: {
+            selector: selector,
+          },
+        })
+      );
     });
 
     this.addEventListener('mouseleave', () => {
       this.tableElements.forEach((el) => el.removeClass('hovered'));
-      document.querySelectorAll(`.html *`).forEach((el) => el.classList.remove('active'));
+      Store.htmlViewer.htmlViewerMarkup.node.dispatchEvent(new CustomEvent('mouse-out'));
     });
   }
 }

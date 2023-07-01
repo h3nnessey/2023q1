@@ -7,7 +7,6 @@ import { Store } from '../../../store/Store';
 
 export class HtmlViewerMarkup extends BaseComponent {
   private elements: BaseComponent[] = [];
-  private readonly lessonNodes: LessonNode[];
 
   constructor(parent: BaseComponent) {
     super({
@@ -15,7 +14,18 @@ export class HtmlViewerMarkup extends BaseComponent {
       parent,
     });
 
-    this.lessonNodes = Store.currentLessonNodes;
+    this.node.addEventListener('mouse-in', (event: Event) => {
+      if (event instanceof CustomEvent) {
+        this.elements.forEach((element) => element.removeClass('active'));
+        this.node.querySelector(event.detail.selector)?.classList.add('active');
+      }
+    });
+
+    this.node.addEventListener('mouse-out', (event: Event) => {
+      if (event instanceof CustomEvent) {
+        this.elements.forEach((element) => element.removeClass('active'));
+      }
+    });
   }
 
   private createHtmlViewerDom(nodeList: LessonNode[], parent: BaseComponent): void {
@@ -37,11 +47,10 @@ export class HtmlViewerMarkup extends BaseComponent {
   }
 
   public render(): void {
-    // this.node.innerHTML = '';
-    // this.elements.forEach((element) => element.delete());
-    // this.elements = [];
+    this.node.innerHTML = '';
+    this.elements.forEach((element) => element.delete());
 
-    this.createHtmlViewerDom(this.lessonNodes, this);
+    this.createHtmlViewerDom(Store.currentLessonNodes, this);
     this.insertTextNodes([
       ['afterbegin', `<div class="${classNames.htmlViewer.markup}">`],
       ['beforeend', '</div>'],

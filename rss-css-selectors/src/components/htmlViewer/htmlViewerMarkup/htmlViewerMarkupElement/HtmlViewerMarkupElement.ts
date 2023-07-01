@@ -3,6 +3,7 @@ import classNames from '../../../../classNames';
 import { BaseComponent } from '../../../baseComponent/BaseComponent';
 import { LessonNode } from '../../../../data/LessonNode';
 import { LESSON_TARGET_CLASS } from '../../../../constants';
+import { Store } from '../../../../store/Store';
 
 export class HtmlViewerMarkupElement extends BaseComponent {
   private attributes: string[] = [];
@@ -88,13 +89,19 @@ export class HtmlViewerMarkupElement extends BaseComponent {
       selector = selector.split(' ').reverse().join(' ');
 
       console.log(selector);
-      document.querySelectorAll(`.table *`).forEach((el) => el.classList.remove('hovered'));
-      document.querySelector(`.table ${selector}`)?.classList.add('hovered');
+
+      Store.cardsTable.node.dispatchEvent(
+        new CustomEvent('mouse-in', {
+          detail: {
+            selector: selector,
+          },
+        })
+      );
     });
 
     this.addEventListener('mouseleave', () => {
       this.htmlViewerElements.forEach((el) => el.removeClass(classNames.htmlViewer.activeElement));
-      document.querySelectorAll(`.table *`).forEach((el) => el.classList.remove('hovered'));
+      Store.cardsTable.node.dispatchEvent(new CustomEvent('mouse-out'));
     });
   }
 }

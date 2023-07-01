@@ -6,6 +6,7 @@ import { Table } from './components/table/Table';
 import { Store } from './store/Store';
 import { GameInfo } from './components/gameInfo/GameInfo';
 import { LessonSelector } from './components/lessonSelector/LessonSelector';
+import { Lesson } from './types';
 
 export class App extends BaseComponent {
   private readonly gameInfo: GameInfo;
@@ -27,6 +28,12 @@ export class App extends BaseComponent {
     Store.cardsTable = this.table;
     Store.htmlViewer = this.htmlViewer;
     Store.cssEditor = this.cssEditor;
+
+    this.node.addEventListener('rerender', (event: Event) => {
+      if (event instanceof CustomEvent) {
+        this.rerender(event.detail.lesson);
+      }
+    });
   }
 
   public render() {
@@ -35,14 +42,17 @@ export class App extends BaseComponent {
     this.htmlViewer.render();
 
     this.appContainer.append(this.node);
+  }
 
-    this.node.addEventListener('rerender', (event: Event) => {
-      if (event instanceof CustomEvent) {
-        console.log(`rerender was emitted with ${JSON.stringify(event.detail)}`);
-      }
-    });
+  public rerender(newLesson: Lesson) {
+    Store.updateCurrentLesson(newLesson);
+
+    this.gameInfo.render();
+    this.table.render();
+    this.htmlViewer.render();
   }
 }
 
 const app = new App(document.body);
+
 app.render();
