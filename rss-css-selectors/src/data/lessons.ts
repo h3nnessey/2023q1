@@ -93,7 +93,7 @@ export const lessons: Lesson[] = [
   {
     id: 5,
     title: 'Combined selector',
-    subtitle: 'Combines the type and class selectors in single one',
+    subtitle: 'Combines the type and class/id etc',
     selector: 'Syntax: <span class="text-code">T.K</span>',
     description:
       'Selects all elements of type <span class="text-code">T</span> with class <span class="text-code">K</span>',
@@ -101,7 +101,7 @@ export const lessons: Lesson[] = [
       'Selector <span class="text-code">button.active</span> selects all elements of type <span class="text-code">button</span> with class <span class="text-code">active</span>',
     answer:
       '<three class="target clubs ct" data-index="1"></three><three class="target clubs ct" data-index="3"></three>',
-    target: `Select all ${CardRanks.Three} of ${CardSuits.Clubs}`,
+    target: `Select all ${CardRanks.Three} of ${CardSuits.Clubs} cards`,
     nodes: [
       new LessonNode(CardRanks.Three, null, [CardSuits.Diamonds]),
       new LessonNode(CardRanks.Three, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
@@ -111,23 +111,20 @@ export const lessons: Lesson[] = [
   },
   {
     id: 6,
-    title: 'Class Selector',
-    subtitle: 'Select elements by their class',
-    selector: '.classname',
+    title: 'Combined Selector',
+    subtitle: 'Combines the type and class/id etc',
+    selector: 'Syntax: <span class="text-code">T#K</span>',
     description:
-      'The class selector selects all elements with that class attribute. Elements can only have one ID, but many classes.',
-    example: '.neato selects all elements with class="neato"',
-    answer: '&lt;circle class="border-red" /&gt;&lt;circle class="border-red" /&gt;',
-    target: 'Select all Ace cards',
+      'Selects all elements of type <span class="text-code">T</span> with id <span class="text-code">K</span>',
+    example:
+      'Selector <span class="text-code">button#primary</span> selects all elements of type <span class="text-code">button</span> with id <span class="text-code">primary</span>',
+    answer: '<king class="spades ct" id="blurred" data-index="2"></king>',
+    target: `Select ${LessonNodeAttributes.Id} ${CardRanks.King} card`,
     nodes: [
       new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
-      new LessonNode(CardRanks.Eight, null, [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]),
-      new LessonNode(
-        CardRanks.Five,
-        [new LessonNode(CardRanks.Seven, null, [CardSuits.Clubs])],
-        [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]
-      ),
-      new LessonNode(CardRanks.Queen, [new LessonNode(CardRanks.Ace, null, [CardSuits.Spades])], [CardSuits.Hearts]),
+      new LessonNode(CardRanks.King, null, [CardSuits.Diamonds]),
+      new LessonNode(CardRanks.King, null, [CardSuits.Spades], LessonNodeAttributes.Id),
+      new LessonNode(CardRanks.Ace, null, [CardSuits.Hearts], LessonNodeAttributes.Id),
     ],
   },
   {
