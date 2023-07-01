@@ -11,6 +11,7 @@ export const lessons: Lesson[] = [
       'Selects all elements of type A. Type refers to the type of tag, so div, p and ul are all different element types.',
     example: 'div selects all div elements.',
     answer: '&lt;rectangle /&gt;&lt;rectangle /&gt;',
+    target: 'Select all Ace cards',
     nodes: [
       new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
       new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Hearts]),
@@ -27,6 +28,7 @@ export const lessons: Lesson[] = [
       'Selects all elements of type A. Type refers to the type of tag, so div, p and ul are all different element types.',
     example: 'div selects all div elements.',
     answer: '&lt;rectangle /&gt;&lt;rectangle /&gt;',
+    target: 'Select all Ace cards',
     nodes: [
       new LessonNode(CardRanks.Jack, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
       new LessonNode(CardRanks.Queen, null, [CardSuits.Hearts]),
@@ -41,6 +43,7 @@ export const lessons: Lesson[] = [
     description: 'Selects the element with a specific id. You can also combine the ID selector with the type selector.',
     example: '#cool selects any element with id="cool"',
     answer: '&lt;square id="rounded" /&gt;',
+    target: `Select ${LessonNodeAttributes.Id} card`,
     nodes: [
       new LessonNode(
         CardRanks.Five,
@@ -60,6 +63,7 @@ export const lessons: Lesson[] = [
     description: 'Selects all B inside of A. B is called a descendant because it is inside of another element.',
     example: 'p  strong selects all strong elements that are inside of any p',
     answer: '&lt;circle /&gt;',
+    target: 'Select all Ace cards',
     nodes: [
       new LessonNode(
         CardRanks.King,
@@ -78,6 +82,7 @@ export const lessons: Lesson[] = [
     description: 'You can combine any selector with the descendent selector.',
     example: '#cool span selects all span elements that are inside of elements with id="cool"',
     answer: '&lt;triangle /&gt;',
+    target: 'Select all Ace cards',
     nodes: [
       new LessonNode(CardRanks.Two, [new LessonNode(CardRanks.Six, null, [CardSuits.Spades])], [CardSuits.Diamonds]),
       new LessonNode(CardRanks.King, null, [CardSuits.Clubs]),
@@ -98,6 +103,7 @@ export const lessons: Lesson[] = [
       'The class selector selects all elements with that class attribute. Elements can only have one ID, but many classes.',
     example: '.neato selects all elements with class="neato"',
     answer: '&lt;circle class="border-red" /&gt;&lt;circle class="border-red" /&gt;',
+    target: 'Select all Ace cards',
     nodes: [
       new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
       new LessonNode(CardRanks.Eight, null, [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]),
@@ -116,6 +122,7 @@ export const lessons: Lesson[] = [
     selector: 'A.className',
     description: 'You can combine the class selector with other selectors, like the type selector.',
     example: 'ul.important selects all ul elements that have class="important"',
+    target: 'Select all Ace cards',
     answer: '&lt;hexagon class="border-red" /&gt;&lt;hexagon class="border-red" /&gt;',
     nodes: [
       new LessonNode(CardRanks.Seven, null, [CardSuits.Hearts]),
@@ -141,6 +148,7 @@ export const lessons: Lesson[] = [
     description: 'Combine what you learned in the last few levels to solve this one!',
     example: '',
     answer: '&lt;hexagon class="border-red" /&gt;&lt;hexagon class="border-red" /&gt;',
+    target: 'Select all Ace cards',
     nodes: [
       new LessonNode(
         CardRanks.Ace,
@@ -179,6 +187,7 @@ export const lessons: Lesson[] = [
     description:
       'Thanks to Shatner technology, this selects all A and B elements. You can combine any selectors this way, and you can specify more than two.',
     example: 'p, .fun selects all p elements as well as all elements with class="fun"',
+    target: 'Select all Ace cards',
     answer:
       '&lt;square&gt;<triangle class="pl-20 ct">&lt;triangle /&gt;</triangle>&lt;/square&gt;&lt;rectangle&gt;<triangle class="pl-20 ct">&lt;triangle /&gt;</triangle>&lt;/rectangle&gt;&lt;square&gt;<triangle class="pl-20 ct">&lt;triangle /&gt;</triangle>&lt;/square&gt;',
     nodes: [
@@ -209,6 +218,7 @@ export const lessons: Lesson[] = [
     selector: '*',
     description: 'You can select all elements with the universal selector!',
     example: 'p * selects any element inside all p elements.',
+    target: 'Select all Ace cards',
     answer:
       '&lt;circle /&gt;&lt;square&gt;<hexagon class="border-red pl-20 ct">&lt;hexagon class="border-red" /&gt;</hexagon>&lt;/square&gt;&lt;hexagon class="border-red" /&gt;&lt;rectangle /&gt;&lt;rectangle&gt;<hexagon class="pl-20 ct">&lt;hexagon /&gt;</hexagon>&lt;/rectangle&gt;&lt;hexagon /&gt;&lt;square id="rounded" /&gt;',
     nodes: [

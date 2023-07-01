@@ -1,5 +1,6 @@
 .table .ct {
   height: 145px;
+  width: 100px;
 }
 
 .table ace.clubs {
@@ -215,11 +216,27 @@
 }
 
 .target {
-  box-shadow: 0 0 5px 5px rgba(152, 22, 80, 0.74);
+  animation: target 1s 0s infinite ease-in-out;
 }
 
-.table .hovered {
+@keyframes target {
+  0% {
+    box-shadow: 0 0 3px 3px rgba(255, 0, 0, 0.63);
+  }
+  50% {
+    box-shadow: 0 0 3px 3px rgba(0, 166, 255, 0.63);
+  }
+  100% {
+    box-shadow: 0 0 3px 3px rgba(255, 0, 0, 0.63);
+  }
+}
+
+.hovered {
   position: relative;
-  box-shadow: 0 0 5px 5px rgb(19 211 96 / 70%);
-  z-index: 999;
+  animation: none;
+  box-shadow: 0 0 3px 3px rgba(208, 255, 0, 0.63);
+}
+
+.table #blurred {
+  filter: blur(1px);
 }

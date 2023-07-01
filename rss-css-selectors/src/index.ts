@@ -7,8 +7,10 @@ import { Store } from './store/Store';
 import { GameInfo } from './components/gameInfo/GameInfo';
 import { LessonSelector } from './components/lessonSelector/LessonSelector';
 import { Lesson } from './types';
+import { LessonTarget } from './components/lessonTarget/LessonTarget';
 
 export class App extends BaseComponent {
+  private readonly lessonTarget: LessonTarget;
   private readonly gameInfo: GameInfo;
   private readonly lessonSelector: LessonSelector;
   private readonly table: Table;
@@ -18,16 +20,19 @@ export class App extends BaseComponent {
   constructor(private appContainer: HTMLElement) {
     super({ tagName: 'main', classNames: ['container'] });
 
-    this.gameInfo = new GameInfo(this);
-    this.lessonSelector = new LessonSelector(this);
+    this.lessonTarget = new LessonTarget(this);
+    this.gameInfo = new GameInfo();
+    this.lessonSelector = new LessonSelector(this.gameInfo);
     this.table = new Table(this);
     this.htmlViewer = new HtmlViewer(this);
     this.cssEditor = new CssEditor(this);
 
-    Store.app = this;
-    Store.cardsTable = this.table;
-    Store.htmlViewer = this.htmlViewer;
-    Store.cssEditor = this.cssEditor;
+    Store.setElements({
+      app: this,
+      cardsTable: this.table,
+      htmlViewer: this.htmlViewer,
+      cssEditor: this.cssEditor,
+    });
 
     this.node.addEventListener('rerender', (event: Event) => {
       if (event instanceof CustomEvent) {
@@ -41,12 +46,13 @@ export class App extends BaseComponent {
     this.cssEditor.render();
     this.htmlViewer.render();
 
-    this.appContainer.append(this.node);
+    this.appContainer.append(this.node, this.gameInfo.node);
   }
 
   public rerender(newLesson: Lesson) {
     Store.updateCurrentLesson(newLesson);
 
+    this.lessonTarget.rerender();
     this.gameInfo.render();
     this.table.render();
     this.htmlViewer.render();

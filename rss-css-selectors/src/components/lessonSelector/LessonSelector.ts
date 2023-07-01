@@ -10,7 +10,7 @@ export class LessonSelector extends BaseComponent {
     super({ tagName: 'ul', classNames: ['lesson-selector'], parent });
 
     Store.lessons.forEach((lesson) => {
-      const element = new LessonSelectorElement(lesson.id, this);
+      const element = new LessonSelectorElement(lesson.id, this.elements, this);
       this.elements.push(element);
     });
   }

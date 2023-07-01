@@ -7,6 +7,7 @@ export interface Lesson {
   subtitle: string;
   selector: string;
   description: string;
+  target: string;
   example: string;
   answer: string;
   nodes: LessonNode[];
@@ -36,7 +37,7 @@ export enum CardSuits {
 }
 
 export enum LessonNodeAttributes {
-  Id = 'rounded',
+  Id = 'blurred',
   ClassName = 'border-red',
   TargetClass = 'target',
 }

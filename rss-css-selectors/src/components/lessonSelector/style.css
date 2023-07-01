@@ -1,5 +1,8 @@
 .lesson-selector {
   list-style: none;
   display: flex;
+  flex-direction: column;
+  background: #0d0e1e;
   gap: 1rem;
+  min-width: 5%;
 }

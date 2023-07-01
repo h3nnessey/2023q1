@@ -1,0 +1,12 @@
+.lesson-target {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: #0d0e1e;
+}
+
+.lesson-target__title {
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  color: white;
+}

@@ -8,8 +8,8 @@ export class GameInfo extends BaseComponent {
   private selector: BaseComponent;
   private example: BaseComponent;
 
-  constructor(parent: BaseComponent) {
-    super({ classNames: ['game-info'], parent });
+  constructor() {
+    super({ classNames: ['game-info'] });
 
     this.title = new BaseComponent({
       tagName: 'h1',
@@ -19,21 +19,21 @@ export class GameInfo extends BaseComponent {
     });
 
     this.subtitle = new BaseComponent({
-      tagName: 'h1',
+      tagName: 'h2',
       classNames: ['game-info__subtitle'],
       parent: this,
       text: Store.currentLesson.subtitle,
     });
 
     this.selector = new BaseComponent({
-      tagName: 'h1',
+      tagName: 'h3',
       classNames: ['game-info__selector'],
       parent: this,
       text: Store.currentLesson.selector,
     });
 
     this.example = new BaseComponent({
-      tagName: 'h1',
+      tagName: 'h4',
       classNames: ['game-info__example'],
       parent: this,
       text: Store.currentLesson.example,

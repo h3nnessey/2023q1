@@ -11,3 +11,7 @@
 .lesson-selector__item:hover {
   color: greenyellow;
 }
+
+.lesson-selector__item.current {
+  color: red;
+}
