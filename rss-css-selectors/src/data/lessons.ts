@@ -6,10 +6,10 @@ export const lessons: Lesson[] = [
     id: 1,
     title: 'Type Selector',
     subtitle: 'Select elements by their tag name',
-    selector: 'Syntax: <span class="text-code">T</span> or <span class="text-code">t</span>',
-    description: 'Selects all elements with <span class="text-code">T</span> tag name.',
+    selector: 'Syntax: <span class="text-code">T</span>',
+    description: 'Selects all elements with <span class="text-code">T</span> tag name',
     example:
-      'Selector <span class="text-code">queen</span> selects all elements with <span class="text-code">queen</span> tag name.',
+      'Selector <span class="text-code">queen</span> selects all elements with <span class="text-code">queen</span> tag name',
     target: 'Select all Ace cards',
     answer:
       '<ace class="target clubs ct" data-index="0"></ace><ace class="target hearts ct" data-index="1"></ace><ace class="target diamonds ct" data-index="2"></ace><ace class="target spades ct" data-index="3"></ace>',
@@ -22,18 +22,24 @@ export const lessons: Lesson[] = [
   },
   {
     id: 2,
-    title: 'Type Selector',
-    subtitle: 'Select elements by their type',
-    selector: 'A',
-    description:
-      'Selects all elements of type A. Type refers to the type of tag, so div, p and ul are all different element types.',
-    example: 'div selects all div elements.',
-    answer: '&lt;rectangle /&gt;&lt;rectangle /&gt;',
-    target: 'Select all Ace cards',
+    title: 'ID Selector',
+    subtitle: 'Select elements by their ID',
+    selector: 'Syntax: <span class="text-code">#T</span>',
+    description: 'Selects all elements with <span class="text-code">id="T"</span>',
+    example:
+      'Selector <span class="text-code">#main</span> selects all elements with <span class="text-code">id="main"</span>',
+    answer: '<jack class="target spades ct" id="blurred" data-index="3"></jack>',
+    target: `Select ${LessonNodeAttributes.Id} card`,
     nodes: [
-      new LessonNode(CardRanks.Jack, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
-      new LessonNode(CardRanks.Queen, null, [CardSuits.Hearts]),
-      new LessonNode(CardRanks.Jack, null, [LessonNodeAttributes.TargetClass, CardSuits.Diamonds]),
+      new LessonNode(CardRanks.Ace, null, [CardSuits.Diamonds]),
+      new LessonNode(CardRanks.King, null, [CardSuits.Hearts]),
+      new LessonNode(CardRanks.Three, null, [CardSuits.Clubs]),
+      new LessonNode(
+        CardRanks.Jack,
+        null,
+        [LessonNodeAttributes.TargetClass, CardSuits.Spades],
+        LessonNodeAttributes.Id
+      ),
     ],
   },
   {
