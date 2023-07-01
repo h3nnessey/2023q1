@@ -92,8 +92,8 @@ export const lessons: Lesson[] = [
   },
   {
     id: 5,
-    title: 'Combined selector',
-    subtitle: 'Combines the type and class/id etc',
+    title: 'Combined Selector',
+    subtitle: 'You can build a chain of any selectors',
     selector: 'Syntax: <span class="text-code">T.K</span>',
     description:
       'Selects all elements of type <span class="text-code">T</span> with class <span class="text-code">K</span>',
@@ -112,7 +112,7 @@ export const lessons: Lesson[] = [
   {
     id: 6,
     title: 'Combined Selector',
-    subtitle: 'Combines the type and class/id etc',
+    subtitle: 'You can build a chain of any selectors',
     selector: 'Syntax: <span class="text-code">T#K</span>',
     description:
       'Selects all elements of type <span class="text-code">T</span> with id <span class="text-code">K</span>',
@@ -129,27 +129,31 @@ export const lessons: Lesson[] = [
   },
   {
     id: 7,
-    title: '',
-    subtitle: 'Combine the Class Selector',
-    selector: 'A.className',
-    description: 'You can combine the class selector with other selectors, like the type selector.',
-    example: 'ul.important selects all ul elements that have class="important"',
-    target: 'Select all Ace cards',
-    answer: '&lt;hexagon class="border-red" /&gt;&lt;hexagon class="border-red" /&gt;',
+    title: 'Combined Selector',
+    subtitle: 'You can build a chain of any selectors',
+    selector: 'Syntax: <span class="text-code">T#K.V</span> and more',
+    description:
+      'Selects all elements of type <span class="text-code">T</span> with id <span class="text-code">K</span> and class <span class="text-code">V</span>',
+    example:
+      'Selector <span class="text-code">div#target.container</span> selects all elements of type <span class="text-code">div</span> with id <span class="text-code">target</span> and class <span class="text-code">container</span>',
+    target: `Select all ${LessonNodeAttributes.Id} ${CardRanks.Queen} of ${CardSuits.Spades}`,
+    answer:
+      '<queen class="target spades ct" id="blurred" data-index="0"></queen><queen class="target spades ct" id="blurred" data-index="2"></queen>',
     nodes: [
-      new LessonNode(CardRanks.Seven, null, [CardSuits.Hearts]),
-      new LessonNode(CardRanks.Three, null, [CardSuits.Spades]),
       new LessonNode(
-        CardRanks.Four,
-        [new LessonNode(CardRanks.Jack, null, [CardSuits.Diamonds])],
-        [CardSuits.Diamonds]
+        CardRanks.Queen,
+        null,
+        [LessonNodeAttributes.TargetClass, CardSuits.Spades],
+        LessonNodeAttributes.Id
       ),
+      new LessonNode(CardRanks.Queen, null, [CardSuits.Diamonds], LessonNodeAttributes.Id),
       new LessonNode(
-        CardRanks.King,
-        [new LessonNode(CardRanks.Eight, null, [CardSuits.Hearts])],
-        [CardSuits.Spades, LessonNodeAttributes.TargetClass]
+        CardRanks.Queen,
+        null,
+        [LessonNodeAttributes.TargetClass, CardSuits.Spades],
+        LessonNodeAttributes.Id
       ),
-      new LessonNode(CardRanks.King, [new LessonNode(CardRanks.Queen, null, [CardSuits.Clubs])], [CardSuits.Diamonds]),
+      new LessonNode(CardRanks.Queen, null, [CardSuits.Spades]),
     ],
   },
   {
