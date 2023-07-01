@@ -62,20 +62,32 @@ export const lessons: Lesson[] = [
   {
     id: 4,
     title: 'Descendant Selector',
-    subtitle: 'Select an element inside another element',
-    selector: 'A B',
-    description: 'Selects all B inside of A. B is called a descendant because it is inside of another element.',
-    example: 'p  strong selects all strong elements that are inside of any p',
-    answer: '&lt;circle /&gt;',
-    target: 'Select all Ace cards',
+    subtitle: 'Select an elements inside of another element',
+    selector: '<span class="text-code">T K</span>',
+    description:
+      'Selects all elements of type <span class="text-code">K</span> inside of <span class="text-code">T</span>',
+    example:
+      '<span class="text-code">ul li</span> selects all <span class="text-code">li</span> elements that are inside <span class="text-code">ul</span> element',
+    answer:
+      '<ace class="target diamonds ct" data-index="0"><ace class="target spades ct" data-index="0"></ace></ace><ace class="target spades ct" data-index="0"></ace>',
+    target: `Select all ${CardRanks.Ace} cards inside of ${CardRanks.King}`,
     nodes: [
       new LessonNode(
+        CardRanks.Queen,
+        [new LessonNode(CardRanks.Ace, [new LessonNode(CardRanks.Ace, null, [CardSuits.Spades])], [CardSuits.Hearts])],
+        [CardSuits.Spades]
+      ),
+      new LessonNode(
         CardRanks.King,
-        [new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Diamonds])],
+        [
+          new LessonNode(
+            CardRanks.Ace,
+            [new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades])],
+            [LessonNodeAttributes.TargetClass, CardSuits.Diamonds]
+          ),
+        ],
         [CardSuits.Hearts]
       ),
-      new LessonNode(CardRanks.Nine, [new LessonNode(CardRanks.Ten, null, [CardSuits.Clubs])], [CardSuits.Spades]),
-      new LessonNode(CardRanks.Three, null, [CardSuits.Hearts]),
     ],
   },
   {
