@@ -1,7 +1,24 @@
 .level-selector__toggle {
   position: relative;
-  width: 30px;
-  height: 30px;
+  font-size: 1.5rem;
+  outline: none;
+  border: none;
+  background: #0d0e1e;
+  color: #7faf30;
   cursor: pointer;
   z-index: 999;
+  transition: transform 0.2s ease-in-out, color 0.2s;
+}
+
+.level-selector__toggle:hover {
+  color: greenyellow;
+}
+
+.level-selector__toggle.active {
+  color: #626262;
+  transform: rotate(90deg);
+}
+
+.level-selector__toggle.active:hover {
+  color: #ffffff;
 }

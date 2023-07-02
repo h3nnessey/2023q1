@@ -64,8 +64,6 @@ export class TableElement extends BaseComponent {
 
       selector = selector.split(' ').reverse().join(' ');
 
-      console.log(selector);
-
       Store.htmlViewer.htmlViewerMarkup.node.dispatchEvent(
         new CustomEvent('mouse-in', {
           detail: {

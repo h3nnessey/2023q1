@@ -1,4 +1,7 @@
 .footer {
-  height: 50px;
+  line-height: 50px;
   background-color: #06241a;
+  color: white;
+  text-align: center;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
 }

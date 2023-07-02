@@ -4,6 +4,7 @@
 }
 
 .game .game__column:first-child {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   width: 100%;

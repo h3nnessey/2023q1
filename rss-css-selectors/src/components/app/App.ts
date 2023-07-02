@@ -26,6 +26,20 @@ export class App extends BaseComponent {
   constructor(private container: HTMLElement) {
     super({ tagName: 'main', classNames: ['game'] });
 
+    const btn = new BaseComponent({ tagName: 'button', html: '<span>⩥<span>', classNames: ['game-info__toggle'] });
+
+    btn.addEventListener('click', (event: Event) => {
+      if (event instanceof MouseEvent) {
+        if (this.gameInfo.node.classList.contains('hidden')) {
+          this.gameInfo.node.classList.remove('hidden');
+          btn.setHtml('<span>⩥<span>');
+        } else {
+          this.gameInfo.node.classList.add('hidden');
+          btn.setHtml('<span>⩤<span>');
+        }
+      }
+    });
+
     this.firstColumn = new BaseComponent({ classNames: ['game__column'], parent: this });
     this.secondColumn = new BaseComponent({ classNames: ['game__column'], parent: this });
 
@@ -33,6 +47,8 @@ export class App extends BaseComponent {
     this.table = new Table(this.firstColumn);
     this.htmlViewer = new HtmlViewer(this.firstColumn);
     this.cssEditor = new CssEditor(this.firstColumn);
+
+    this.secondColumn.appendChild(btn);
 
     this.gameInfo = new GameInfo(this.secondColumn);
     this.lessonSelector = new LessonSelector(this.gameInfo);
