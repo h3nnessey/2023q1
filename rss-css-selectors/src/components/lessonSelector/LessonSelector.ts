@@ -6,8 +6,8 @@ import { LessonSelectorElement } from './lessonSelectorElement/LessonSelectorEle
 export class LessonSelector extends BaseComponent {
   private elements: LessonSelectorElement[] = [];
 
-  constructor(parent: BaseComponent) {
-    super({ tagName: 'ul', classNames: ['lesson-selector'], parent });
+  constructor() {
+    super({ tagName: 'ul', classNames: ['lesson-selector'] });
 
     Store.lessons.forEach((lesson) => {
       const element = new LessonSelectorElement(lesson.id, this.elements, this);

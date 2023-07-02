@@ -6,7 +6,7 @@ import { CssEditor } from '../components/cssEditor/CssEditor';
 import { Table } from '../components/table/Table';
 import { App } from '../index';
 
-const lesson = lessons[10];
+const lesson = lessons[3];
 
 export class Store {
   static app: App;

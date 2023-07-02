@@ -22,7 +22,7 @@ export class App extends BaseComponent {
 
     this.lessonTarget = new LessonTarget(this);
     this.gameInfo = new GameInfo();
-    this.lessonSelector = new LessonSelector(this.gameInfo);
+    this.lessonSelector = new LessonSelector();
     this.table = new Table(this);
     this.htmlViewer = new HtmlViewer(this);
     this.cssEditor = new CssEditor(this);
@@ -46,7 +46,7 @@ export class App extends BaseComponent {
     this.cssEditor.render();
     this.htmlViewer.render();
 
-    this.appContainer.append(this.node, this.gameInfo.node);
+    this.appContainer.append(this.node, this.gameInfo.node, this.lessonSelector.node);
   }
 
   public rerender(newLesson: Lesson) {
