@@ -7,12 +7,20 @@
   display: flex;
   flex-direction: column;
   max-width: 400px;
+  height: auto;
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   color: white;
   background: #120e0e;
   padding: 1rem;
   overflow: hidden;
-  transition: width 0.2s;
+  opacity: 1;
+  transition: max-width 0.2s, padding 0.2s, opacity, 0.3s, height 1s;
+}
+
+.game-info.hidden {
+  max-width: 0;
+  padding: 0;
+  opacity: 0;
 }
 
 .game-info__toggle {
@@ -31,11 +39,6 @@
   background: #1e1a1a;
 }
 .game-info__toggle.active {
-}
-
-.game-info.hidden {
-  width: 0;
-  padding: 0;
 }
 
 .text-code {

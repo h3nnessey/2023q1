@@ -16,3 +16,13 @@
 .game .game__column:last-child {
   display: flex;
 }
+
+@media screen and (max-width: 1100px) {
+  .game .game__column:last-child {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1;
+  }
+}

@@ -253,3 +253,11 @@
 .table #blurred {
   filter: blur(1px);
 }
+
+@media screen and (max-width: 768px) {
+  .table .ct {
+    height: 120px;
+    width: 84px;
+    border-radius: 5px;
+  }
+}
