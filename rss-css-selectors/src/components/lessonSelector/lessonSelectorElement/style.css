@@ -1,9 +1,12 @@
 .lesson-selector__item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 2rem;
+  font-size: 1.1rem;
   border: 1px solid #818181;
-  height: fit-content;
-  padding: 10px;
+  width: 100%;
+  padding: 5px 15px;
   cursor: pointer;
   color: white;
 }

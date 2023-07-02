@@ -23,6 +23,34 @@ export class Table extends BaseComponent {
         this.elements.forEach((element) => element.removeClass('hovered'));
       }
     });
+
+    this.node.addEventListener('win', (event: Event) => {
+      if (event instanceof CustomEvent) {
+        this.addClass('win');
+        const currentId = Store.currentLesson.id === Store.lessons.length - 1 ? 0 : Store.currentLesson.id + 1;
+
+        setTimeout(() => {
+          Store.app.node.dispatchEvent(
+            new CustomEvent('rerender', {
+              detail: {
+                lesson: Store.lessons.find((lesson) => lesson.id === currentId),
+              },
+            })
+          );
+          this.removeClass('win');
+        }, 1000);
+      }
+    });
+
+    this.node.addEventListener('wrong-answer', (event: Event) => {
+      if (event instanceof CustomEvent) {
+        this.addClass('wrong-answer');
+
+        setTimeout(() => {
+          this.removeClass('wrong-answer');
+        }, 500);
+      }
+    });
   }
 
   private createTableDom(nodeList: LessonNode[], parent: BaseComponent): void {

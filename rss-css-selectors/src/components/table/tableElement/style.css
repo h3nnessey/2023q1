@@ -1,6 +1,7 @@
 .table .ct {
   height: 145px;
   width: 100px;
+  border-radius: 6px;
 }
 
 .table ace.clubs {
@@ -215,7 +216,20 @@
   border: 2px dashed deeppink;
 }
 
-.target {
+.table.win .target {
+  animation: win 1s 0s 1 forwards ease-in-out;
+}
+
+@keyframes win {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-999px);
+  }
+}
+
+.table .target {
   animation: target 1s 0s infinite ease-in-out;
 }
 
@@ -231,10 +245,9 @@
   }
 }
 
-.hovered {
-  position: relative;
+.table .hovered {
   animation: none;
-  box-shadow: 0 0 3px 3px rgba(208, 255, 0, 0.63);
+  box-shadow: 0 0 5px 5px rgba(255, 0, 252, 0.63);
 }
 
 .table #blurred {

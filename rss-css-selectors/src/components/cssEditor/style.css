@@ -1,8 +1,25 @@
 .css-editor {
   display: flex;
-  color: #818181;
-  background: #091314;
-  font-family: Consolas, monospace;
+  flex-direction: column;
   flex-basis: 50%;
   order: 2;
+  font-family: Consolas, monospace;
+  color: #818181;
+  background: #091314;
+}
+
+.css-editor__header {
+  display: flex;
+  justify-content: space-between;
+  font-family: Consolas, monospace;
+  color: #ababab;
+  background-color: #152736;
+  border: 1px solid #2d2e38;
+  line-height: 25px;
+  padding: 0 20px;
+}
+
+.css-editor__row {
+  display: flex;
+  flex: 1;
 }

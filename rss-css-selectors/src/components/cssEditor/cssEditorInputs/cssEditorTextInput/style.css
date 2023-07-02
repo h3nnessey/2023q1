@@ -1,3 +1,5 @@
 .css-editor__text-input {
-  background-color: red;
+  flex: 1;
+  height: fit-content;
+  font-size: 1.1rem;
 }

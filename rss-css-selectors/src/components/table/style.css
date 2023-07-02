@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   background-color: #182932;
-  transform: perspective(200px);
+  padding: 40px 0;
 }
 
 .table > .ct {
@@ -34,4 +34,23 @@
   transform: rotate(10deg);
   transform-origin: bottom;
   z-index: 3;
+}
+
+.table.wrong-answer .ct {
+  animation: wrong-answer 0.1s 0s infinite linear;
+}
+
+@keyframes wrong-answer {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(10px);
+  }
+  60% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

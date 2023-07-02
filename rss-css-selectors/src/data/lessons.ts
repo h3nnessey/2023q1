@@ -3,10 +3,10 @@ import { LessonNode } from './LessonNode';
 
 export const lessons: Lesson[] = [
   {
-    id: 1,
+    id: 0,
     title: 'Type Selector',
     subtitle: 'Selects all elements of specific type (tag name)',
-    selector: 'Syntax: <span class="text-code">T</span>',
+    selector: '<span class="text-code">T</span>',
     description: 'Selects all elements of type <span class="text-code">T</span>',
     example:
       '<span class="text-bold">Example:</span> selector <span class="text-code">queen</span> selects all elements of type <span class="text-code">queen</span>',
@@ -21,10 +21,10 @@ export const lessons: Lesson[] = [
     ],
   },
   {
-    id: 2,
+    id: 1,
     title: 'ID Selector',
     subtitle: 'Selects all elements with an specific ID',
-    selector: 'Syntax: <span class="text-code">#T</span>',
+    selector: '<span class="text-code">#T</span>',
     description: 'Selects all elements with <span class="text-code">id="T"</span>',
     example:
       '<span class="text-bold">Example:</span> selector <span class="text-code">#main</span> selects all elements with <span class="text-code">id="main"</span>',
@@ -43,10 +43,10 @@ export const lessons: Lesson[] = [
     ],
   },
   {
-    id: 3,
+    id: 2,
     title: 'Class Selector',
     subtitle: 'Selects all elements with a specific class',
-    selector: 'Syntax: <span class="text-code">.T</span>',
+    selector: '<span class="text-code">.T</span>',
     description: 'Selects all elements with a <span class="text-code">class="T"</span>',
     example:
       '<span class="text-bold">Example:</span> selector <span class="text-code">.active</span> selects all elements which contains <span class="text-code">class="active"</span>',
@@ -60,10 +60,10 @@ export const lessons: Lesson[] = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     title: 'Descendant Selector',
     subtitle: 'Select an elements inside of another element',
-    selector: 'Syntax: <span class="text-code">T K</span>',
+    selector: '<span class="text-code">T K</span>',
     description:
       'Selects all elements of type <span class="text-code">K</span> inside of <span class="text-code">T</span>',
     example:
@@ -92,10 +92,10 @@ export const lessons: Lesson[] = [
     ],
   },
   {
-    id: 5,
+    id: 4,
     title: 'Combined Selector',
     subtitle: 'You can build a chain of any selectors',
-    selector: 'Syntax: <span class="text-code">T.K</span>',
+    selector: '<span class="text-code">T.K</span>',
     description:
       'Selects all elements of type <span class="text-code">T</span> with class <span class="text-code">K</span>',
     example:
@@ -111,28 +111,33 @@ export const lessons: Lesson[] = [
     ],
   },
   {
-    id: 6,
+    id: 5,
     title: 'Combined Selector',
     subtitle: 'You can build a chain of any selectors',
-    selector: 'Syntax: <span class="text-code">T#K</span>',
+    selector: '<span class="text-code">T#K</span>',
     description:
       'Selects all elements of type <span class="text-code">T</span> with id <span class="text-code">K</span>',
     example:
       '<span class="text-bold">Example:</span> selector <span class="text-code">button#primary</span> selects all elements of type <span class="text-code">button</span> with id <span class="text-code">primary</span>',
-    answer: '<king class="spades ct" id="blurred" data-index="2"></king>',
+    answer: '<king class="target spades ct" id="blurred" data-index="2"></king>',
     target: `Select ${LessonNodeAttributes.Id} ${CardRanks.King} card`,
     nodes: [
       new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
       new LessonNode(CardRanks.King, null, [CardSuits.Diamonds]),
-      new LessonNode(CardRanks.King, null, [CardSuits.Spades], LessonNodeAttributes.Id),
+      new LessonNode(
+        CardRanks.King,
+        null,
+        [LessonNodeAttributes.TargetClass, CardSuits.Spades],
+        LessonNodeAttributes.Id
+      ),
       new LessonNode(CardRanks.Ace, null, [CardSuits.Hearts], LessonNodeAttributes.Id),
     ],
   },
   {
-    id: 7,
+    id: 6,
     title: 'Combined Selector',
     subtitle: 'You can build a chain of any selectors',
-    selector: 'Syntax: <span class="text-code">T#K.V</span> and more',
+    selector: '<span class="text-code">T#K.V</span>',
     description:
       'Selects all elements of type <span class="text-code">T</span> with id <span class="text-code">K</span> and class <span class="text-code">V</span>',
     example:
@@ -158,10 +163,10 @@ export const lessons: Lesson[] = [
     ],
   },
   {
-    id: 8,
+    id: 7,
     title: 'Selector with comma',
     subtitle: 'You can combine any selectors with commas and you will able to write less lines of code',
-    selector: 'Syntax: <span class="text-code">T, K, V</span> and more',
+    selector: '<span class="text-code">T, K, V</span>',
     description:
       'Select all elements of types <span class="text-code">T</span>, <span class="text-code">K</span> and <span class="text-code">V</span>',
     example:
@@ -178,10 +183,10 @@ export const lessons: Lesson[] = [
     ],
   },
   {
-    id: 9,
+    id: 8,
     title: 'Universal Selector',
     subtitle: 'You can select all elements everywhere',
-    selector: 'Syntax: <span class="text-code">*</span>',
+    selector: '<span class="text-code">*</span>',
     description: 'Selects all elements on the page',
     example:
       '<span class="text-bold">Example:</span> selector <span class="text-code">ul *</span> selects all elements inside of <span class="text-code">ul</span>',
@@ -208,10 +213,10 @@ export const lessons: Lesson[] = [
     ],
   },
   {
-    id: 10,
+    id: 9,
     title: 'Empty selector',
     subtitle: 'You can select elements which do not have children',
-    selector: 'Syntax: <span class="text-code">T:empty</span>',
+    selector: '<span class="text-code">T:empty</span>',
     description: 'Selects all elements of type <span class="text-code">T</span> without children',
     example:
       '<span class="text-bold">Example:</span> selector <span class="text-code">ul:empty</span> selects all empty elements of type <span class="text-code">ul</span>',
@@ -226,10 +231,10 @@ export const lessons: Lesson[] = [
     ],
   },
   {
-    id: 11,
+    id: 10,
     title: 'Negation selector',
     subtitle: 'Select all elements which do not match negation selector',
-    selector: 'Syntax: <span class="text-code">T:not(K)</span>',
+    selector: '<span class="text-code">T:not(K)</span>',
     description:
       'Selects all elements of type <span class="text-code">T</span> which do not match selector <span class="text-code">K</span>',
     example:

@@ -1,8 +1,25 @@
 .lesson-selector {
-  list-style: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  background: #0d0e1e;
+  align-items: center;
   gap: 1rem;
-  min-width: 5%;
+  padding: 20px 10px 10px 10px;
+  background: #0d0e1e;
+  list-style: none;
+  transition: right 0.2s ease-in-out;
+}
+
+.lesson-selector__title {
+  font-size: 1.3rem;
+  width: 100%;
+  text-align: left;
+}
+
+.lesson-selector.hidden {
+  right: -999px;
 }

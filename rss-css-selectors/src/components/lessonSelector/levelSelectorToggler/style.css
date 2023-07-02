@@ -1,0 +1,7 @@
+.level-selector__toggle {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 999;
+}

@@ -16,15 +16,23 @@ export class CssEditorTextInput extends BaseComponent {
           const node = this.node as HTMLInputElement;
 
           const selected = Store.cardsTable.node.querySelectorAll(`${node.value.trim()}`);
-          let html = '';
+
+          let answer = '';
 
           Array.from(selected).forEach((el) => {
-            html += el.outerHTML;
+            answer += el.outerHTML;
           });
-          console.log(html);
-          console.log(html === Store.currentLessonAnswer ? 'You WIN!' : 'Wrong selector');
+
+          const isWin = answer === Store.currentLessonAnswer;
+
+          if (isWin) {
+            Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
+            node.value = '';
+          } else {
+            Store.cardsTable.node.dispatchEvent(new CustomEvent('wrong-answer'));
+          }
         } catch (err) {
-          console.log('Not valid css-selector');
+          Store.cardsTable.node.dispatchEvent(new CustomEvent('wrong-answer'));
         }
       }
     });

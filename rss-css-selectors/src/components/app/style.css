@@ -1,0 +1,17 @@
+.game {
+  display: flex;
+  flex: 1;
+}
+
+.game .game__column:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background: #141414;
+  flex: 1;
+}
+
+.game .game__column:last-child {
+  display: flex;
+}

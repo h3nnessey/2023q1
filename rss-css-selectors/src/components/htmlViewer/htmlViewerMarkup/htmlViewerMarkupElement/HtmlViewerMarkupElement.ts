@@ -27,35 +27,6 @@ export class HtmlViewerMarkupElement extends BaseComponent {
     this.setHoverHandler();
   }
 
-  public insertText(node: LessonNode): void {
-    const nodeAttributes = this.attributes.length ? ' ' + this.attributes.join(' ') : '';
-
-    if (node.children) {
-      this.insertTextNodes([
-        ['afterbegin', `<${node.tagName}${nodeAttributes}>`],
-        ['beforeend', `</${node.tagName}>`],
-      ]);
-    } else {
-      this.insertTextNodes([['afterbegin', `<${node.tagName}${nodeAttributes} />`]]);
-    }
-  }
-
-  private setNodeAttributes(classNames: string[] | null, id: string | null): void {
-    if (classNames) {
-      classNames.forEach((className) => {
-        if (className === LESSON_TARGET_CLASS) return;
-
-        this.addClass(className);
-        this.attributes.push(`class="${className}"`);
-      });
-    }
-
-    if (id) {
-      this.setAttribute('id', id);
-      this.attributes.push(`id="${id}"`);
-    }
-  }
-
   private setHoverHandler(): void {
     this.addEventListener('mouseover', (event: Event) => {
       event.stopPropagation();
@@ -103,5 +74,34 @@ export class HtmlViewerMarkupElement extends BaseComponent {
       this.htmlViewerElements.forEach((el) => el.removeClass(classNames.htmlViewer.activeElement));
       Store.cardsTable.node.dispatchEvent(new CustomEvent('mouse-out'));
     });
+  }
+
+  public insertText(node: LessonNode): void {
+    const nodeAttributes = this.attributes.length ? ' ' + this.attributes.join(' ') : '';
+
+    if (node.children) {
+      this.insertTextNodes([
+        ['afterbegin', `<${node.tagName}${nodeAttributes}>`],
+        ['beforeend', `</${node.tagName}>`],
+      ]);
+    } else {
+      this.insertTextNodes([['afterbegin', `<${node.tagName}${nodeAttributes} />`]]);
+    }
+  }
+
+  private setNodeAttributes(classNames: string[] | null, id: string | null): void {
+    if (classNames) {
+      classNames.forEach((className) => {
+        if (className === LESSON_TARGET_CLASS) return;
+
+        this.addClass(className);
+        this.attributes.push(`class="${className}"`);
+      });
+    }
+
+    if (id) {
+      this.setAttribute('id', id);
+      this.attributes.push(`id="${id}"`);
+    }
   }
 }

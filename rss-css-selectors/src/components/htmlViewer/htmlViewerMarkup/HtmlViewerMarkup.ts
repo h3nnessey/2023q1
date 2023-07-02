@@ -52,7 +52,7 @@ export class HtmlViewerMarkup extends BaseComponent {
 
     this.createHtmlViewerDom(Store.currentLessonNodes, this);
     this.insertTextNodes([
-      ['afterbegin', `<div class="${classNames.htmlViewer.markup}">`],
+      ['afterbegin', `<div class="cards">`],
       ['beforeend', '</div>'],
     ]);
   }

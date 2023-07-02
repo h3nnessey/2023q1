@@ -1,16 +1,31 @@
 import './style.css';
 import { BaseComponent } from '../baseComponent/BaseComponent';
 import { Store } from '../../store/Store';
+import { LevelSelectorToggle } from '../lessonSelector/levelSelectorToggler/LevelSelectorToggle';
 
 export class GameInfo extends BaseComponent {
+  private readonly gameInfoRow: BaseComponent;
+  private lessonNumber: BaseComponent;
   private title: BaseComponent;
   private subtitle: BaseComponent;
   private selector: BaseComponent;
   private description: BaseComponent;
   private example: BaseComponent;
+  private levelSelectorToggle: LevelSelectorToggle;
 
-  constructor() {
-    super({ classNames: ['game-info'] });
+  constructor(parent: BaseComponent) {
+    super({ classNames: ['game-info'], parent });
+
+    this.gameInfoRow = new BaseComponent({ classNames: ['game-info__row'], parent: this });
+
+    this.lessonNumber = new BaseComponent({
+      tagName: 'p',
+      classNames: ['game-info__lesson-number'],
+      parent: this.gameInfoRow,
+      html: `<span>Lesson ${Store.currentLesson.id + 1} of ${Store.lessons.length}</span>`,
+    });
+
+    this.levelSelectorToggle = new LevelSelectorToggle(this.gameInfoRow);
 
     this.title = new BaseComponent({
       tagName: 'h2',
@@ -30,7 +45,7 @@ export class GameInfo extends BaseComponent {
       tagName: 'p',
       classNames: ['game-info__selector'],
       parent: this,
-      html: Store.currentLesson.selector,
+      html: `Syntax: ${Store.currentLesson.selector}`,
     });
 
     this.description = new BaseComponent({
@@ -49,9 +64,10 @@ export class GameInfo extends BaseComponent {
   }
 
   public render(): void {
+    this.lessonNumber.setHtml(`Lesson ${Store.currentLesson.id + 1} of ${Store.lessons.length}`);
     this.title.setTextContent(Store.currentLesson.title);
     this.subtitle.setTextContent(Store.currentLesson.subtitle);
-    this.selector.setHtml(Store.currentLesson.selector);
+    this.selector.setHtml(`Syntax: ${Store.currentLesson.selector}`);
     this.description.setHtml(Store.currentLesson.description);
     this.example.setHtml(Store.currentLesson.example);
   }
