@@ -14,11 +14,11 @@
   color: greenyellow;
 }
 
-.level-selector__toggle.active {
+.level-selector__toggle.opened {
   color: #626262;
   transform: rotate(90deg);
 }
 
-.level-selector__toggle.active:hover {
+.level-selector__toggle.opened:hover {
   color: #ffffff;
 }
