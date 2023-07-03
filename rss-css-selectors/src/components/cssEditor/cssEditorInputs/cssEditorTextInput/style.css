@@ -1,9 +1,13 @@
+.css-editor__text-inputs {
+  position: relative;
+}
+
 .css-editor__text-input {
   font-family: Consolas, monospace;
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(100% - 50px);
+  width: 100%;
   font-size: 1.1rem;
   z-index: 2;
   background: transparent;
@@ -14,8 +18,8 @@
   overflow: hidden;
   color: transparent;
   caret-color: red;
-  padding: 5px 0;
-  height: 100%;
+  height: 30px;
+  padding: 5px;
 }
 
 .css-editor__text-input_highlight {
@@ -24,12 +28,13 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(100% - 50px);
-  padding: 5px 0;
+  width: 100%;
+  height: 30px;
   z-index: 1;
+  padding: 5px;
 }
 
 #css-hljs {
   background: #000;
-  height: 100%;
+  height: 30px;
 }

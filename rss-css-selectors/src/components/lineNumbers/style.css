@@ -3,6 +3,7 @@
   flex-direction: column;
   list-style: none;
   background: black;
+  padding-top: 6px;
   user-select: none;
 }
 

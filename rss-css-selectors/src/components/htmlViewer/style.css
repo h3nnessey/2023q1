@@ -17,6 +17,9 @@
 
 .html-viewer__row {
   display: flex;
-
   flex: 1;
+}
+
+.html {
+  padding-top: 6px;
 }

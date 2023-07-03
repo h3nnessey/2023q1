@@ -22,7 +22,3 @@
   display: flex;
   flex: 1;
 }
-
-.css-editor .line-numbers {
-  justify-content: center;
-}
