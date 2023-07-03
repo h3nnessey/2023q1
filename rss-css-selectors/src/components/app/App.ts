@@ -50,6 +50,7 @@ export class App extends BaseComponent {
     this.table = new Table(this.firstColumn);
     this.cssEditor = new CssEditor(this.firstColumn);
     this.htmlViewer = new HtmlViewer(this.firstColumn);
+    this.firstColumn.appendChild(this.footer);
 
     this.secondColumn.appendChild(btn);
 
@@ -76,7 +77,7 @@ export class App extends BaseComponent {
     this.cssEditor.render();
     this.htmlViewer.render();
 
-    this.container.append(this.node, this.footer.node);
+    this.container.append(this.node);
   }
 
   public rerender(newLesson: Lesson) {

@@ -7,7 +7,7 @@ import { Table } from '../components/table/Table';
 import { App } from '../components/app/App';
 import { LessonSelector } from '../components/lessonSelector/LessonSelector';
 
-const lesson = lessons[0];
+const lesson = lessons[3];
 
 export class Store {
   static app: App;

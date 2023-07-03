@@ -75,6 +75,12 @@ export class BaseComponent {
     });
   }
 
+  public insertHtml(config: [InsertPosition, string][]): void {
+    config.forEach(([where, data]) => {
+      this.element.insertAdjacentHTML(where, data);
+    });
+  }
+
   public setHtml(html: string): void {
     this.element.innerHTML = '';
     this.element.insertAdjacentHTML('afterbegin', html);

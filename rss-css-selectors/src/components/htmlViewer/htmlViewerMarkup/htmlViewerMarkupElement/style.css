@@ -6,10 +6,26 @@
   display: block;
 }
 
-.ct:not(.active) {
-  color: #818181;
-}
+/*.ct:not(.active) {*/
+/*  background: #091314;*/
+/*}*/
 
 .active {
-  color: white;
+  background: #818181;
+}
+
+.tag-bracket {
+  color: deeppink;
+}
+
+.tag-name {
+  color: #dada48;
+}
+
+.tag-attr {
+  color: tomato;
+}
+
+.tag-attr-value {
+  color: blue;
 }

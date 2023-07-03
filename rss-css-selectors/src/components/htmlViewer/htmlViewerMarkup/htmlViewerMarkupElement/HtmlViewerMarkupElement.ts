@@ -6,7 +6,10 @@ import { LESSON_TARGET_CLASS } from '../../../../constants';
 import { Store } from '../../../../store/Store';
 
 export class HtmlViewerMarkupElement extends BaseComponent {
-  private attributes: string[] = [];
+  private attributes: {
+    classNames: string[];
+    id: string | null;
+  } = { classNames: [], id: null };
 
   constructor(
     node: LessonNode,
@@ -59,8 +62,6 @@ export class HtmlViewerMarkupElement extends BaseComponent {
 
       selector = selector.split(' ').reverse().join(' ');
 
-      console.log(selector);
-
       Store.cardsTable.node.dispatchEvent(
         new CustomEvent('mouse-in', {
           detail: {
@@ -77,15 +78,38 @@ export class HtmlViewerMarkupElement extends BaseComponent {
   }
 
   public insertText(node: LessonNode): void {
-    const nodeAttributes = this.attributes.length ? ' ' + this.attributes.join(' ') : '';
+    const id = this.attributes.id
+      ? `<span class="tag-attr">id</span><span class="tag-attr-value">="${this.attributes.id}"</span>`
+      : '';
+
+    const classNames = this.attributes.classNames.length
+      ? `<span class="tag-attr"> class</span><span class="tag-attr-value">="${this.attributes.classNames.join(
+          ' '
+        )}"</span>`
+      : '';
 
     if (node.children) {
-      this.insertTextNodes([
-        ['afterbegin', `<${node.tagName}${nodeAttributes}>`],
-        ['beforeend', `</${node.tagName}>`],
+      this.insertHtml([
+        [
+          'afterbegin',
+          `<span class="tag-bracket">&lt;</span><span class="tag-name">${node.tagName}</span>${
+            classNames + id
+          }<span class="tag-bracket">&gt;</span>`,
+        ],
+        [
+          'beforeend',
+          `<span class="tag-bracket">&lt;/</span><span class="tag-name">${node.tagName}</span><span class="tag-bracket">&gt;</span>`,
+        ],
       ]);
     } else {
-      this.insertTextNodes([['afterbegin', `<${node.tagName}${nodeAttributes} />`]]);
+      this.insertHtml([
+        [
+          'afterbegin',
+          `<span class="tag-bracket">&lt;</span><span class="tag-name">${node.tagName}</span>${
+            classNames + id
+          }<span class="tag-bracket">/&gt;</span>`,
+        ],
+      ]);
     }
   }
 
@@ -95,13 +119,13 @@ export class HtmlViewerMarkupElement extends BaseComponent {
         if (className === LESSON_TARGET_CLASS) return;
 
         this.addClass(className);
-        this.attributes.push(`class="${className}"`);
+        this.attributes.classNames.push(className);
       });
     }
 
     if (id) {
       this.setAttribute('id', id);
-      this.attributes.push(`id="${id}"`);
+      this.attributes.id = id;
     }
   }
 }

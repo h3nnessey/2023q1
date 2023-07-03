@@ -50,10 +50,18 @@ export class HtmlViewerMarkup extends BaseComponent {
     this.node.innerHTML = '';
     this.elements.forEach((element) => element.delete());
 
+    this.insertHtml([
+      [
+        'afterbegin',
+        `<span class="tag-bracket">&lt;</span><span class="tag-name">cards</span><span class="tag-bracket">&gt;</span>`,
+      ],
+    ]);
     this.createHtmlViewerDom(Store.currentLessonNodes, this);
-    this.insertTextNodes([
-      ['afterbegin', `<div class="cards">`],
-      ['beforeend', '</div>'],
+    this.insertHtml([
+      [
+        'beforeend',
+        `<span class="tag-bracket">&lt;/</span><span class="tag-name">cards</span><span class="tag-bracket">&gt;</span>`,
+      ],
     ]);
   }
 }
