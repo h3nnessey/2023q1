@@ -4,10 +4,12 @@ import { BaseComponent } from '../../baseComponent/BaseComponent';
 import { LessonNode } from '../../../data/LessonNode';
 import { LESSON_TARGET_CLASS } from '../../../constants';
 import { Store } from '../../../store/Store';
-import { TableElementInfo } from './tableElementInfo/TableElementInfo';
 
 export class TableElement extends BaseComponent {
-  public readonly elementInfo: TableElementInfo;
+  private attributes: {
+    classNames: string[];
+    id: string | null;
+  } = { classNames: [], id: null };
 
   constructor(
     node: LessonNode,
@@ -17,11 +19,26 @@ export class TableElement extends BaseComponent {
   ) {
     super({ tagName: node.tagName, classNames: node.classNames.concat([classNames.table.element.ct]), parent });
 
-    this.elementInfo = new TableElementInfo(node, this);
-
     this.setNodeAttributes(node.classNames, node.id);
     this.setAttribute('data-index', index.toString());
+    this.setDataHtmlValue(node);
     this.setHoverHandler();
+  }
+
+  public setDataHtmlValue(node: LessonNode): void {
+    const id = this.attributes.id ? ` id="${this.attributes.id}"` : '';
+
+    const classNames = this.attributes.classNames.length ? ` class="${this.attributes.classNames.join(' ')}"` : '';
+
+    let dataValue = '';
+
+    if (node.children) {
+      dataValue += `<${node.tagName}${classNames + id}></${node.tagName}>`;
+    } else {
+      dataValue += `<${node.tagName}${classNames + id} />`;
+    }
+
+    this.setAttribute('data-html', dataValue);
   }
 
   private setNodeAttributes(classNames: string[] | null, id: string | null): void {
@@ -30,11 +47,13 @@ export class TableElement extends BaseComponent {
         if (className === LESSON_TARGET_CLASS) return;
 
         this.addClass(className);
+        this.attributes.classNames.push(className);
       });
     }
 
     if (id) {
       this.setAttribute('id', id);
+      this.attributes.id = id;
     }
   }
 

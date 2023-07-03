@@ -56,6 +56,8 @@ export class CssEditorTextInput extends BaseComponent {
             answer += el.outerHTML;
           });
 
+          console.log(answer);
+
           const isWin = answer === Store.currentLessonAnswer;
 
           if (isWin) {
@@ -67,6 +69,7 @@ export class CssEditorTextInput extends BaseComponent {
           }
         } catch (err) {
           Store.cardsTable.node.dispatchEvent(new CustomEvent('wrong-answer'));
+          console.log(1);
         }
       }
     });

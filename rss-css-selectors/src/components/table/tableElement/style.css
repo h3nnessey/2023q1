@@ -5,6 +5,30 @@
   position: relative;
 }
 
+.table .ct.hovered::before {
+  content: attr(data-html);
+  position: absolute;
+  display: block;
+  padding: 10px;
+  top: -55px;
+  left: 0;
+  font-family: Consolas, monospace;
+  width: max-content;
+  color: white;
+  background: black;
+  z-index: 999;
+}
+
+.table .ct > .ct.hovered::before {
+  transform: rotate(-10deg);
+  top: -65px;
+}
+
+.table .ct > .ct > .ct.hovered::before {
+  transform: rotate(-20deg);
+  top: -75px;
+}
+
 .table ace.clubs {
   background: url('../../../assets/cards/ace_of_clubs.svg') 50% 50% / cover no-repeat;
 }
