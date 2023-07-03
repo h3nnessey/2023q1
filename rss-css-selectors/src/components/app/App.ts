@@ -27,7 +27,7 @@ export class App extends BaseComponent {
     super({ tagName: 'main', classNames: ['game'] });
 
     const btn = new BaseComponent({ tagName: 'button', html: '<span>⩥<span>', classNames: ['game-info__toggle'] });
-
+    // match media чтобы на лоу резе не было открыто сразу
     btn.addEventListener('click', (event: Event) => {
       if (event instanceof MouseEvent) {
         if (this.gameInfo.node.classList.contains('hidden')) {
@@ -40,20 +40,21 @@ export class App extends BaseComponent {
       }
     });
 
+    this.footer = new Footer();
+    this.header = new Header();
+
     this.firstColumn = new BaseComponent({ classNames: ['game__column'], parent: this });
     this.secondColumn = new BaseComponent({ classNames: ['game__column'], parent: this });
-
+    this.firstColumn.appendChild(this.header);
     this.lessonTarget = new LessonTarget(this.firstColumn);
     this.table = new Table(this.firstColumn);
-    this.htmlViewer = new HtmlViewer(this.firstColumn);
     this.cssEditor = new CssEditor(this.firstColumn);
+    this.htmlViewer = new HtmlViewer(this.firstColumn);
 
     this.secondColumn.appendChild(btn);
 
     this.gameInfo = new GameInfo(this.secondColumn);
     this.lessonSelector = new LessonSelector(this.gameInfo);
-    this.footer = new Footer();
-    this.header = new Header();
 
     Store.setElements({
       app: this,
@@ -75,7 +76,7 @@ export class App extends BaseComponent {
     this.cssEditor.render();
     this.htmlViewer.render();
 
-    this.container.append(this.header.node, this.node, this.footer.node);
+    this.container.append(this.node, this.footer.node);
   }
 
   public rerender(newLesson: Lesson) {

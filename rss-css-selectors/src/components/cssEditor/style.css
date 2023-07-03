@@ -1,8 +1,7 @@
 .css-editor {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
-  flex-basis: 50%;
-  order: 2;
+  width: 50%;
   font-family: Consolas, monospace;
   color: #818181;
   background: #091314;

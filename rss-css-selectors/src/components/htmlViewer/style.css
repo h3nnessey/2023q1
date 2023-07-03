@@ -1,8 +1,7 @@
 .html-viewer {
-  display: flex;
+  display: inline-flex;
+  width: 50%;
   flex-direction: column;
-  flex-basis: 50%;
-  order: 3;
 }
 
 .html-viewer__header {
