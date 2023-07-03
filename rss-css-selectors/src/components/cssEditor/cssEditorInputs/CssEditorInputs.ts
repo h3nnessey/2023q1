@@ -12,6 +12,17 @@ export class CssEditorInputs extends BaseComponent {
     super({ classNames: [classNames.cssEditor.inputs], parent });
 
     this.cssEditorTextInput = new CssEditorTextInput(this);
-    this.cssEditorButton = new CssEditorButton(this.cssEditorTextInput.input.node, this);
+
+    this.cssEditorButton = new CssEditorButton(
+      this.cssEditorTextInput.input.node,
+      this.cssEditorTextInput.code.node,
+      this
+    );
+
+    this.node.addEventListener('clear-inputs', () => {
+      const input = this.cssEditorTextInput.input.node as HTMLInputElement;
+      input.value = '';
+      this.cssEditorTextInput.code.setTextContent('');
+    });
   }
 }

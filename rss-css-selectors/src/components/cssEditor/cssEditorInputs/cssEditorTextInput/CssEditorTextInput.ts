@@ -10,7 +10,7 @@ import { Store } from '../../../../store/Store';
 hljs.registerLanguage('css', css);
 
 export class CssEditorTextInput extends BaseComponent {
-  private code: BaseComponent;
+  public code: BaseComponent;
   public input: BaseComponent;
 
   constructor(parent: BaseComponent) {
@@ -25,7 +25,7 @@ export class CssEditorTextInput extends BaseComponent {
       parent: this,
     });
 
-    this.input.setAttribute('rows', '1');
+    this.input.setAttribute('placeholder', 'Write a css selector...');
 
     this.code = new BaseComponent({
       classNames: [classNames.cssEditor.textInput + '_highlight', 'code', 'language-css'],
@@ -61,6 +61,7 @@ export class CssEditorTextInput extends BaseComponent {
           if (isWin) {
             Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
             node.value = '';
+            this.code.setTextContent('');
           } else {
             Store.cardsTable.node.dispatchEvent(new CustomEvent('wrong-answer'));
           }

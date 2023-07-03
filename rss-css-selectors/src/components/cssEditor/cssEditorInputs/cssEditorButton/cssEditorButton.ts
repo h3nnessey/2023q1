@@ -5,7 +5,7 @@ import { CssEditorTextInput } from '../cssEditorTextInput/CssEditorTextInput';
 import { Store } from '../../../../store/Store';
 
 export class CssEditorButton extends BaseComponent {
-  constructor(private readonly input: HTMLElement, parent: BaseComponent) {
+  constructor(private readonly input: HTMLElement, private readonly code: HTMLElement, parent: BaseComponent) {
     super({ tagName: 'button', classNames: [classNames.cssEditor.button], parent });
 
     this.insertTextNodes([['afterbegin', 'Enter']]);
@@ -29,6 +29,7 @@ export class CssEditorButton extends BaseComponent {
           if (isWin) {
             Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
             input.value = '';
+            code.textContent = '';
           } else {
             Store.cardsTable.node.dispatchEvent(new CustomEvent('wrong-answer'));
           }

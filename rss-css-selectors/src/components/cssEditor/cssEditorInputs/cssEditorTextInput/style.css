@@ -13,8 +13,6 @@
   background: transparent;
   outline: none;
   border: none;
-  resize: none;
-  white-space: nowrap;
   overflow: hidden;
   color: transparent;
   caret-color: red;
@@ -32,6 +30,7 @@
   height: 30px;
   z-index: 1;
   padding: 5px;
+  overflow: hidden;
 }
 
 #css-hljs {

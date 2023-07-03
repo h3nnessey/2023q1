@@ -26,5 +26,7 @@ export class CssEditor extends BaseComponent {
     this.cssEditorInputs = new CssEditorInputs(this.cssEditorRow);
   }
 
-  public render() {}
+  public render() {
+    this.cssEditorInputs.node.dispatchEvent(new CustomEvent('clear-inputs'));
+  }
 }

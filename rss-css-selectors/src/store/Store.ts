@@ -6,6 +6,7 @@ import { CssEditor } from '../components/cssEditor/CssEditor';
 import { Table } from '../components/table/Table';
 import { App } from '../components/app/App';
 import { LessonSelector } from '../components/lessonSelector/LessonSelector';
+import { BaseComponent } from '../components/baseComponent/BaseComponent';
 
 const lesson = lessons[3];
 

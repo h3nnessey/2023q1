@@ -74,7 +74,6 @@ export class App extends BaseComponent {
 
   public render() {
     this.table.render();
-    this.cssEditor.render();
     this.htmlViewer.render();
 
     this.container.append(this.node);
@@ -86,6 +85,7 @@ export class App extends BaseComponent {
     this.lessonTarget.rerender();
     this.lessonSelector.rerender();
     this.gameInfo.render();
+    this.cssEditor.render();
     this.table.render();
     this.htmlViewer.render();
   }

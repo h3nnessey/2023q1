@@ -4,8 +4,11 @@ import { BaseComponent } from '../../baseComponent/BaseComponent';
 import { LessonNode } from '../../../data/LessonNode';
 import { LESSON_TARGET_CLASS } from '../../../constants';
 import { Store } from '../../../store/Store';
+import { TableElementInfo } from './tableElementInfo/TableElementInfo';
 
 export class TableElement extends BaseComponent {
+  public readonly elementInfo: TableElementInfo;
+
   constructor(
     node: LessonNode,
     parent: BaseComponent,
@@ -13,6 +16,9 @@ export class TableElement extends BaseComponent {
     private readonly index: number
   ) {
     super({ tagName: node.tagName, classNames: node.classNames.concat([classNames.table.element.ct]), parent });
+
+    this.elementInfo = new TableElementInfo(node, this);
+
     this.setNodeAttributes(node.classNames, node.id);
     this.setAttribute('data-index', index.toString());
     this.setHoverHandler();
