@@ -1,13 +1,46 @@
 import './style.css';
+import 'highlight.js/styles/github.css';
+import hljs from 'highlight.js/lib/core';
+import css from 'highlight.js/lib/languages/css';
+
 import classNames from '../../../../classNames';
 import { BaseComponent } from '../../../baseComponent/BaseComponent';
 import { Store } from '../../../../store/Store';
 
+hljs.registerLanguage('css', css);
+
 export class CssEditorTextInput extends BaseComponent {
+  private code: BaseComponent;
+  private textArea: BaseComponent;
+
   constructor(parent: BaseComponent) {
-    super({ tagName: 'input', classNames: [classNames.cssEditor.textInput], parent });
+    super({
+      classNames: ['css-editor__text-inputs'],
+      parent,
+    });
+
+    this.textArea = new BaseComponent({
+      tagName: 'textarea',
+      classNames: [classNames.cssEditor.textInput],
+      parent: this,
+    });
+
+    this.textArea.setAttribute('rows', '1');
+
+    this.code = new BaseComponent({
+      classNames: [classNames.cssEditor.textInput + '_highlight', 'code', 'language-css'],
+      parent: this,
+    });
+
+    this.code.setAttribute('id', 'css-hljs');
 
     this.setAttribute('type', 'text');
+
+    this.addEventListener('input', () => {
+      const node = this.textArea.node as HTMLTextAreaElement;
+      this.code.setTextContent(node.value);
+      hljs.highlightElement(this.code.node);
+    });
 
     this.addEventListener('keydown', (event: Event) => {
       // add prevent cheating handlers (like select .target)
