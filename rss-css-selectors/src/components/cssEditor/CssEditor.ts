@@ -22,7 +22,7 @@ export class CssEditor extends BaseComponent {
 
     this.cssEditorRow = new BaseComponent({ classNames: ['css-editor__row'], parent: this });
 
-    this.lineNumbers = new LineNumbers(this.cssEditorRow);
+    this.lineNumbers = new LineNumbers(this.cssEditorRow, 1);
     this.cssEditorInputs = new CssEditorInputs(this.cssEditorRow);
   }
 
