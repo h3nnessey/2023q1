@@ -2,11 +2,13 @@ import './style.css';
 import { BaseComponent } from '../../baseComponent/BaseComponent';
 import { Store } from '../../../store/Store';
 import { Lesson } from '../../../types';
+import { setLocalStorage } from '../../../localStorage';
 
 export class LessonSelectorElement extends BaseComponent {
   private readonly lesson: Lesson;
 
   constructor(
+    public readonly completed: boolean,
     public readonly id: number,
     private readonly lessonSelectorElements: BaseComponent[],
     parent: BaseComponent
@@ -22,15 +24,16 @@ export class LessonSelectorElement extends BaseComponent {
       html: `${id + 1}. ${this.lesson.title}: ${this.lesson.selector}`,
     });
 
-    if (this.id === Store.currentLesson.id) this.addClass('current');
-
     this.addEventListener('click', (event: Event) => {
       if (event instanceof MouseEvent) {
-        this.lessonSelectorElements.forEach((element) => element.removeClass('current'));
         Store.levelSelector.addClass('hidden');
-        this.addClass('current');
 
-        const selectedLesson = Store.lessons.find((lesson) => lesson.id === this.id);
+        const selectedLesson = Store.lessons.find((lesson) => lesson.id === this.id)!;
+
+        setLocalStorage({
+          current: selectedLesson.id,
+          completed: Store.completed,
+        });
 
         Store.app.node.dispatchEvent(
           new CustomEvent('rerender', {

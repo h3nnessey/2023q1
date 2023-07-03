@@ -28,6 +28,7 @@ export class CssEditorButton extends BaseComponent {
 
           if (isWin) {
             Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
+            Store.completed.push(Store.currentLesson.id);
             input.value = '';
             code.textContent = '';
           } else {

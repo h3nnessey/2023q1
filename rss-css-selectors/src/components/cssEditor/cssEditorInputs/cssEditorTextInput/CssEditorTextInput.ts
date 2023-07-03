@@ -56,12 +56,11 @@ export class CssEditorTextInput extends BaseComponent {
             answer += el.outerHTML;
           });
 
-          console.log(answer);
-
           const isWin = answer === Store.currentLessonAnswer;
 
           if (isWin) {
             Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
+            Store.completed.push(Store.currentLesson.id);
             node.value = '';
             this.code.setTextContent('');
           } else {
@@ -69,7 +68,6 @@ export class CssEditorTextInput extends BaseComponent {
           }
         } catch (err) {
           Store.cardsTable.node.dispatchEvent(new CustomEvent('wrong-answer'));
-          console.log(1);
         }
       }
     });

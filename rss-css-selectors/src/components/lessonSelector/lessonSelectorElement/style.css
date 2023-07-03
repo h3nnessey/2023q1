@@ -11,6 +11,10 @@
   color: white;
 }
 
+.lesson-selector__item.completed {
+  border: 1px solid green;
+}
+
 .lesson-selector__item:hover {
   color: greenyellow;
 }

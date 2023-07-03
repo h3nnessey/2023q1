@@ -1,0 +1,10 @@
+.reset-progress {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  font-size: 2rem;
+}

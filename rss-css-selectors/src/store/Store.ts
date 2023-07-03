@@ -6,20 +6,30 @@ import { CssEditor } from '../components/cssEditor/CssEditor';
 import { Table } from '../components/table/Table';
 import { App } from '../components/app/App';
 import { LessonSelector } from '../components/lessonSelector/LessonSelector';
+import { GameState, getLocalStorage, setLocalStorage } from '../localStorage';
 
-const lesson = lessons[9];
+const { current, completed }: GameState = getLocalStorage();
 
 export class Store {
+  static lessons: Lesson[] = lessons;
   static app: App;
   static htmlViewer: HtmlViewer;
   static cssEditor: CssEditor;
   static cardsTable: Table;
   static levelSelector: LessonSelector;
+  static completed: number[] = completed;
 
-  static lessons: Lesson[] = lessons;
-  static currentLesson: Lesson = lesson;
-  static currentLessonNodes: LessonNode[] = lesson.nodes;
-  static currentLessonAnswer: string = lesson.answer;
+  static currentLesson: Lesson = lessons[current];
+  static currentLessonNodes: LessonNode[] = lessons[current].nodes;
+  static currentLessonAnswer: string = lessons[current].answer;
+
+  static resetCompleted(id: number) {
+    Store.completed = [];
+    setLocalStorage({
+      current: id,
+      completed: [],
+    });
+  }
 
   static setElements({
     app,

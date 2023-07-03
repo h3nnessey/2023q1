@@ -2,6 +2,7 @@ import './style.css';
 import { BaseComponent } from '../baseComponent/BaseComponent';
 import { Store } from '../../store/Store';
 import { LevelSelectorToggle } from '../lessonSelector/levelSelectorToggler/LevelSelectorToggle';
+import { ResetProgressButton } from './ResetProgressButton/ResetProgressButton';
 
 export class GameInfo extends BaseComponent {
   private readonly gameInfoRow: BaseComponent;
@@ -70,6 +71,6 @@ export class GameInfo extends BaseComponent {
     this.selector.setHtml(`Syntax: ${Store.currentLesson.selector}`);
     this.description.setHtml(Store.currentLesson.description);
     this.example.setHtml(Store.currentLesson.example);
-    this.levelSelectorToggle.removeClass('active');
+    this.levelSelectorToggle.removeClass('opened');
   }
 }
