@@ -2,7 +2,6 @@ import './style.css';
 import { BaseComponent } from '../baseComponent/BaseComponent';
 import { Store } from '../../store/Store';
 import { LevelSelectorToggle } from '../lessonSelector/levelSelectorToggler/LevelSelectorToggle';
-import { ResetProgressButton } from './ResetProgressButton/ResetProgressButton';
 
 export class GameInfo extends BaseComponent {
   private readonly gameInfoRow: BaseComponent;

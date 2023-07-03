@@ -33,6 +33,7 @@ export class LessonSelectorElement extends BaseComponent {
         setLocalStorage({
           current: selectedLesson.id,
           completed: Store.completed,
+          helped: [],
         });
 
         Store.app.node.dispatchEvent(

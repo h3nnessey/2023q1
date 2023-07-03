@@ -21,12 +21,13 @@ export class CssEditorInputs extends BaseComponent {
       this
     );
 
-    this.cssEditorHelpButton = new CssEditorHelpButton(this);
+    this.cssEditorHelpButton = new CssEditorHelpButton(this, this.cssEditorTextInput);
 
     this.node.addEventListener('clear-inputs', () => {
       const input = this.cssEditorTextInput.input.node as HTMLInputElement;
       input.value = '';
       this.cssEditorTextInput.code.setTextContent('');
+      this.cssEditorHelpButton.on();
     });
   }
 }

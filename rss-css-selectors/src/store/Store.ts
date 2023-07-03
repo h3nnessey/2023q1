@@ -8,7 +8,7 @@ import { App } from '../components/app/App';
 import { LessonSelector } from '../components/lessonSelector/LessonSelector';
 import { GameState, getLocalStorage, setLocalStorage } from '../localStorage';
 
-const { current, completed }: GameState = getLocalStorage();
+const { current, completed, helped }: GameState = getLocalStorage();
 
 export class Store {
   static lessons: Lesson[] = lessons;
@@ -17,7 +17,9 @@ export class Store {
   static cssEditor: CssEditor;
   static cardsTable: Table;
   static levelSelector: LessonSelector;
+
   static completed: number[] = completed;
+  static helped: number[] = helped;
 
   static currentLesson: Lesson = lessons[current];
   static currentLessonNodes: LessonNode[] = lessons[current].nodes;
@@ -28,6 +30,7 @@ export class Store {
     setLocalStorage({
       current: id,
       completed: [],
+      helped: [],
     });
   }
 

@@ -36,6 +36,27 @@ export class CssEditorTextInput extends BaseComponent {
 
     this.setAttribute('type', 'text');
 
+    this.node.addEventListener('help', (event: Event) => {
+      if (event instanceof CustomEvent) {
+        const helpAnswer = Store.currentLesson.help;
+
+        const node = this.input.node as HTMLInputElement;
+
+        for (let i = 0; i < helpAnswer.length; i += 1) {
+          setTimeout(() => {
+            node.disabled = true;
+
+            node.value += helpAnswer[i];
+            this.code.setTextContent(node.value);
+            hljs.highlightElement(this.code.node);
+
+            this.input.node.focus();
+            node.disabled = false;
+          }, i * 100);
+        }
+      }
+    });
+
     this.input.addEventListener('input', () => {
       const node = this.input.node as HTMLInputElement;
       this.code.setTextContent(node.value);

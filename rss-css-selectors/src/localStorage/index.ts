@@ -1,6 +1,7 @@
 export interface GameState {
   current: number;
   completed: number[];
+  helped: number[];
 }
 
 export const setLocalStorage = (gameState: GameState) => {
@@ -14,5 +15,6 @@ export const getLocalStorage = (): GameState => {
     : {
         current: 0,
         completed: [],
+        helped: [],
       };
 };

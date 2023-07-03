@@ -32,5 +32,7 @@ export class LessonSelector extends BaseComponent {
       if (Store.completed.includes(element.id)) element.addClass('completed');
       if (element.id === Store.currentLesson.id) element.addClass('current');
     });
+
+    this.addClass('hidden');
   }
 }

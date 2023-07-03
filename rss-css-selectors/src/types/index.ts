@@ -10,6 +10,7 @@ export interface Lesson {
   target: string;
   example: string;
   answer: string;
+  help: string;
   nodes: LessonNode[];
 }
 
