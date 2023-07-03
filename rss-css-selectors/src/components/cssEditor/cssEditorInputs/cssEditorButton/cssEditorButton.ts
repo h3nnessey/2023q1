@@ -5,27 +5,35 @@ import { CssEditorTextInput } from '../cssEditorTextInput/CssEditorTextInput';
 import { Store } from '../../../../store/Store';
 
 export class CssEditorButton extends BaseComponent {
-  constructor(private readonly cssEditorTextInput: CssEditorTextInput, parent: BaseComponent) {
+  constructor(private readonly input: HTMLElement, parent: BaseComponent) {
     super({ tagName: 'button', classNames: [classNames.cssEditor.button], parent });
 
     this.insertTextNodes([['afterbegin', 'Enter']]);
 
     this.addEventListener('click', (event: Event) => {
+      // add prevent cheating handlers (like select .target)
       if (event instanceof MouseEvent) {
         try {
-          const input = this.cssEditorTextInput.node as HTMLInputElement;
+          const input = this.input as HTMLInputElement;
 
-          const selected = Store.htmlViewer.node.querySelectorAll(`.html ${input.value.trim()}`);
-          let html = '';
+          const selected = Store.cardsTable.node.querySelectorAll(`${input.value.trim()}`);
 
-          selected.forEach((el) => {
-            el.classList.add('selected');
-            html += el.innerHTML;
+          let answer = '';
+
+          Array.from(selected).forEach((el) => {
+            answer += el.outerHTML;
           });
 
-          console.log(html === Store.currentLessonAnswer ? 'You WIN!' : 'Wrong selector');
+          const isWin = answer === Store.currentLessonAnswer;
+
+          if (isWin) {
+            Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
+            input.value = '';
+          } else {
+            Store.cardsTable.node.dispatchEvent(new CustomEvent('wrong-answer'));
+          }
         } catch (err) {
-          console.log('Not valid css-selector');
+          Store.cardsTable.node.dispatchEvent(new CustomEvent('wrong-answer'));
         }
       }
     });

@@ -11,7 +11,7 @@ hljs.registerLanguage('css', css);
 
 export class CssEditorTextInput extends BaseComponent {
   private code: BaseComponent;
-  private textArea: BaseComponent;
+  public input: BaseComponent;
 
   constructor(parent: BaseComponent) {
     super({
@@ -19,13 +19,13 @@ export class CssEditorTextInput extends BaseComponent {
       parent,
     });
 
-    this.textArea = new BaseComponent({
-      tagName: 'textarea',
+    this.input = new BaseComponent({
+      tagName: 'input',
       classNames: [classNames.cssEditor.textInput],
       parent: this,
     });
 
-    this.textArea.setAttribute('rows', '1');
+    this.input.setAttribute('rows', '1');
 
     this.code = new BaseComponent({
       classNames: [classNames.cssEditor.textInput + '_highlight', 'code', 'language-css'],
@@ -36,17 +36,17 @@ export class CssEditorTextInput extends BaseComponent {
 
     this.setAttribute('type', 'text');
 
-    this.addEventListener('input', () => {
-      const node = this.textArea.node as HTMLTextAreaElement;
+    this.input.addEventListener('input', () => {
+      const node = this.input.node as HTMLInputElement;
       this.code.setTextContent(node.value);
       hljs.highlightElement(this.code.node);
     });
 
-    this.addEventListener('keydown', (event: Event) => {
+    this.input.addEventListener('keydown', (event: Event) => {
       // add prevent cheating handlers (like select .target)
       if (event instanceof KeyboardEvent && event.key === 'Enter') {
         try {
-          const node = this.node as HTMLInputElement;
+          const node = this.input.node as HTMLInputElement;
 
           const selected = Store.cardsTable.node.querySelectorAll(`${node.value.trim()}`);
 

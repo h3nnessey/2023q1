@@ -12,6 +12,6 @@ export class CssEditorInputs extends BaseComponent {
     super({ classNames: [classNames.cssEditor.inputs], parent });
 
     this.cssEditorTextInput = new CssEditorTextInput(this);
-    this.cssEditorButton = new CssEditorButton(this.cssEditorTextInput, this);
+    this.cssEditorButton = new CssEditorButton(this.cssEditorTextInput.input.node, this);
   }
 }
