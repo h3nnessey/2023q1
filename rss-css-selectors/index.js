@@ -335,6 +335,8 @@ class App extends BaseComponent_1.BaseComponent {
                     this.lessonSelector.node.classList.add('hidden');
                 }
             }
+            else
+                this.gameInfo.node.classList.remove('hidden');
         });
         this.secondColumn.addEventListener('click', (event) => {
             if (event instanceof MouseEvent) {
