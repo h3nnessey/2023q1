@@ -1,7 +1,7 @@
 .table {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 4rem;
   width: 100%;
   justify-content: center;
   align-items: center;

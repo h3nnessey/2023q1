@@ -42,6 +42,12 @@ export class Table extends BaseComponent {
 
           const currentId = Store.currentLesson.id + 1;
 
+          setLocalStorage({
+            current: currentId,
+            completed: Store.completed,
+            helped: Store.helped,
+          });
+
           setTimeout(() => {
             Store.app.node.dispatchEvent(
               new CustomEvent('rerender', {
