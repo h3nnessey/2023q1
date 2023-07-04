@@ -17,7 +17,7 @@ export class App extends BaseComponent {
   private readonly firstColumn: BaseComponent;
   private readonly secondColumn: BaseComponent;
   private readonly lessonTarget: LessonTarget;
-  private readonly gameInfo: GameInfo;
+  public readonly gameInfo: GameInfo;
   private readonly lessonSelector: LessonSelector;
   private readonly table: Table;
   private readonly htmlViewer: HtmlViewer;

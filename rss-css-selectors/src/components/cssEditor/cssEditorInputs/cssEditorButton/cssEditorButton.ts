@@ -35,6 +35,7 @@ export class CssEditorButton extends BaseComponent {
               helped: Store.helped,
               current: Store.currentLesson.id,
             });
+            Store.app.gameInfo.render();
             Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
             input.value = '';
             code.textContent = '';

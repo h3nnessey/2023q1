@@ -42,8 +42,8 @@ export class CssEditorTextInput extends BaseComponent {
 
         const node = this.input.node as HTMLInputElement;
 
-        node.value = ''
-        this.code.setTextContent('')
+        node.value = '';
+        this.code.setTextContent('');
 
         for (let i = 0; i < helpAnswer.length; i += 1) {
           setTimeout(() => {
@@ -85,6 +85,7 @@ export class CssEditorTextInput extends BaseComponent {
 
           if (isWin) {
             Store.completed.push(Store.currentLesson.id);
+            Store.app.gameInfo.render();
             Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
             node.value = '';
             this.code.setTextContent('');

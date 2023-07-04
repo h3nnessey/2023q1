@@ -3,10 +3,12 @@ import { BaseComponent } from '../baseComponent/BaseComponent';
 import { Store } from '../../store/Store';
 import { LevelSelectorToggle } from '../lessonSelector/levelSelectorToggler/LevelSelectorToggle';
 import { ChangeLessonButtons } from './changeLessonButtons/ChangeLessonButtons';
+import { GameInfoLessonState } from './gameInfoLessonState/GameInfoLessonState';
 
 export class GameInfo extends BaseComponent {
   private readonly gameInfoRow: BaseComponent;
   private readonly changeLessonButtons: ChangeLessonButtons;
+  private readonly gameInfoLessonState: GameInfoLessonState;
   private lessonNumber: BaseComponent;
   private title: BaseComponent;
   private subtitle: BaseComponent;
@@ -24,8 +26,10 @@ export class GameInfo extends BaseComponent {
       tagName: 'p',
       classNames: ['game-info__lesson-number'],
       parent: this.gameInfoRow,
-      html: `<span>Lesson ${Store.currentLesson.id + 1} of ${Store.lessons.length}</span>`,
+      html: `Lesson ${Store.currentLesson.id + 1} of ${Store.lessons.length}`,
     });
+
+    this.gameInfoLessonState = new GameInfoLessonState(this.gameInfoRow);
 
     this.changeLessonButtons = new ChangeLessonButtons(this.gameInfoRow);
 
@@ -69,12 +73,12 @@ export class GameInfo extends BaseComponent {
 
   public render(): void {
     this.lessonNumber.setHtml(`Lesson ${Store.currentLesson.id + 1} of ${Store.lessons.length}`);
+    this.gameInfoLessonState.render();
     this.title.setTextContent(Store.currentLesson.title);
     this.subtitle.setTextContent(Store.currentLesson.subtitle);
     this.selector.setHtml(`Syntax: ${Store.currentLesson.selector}`);
     this.description.setHtml(Store.currentLesson.description);
     this.example.setHtml(Store.currentLesson.example);
-
     this.levelSelectorToggle.removeClass('opened');
   }
 }

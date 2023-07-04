@@ -12,13 +12,16 @@ export class CssEditorHelpButton extends BaseComponent {
       this.off();
 
       Store.helped.push(Store.currentLesson.id);
+
       setLocalStorage({
         helped: Store.helped,
         completed: Store.completed,
         current: Store.currentLesson.id,
       });
+
       cssEditorTextInputs.node.dispatchEvent(new CustomEvent('help'));
       Store.levelSelector.render();
+      Store.app.gameInfo.render();
     });
   }
 
