@@ -16,6 +16,8 @@ export class CssEditorButton extends BaseComponent {
         try {
           const input = this.input as HTMLInputElement;
 
+          if (input.value.includes('.target')) throw new Error('Cheating');
+
           const selected = Store.cardsTable.node.querySelectorAll(`${input.value.trim()}`);
 
           let answer = '';
