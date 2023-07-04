@@ -64,7 +64,7 @@ export class App extends BaseComponent {
           this.gameInfo.node.classList.add('hidden');
           this.lessonSelector.node.classList.add('hidden');
         }
-      }
+      } else this.gameInfo.node.classList.remove('hidden');
     });
 
     this.secondColumn.addEventListener('click', (event: Event) => {
