@@ -79,7 +79,7 @@ export class HtmlViewerMarkupElement extends BaseComponent {
 
   public insertText(node: LessonNode): void {
     const id = this.attributes.id
-      ? `<span class="tag-attr">id</span><span class="tag-attr-value">="${this.attributes.id}"</span>`
+      ? `<span class="tag-attr"> id</span><span class="tag-attr-value">="${this.attributes.id}"</span>`
       : '';
 
     const classNames = this.attributes.classNames.length
@@ -107,7 +107,7 @@ export class HtmlViewerMarkupElement extends BaseComponent {
           'afterbegin',
           `<span class="tag-bracket">&lt;</span><span class="tag-name">${node.tagName}</span>${
             classNames + id
-          }<span class="tag-bracket">/&gt;</span>`,
+          }<span class="tag-bracket"> /&gt;</span>`,
         ],
       ]);
     }

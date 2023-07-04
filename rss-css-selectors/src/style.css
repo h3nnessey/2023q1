@@ -11,6 +11,6 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #1e6634;
+  background-color: #010102;
   background-image: url('./assets/black-orchid.png');
 }

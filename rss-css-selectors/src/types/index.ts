@@ -38,8 +38,7 @@ export enum CardSuits {
 }
 
 export enum LessonNodeAttributes {
-  Id = 'blurred',
-  ClassName = 'border-red',
+  Id = 'corner',
   TargetClass = 'target',
 }
 

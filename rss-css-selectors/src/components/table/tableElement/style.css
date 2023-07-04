@@ -14,8 +14,9 @@
   left: 0;
   font-family: Consolas, monospace;
   width: max-content;
-  color: white;
-  background: black;
+  color: yellow;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
   z-index: 999;
 }
 
@@ -260,23 +261,32 @@
 
 @keyframes target {
   0% {
-    box-shadow: 0 0 3px 3px rgba(255, 0, 0, 0.63);
+    box-shadow: 0 0 4px 4px rgba(255, 211, 0, 0.9);
   }
   50% {
-    box-shadow: 0 0 3px 3px rgba(0, 166, 255, 0.63);
+    box-shadow: 0 0 4px 4px rgba(255, 69, 2, 0.78);
   }
   100% {
-    box-shadow: 0 0 3px 3px rgba(255, 0, 0, 0.63);
+    box-shadow: 0 0 4px 4px rgba(255, 210, 0, 0.9);
   }
 }
 
 .table .hovered {
   animation: none;
-  box-shadow: 0 0 5px 5px rgba(255, 0, 252, 0.63);
+  box-shadow: 0 0 3px 3px rgba(0, 255, 208, 0.63), 0 0 5px 5px rgba(0, 72, 255, 0.63);
 }
 
-.table #blurred {
-  filter: blur(1px);
+.table #corner::after {
+  position: absolute;
+  content: '';
+  display: block;
+  left: 0;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  clip-path: polygon(0 0, 0% 100%, 100% 100%);
+  background-color: #c77107;
+  border-bottom-left-radius: 2px;
 }
 
 @media screen and (max-width: 768px) {

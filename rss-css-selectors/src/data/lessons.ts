@@ -31,7 +31,7 @@ export const lessons: Lesson[] = [
       '<span class="text-bold">Example:</span> selector <span class="text-code">#main</span> selects all elements with <span class="text-code">id="main"</span>',
     help: `#${LessonNodeAttributes.Id}`,
     answer:
-      '<jack class="target spades ct" id="blurred" data-index="3" data-html="<jack class=&quot;spades&quot; id=&quot;blurred&quot; />"></jack>',
+      '<jack class="target spades ct" id="corner" data-index="3" data-html="<jack class=&quot;spades&quot; id=&quot;corner&quot; />"></jack>',
     target: `Select a ${LessonNodeAttributes.Id} card`,
     nodes: [
       new LessonNode(CardRanks.Ace, null, [CardSuits.Diamonds]),
@@ -128,7 +128,7 @@ export const lessons: Lesson[] = [
       '<span class="text-bold">Example:</span> selector <span class="text-code">button#primary</span> selects all elements of type <span class="text-code">button</span> with id <span class="text-code">primary</span>',
     help: `${CardRanks.King}#${LessonNodeAttributes.Id}`,
     answer:
-      '<king class="target spades ct" id="blurred" data-index="2" data-html="<king class=&quot;spades&quot; id=&quot;blurred&quot; />"></king>',
+      '<king class="target spades ct" id="corner" data-index="2" data-html="<king class=&quot;spades&quot; id=&quot;corner&quot; />"></king>',
     target: `Select ${LessonNodeAttributes.Id} ${CardRanks.King} card`,
     nodes: [
       new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
@@ -154,7 +154,7 @@ export const lessons: Lesson[] = [
     target: `Select all ${LessonNodeAttributes.Id} ${CardRanks.Queen} of ${CardSuits.Spades}`,
     help: `${CardRanks.Queen}.${CardSuits.Spades}#${LessonNodeAttributes.Id}`,
     answer:
-      '<queen class="target spades ct" id="blurred" data-index="0" data-html="<queen class=&quot;spades&quot; id=&quot;blurred&quot; />"></queen><queen class="target spades ct" id="blurred" data-index="2" data-html="<queen class=&quot;spades&quot; id=&quot;blurred&quot; />"></queen>',
+      '<queen class="target spades ct" id="corner" data-index="0" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen><queen class="target spades ct" id="corner" data-index="2" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen>',
     nodes: [
       new LessonNode(
         CardRanks.Queen,

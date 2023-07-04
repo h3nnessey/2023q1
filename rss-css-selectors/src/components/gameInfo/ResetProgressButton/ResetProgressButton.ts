@@ -9,6 +9,7 @@ export class ResetProgressButton extends BaseComponent {
       const newStartId = 0;
 
       Store.resetCompleted(newStartId);
+
       Store.app.node.dispatchEvent(
         new CustomEvent('rerender', {
           detail: {

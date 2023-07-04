@@ -4,6 +4,7 @@ import { Store } from '../../store/Store';
 import { BaseComponent } from '../baseComponent/BaseComponent';
 import { LessonNode } from '../../data/LessonNode';
 import { TableElement } from './tableElement/TableElement';
+import { setLocalStorage } from '../../localStorage';
 
 export class Table extends BaseComponent {
   private elements: BaseComponent[] = [];
@@ -31,6 +32,11 @@ export class Table extends BaseComponent {
         if (isGameOver) {
           this.node.innerHTML = '<span class="game-over">Hoooray! You Win!</span>';
           Store.levelSelector.render();
+          setLocalStorage({
+            current: Store.currentLesson.id,
+            completed: Store.completed,
+            helped: Store.helped,
+          });
         } else {
           this.addClass('win');
 
