@@ -18,11 +18,13 @@
 }
 
 .game-info__state .help-icon {
+  display: none;
   width: 20px;
   height: 20px;
   background: none;
 }
 
 .game-info__state.help-used .help-icon {
+  display: inline-block;
   background: url('../../../assets/idea.svg') 50% 50% / cover no-repeat;
 }

@@ -289,6 +289,14 @@
   border-bottom-left-radius: 2px;
 }
 
+@media screen and (max-width: 1300px) {
+  .table .ct {
+    height: 120px;
+    width: 84px;
+    border-radius: 5px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .table .ct {
     height: 120px;
