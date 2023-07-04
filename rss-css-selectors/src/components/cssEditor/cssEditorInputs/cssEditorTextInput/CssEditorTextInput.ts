@@ -42,6 +42,9 @@ export class CssEditorTextInput extends BaseComponent {
 
         const node = this.input.node as HTMLInputElement;
 
+        node.value = ''
+        this.code.setTextContent('')
+
         for (let i = 0; i < helpAnswer.length; i += 1) {
           setTimeout(() => {
             node.disabled = true;
