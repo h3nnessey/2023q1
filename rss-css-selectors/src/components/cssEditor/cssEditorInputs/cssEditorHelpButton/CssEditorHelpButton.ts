@@ -6,7 +6,9 @@ import { setLocalStorage } from '../../../../localStorage';
 
 export class CssEditorHelpButton extends BaseComponent {
   constructor(parent: BaseComponent, cssEditorTextInputs: CssEditorTextInput) {
-    super({ tagName: 'button', classNames: ['help'], parent, html: '<span>💡</span>' });
+    super({ tagName: 'button', classNames: ['help'], parent, html: '<span class="help-btn__icon"></span>' });
+
+    this.setAttribute('title', 'Help!');
 
     this.addEventListener('click', () => {
       this.off();
