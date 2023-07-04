@@ -91,6 +91,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 9972:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ 454:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -753,6 +763,7 @@ __webpack_require__(454);
 const BaseComponent_1 = __webpack_require__(4733);
 const Store_1 = __webpack_require__(3365);
 const LevelSelectorToggle_1 = __webpack_require__(9246);
+const ChangeLessonButtons_1 = __webpack_require__(2392);
 class GameInfo extends BaseComponent_1.BaseComponent {
     constructor(parent) {
         super({ classNames: ['game-info'], parent });
@@ -763,6 +774,7 @@ class GameInfo extends BaseComponent_1.BaseComponent {
             parent: this.gameInfoRow,
             html: `<span>Lesson ${Store_1.Store.currentLesson.id + 1} of ${Store_1.Store.lessons.length}</span>`,
         });
+        this.changeLessonButtons = new ChangeLessonButtons_1.ChangeLessonButtons(this.gameInfoRow);
         this.levelSelectorToggle = new LevelSelectorToggle_1.LevelSelectorToggle(this.gameInfoRow);
         this.title = new BaseComponent_1.BaseComponent({
             tagName: 'h2',
@@ -835,6 +847,72 @@ class ResetProgressButton extends BaseComponent_1.BaseComponent {
     }
 }
 exports.ResetProgressButton = ResetProgressButton;
+
+
+/***/ }),
+
+/***/ 2392:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ChangeLessonButtons = void 0;
+__webpack_require__(9972);
+const BaseComponent_1 = __webpack_require__(4733);
+const Store_1 = __webpack_require__(3365);
+const localStorage_1 = __webpack_require__(9161);
+class ChangeLessonButtons extends BaseComponent_1.BaseComponent {
+    constructor(parent) {
+        super({
+            classNames: ['lesson-changers'],
+            parent,
+        });
+        this.prevButton = new BaseComponent_1.BaseComponent({
+            tagName: 'button',
+            classNames: ['prev-btn'],
+            parent: this,
+            html: '<span>⬅</span>',
+        });
+        this.nextButton = new BaseComponent_1.BaseComponent({
+            tagName: 'button',
+            classNames: ['next-btn'],
+            parent: this,
+            html: '<span>➡</span>',
+        });
+        this.nextButton.addEventListener('click', (event) => {
+            if (event instanceof MouseEvent) {
+                const id = Store_1.Store.currentLesson.id === Store_1.Store.lessons.length - 1 ? 0 : Store_1.Store.currentLesson.id + 1;
+                (0, localStorage_1.setLocalStorage)({
+                    current: id,
+                    completed: Store_1.Store.completed,
+                    helped: Store_1.Store.helped,
+                });
+                Store_1.Store.app.node.dispatchEvent(new CustomEvent('rerender', {
+                    detail: {
+                        lesson: Store_1.Store.lessons.find((lesson) => lesson.id === id),
+                    },
+                }));
+            }
+        });
+        this.prevButton.addEventListener('click', (event) => {
+            if (event instanceof MouseEvent) {
+                const id = Store_1.Store.currentLesson.id === 0 ? Store_1.Store.lessons.length - 1 : Store_1.Store.currentLesson.id - 1;
+                (0, localStorage_1.setLocalStorage)({
+                    current: id,
+                    completed: Store_1.Store.completed,
+                    helped: Store_1.Store.helped,
+                });
+                Store_1.Store.app.node.dispatchEvent(new CustomEvent('rerender', {
+                    detail: {
+                        lesson: Store_1.Store.lessons.find((lesson) => lesson.id === id),
+                    },
+                }));
+            }
+        });
+    }
+}
+exports.ChangeLessonButtons = ChangeLessonButtons;
 
 
 /***/ }),
@@ -1032,7 +1110,7 @@ class HtmlViewerMarkupElement extends BaseComponent_1.BaseComponent {
     }
     insertText(node) {
         const id = this.attributes.id
-            ? `<span class="tag-attr">id</span><span class="tag-attr-value">="${this.attributes.id}"</span>`
+            ? `<span class="tag-attr"> id</span><span class="tag-attr-value">="${this.attributes.id}"</span>`
             : '';
         const classNames = this.attributes.classNames.length
             ? `<span class="tag-attr"> class</span><span class="tag-attr-value">="${this.attributes.classNames.join(' ')}"</span>`
@@ -1053,7 +1131,7 @@ class HtmlViewerMarkupElement extends BaseComponent_1.BaseComponent {
             this.insertHtml([
                 [
                     'afterbegin',
-                    `<span class="tag-bracket">&lt;</span><span class="tag-name">${node.tagName}</span>${classNames + id}<span class="tag-bracket">/&gt;</span>`,
+                    `<span class="tag-bracket">&lt;</span><span class="tag-name">${node.tagName}</span>${classNames + id}<span class="tag-bracket"> /&gt;</span>`,
                 ],
             ]);
         }
@@ -1276,6 +1354,7 @@ const classNames_1 = __importDefault(__webpack_require__(3042));
 const Store_1 = __webpack_require__(3365);
 const BaseComponent_1 = __webpack_require__(4733);
 const TableElement_1 = __webpack_require__(2198);
+const localStorage_1 = __webpack_require__(9161);
 class Table extends BaseComponent_1.BaseComponent {
     constructor(parent) {
         super({ classNames: [classNames_1.default.table.root], parent });
@@ -1298,10 +1377,20 @@ class Table extends BaseComponent_1.BaseComponent {
                 if (isGameOver) {
                     this.node.innerHTML = '<span class="game-over">Hoooray! You Win!</span>';
                     Store_1.Store.levelSelector.render();
+                    (0, localStorage_1.setLocalStorage)({
+                        current: Store_1.Store.currentLesson.id,
+                        completed: Store_1.Store.completed,
+                        helped: Store_1.Store.helped,
+                    });
                 }
                 else {
                     this.addClass('win');
                     const currentId = Store_1.Store.currentLesson.id + 1;
+                    (0, localStorage_1.setLocalStorage)({
+                        current: currentId,
+                        completed: Store_1.Store.completed,
+                        helped: Store_1.Store.helped,
+                    });
                     setTimeout(() => {
                         Store_1.Store.app.node.dispatchEvent(new CustomEvent('rerender', {
                             detail: {
@@ -1505,7 +1594,7 @@ exports.lessons = [
         description: 'Selects all elements with <span class="text-code">id="T"</span>',
         example: '<span class="text-bold">Example:</span> selector <span class="text-code">#main</span> selects all elements with <span class="text-code">id="main"</span>',
         help: `#${types_1.LessonNodeAttributes.Id}`,
-        answer: '<jack class="target spades ct" id="blurred" data-index="3" data-html="<jack class=&quot;spades&quot; id=&quot;blurred&quot; />"></jack>',
+        answer: '<jack class="target spades ct" id="corner" data-index="3" data-html="<jack class=&quot;spades&quot; id=&quot;corner&quot; />"></jack>',
         target: `Select a ${types_1.LessonNodeAttributes.Id} card`,
         nodes: [
             new LessonNode_1.LessonNode(types_1.CardRanks.Ace, null, [types_1.CardSuits.Diamonds]),
@@ -1574,7 +1663,7 @@ exports.lessons = [
         description: 'Selects all elements of type <span class="text-code">T</span> with id <span class="text-code">K</span>',
         example: '<span class="text-bold">Example:</span> selector <span class="text-code">button#primary</span> selects all elements of type <span class="text-code">button</span> with id <span class="text-code">primary</span>',
         help: `${types_1.CardRanks.King}#${types_1.LessonNodeAttributes.Id}`,
-        answer: '<king class="target spades ct" id="blurred" data-index="2" data-html="<king class=&quot;spades&quot; id=&quot;blurred&quot; />"></king>',
+        answer: '<king class="target spades ct" id="corner" data-index="2" data-html="<king class=&quot;spades&quot; id=&quot;corner&quot; />"></king>',
         target: `Select ${types_1.LessonNodeAttributes.Id} ${types_1.CardRanks.King} card`,
         nodes: [
             new LessonNode_1.LessonNode(types_1.CardRanks.King, null, [types_1.CardSuits.Spades]),
@@ -1592,7 +1681,7 @@ exports.lessons = [
         example: '<span class="text-bold">Example:</span> selector <span class="text-code">div#target.container</span> selects all elements of type <span class="text-code">div</span> with id <span class="text-code">target</span> and class <span class="text-code">container</span>',
         target: `Select all ${types_1.LessonNodeAttributes.Id} ${types_1.CardRanks.Queen} of ${types_1.CardSuits.Spades}`,
         help: `${types_1.CardRanks.Queen}.${types_1.CardSuits.Spades}#${types_1.LessonNodeAttributes.Id}`,
-        answer: '<queen class="target spades ct" id="blurred" data-index="0" data-html="<queen class=&quot;spades&quot; id=&quot;blurred&quot; />"></queen><queen class="target spades ct" id="blurred" data-index="2" data-html="<queen class=&quot;spades&quot; id=&quot;blurred&quot; />"></queen>',
+        answer: '<queen class="target spades ct" id="corner" data-index="0" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen><queen class="target spades ct" id="corner" data-index="2" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen>',
         nodes: [
             new LessonNode_1.LessonNode(types_1.CardRanks.Queen, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Spades], types_1.LessonNodeAttributes.Id),
             new LessonNode_1.LessonNode(types_1.CardRanks.Queen, null, [types_1.CardSuits.Diamonds], types_1.LessonNodeAttributes.Id),
@@ -1776,8 +1865,7 @@ var CardSuits;
 })(CardSuits = exports.CardSuits || (exports.CardSuits = {}));
 var LessonNodeAttributes;
 (function (LessonNodeAttributes) {
-    LessonNodeAttributes["Id"] = "blurred";
-    LessonNodeAttributes["ClassName"] = "border-red";
+    LessonNodeAttributes["Id"] = "corner";
     LessonNodeAttributes["TargetClass"] = "target";
 })(LessonNodeAttributes = exports.LessonNodeAttributes || (exports.LessonNodeAttributes = {}));
 
