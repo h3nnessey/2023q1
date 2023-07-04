@@ -989,7 +989,7 @@ __webpack_require__(3161);
 const BaseComponent_1 = __webpack_require__(4733);
 class Header extends BaseComponent_1.BaseComponent {
     constructor() {
-        super({ tagName: 'header', classNames: ['header'], html: '<span>Cards Selector Game</span>' });
+        super({ tagName: 'header', classNames: ['header'], html: '<h1 class="header__title">Cards Selector Game</h1>' });
     }
 }
 exports.Header = Header;
@@ -1595,7 +1595,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.LINE_NUMBERS_COUNT = exports.LESSON_TARGET_CLASS = exports.CSS_CLASSES_TO_EXCLUDE = void 0;
 exports.CSS_CLASSES_TO_EXCLUDE = ['active', 'pl-20', 'ct', 'hovered', 'target'];
 exports.LESSON_TARGET_CLASS = 'target';
-exports.LINE_NUMBERS_COUNT = 20;
+exports.LINE_NUMBERS_COUNT = 15;
 
 
 /***/ }),
