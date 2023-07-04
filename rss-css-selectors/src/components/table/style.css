@@ -1,5 +1,6 @@
 .table {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   width: 100%;
   justify-content: center;
@@ -22,7 +23,6 @@
   align-items: center;
   transform: rotate(10deg);
   transform-origin: bottom;
-  z-index: 2;
 }
 
 .table > .ct > .ct > .ct {
@@ -31,7 +31,6 @@
   align-items: center;
   transform: rotate(10deg);
   transform-origin: bottom;
-  z-index: 3;
 }
 
 .table.wrong-answer .ct {

@@ -26,18 +26,11 @@ export class App extends BaseComponent {
   constructor(private container: HTMLElement) {
     super({ tagName: 'main', classNames: ['game'] });
 
-    const btn = new BaseComponent({ tagName: 'button', html: '<span>⩥<span>', classNames: ['game-info__toggle'] });
-    // match media чтобы на лоу резе не было открыто сразу
-    btn.addEventListener('click', (event: Event) => {
-      if (event instanceof MouseEvent) {
-        if (this.gameInfo.node.classList.contains('hidden')) {
-          this.gameInfo.node.classList.remove('hidden');
-          btn.setHtml('<span>⩥<span>');
-        } else {
-          this.gameInfo.node.classList.add('hidden');
-          btn.setHtml('<span>⩤<span>');
-        }
-      }
+    const shouldBeHidden = window.matchMedia('(max-width: 1100px');
+    const btn = new BaseComponent({
+      tagName: 'button',
+      html: `<span>${shouldBeHidden ? '⩤' : '⩥'}<span>`,
+      classNames: ['game-info__toggle'],
     });
 
     this.footer = new Footer();
@@ -56,6 +49,20 @@ export class App extends BaseComponent {
 
     this.gameInfo = new GameInfo(this.secondColumn);
     this.lessonSelector = new LessonSelector(this.gameInfo);
+
+    if (shouldBeHidden) this.gameInfo.node.classList.add('hidden');
+
+    btn.addEventListener('click', (event: Event) => {
+      if (event instanceof MouseEvent) {
+        if (this.gameInfo.node.classList.contains('hidden')) {
+          this.gameInfo.node.classList.remove('hidden');
+          btn.setHtml('<span>⩥<span>');
+        } else {
+          this.gameInfo.node.classList.add('hidden');
+          btn.setHtml('<span>⩤<span>');
+        }
+      }
+    });
 
     Store.setElements({
       app: this,
