@@ -18,6 +18,7 @@ export class CssEditorHelpButton extends BaseComponent {
         current: Store.currentLesson.id,
       });
       cssEditorTextInputs.node.dispatchEvent(new CustomEvent('help'));
+      Store.levelSelector.render();
     });
   }
 

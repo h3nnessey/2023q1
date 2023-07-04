@@ -70,6 +70,7 @@ export class GameInfo extends BaseComponent {
     this.selector.setHtml(`Syntax: ${Store.currentLesson.selector}`);
     this.description.setHtml(Store.currentLesson.description);
     this.example.setHtml(Store.currentLesson.example);
+
     this.levelSelectorToggle.removeClass('opened');
   }
 }

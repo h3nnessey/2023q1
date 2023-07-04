@@ -14,11 +14,11 @@
   color: greenyellow;
 }
 
-.level-selector__toggle.opened {
+.game-info:has(.lesson-selector.hidden) .level-selector__toggle {
   color: #626262;
   transform: rotate(90deg);
 }
 
-.level-selector__toggle.opened:hover {
+.game-info:has(.lesson-selector.hidden) .level-selector__toggle:hover {
   color: #ffffff;
 }

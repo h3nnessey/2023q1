@@ -10,10 +10,10 @@ export class LevelSelectorToggle extends BaseComponent {
       parent,
       text: '⫼',
     });
+
     this.addEventListener('click', (event: Event) => {
       if (event instanceof MouseEvent) {
         Store.levelSelector.node.classList.toggle('hidden');
-        this.node.classList.toggle('opened');
       }
     });
   }

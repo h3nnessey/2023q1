@@ -39,8 +39,6 @@
 .game-info__toggle:hover {
   background: #1e1a1a;
 }
-.game-info__toggle.active {
-}
 
 .text-code {
   display: inline-block;
