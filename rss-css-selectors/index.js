@@ -550,6 +550,8 @@ class CssEditorButton extends BaseComponent_1.BaseComponent {
             if (event instanceof MouseEvent) {
                 try {
                     const input = this.input;
+                    if (input.value.includes('.target'))
+                        throw new Error('Cheating');
                     const selected = Store_1.Store.cardsTable.node.querySelectorAll(`${input.value.trim()}`);
                     let answer = '';
                     Array.from(selected).forEach((el) => {
@@ -663,6 +665,8 @@ class CssEditorTextInput extends BaseComponent_1.BaseComponent {
             if (event instanceof CustomEvent) {
                 const helpAnswer = Store_1.Store.currentLesson.help;
                 const node = this.input.node;
+                node.value = '';
+                this.code.setTextContent('');
                 for (let i = 0; i < helpAnswer.length; i += 1) {
                     setTimeout(() => {
                         node.disabled = true;
@@ -684,6 +688,8 @@ class CssEditorTextInput extends BaseComponent_1.BaseComponent {
             if (event instanceof KeyboardEvent && event.key === 'Enter') {
                 try {
                     const node = this.input.node;
+                    if (node.value.includes('.target'))
+                        throw new Error('Cheating');
                     const selected = Store_1.Store.cardsTable.node.querySelectorAll(`${node.value.trim()}`);
                     let answer = '';
                     Array.from(selected).forEach((el) => {
