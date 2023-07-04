@@ -2,9 +2,11 @@ import './style.css';
 import { BaseComponent } from '../baseComponent/BaseComponent';
 import { Store } from '../../store/Store';
 import { LevelSelectorToggle } from '../lessonSelector/levelSelectorToggler/LevelSelectorToggle';
+import { ChangeLessonButtons } from './changeLessonButtons/ChangeLessonButtons';
 
 export class GameInfo extends BaseComponent {
   private readonly gameInfoRow: BaseComponent;
+  private readonly changeLessonButtons: ChangeLessonButtons;
   private lessonNumber: BaseComponent;
   private title: BaseComponent;
   private subtitle: BaseComponent;
@@ -24,6 +26,8 @@ export class GameInfo extends BaseComponent {
       parent: this.gameInfoRow,
       html: `<span>Lesson ${Store.currentLesson.id + 1} of ${Store.lessons.length}</span>`,
     });
+
+    this.changeLessonButtons = new ChangeLessonButtons(this.gameInfoRow);
 
     this.levelSelectorToggle = new LevelSelectorToggle(this.gameInfoRow);
 
