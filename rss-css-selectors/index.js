@@ -305,7 +305,7 @@ class App extends BaseComponent_1.BaseComponent {
         const shouldBeHidden = window.matchMedia('(max-width: 1100px').matches;
         const btn = new BaseComponent_1.BaseComponent({
             tagName: 'button',
-            html: `<span>${shouldBeHidden ? '⩤' : '⩥'}<span>`,
+            html: `<span>|||</span>`,
             classNames: ['game-info__toggle'],
         });
         this.footer = new Footer_1.Footer();
@@ -323,15 +323,35 @@ class App extends BaseComponent_1.BaseComponent {
         this.lessonSelector = new LessonSelector_1.LessonSelector(this.gameInfo);
         if (shouldBeHidden)
             this.gameInfo.node.classList.add('hidden');
+        window.addEventListener('resize', (event) => {
+            const target = event.target;
+            const targetWidth = target.screen.width;
+            if (targetWidth <= 1100) {
+                if (this.gameInfo.node.classList.contains('hidden')) {
+                    return null;
+                }
+                else {
+                    this.gameInfo.node.classList.add('hidden');
+                    this.lessonSelector.node.classList.add('hidden');
+                }
+            }
+        });
+        this.secondColumn.addEventListener('click', (event) => {
+            if (event instanceof MouseEvent) {
+                const target = event.target;
+                if (target.classList.contains('game__column')) {
+                    this.gameInfo.node.classList.toggle('hidden');
+                    this.lessonSelector.node.classList.add('hidden');
+                }
+            }
+        });
         btn.addEventListener('click', (event) => {
             if (event instanceof MouseEvent) {
                 if (this.gameInfo.node.classList.contains('hidden')) {
                     this.gameInfo.node.classList.remove('hidden');
-                    btn.setHtml('<span>⩥<span>');
                 }
                 else {
                     this.gameInfo.node.classList.add('hidden');
-                    btn.setHtml('<span>⩤<span>');
                 }
             }
         });
@@ -1292,6 +1312,9 @@ class LessonSelectorElement extends BaseComponent_1.BaseComponent {
         });
         this.addEventListener('click', (event) => {
             if (event instanceof MouseEvent) {
+                const shouldBeHidden = window.matchMedia('(max-width: 1100px').matches;
+                if (shouldBeHidden)
+                    Store_1.Store.app.gameInfo.node.classList.toggle('hidden');
                 Store_1.Store.levelSelector.addClass('hidden');
                 const selectedLesson = Store_1.Store.lessons.find((lesson) => lesson.id === this.id);
                 (0, localStorage_1.setLocalStorage)({
