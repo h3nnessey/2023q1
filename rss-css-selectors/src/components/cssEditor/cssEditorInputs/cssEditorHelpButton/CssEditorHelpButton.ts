@@ -1,6 +1,8 @@
 import './style.css';
 import { BaseComponent } from '../../../baseComponent/BaseComponent';
 import { CssEditorTextInput } from '../cssEditorTextInput/CssEditorTextInput';
+import { Store } from '../../../../store/Store';
+import { setLocalStorage } from '../../../../localStorage';
 
 export class CssEditorHelpButton extends BaseComponent {
   constructor(parent: BaseComponent, cssEditorTextInputs: CssEditorTextInput) {
@@ -8,6 +10,13 @@ export class CssEditorHelpButton extends BaseComponent {
 
     this.addEventListener('click', () => {
       this.off();
+
+      Store.helped.push(Store.currentLesson.id);
+      setLocalStorage({
+        helped: Store.helped,
+        completed: Store.completed,
+        current: Store.currentLesson.id,
+      });
       cssEditorTextInputs.node.dispatchEvent(new CustomEvent('help'));
     });
   }

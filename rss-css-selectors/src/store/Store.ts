@@ -27,6 +27,7 @@ export class Store {
 
   static resetCompleted(id: number) {
     Store.completed = [];
+    Store.helped = [];
     setLocalStorage({
       current: id,
       completed: [],

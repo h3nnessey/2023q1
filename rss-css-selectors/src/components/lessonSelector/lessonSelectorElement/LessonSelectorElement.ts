@@ -8,12 +8,16 @@ export class LessonSelectorElement extends BaseComponent {
   private readonly lesson: Lesson;
 
   constructor(
-    public readonly completed: boolean,
+    private readonly completed: boolean,
+    private readonly helped: boolean,
     public readonly id: number,
     private readonly lessonSelectorElements: BaseComponent[],
     parent: BaseComponent
   ) {
     super({ tagName: 'li', classNames: ['lesson-selector__item'], parent });
+
+    if (completed) this.addClass('completed');
+    if (helped) this.addClass('helped');
 
     this.lesson = Store.lessons.find((lesson) => lesson.id === id)!;
 
@@ -33,7 +37,7 @@ export class LessonSelectorElement extends BaseComponent {
         setLocalStorage({
           current: selectedLesson.id,
           completed: Store.completed,
-          helped: [],
+          helped: Store.helped,
         });
 
         Store.app.node.dispatchEvent(

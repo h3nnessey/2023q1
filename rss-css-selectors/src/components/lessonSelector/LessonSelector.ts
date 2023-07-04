@@ -15,8 +15,9 @@ export class LessonSelector extends BaseComponent {
 
     Store.lessons.forEach((lesson) => {
       const isCompleted = Store.completed.includes(lesson.id);
+      const isHelped = Store.helped.includes(lesson.id);
 
-      const element = new LessonSelectorElement(isCompleted, lesson.id, this.elements, this);
+      const element = new LessonSelectorElement(isCompleted, isHelped, lesson.id, this.elements, this);
 
       this.elements.push(element);
     });
@@ -28,8 +29,10 @@ export class LessonSelector extends BaseComponent {
     this.elements.forEach((element) => {
       element.removeClass('current');
       element.removeClass('completed');
+      element.removeClass('helped');
 
       if (Store.completed.includes(element.id)) element.addClass('completed');
+      if (Store.helped.includes(element.id)) element.addClass('helped');
       if (element.id === Store.currentLesson.id) element.addClass('current');
     });
 

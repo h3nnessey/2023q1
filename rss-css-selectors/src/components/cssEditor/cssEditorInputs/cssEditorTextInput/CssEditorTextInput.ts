@@ -64,7 +64,6 @@ export class CssEditorTextInput extends BaseComponent {
     });
 
     this.input.addEventListener('keydown', (event: Event) => {
-      // add prevent cheating handlers (like select .target)
       if (event instanceof KeyboardEvent && event.key === 'Enter') {
         try {
           const node = this.input.node as HTMLInputElement;
@@ -80,8 +79,8 @@ export class CssEditorTextInput extends BaseComponent {
           const isWin = answer === Store.currentLessonAnswer;
 
           if (isWin) {
-            Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
             Store.completed.push(Store.currentLesson.id);
+            Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
             node.value = '';
             this.code.setTextContent('');
           } else {

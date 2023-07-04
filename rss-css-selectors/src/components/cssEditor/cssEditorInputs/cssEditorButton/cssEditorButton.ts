@@ -3,6 +3,7 @@ import classNames from '../../../../classNames';
 import { BaseComponent } from '../../../baseComponent/BaseComponent';
 import { CssEditorTextInput } from '../cssEditorTextInput/CssEditorTextInput';
 import { Store } from '../../../../store/Store';
+import { setLocalStorage } from '../../../../localStorage';
 
 export class CssEditorButton extends BaseComponent {
   constructor(private readonly input: HTMLElement, private readonly code: HTMLElement, parent: BaseComponent) {
@@ -11,7 +12,6 @@ export class CssEditorButton extends BaseComponent {
     this.insertTextNodes([['afterbegin', 'Enter']]);
 
     this.addEventListener('click', (event: Event) => {
-      // add prevent cheating handlers (like select .target)
       if (event instanceof MouseEvent) {
         try {
           const input = this.input as HTMLInputElement;
@@ -27,8 +27,13 @@ export class CssEditorButton extends BaseComponent {
           const isWin = answer === Store.currentLessonAnswer;
 
           if (isWin) {
-            Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
             Store.completed.push(Store.currentLesson.id);
+            setLocalStorage({
+              completed: Store.completed,
+              helped: Store.helped,
+              current: Store.currentLesson.id,
+            });
+            Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
             input.value = '';
             code.textContent = '';
           } else {
