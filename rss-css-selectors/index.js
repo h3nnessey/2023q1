@@ -101,6 +101,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 2724:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ 454:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -565,6 +575,7 @@ class CssEditorButton extends BaseComponent_1.BaseComponent {
                             helped: Store_1.Store.helped,
                             current: Store_1.Store.currentLesson.id,
                         });
+                        Store_1.Store.app.gameInfo.render();
                         Store_1.Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
                         input.value = '';
                         code.textContent = '';
@@ -598,7 +609,8 @@ const Store_1 = __webpack_require__(3365);
 const localStorage_1 = __webpack_require__(9161);
 class CssEditorHelpButton extends BaseComponent_1.BaseComponent {
     constructor(parent, cssEditorTextInputs) {
-        super({ tagName: 'button', classNames: ['help'], parent, html: '<span>💡</span>' });
+        super({ tagName: 'button', classNames: ['help'], parent, html: '<span class="help-btn__icon"></span>' });
+        this.setAttribute('title', 'Help!');
         this.addEventListener('click', () => {
             this.off();
             Store_1.Store.helped.push(Store_1.Store.currentLesson.id);
@@ -609,6 +621,7 @@ class CssEditorHelpButton extends BaseComponent_1.BaseComponent {
             });
             cssEditorTextInputs.node.dispatchEvent(new CustomEvent('help'));
             Store_1.Store.levelSelector.render();
+            Store_1.Store.app.gameInfo.render();
         });
     }
     on() {
@@ -698,6 +711,7 @@ class CssEditorTextInput extends BaseComponent_1.BaseComponent {
                     const isWin = answer === Store_1.Store.currentLessonAnswer;
                     if (isWin) {
                         Store_1.Store.completed.push(Store_1.Store.currentLesson.id);
+                        Store_1.Store.app.gameInfo.render();
                         Store_1.Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
                         node.value = '';
                         this.code.setTextContent('');
@@ -770,6 +784,7 @@ const BaseComponent_1 = __webpack_require__(4733);
 const Store_1 = __webpack_require__(3365);
 const LevelSelectorToggle_1 = __webpack_require__(9246);
 const ChangeLessonButtons_1 = __webpack_require__(2392);
+const GameInfoLessonState_1 = __webpack_require__(9429);
 class GameInfo extends BaseComponent_1.BaseComponent {
     constructor(parent) {
         super({ classNames: ['game-info'], parent });
@@ -778,8 +793,9 @@ class GameInfo extends BaseComponent_1.BaseComponent {
             tagName: 'p',
             classNames: ['game-info__lesson-number'],
             parent: this.gameInfoRow,
-            html: `<span>Lesson ${Store_1.Store.currentLesson.id + 1} of ${Store_1.Store.lessons.length}</span>`,
+            html: `Lesson ${Store_1.Store.currentLesson.id + 1} of ${Store_1.Store.lessons.length}`,
         });
+        this.gameInfoLessonState = new GameInfoLessonState_1.GameInfoLessonState(this.gameInfoRow);
         this.changeLessonButtons = new ChangeLessonButtons_1.ChangeLessonButtons(this.gameInfoRow);
         this.levelSelectorToggle = new LevelSelectorToggle_1.LevelSelectorToggle(this.gameInfoRow);
         this.title = new BaseComponent_1.BaseComponent({
@@ -815,6 +831,7 @@ class GameInfo extends BaseComponent_1.BaseComponent {
     }
     render() {
         this.lessonNumber.setHtml(`Lesson ${Store_1.Store.currentLesson.id + 1} of ${Store_1.Store.lessons.length}`);
+        this.gameInfoLessonState.render();
         this.title.setTextContent(Store_1.Store.currentLesson.title);
         this.subtitle.setTextContent(Store_1.Store.currentLesson.subtitle);
         this.selector.setHtml(`Syntax: ${Store_1.Store.currentLesson.selector}`);
@@ -919,6 +936,44 @@ class ChangeLessonButtons extends BaseComponent_1.BaseComponent {
     }
 }
 exports.ChangeLessonButtons = ChangeLessonButtons;
+
+
+/***/ }),
+
+/***/ 9429:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.GameInfoLessonState = void 0;
+__webpack_require__(2724);
+const BaseComponent_1 = __webpack_require__(4733);
+const Store_1 = __webpack_require__(3365);
+class GameInfoLessonState extends BaseComponent_1.BaseComponent {
+    constructor(parent) {
+        super({
+            classNames: ['game-info__state'],
+            parent,
+            html: '<span class="checkmark-icon"></span><span class="help-icon"></span>',
+        });
+        const id = Store_1.Store.currentLesson.id;
+        if (Store_1.Store.completed.includes(id))
+            this.addClass('completed');
+        if (Store_1.Store.helped.includes(id))
+            this.addClass('help-used');
+    }
+    render() {
+        this.removeClass('completed');
+        this.removeClass('help-used');
+        const id = Store_1.Store.currentLesson.id;
+        if (Store_1.Store.completed.includes(id))
+            this.addClass('completed');
+        if (Store_1.Store.helped.includes(id))
+            this.addClass('help-used');
+    }
+}
+exports.GameInfoLessonState = GameInfoLessonState;
 
 
 /***/ }),
