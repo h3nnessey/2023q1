@@ -13,7 +13,7 @@
   background-image: url('../../assets/black-orchid.png');
   list-style: none;
   transition: right 0.2s ease-in-out;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .lesson-selector__title {
