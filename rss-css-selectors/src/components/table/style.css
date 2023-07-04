@@ -9,6 +9,23 @@
   padding: 40px 0;
 }
 
+.game-over {
+  height: 145px;
+  font-size: 3rem;
+  color: white;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  animation: game-over-message 1s 0s 1 forwards;
+}
+
+@keyframes game-over-message {
+  0% {
+    transform: translateX(-999px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .table > .ct {
   position: relative;
   display: flex;

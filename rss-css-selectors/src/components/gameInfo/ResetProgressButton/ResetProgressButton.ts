@@ -4,7 +4,7 @@ import { Store } from '../../../store/Store';
 
 export class ResetProgressButton extends BaseComponent {
   constructor(parent: BaseComponent) {
-    super({ tagName: 'button', classNames: ['reset-progress'], parent, html: '<span>🔃</span>' });
+    super({ tagName: 'button', classNames: ['reset-progress'], parent, html: '<span>Reset Progress</span>' });
     this.addEventListener('click', () => {
       const newStartId = 0;
 

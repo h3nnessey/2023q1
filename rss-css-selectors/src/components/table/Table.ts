@@ -26,19 +26,27 @@ export class Table extends BaseComponent {
 
     this.node.addEventListener('win', (event: Event) => {
       if (event instanceof CustomEvent) {
-        this.addClass('win');
-        const currentId = Store.currentLesson.id === Store.lessons.length - 1 ? 0 : Store.currentLesson.id + 1;
+        const isGameOver = Store.currentLesson.id === Store.lessons.length - 1;
 
-        setTimeout(() => {
-          Store.app.node.dispatchEvent(
-            new CustomEvent('rerender', {
-              detail: {
-                lesson: Store.lessons.find((lesson) => lesson.id === currentId),
-              },
-            })
-          );
-          this.removeClass('win');
-        }, 1000);
+        if (isGameOver) {
+          this.node.innerHTML = '<span class="game-over">Hoooray! You Win!</span>';
+          Store.levelSelector.render();
+        } else {
+          this.addClass('win');
+
+          const currentId = Store.currentLesson.id + 1;
+
+          setTimeout(() => {
+            Store.app.node.dispatchEvent(
+              new CustomEvent('rerender', {
+                detail: {
+                  lesson: Store.lessons.find((lesson) => lesson.id === currentId),
+                },
+              })
+            );
+            this.removeClass('win');
+          }, 1000);
+        }
       }
     });
 
@@ -72,6 +80,7 @@ export class Table extends BaseComponent {
 
   public render() {
     this.elements.forEach((element) => element.delete());
+    this.node.innerHTML = '';
     this.createTableDom(Store.currentLessonNodes, this);
   }
 }

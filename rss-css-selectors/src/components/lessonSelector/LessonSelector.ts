@@ -35,7 +35,5 @@ export class LessonSelector extends BaseComponent {
       if (Store.helped.includes(element.id)) element.addClass('helped');
       if (element.id === Store.currentLesson.id) element.addClass('current');
     });
-
-    this.addClass('hidden');
   }
 }

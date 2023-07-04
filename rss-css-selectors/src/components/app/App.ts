@@ -26,7 +26,8 @@ export class App extends BaseComponent {
   constructor(private container: HTMLElement) {
     super({ tagName: 'main', classNames: ['game'] });
 
-    const shouldBeHidden = window.matchMedia('(max-width: 1100px');
+    const shouldBeHidden = window.matchMedia('(max-width: 1100px').matches;
+
     const btn = new BaseComponent({
       tagName: 'button',
       html: `<span>${shouldBeHidden ? '⩤' : '⩥'}<span>`,
