@@ -30,7 +30,7 @@ export class App extends BaseComponent {
 
     const btn = new BaseComponent({
       tagName: 'button',
-      html: `<span>${shouldBeHidden ? '⩤' : '⩥'}<span>`,
+      html: `<span>|||</span>`,
       classNames: ['game-info__toggle'],
     });
 
@@ -53,14 +53,36 @@ export class App extends BaseComponent {
 
     if (shouldBeHidden) this.gameInfo.node.classList.add('hidden');
 
+    window.addEventListener('resize', (event: Event) => {
+      const target = event.target as Window;
+      const targetWidth = target.screen.width;
+
+      if (targetWidth <= 1100) {
+        if (this.gameInfo.node.classList.contains('hidden')) {
+          return null;
+        } else {
+          this.gameInfo.node.classList.add('hidden');
+          this.lessonSelector.node.classList.add('hidden');
+        }
+      }
+    });
+
+    this.secondColumn.addEventListener('click', (event: Event) => {
+      if (event instanceof MouseEvent) {
+        const target = event.target as HTMLElement;
+        if (target.classList.contains('game__column')) {
+          this.gameInfo.node.classList.toggle('hidden');
+          this.lessonSelector.node.classList.add('hidden');
+        }
+      }
+    });
+
     btn.addEventListener('click', (event: Event) => {
       if (event instanceof MouseEvent) {
         if (this.gameInfo.node.classList.contains('hidden')) {
           this.gameInfo.node.classList.remove('hidden');
-          btn.setHtml('<span>⩥<span>');
         } else {
           this.gameInfo.node.classList.add('hidden');
-          btn.setHtml('<span>⩤<span>');
         }
       }
     });

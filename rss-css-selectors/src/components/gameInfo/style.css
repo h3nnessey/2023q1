@@ -34,10 +34,12 @@
   font-size: 1.1rem;
   color: yellowgreen;
   cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
 
 .game-info__toggle:hover {
   background: #1e1a1a;
+  color: rgb(18, 212, 50);
 }
 
 .text-code {

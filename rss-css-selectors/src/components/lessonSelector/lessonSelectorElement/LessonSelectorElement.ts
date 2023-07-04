@@ -30,6 +30,10 @@ export class LessonSelectorElement extends BaseComponent {
 
     this.addEventListener('click', (event: Event) => {
       if (event instanceof MouseEvent) {
+        const shouldBeHidden = window.matchMedia('(max-width: 1100px').matches;
+
+        if (shouldBeHidden) Store.app.gameInfo.node.classList.toggle('hidden');
+
         Store.levelSelector.addClass('hidden');
 
         const selectedLesson = Store.lessons.find((lesson) => lesson.id === this.id)!;
