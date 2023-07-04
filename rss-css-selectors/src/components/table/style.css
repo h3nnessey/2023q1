@@ -5,8 +5,9 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  background-color: #182932;
   padding: 40px 0;
+  background-color: #004a0f;
+  background-image: url('../../assets/black-orchid.png');
 }
 
 .game-over {

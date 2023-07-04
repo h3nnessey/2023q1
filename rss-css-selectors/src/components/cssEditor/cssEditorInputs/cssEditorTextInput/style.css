@@ -34,6 +34,19 @@
 }
 
 #css-hljs {
-  background: #000;
   height: 30px;
+  color: white;
+  background: transparent;
+}
+
+#css-hljs .hljs-selector-pseudo {
+  color: #11df01;
+}
+
+#css-hljs .hljs-selector-id {
+  color: #00ffff;
+}
+
+#css-hljs .hljs-selector-class {
+  color: #ffd400;
 }

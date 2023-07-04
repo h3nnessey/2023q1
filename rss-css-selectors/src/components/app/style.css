@@ -6,7 +6,6 @@
 .game .game__column:first-child {
   position: relative;
   width: 100%;
-  background-color: #091314;
 }
 
 .game .game__column:last-child {

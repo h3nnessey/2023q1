@@ -1,6 +1,6 @@
 .html {
-  color: #818181;
-  background: #091314;
-  font-family: Consolas, monospace;
   width: 100%;
+  font-family: Consolas, monospace;
+  backdrop-filter: blur(3px);
+  color: #818181;
 }
