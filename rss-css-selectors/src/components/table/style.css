@@ -67,3 +67,9 @@
     transform: translateX(0);
   }
 }
+
+@media screen and (max-width: 600px) {
+  .table {
+    padding: 40px 2rem;
+  }
+}
