@@ -1,5 +1,14 @@
 .table {
   display: flex;
+  justify-content: center;
+}
+
+.table .game-over {
+}
+
+.table cards {
+  display: flex;
+  position: relative;
   flex-wrap: wrap;
   gap: 4rem;
   width: 100%;
@@ -10,9 +19,10 @@
 
 .game-over {
   height: 145px;
-  font-size: 3rem;
-  color: white;
+  padding: 3vh calc(1rem + 13px) 3vh 1rem;
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 3rem;
+  color: #17f3d5;
   animation: game-over-message 1s 0s 1 forwards;
 }
 
@@ -25,7 +35,7 @@
   }
 }
 
-.table > .ct {
+.table cards > .ct {
   position: relative;
   display: flex;
   justify-content: center;
@@ -33,7 +43,7 @@
   background-color: red;
 }
 
-.table > .ct > .ct {
+.table cards > .ct > .ct {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +51,7 @@
   transform-origin: bottom;
 }
 
-.table > .ct > .ct > .ct {
+.table cards > .ct > .ct > .ct {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,7 +79,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .table {
+  .table cards {
     padding: 40px 2rem;
   }
 }

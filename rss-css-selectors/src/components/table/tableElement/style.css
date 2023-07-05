@@ -1,11 +1,27 @@
-.table .ct {
+.table cards .ct {
   height: 145px;
   width: 100px;
   border-radius: 6px;
   position: relative;
 }
 
-.table .ct.hovered::before {
+.table cards.hovered::before {
+  content: attr(data-html);
+  position: absolute;
+  display: block;
+  padding: 10px;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Consolas, monospace;
+  width: max-content;
+  color: yellow;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  z-index: 999;
+}
+
+.table cards .ct.hovered::before {
   content: attr(data-html);
   position: absolute;
   display: block;
@@ -20,225 +36,225 @@
   z-index: 999;
 }
 
-.table .ct > .ct.hovered::before {
+.table cards .ct > .ct.hovered::before {
   transform: rotate(-10deg);
   top: -65px;
 }
 
-.table .ct > .ct > .ct.hovered::before {
+.table cards .ct > .ct > .ct.hovered::before {
   transform: rotate(-20deg);
   top: -75px;
 }
 
-.table ace.clubs {
+.table cards ace.clubs {
   background: url('../../../assets/cards/ace_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table ace.diamonds {
+.table cards ace.diamonds {
   background: url('../../../assets/cards/ace_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table ace.hearts {
+.table cards ace.hearts {
   background: url('../../../assets/cards/ace_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table ace.spades {
+.table cards ace.spades {
   background: url('../../../assets/cards/ace_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table jack.clubs {
+.table cards jack.clubs {
   background: url('../../../assets/cards/jack_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table jack.diamonds {
+.table cards jack.diamonds {
   background: url('../../../assets/cards/jack_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table jack.hearts {
+.table cards jack.hearts {
   background: url('../../../assets/cards/jack_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table jack.spades {
+.table cards jack.spades {
   background: url('../../../assets/cards/jack_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table queen.clubs {
+.table cards queen.clubs {
   background: url('../../../assets/cards/queen_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table queen.diamonds {
+.table cards queen.diamonds {
   background: url('../../../assets/cards/queen_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table queen.hearts {
+.table cards queen.hearts {
   background: url('../../../assets/cards/queen_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table queen.spades {
+.table cards queen.spades {
   background: url('../../../assets/cards/queen_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table five.clubs {
+.table cards five.clubs {
   background: url('../../../assets/cards/5_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table five.diamonds {
+.table cards five.diamonds {
   background: url('../../../assets/cards/5_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table five.hearts {
+.table cards five.hearts {
   background: url('../../../assets/cards/5_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table five.spades {
+.table cards five.spades {
   background: url('../../../assets/cards/5_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table four.clubs {
+.table cards four.clubs {
   background: url('../../../assets/cards/4_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table four.diamonds {
+.table cards four.diamonds {
   background: url('../../../assets/cards/4_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table four.hearts {
+.table cards four.hearts {
   background: url('../../../assets/cards/4_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table four.spades {
+.table cards four.spades {
   background: url('../../../assets/cards/4_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table eight.clubs {
+.table cards eight.clubs {
   background: url('../../../assets/cards/8_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table eight.diamonds {
+.table cards eight.diamonds {
   background: url('../../../assets/cards/8_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table eight.hearts {
+.table cards eight.hearts {
   background: url('../../../assets/cards/8_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table eight.spades {
+.table cards eight.spades {
   background: url('../../../assets/cards/8_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table king.clubs {
+.table cards king.clubs {
   background: url('../../../assets/cards/king_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table king.diamonds {
+.table cards king.diamonds {
   background: url('../../../assets/cards/king_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table king.hearts {
+.table cards king.hearts {
   background: url('../../../assets/cards/king_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table king.spades {
+.table cards king.spades {
   background: url('../../../assets/cards/king_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table nine.clubs {
+.table cards nine.clubs {
   background: url('../../../assets/cards/9_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table nine.diamonds {
+.table cards nine.diamonds {
   background: url('../../../assets/cards/9_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table nine.hearts {
+.table cards nine.hearts {
   background: url('../../../assets/cards/9_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table nine.spades {
+.table cards nine.spades {
   background: url('../../../assets/cards/9_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table ten.clubs {
+.table cards ten.clubs {
   background: url('../../../assets/cards/10_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table ten.diamonds {
+.table cards ten.diamonds {
   background: url('../../../assets/cards/10_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table ten.hearts {
+.table cards ten.hearts {
   background: url('../../../assets/cards/10_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table ten.spades {
+.table cards ten.spades {
   background: url('../../../assets/cards/10_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table three.clubs {
+.table cards three.clubs {
   background: url('../../../assets/cards/3_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table three.diamonds {
+.table cards three.diamonds {
   background: url('../../../assets/cards/3_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table three.hearts {
+.table cards three.hearts {
   background: url('../../../assets/cards/3_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table three.spades {
+.table cards three.spades {
   background: url('../../../assets/cards/3_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table two.clubs {
+.table cards two.clubs {
   background: url('../../../assets/cards/2_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table two.diamonds {
+.table cards two.diamonds {
   background: url('../../../assets/cards/2_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table two.hearts {
+.table cards two.hearts {
   background: url('../../../assets/cards/2_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table two.spades {
+.table cards two.spades {
   background: url('../../../assets/cards/2_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table six.clubs {
+.table cards six.clubs {
   background: url('../../../assets/cards/6_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table six.diamonds {
+.table cards six.diamonds {
   background: url('../../../assets/cards/6_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table six.hearts {
+.table cards six.hearts {
   background: url('../../../assets/cards/6_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table six.spades {
+.table cards six.spades {
   background: url('../../../assets/cards/6_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table seven.clubs {
+.table cards seven.clubs {
   background: url('../../../assets/cards/7_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table seven.diamonds {
+.table cards seven.diamonds {
   background: url('../../../assets/cards/7_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table seven.hearts {
+.table cards seven.hearts {
   background: url('../../../assets/cards/7_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table seven.spades {
+.table cards seven.spades {
   background: url('../../../assets/cards/7_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table .ct .border-red {
+.table cards .ct .border-red {
   border: 2px dashed deeppink;
 }
 
@@ -255,7 +271,7 @@
   }
 }
 
-.table .target {
+.table cards .target {
   animation: target 1s 0s infinite ease-in-out;
 }
 
@@ -271,12 +287,12 @@
   }
 }
 
-.table .hovered {
+.table cards .hovered {
   animation: none;
   box-shadow: 0 0 3px 3px rgba(0, 255, 208, 0.63), 0 0 5px 5px rgba(0, 72, 255, 0.63);
 }
 
-.table #corner::after {
+.table cards #corner::after {
   position: absolute;
   content: '';
   display: block;
@@ -290,7 +306,7 @@
 }
 
 @media screen and (max-width: 1300px) {
-  .table .ct {
+  .table cards .ct {
     height: 120px;
     width: 84px;
     border-radius: 5px;
@@ -298,7 +314,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .table .ct {
+  .table cards .ct {
     height: 120px;
     width: 84px;
     border-radius: 5px;

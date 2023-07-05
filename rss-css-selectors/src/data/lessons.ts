@@ -1,5 +1,6 @@
 import { CardRanks, CardSuits, Lesson, LessonNodeAttributes } from '../types';
 import { LessonNode } from './LessonNode';
+import classNames from '../classNames';
 
 export const lessons: Lesson[] = [
   {
@@ -15,10 +16,12 @@ export const lessons: Lesson[] = [
     answer:
       '<ace class="target clubs ct" data-index="0" data-html="<ace class=&quot;clubs&quot; />"></ace><ace class="target hearts ct" data-index="1" data-html="<ace class=&quot;hearts&quot; />"></ace><ace class="target diamonds ct" data-index="2" data-html="<ace class=&quot;diamonds&quot; />"></ace><ace class="target spades ct" data-index="3" data-html="<ace class=&quot;spades&quot; />"></ace>',
     nodes: [
-      new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
-      new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Hearts]),
-      new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Diamonds]),
-      new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
+      new LessonNode('cards', [
+        new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
+        new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Hearts]),
+        new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Diamonds]),
+        new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
+      ]),
     ],
   },
   {
@@ -34,15 +37,17 @@ export const lessons: Lesson[] = [
       '<jack class="target spades ct" id="corner" data-index="3" data-html="<jack class=&quot;spades&quot; id=&quot;corner&quot; />"></jack>',
     target: `Select a ${LessonNodeAttributes.Id} card`,
     nodes: [
-      new LessonNode(CardRanks.Ace, null, [CardSuits.Diamonds]),
-      new LessonNode(CardRanks.Jack, null, [CardSuits.Spades]),
-      new LessonNode(CardRanks.Three, null, [CardSuits.Clubs]),
-      new LessonNode(
-        CardRanks.Jack,
-        null,
-        [LessonNodeAttributes.TargetClass, CardSuits.Spades],
-        LessonNodeAttributes.Id
-      ),
+      new LessonNode('cards', [
+        new LessonNode(CardRanks.Ace, null, [CardSuits.Diamonds]),
+        new LessonNode(CardRanks.Jack, null, [CardSuits.Spades]),
+        new LessonNode(CardRanks.Three, null, [CardSuits.Clubs]),
+        new LessonNode(
+          CardRanks.Jack,
+          null,
+          [LessonNodeAttributes.TargetClass, CardSuits.Spades],
+          LessonNodeAttributes.Id
+        ),
+      ]),
     ],
   },
   {
@@ -58,10 +63,12 @@ export const lessons: Lesson[] = [
     answer:
       '<four class="target clubs ct" data-index="1" data-html="<four class=&quot;clubs&quot; />"></four><nine class="target clubs ct" data-index="2" data-html="<nine class=&quot;clubs&quot; />"></nine>',
     nodes: [
-      new LessonNode(CardRanks.Five, null, [CardSuits.Spades]),
-      new LessonNode(CardRanks.Four, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
-      new LessonNode(CardRanks.Nine, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
-      new LessonNode(CardRanks.Ace, null, [CardSuits.Spades]),
+      new LessonNode('cards', [
+        new LessonNode(CardRanks.Five, null, [CardSuits.Spades]),
+        new LessonNode(CardRanks.Four, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
+        new LessonNode(CardRanks.Nine, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
+        new LessonNode(CardRanks.Ace, null, [CardSuits.Spades]),
+      ]),
     ],
   },
   {
@@ -78,23 +85,31 @@ export const lessons: Lesson[] = [
       '<ace class="target diamonds ct" data-index="0" data-html="<ace class=&quot;diamonds&quot;></ace>"><ace class="target spades ct" data-index="0" data-html="<ace class=&quot;spades&quot; />"></ace></ace><ace class="target spades ct" data-index="0" data-html="<ace class=&quot;spades&quot; />"></ace>',
     target: `Select all ${CardRanks.Ace} cards inside of ${CardRanks.King}`,
     nodes: [
-      new LessonNode(
-        CardRanks.Queen,
-        [new LessonNode(CardRanks.Ace, [new LessonNode(CardRanks.Ace, null, [CardSuits.Spades])], [CardSuits.Hearts])],
-        [CardSuits.Spades]
-      ),
-      new LessonNode(CardRanks.Two, null, [CardSuits.Hearts]),
-      new LessonNode(
-        CardRanks.King,
-        [
-          new LessonNode(
-            CardRanks.Ace,
-            [new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades])],
-            [LessonNodeAttributes.TargetClass, CardSuits.Diamonds]
-          ),
-        ],
-        [CardSuits.Hearts]
-      ),
+      new LessonNode('cards', [
+        new LessonNode(
+          CardRanks.Queen,
+          [
+            new LessonNode(
+              CardRanks.Ace,
+              [new LessonNode(CardRanks.Ace, null, [CardSuits.Spades])],
+              [CardSuits.Hearts]
+            ),
+          ],
+          [CardSuits.Spades]
+        ),
+        new LessonNode(CardRanks.Two, null, [CardSuits.Hearts]),
+        new LessonNode(
+          CardRanks.King,
+          [
+            new LessonNode(
+              CardRanks.Ace,
+              [new LessonNode(CardRanks.Ace, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades])],
+              [LessonNodeAttributes.TargetClass, CardSuits.Diamonds]
+            ),
+          ],
+          [CardSuits.Hearts]
+        ),
+      ]),
     ],
   },
   {
@@ -111,10 +126,12 @@ export const lessons: Lesson[] = [
       '<three class="target clubs ct" data-index="1" data-html="<three class=&quot;clubs&quot; />"></three><three class="target clubs ct" data-index="3" data-html="<three class=&quot;clubs&quot; />"></three>',
     target: `Select all ${CardRanks.Three} of ${CardSuits.Clubs} cards`,
     nodes: [
-      new LessonNode(CardRanks.Three, null, [CardSuits.Diamonds]),
-      new LessonNode(CardRanks.Three, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
-      new LessonNode(CardRanks.King, null, [CardSuits.Clubs]),
-      new LessonNode(CardRanks.Three, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
+      new LessonNode('cards', [
+        new LessonNode(CardRanks.Three, null, [CardSuits.Diamonds]),
+        new LessonNode(CardRanks.Three, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
+        new LessonNode(CardRanks.King, null, [CardSuits.Clubs]),
+        new LessonNode(CardRanks.Three, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs]),
+      ]),
     ],
   },
   {
@@ -131,15 +148,17 @@ export const lessons: Lesson[] = [
       '<king class="target spades ct" id="corner" data-index="2" data-html="<king class=&quot;spades&quot; id=&quot;corner&quot; />"></king>',
     target: `Select ${LessonNodeAttributes.Id} ${CardRanks.King} card`,
     nodes: [
-      new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
-      new LessonNode(CardRanks.King, null, [CardSuits.Diamonds]),
-      new LessonNode(
-        CardRanks.King,
-        null,
-        [LessonNodeAttributes.TargetClass, CardSuits.Spades],
-        LessonNodeAttributes.Id
-      ),
-      new LessonNode(CardRanks.Ace, null, [CardSuits.Hearts], LessonNodeAttributes.Id),
+      new LessonNode('cards', [
+        new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
+        new LessonNode(CardRanks.King, null, [CardSuits.Diamonds]),
+        new LessonNode(
+          CardRanks.King,
+          null,
+          [LessonNodeAttributes.TargetClass, CardSuits.Spades],
+          LessonNodeAttributes.Id
+        ),
+        new LessonNode(CardRanks.Ace, null, [CardSuits.Hearts], LessonNodeAttributes.Id),
+      ]),
     ],
   },
   {
@@ -156,20 +175,22 @@ export const lessons: Lesson[] = [
     answer:
       '<queen class="target spades ct" id="corner" data-index="0" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen><queen class="target spades ct" id="corner" data-index="2" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen>',
     nodes: [
-      new LessonNode(
-        CardRanks.Queen,
-        null,
-        [LessonNodeAttributes.TargetClass, CardSuits.Spades],
-        LessonNodeAttributes.Id
-      ),
-      new LessonNode(CardRanks.Queen, null, [CardSuits.Diamonds], LessonNodeAttributes.Id),
-      new LessonNode(
-        CardRanks.Queen,
-        null,
-        [LessonNodeAttributes.TargetClass, CardSuits.Spades],
-        LessonNodeAttributes.Id
-      ),
-      new LessonNode(CardRanks.Queen, null, [CardSuits.Spades]),
+      new LessonNode('cards', [
+        new LessonNode(
+          CardRanks.Queen,
+          null,
+          [LessonNodeAttributes.TargetClass, CardSuits.Spades],
+          LessonNodeAttributes.Id
+        ),
+        new LessonNode(CardRanks.Queen, null, [CardSuits.Diamonds], LessonNodeAttributes.Id),
+        new LessonNode(
+          CardRanks.Queen,
+          null,
+          [LessonNodeAttributes.TargetClass, CardSuits.Spades],
+          LessonNodeAttributes.Id
+        ),
+        new LessonNode(CardRanks.Queen, null, [CardSuits.Spades]),
+      ]),
     ],
   },
   {
@@ -186,11 +207,13 @@ export const lessons: Lesson[] = [
     answer:
       '<ace class="spades target ct" data-index="0" data-html="<ace class=&quot;spades&quot; />"></ace><four class="clubs target ct" data-index="1" data-html="<four class=&quot;clubs&quot; />"></four><five class="hearts target ct" data-index="2" data-html="<five class=&quot;hearts&quot; />"></five><six class="diamonds target ct" data-index="3" data-html="<six class=&quot;diamonds&quot; />"></six><seven class="spades target ct" data-index="4" data-html="<seven class=&quot;spades&quot; />"></seven>',
     nodes: [
-      new LessonNode(CardRanks.Ace, null, [CardSuits.Spades, LessonNodeAttributes.TargetClass]),
-      new LessonNode(CardRanks.Four, null, [CardSuits.Clubs, LessonNodeAttributes.TargetClass]),
-      new LessonNode(CardRanks.Five, null, [CardSuits.Hearts, LessonNodeAttributes.TargetClass]),
-      new LessonNode(CardRanks.Six, null, [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]),
-      new LessonNode(CardRanks.Seven, null, [CardSuits.Spades, LessonNodeAttributes.TargetClass]),
+      new LessonNode('cards', [
+        new LessonNode(CardRanks.Ace, null, [CardSuits.Spades, LessonNodeAttributes.TargetClass]),
+        new LessonNode(CardRanks.Four, null, [CardSuits.Clubs, LessonNodeAttributes.TargetClass]),
+        new LessonNode(CardRanks.Five, null, [CardSuits.Hearts, LessonNodeAttributes.TargetClass]),
+        new LessonNode(CardRanks.Six, null, [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]),
+        new LessonNode(CardRanks.Seven, null, [CardSuits.Spades, LessonNodeAttributes.TargetClass]),
+      ]),
     ],
   },
   {
@@ -206,22 +229,24 @@ export const lessons: Lesson[] = [
     answer:
       '<jack class="hearts target ct" data-index="0" data-html="<jack class=&quot;hearts&quot; />"></jack><five class="diamonds target ct" data-index="0" data-html="<five class=&quot;diamonds&quot;></five>"><three class="target clubs ct" data-index="0" data-html="<three class=&quot;clubs&quot; />"></three></five><three class="target clubs ct" data-index="0" data-html="<three class=&quot;clubs&quot; />"></three>',
     nodes: [
-      new LessonNode(
-        CardRanks.King,
-        [new LessonNode(CardRanks.Jack, null, [CardSuits.Hearts, LessonNodeAttributes.TargetClass])],
-        [CardSuits.Spades]
-      ),
-      new LessonNode(
-        CardRanks.King,
-        [
-          new LessonNode(
-            CardRanks.Five,
-            [new LessonNode(CardRanks.Three, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs])],
-            [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]
-          ),
-        ],
-        [CardSuits.Clubs]
-      ),
+      new LessonNode('cards', [
+        new LessonNode(
+          CardRanks.King,
+          [new LessonNode(CardRanks.Jack, null, [CardSuits.Hearts, LessonNodeAttributes.TargetClass])],
+          [CardSuits.Spades]
+        ),
+        new LessonNode(
+          CardRanks.King,
+          [
+            new LessonNode(
+              CardRanks.Five,
+              [new LessonNode(CardRanks.Three, null, [LessonNodeAttributes.TargetClass, CardSuits.Clubs])],
+              [CardSuits.Diamonds, LessonNodeAttributes.TargetClass]
+            ),
+          ],
+          [CardSuits.Clubs]
+        ),
+      ]),
     ],
   },
   {
@@ -237,10 +262,12 @@ export const lessons: Lesson[] = [
     answer:
       '<king class="target spades ct" data-index="1" data-html="<king class=&quot;spades&quot; />"></king><king class="target spades ct" data-index="3" data-html="<king class=&quot;spades&quot; />"></king>',
     nodes: [
-      new LessonNode(CardRanks.King, [new LessonNode(CardRanks.Queen, null, [CardSuits.Hearts])], [CardSuits.Spades]),
-      new LessonNode(CardRanks.King, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
-      new LessonNode(CardRanks.King, [new LessonNode(CardRanks.Jack, null, [CardSuits.Clubs])], [CardSuits.Spades]),
-      new LessonNode(CardRanks.King, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
+      new LessonNode('cards', [
+        new LessonNode(CardRanks.King, [new LessonNode(CardRanks.Queen, null, [CardSuits.Hearts])], [CardSuits.Spades]),
+        new LessonNode(CardRanks.King, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
+        new LessonNode(CardRanks.King, [new LessonNode(CardRanks.Jack, null, [CardSuits.Clubs])], [CardSuits.Spades]),
+        new LessonNode(CardRanks.King, null, [LessonNodeAttributes.TargetClass, CardSuits.Spades]),
+      ]),
     ],
   },
   {
@@ -257,18 +284,20 @@ export const lessons: Lesson[] = [
     answer:
       '<king class="target spades ct" data-index="0" data-html="<king class=&quot;spades&quot;></king>"><queen class="hearts ct" data-index="0" data-html="<queen class=&quot;hearts&quot; />"></queen></king><king class="target spades ct" data-index="2" data-html="<king class=&quot;spades&quot;></king>"><jack class="clubs ct" data-index="0" data-html="<jack class=&quot;clubs&quot; />"></jack></king>',
     nodes: [
-      new LessonNode(
-        CardRanks.King,
-        [new LessonNode(CardRanks.Queen, null, [CardSuits.Hearts])],
-        [LessonNodeAttributes.TargetClass, CardSuits.Spades]
-      ),
-      new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
-      new LessonNode(
-        CardRanks.King,
-        [new LessonNode(CardRanks.Jack, null, [CardSuits.Clubs])],
-        [LessonNodeAttributes.TargetClass, CardSuits.Spades]
-      ),
-      new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
+      new LessonNode('cards', [
+        new LessonNode(
+          CardRanks.King,
+          [new LessonNode(CardRanks.Queen, null, [CardSuits.Hearts])],
+          [LessonNodeAttributes.TargetClass, CardSuits.Spades]
+        ),
+        new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
+        new LessonNode(
+          CardRanks.King,
+          [new LessonNode(CardRanks.Jack, null, [CardSuits.Clubs])],
+          [LessonNodeAttributes.TargetClass, CardSuits.Spades]
+        ),
+        new LessonNode(CardRanks.King, null, [CardSuits.Spades]),
+      ]),
     ],
   },
 ];

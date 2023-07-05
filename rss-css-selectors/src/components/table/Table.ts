@@ -30,7 +30,7 @@ export class Table extends BaseComponent {
         const isGameOver = Store.currentLesson.id === Store.lessons.length - 1;
 
         if (isGameOver) {
-          this.node.innerHTML = '<span class="game-over">Hoooray! You Win!</span>';
+          this.node.innerHTML = '<p class="game-over">Hoooray! You Win!</p>';
           Store.levelSelector.render();
           setLocalStorage({
             current: Store.currentLesson.id,
@@ -93,6 +93,7 @@ export class Table extends BaseComponent {
   public render() {
     this.elements.forEach((element) => element.delete());
     this.node.innerHTML = '';
+
     this.createTableDom(Store.currentLessonNodes, this);
   }
 }

@@ -1,31 +1,31 @@
-.pl-20 {
+.html .pl-20 {
   padding-left: 20px;
 }
 
-.ct {
+.html .ct {
   display: block;
 }
 
-/*.ct:not(.active) {*/
-/*  background: #091314;*/
-/*}*/
-
-.active {
+.html .active {
   background: rgba(255, 255, 255, 0.15);
 }
 
-.tag-bracket {
+.html .tag-bracket {
   color: #14c9ff;
 }
 
-.tag-name {
+.html .tag-name {
   color: #dada48;
 }
 
-.tag-attr {
+.html .tag-attr {
   color: tomato;
 }
 
-.tag-attr-value {
+.html .tag-attr-value {
   color: #00ff66;
+}
+
+.html > .ct.pl-20 {
+  padding: 0;
 }
