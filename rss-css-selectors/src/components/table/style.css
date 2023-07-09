@@ -3,9 +3,6 @@
   justify-content: center;
 }
 
-.table .game-over {
-}
-
 .table cards {
   display: flex;
   position: relative;

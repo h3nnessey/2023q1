@@ -61,7 +61,7 @@ export class BaseComponent {
   }
 
   public removeClass(className: string): void {
-    this.classNames.filter((clName) => clName !== className);
+    this.classNames = this.classNames.filter((clName) => clName !== className);
     this.element.classList.remove(className);
   }
 
