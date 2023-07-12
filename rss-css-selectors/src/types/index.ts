@@ -1,7 +1,7 @@
-import { LessonNode } from '../data/LessonNode';
+import { LevelNode } from '../levels/level-node/level-node';
 import { BaseComponent } from '../components/baseComponent/BaseComponent';
 
-export interface Lesson {
+export interface Level {
   id: number;
   title: string;
   subtitle: string;
@@ -11,7 +11,7 @@ export interface Lesson {
   example: string;
   answer: string;
   help: string;
-  nodes: LessonNode[];
+  nodes: LevelNode[];
 }
 
 export enum CardRanks {
@@ -37,7 +37,7 @@ export enum CardSuits {
   Diamonds = 'diamonds',
 }
 
-export enum LessonNodeAttributes {
+export enum LevelNodeAttributes {
   Id = 'corner',
   TargetClass = 'target',
 }

@@ -1,9 +1,9 @@
 import './style.css';
 import classNames from '../../../classNames';
 import { BaseComponent } from '../../baseComponent/BaseComponent';
-import { LessonNode } from '../../../data/LessonNode';
+import { LevelNode } from '../../../levels/level-node/level-node';
 import { LESSON_TARGET_CLASS } from '../../../constants';
-import { Store } from '../../../store/Store';
+import { Store } from '../../../store';
 
 export class TableElement extends BaseComponent {
   private attributes: {
@@ -12,7 +12,7 @@ export class TableElement extends BaseComponent {
   } = { classNames: [], id: null };
 
   constructor(
-    node: LessonNode,
+    node: LevelNode,
     parent: BaseComponent,
     private tableElements: BaseComponent[],
     private readonly index: number
@@ -25,7 +25,7 @@ export class TableElement extends BaseComponent {
     this.setHoverHandler();
   }
 
-  public setDataHtmlValue(node: LessonNode): void {
+  public setDataHtmlValue(node: LevelNode): void {
     const id = this.attributes.id ? ` id="${this.attributes.id}"` : '';
 
     const classNames = this.attributes.classNames.length ? ` class="${this.attributes.classNames.join(' ')}"` : '';

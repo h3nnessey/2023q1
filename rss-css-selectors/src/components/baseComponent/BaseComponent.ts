@@ -4,25 +4,20 @@ import { CSS_CLASSES_TO_EXCLUDE } from '../../constants';
 export class BaseComponent {
   private readonly element: HTMLElement;
   private readonly tag: string;
-  public parent: BaseComponent | null = null;
-  public classNames: string[] = [];
+  public readonly parent: BaseComponent | null = null;
+  private classNames: string[] = [];
 
   constructor({ tagName = 'div', classNames = [], parent, text, html }: BaseComponentConstructor) {
     this.element = document.createElement(tagName);
     this.tag = tagName;
-    this.addClass(...classNames);
+
+    classNames?.forEach((className) => this.addClass(className));
+    text && this.setTextContent(text);
+    html && this.setHtml(html);
 
     if (parent) {
       this.parent = parent;
       parent.appendChild(this);
-    }
-
-    if (text) {
-      this.setTextContent(text);
-    }
-
-    if (html) {
-      this.setHtml(html);
     }
   }
 
@@ -50,10 +45,9 @@ export class BaseComponent {
     return this.element.getAttribute(key);
   }
 
-  public addClass(...classNames: string[]): void {
-    this.element.classList.add(...classNames);
-    this.classNames.push(...classNames);
-    this.classNames = Array.from(new Set(this.classNames));
+  public addClass(className: string): void {
+    !this.classNames.includes(className) && this.classNames.push(className);
+    this.element.classList.add(className);
   }
 
   public hasClass(className: string): boolean {
@@ -86,7 +80,7 @@ export class BaseComponent {
     this.element.insertAdjacentHTML('afterbegin', html);
   }
 
-  public setTextContent(text: string) {
+  public setTextContent(text: string): void {
     this.element.textContent = text;
   }
 

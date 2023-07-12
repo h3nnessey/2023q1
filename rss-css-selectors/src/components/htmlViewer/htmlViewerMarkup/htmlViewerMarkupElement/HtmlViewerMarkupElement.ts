@@ -1,9 +1,9 @@
 import './style.css';
 import classNames from '../../../../classNames';
 import { BaseComponent } from '../../../baseComponent/BaseComponent';
-import { LessonNode } from '../../../../data/LessonNode';
+import { LevelNode } from '../../../../levels/level-node/level-node';
 import { LESSON_TARGET_CLASS } from '../../../../constants';
-import { Store } from '../../../../store/Store';
+import { Store } from '../../../../store';
 
 export class HtmlViewerMarkupElement extends BaseComponent {
   private attributes: {
@@ -12,7 +12,7 @@ export class HtmlViewerMarkupElement extends BaseComponent {
   } = { classNames: [], id: null };
 
   constructor(
-    node: LessonNode,
+    node: LevelNode,
     parent: BaseComponent,
     private readonly htmlViewerElements: BaseComponent[],
     private readonly index: number
@@ -62,7 +62,7 @@ export class HtmlViewerMarkupElement extends BaseComponent {
 
       selector = selector.split(' ').reverse().join(' ');
 
-      Store.cardsTable.node.dispatchEvent(
+      Store.cards.node.dispatchEvent(
         new CustomEvent('mouse-in', {
           detail: {
             selector: selector,
@@ -73,11 +73,11 @@ export class HtmlViewerMarkupElement extends BaseComponent {
 
     this.addEventListener('mouseleave', () => {
       this.htmlViewerElements.forEach((el) => el.removeClass(classNames.htmlViewer.activeElement));
-      Store.cardsTable.node.dispatchEvent(new CustomEvent('mouse-out'));
+      Store.cards.node.dispatchEvent(new CustomEvent('mouse-out'));
     });
   }
 
-  public insertText(node: LessonNode): void {
+  public insertText(node: LevelNode): void {
     const id = this.attributes.id
       ? `<span class="tag-attr"> id</span><span class="tag-attr-value">="${this.attributes.id}"</span>`
       : '';

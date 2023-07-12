@@ -3,21 +3,20 @@
   flex-direction: column;
   width: 50%;
   margin: 20px auto;
+  border: 1px solid rgba(255, 255, 255, 0.55);
   font-family: Consolas, monospace;
   color: #818181;
   backdrop-filter: blur(3px);
-  border: 1px solid rgba(255, 255, 255, 0.55);
 }
 
-.css-editor__header {
+.css-editor__title {
   display: flex;
   justify-content: space-between;
-  font-family: Consolas, monospace;
-  color: #ababab;
-  background-color: #6a0000;
+  padding: 0 20px;
   border: 1px solid #2d2e38;
   line-height: 25px;
-  padding: 0 20px;
+  color: #ababab;
+  background-color: #6a0000;
 }
 
 .css-editor__row {

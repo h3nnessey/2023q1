@@ -1,6 +1,6 @@
 import './style.css';
 import { BaseComponent } from '../baseComponent/BaseComponent';
-import { Store } from '../../store/Store';
+import { Store } from '../../store';
 import { LevelSelectorToggle } from '../lessonSelector/levelSelectorToggler/LevelSelectorToggle';
 import { ChangeLessonButtons } from './changeLessonButtons/ChangeLessonButtons';
 import { GameInfoLessonState } from './gameInfoLessonState/GameInfoLessonState';
@@ -26,7 +26,7 @@ export class GameInfo extends BaseComponent {
       tagName: 'p',
       classNames: ['game-info__lesson-number'],
       parent: this.gameInfoRow,
-      html: `Lesson ${Store.currentLesson.id + 1} of ${Store.lessons.length}`,
+      html: `Lesson ${Store.currentLevel.id + 1} of ${Store.levels.length}`,
     });
 
     this.gameInfoLessonState = new GameInfoLessonState(this.gameInfoRow);
@@ -39,46 +39,46 @@ export class GameInfo extends BaseComponent {
       tagName: 'h2',
       classNames: ['game-info__title'],
       parent: this,
-      text: Store.currentLesson.title,
+      text: Store.currentLevel.title,
     });
 
     this.subtitle = new BaseComponent({
       tagName: 'h3',
       classNames: ['game-info__subtitle'],
       parent: this,
-      text: Store.currentLesson.subtitle,
+      text: Store.currentLevel.subtitle,
     });
 
     this.selector = new BaseComponent({
       tagName: 'p',
       classNames: ['game-info__selector'],
       parent: this,
-      html: `Syntax: ${Store.currentLesson.selector}`,
+      html: `Syntax: ${Store.currentLevel.selector}`,
     });
 
     this.description = new BaseComponent({
       tagName: 'p',
       classNames: ['game-info__description'],
       parent: this,
-      html: Store.currentLesson.description,
+      html: Store.currentLevel.description,
     });
 
     this.example = new BaseComponent({
       tagName: 'p',
       classNames: ['game-info__example'],
       parent: this,
-      html: Store.currentLesson.example,
+      html: Store.currentLevel.example,
     });
   }
 
   public render(): void {
-    this.lessonNumber.setHtml(`Lesson ${Store.currentLesson.id + 1} of ${Store.lessons.length}`);
+    this.lessonNumber.setHtml(`Lesson ${Store.currentLevel.id + 1} of ${Store.levels.length}`);
     this.gameInfoLessonState.render();
-    this.title.setTextContent(Store.currentLesson.title);
-    this.subtitle.setTextContent(Store.currentLesson.subtitle);
-    this.selector.setHtml(`Syntax: ${Store.currentLesson.selector}`);
-    this.description.setHtml(Store.currentLesson.description);
-    this.example.setHtml(Store.currentLesson.example);
+    this.title.setTextContent(Store.currentLevel.title);
+    this.subtitle.setTextContent(Store.currentLevel.subtitle);
+    this.selector.setHtml(`Syntax: ${Store.currentLevel.selector}`);
+    this.description.setHtml(Store.currentLevel.description);
+    this.example.setHtml(Store.currentLevel.example);
     this.levelSelectorToggle.removeClass('opened');
   }
 }

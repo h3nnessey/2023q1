@@ -1,14 +1,14 @@
-.css-editor__button {
+.css-editor__submit-btn {
+  outline: none;
+  border: none;
   width: 50px;
   height: 30px;
   background: rgba(255, 255, 255, 0.55);
-  outline: none;
-  border: none;
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 0.2s;
 }
 
-.css-editor__button:hover {
+.css-editor__submit-btn:hover {
   opacity: 1;
 }

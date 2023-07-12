@@ -1,6 +1,6 @@
 import './style.css';
 import { BaseComponent } from '../../baseComponent/BaseComponent';
-import { Store } from '../../../store/Store';
+import { Store } from '../../../store';
 
 export class ResetProgressButton extends BaseComponent {
   constructor(parent: BaseComponent) {
@@ -8,12 +8,12 @@ export class ResetProgressButton extends BaseComponent {
     this.addEventListener('click', () => {
       const newStartId = 0;
 
-      Store.resetCompleted(newStartId);
+      Store.resetProgress(newStartId);
 
       Store.app.node.dispatchEvent(
         new CustomEvent('rerender', {
           detail: {
-            lesson: Store.lessons[newStartId],
+            level: Store.levels[newStartId],
           },
         })
       );

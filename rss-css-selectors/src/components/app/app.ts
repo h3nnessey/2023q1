@@ -5,10 +5,10 @@ import { GameInfo } from '../gameInfo/GameInfo';
 import { LessonSelector } from '../lessonSelector/LessonSelector';
 import { Table } from '../table/Table';
 import { HtmlViewer } from '../htmlViewer/HtmlViewer';
-import { CssEditor } from '../cssEditor/CssEditor';
+import { CssEditor } from '../css-editor/css-editor';
 import { Footer } from '../footer/Footer';
-import { Lesson } from '../../types';
-import { Store } from '../../store/Store';
+import { Level } from '../../types';
+import { Store } from '../../store';
 import { Header } from '../header/Header';
 
 export class App extends BaseComponent {
@@ -51,6 +51,14 @@ export class App extends BaseComponent {
     this.gameInfo = new GameInfo(this.secondColumn);
     this.lessonSelector = new LessonSelector(this.gameInfo);
 
+    Store.setElements({
+      app: this,
+      cardsTable: this.table,
+      htmlViewer: this.htmlViewer,
+      cssEditor: this.cssEditor,
+      levelSelector: this.lessonSelector,
+    });
+
     if (shouldBeHidden) this.gameInfo.node.classList.add('hidden');
 
     window.addEventListener('resize', (event: Event) => {
@@ -87,17 +95,9 @@ export class App extends BaseComponent {
       }
     });
 
-    Store.setElements({
-      app: this,
-      cardsTable: this.table,
-      htmlViewer: this.htmlViewer,
-      cssEditor: this.cssEditor,
-      levelSelector: this.lessonSelector,
-    });
-
     this.node.addEventListener('rerender', (event: Event) => {
       if (event instanceof CustomEvent) {
-        this.rerender(event.detail.lesson);
+        this.rerender(event.detail.level);
       }
     });
   }
@@ -109,8 +109,8 @@ export class App extends BaseComponent {
     this.container.append(this.node);
   }
 
-  public rerender(newLesson: Lesson) {
-    Store.updateCurrentLesson(newLesson);
+  public rerender(level: Level) {
+    Store.updateCurrentLevel(level);
 
     this.lessonTarget.rerender();
     this.lessonSelector.render();

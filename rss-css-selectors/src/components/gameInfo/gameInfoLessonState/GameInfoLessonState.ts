@@ -1,6 +1,6 @@
 import './style.css';
 import { BaseComponent } from '../../baseComponent/BaseComponent';
-import { Store } from '../../../store/Store';
+import { Store } from '../../../store';
 
 export class GameInfoLessonState extends BaseComponent {
   constructor(parent: BaseComponent) {
@@ -10,7 +10,7 @@ export class GameInfoLessonState extends BaseComponent {
       html: '<span class="checkmark-icon"></span><span class="help-icon"></span>',
     });
 
-    const id = Store.currentLesson.id;
+    const id = Store.currentLevel.id;
 
     if (Store.completed.includes(id)) this.addClass('completed');
     if (Store.helped.includes(id)) this.addClass('help-used');
@@ -20,7 +20,7 @@ export class GameInfoLessonState extends BaseComponent {
     this.removeClass('completed');
     this.removeClass('help-used');
 
-    const id = Store.currentLesson.id;
+    const id = Store.currentLevel.id;
 
     if (Store.completed.includes(id)) this.addClass('completed');
     if (Store.helped.includes(id)) this.addClass('help-used');

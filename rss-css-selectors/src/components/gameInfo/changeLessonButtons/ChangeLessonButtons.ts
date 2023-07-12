@@ -1,6 +1,6 @@
 import './style.css';
 import { BaseComponent } from '../../baseComponent/BaseComponent';
-import { Store } from '../../../store/Store';
+import { Store } from '../../../store';
 import { setLocalStorage } from '../../../localStorage';
 
 export class ChangeLessonButtons extends BaseComponent {
@@ -29,7 +29,7 @@ export class ChangeLessonButtons extends BaseComponent {
 
     this.nextButton.addEventListener('click', (event: Event) => {
       if (event instanceof MouseEvent) {
-        const id = Store.currentLesson.id === Store.lessons.length - 1 ? 0 : Store.currentLesson.id + 1;
+        const id = Store.currentLevel.id === Store.levels.length - 1 ? 0 : Store.currentLevel.id + 1;
 
         setLocalStorage({
           current: id,
@@ -40,7 +40,7 @@ export class ChangeLessonButtons extends BaseComponent {
         Store.app.node.dispatchEvent(
           new CustomEvent('rerender', {
             detail: {
-              lesson: Store.lessons.find((lesson) => lesson.id === id),
+              level: Store.levels.find((level) => level.id === id),
             },
           })
         );
@@ -49,7 +49,7 @@ export class ChangeLessonButtons extends BaseComponent {
 
     this.prevButton.addEventListener('click', (event: Event) => {
       if (event instanceof MouseEvent) {
-        const id = Store.currentLesson.id === 0 ? Store.lessons.length - 1 : Store.currentLesson.id - 1;
+        const id = Store.currentLevel.id === 0 ? Store.levels.length - 1 : Store.currentLevel.id - 1;
 
         setLocalStorage({
           current: id,
@@ -60,7 +60,7 @@ export class ChangeLessonButtons extends BaseComponent {
         Store.app.node.dispatchEvent(
           new CustomEvent('rerender', {
             detail: {
-              lesson: Store.lessons.find((lesson) => lesson.id === id),
+              level: Store.levels.find((level) => level.id === id),
             },
           })
         );

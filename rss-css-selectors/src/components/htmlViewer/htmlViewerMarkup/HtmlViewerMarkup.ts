@@ -1,9 +1,9 @@
 import './style.css';
 import classNames from '../../../classNames';
-import { LessonNode } from '../../../data/LessonNode';
+import { LevelNode } from '../../../levels/level-node/level-node';
 import { BaseComponent } from '../../baseComponent/BaseComponent';
 import { HtmlViewerMarkupElement } from './htmlViewerMarkupElement/HtmlViewerMarkupElement';
-import { Store } from '../../../store/Store';
+import { Store } from '../../../store';
 
 export class HtmlViewerMarkup extends BaseComponent {
   private elements: BaseComponent[] = [];
@@ -28,10 +28,10 @@ export class HtmlViewerMarkup extends BaseComponent {
     });
   }
 
-  private createHtmlViewerDom(nodeList: LessonNode[], parent: BaseComponent): void {
+  private createHtmlViewerDom(nodeList: LevelNode[], parent: BaseComponent): void {
     const nodes: BaseComponent[] = [];
 
-    nodeList.forEach((node: LessonNode, index) => {
+    nodeList.forEach((node: LevelNode, index) => {
       const htmlViewerItem = new HtmlViewerMarkupElement(node, parent, this.elements, index);
 
       if (node.children) {
@@ -47,8 +47,9 @@ export class HtmlViewerMarkup extends BaseComponent {
   }
 
   public render(): void {
-    this.node.innerHTML = '';
     this.elements.forEach((element) => element.delete());
-    this.createHtmlViewerDom(Store.currentLessonNodes, this);
+    this.elements = [];
+    this.node.innerHTML = '';
+    this.createHtmlViewerDom(Store.currentLevelNodes, this);
   }
 }

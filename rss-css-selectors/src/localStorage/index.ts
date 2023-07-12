@@ -4,7 +4,7 @@ export interface GameState {
   helped: number[];
 }
 
-export const setLocalStorage = (gameState: GameState) => {
+export const setLocalStorage = (gameState: GameState): void => {
   localStorage.setItem('h3nnessey', JSON.stringify(gameState));
 };
 

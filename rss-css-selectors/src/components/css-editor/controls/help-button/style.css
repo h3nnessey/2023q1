@@ -1,4 +1,4 @@
-.help {
+.css-editor__help-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,12 +11,12 @@
   transition: background-color 0.2s;
 }
 
-.help .help-btn__icon {
+.css-editor__help-btn-icon {
   width: 80%;
   height: 80%;
   background: url('../../../../assets/idea.svg') 50% 50% / cover no-repeat;
 }
 
-.help:hover {
+.css-editor__help-btn:hover {
   background: brown;
 }

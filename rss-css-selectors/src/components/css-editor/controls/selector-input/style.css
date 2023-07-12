@@ -1,36 +1,37 @@
-.css-editor__text-inputs {
+.css-editor__selector {
   position: relative;
+  flex: 1;
 }
 
-.css-editor__text-input {
-  font-family: Consolas, monospace;
+.css-editor__selector-input {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  font-size: 1.1rem;
-  z-index: 2;
-  background: transparent;
   outline: none;
   border: none;
-  overflow: hidden;
-  color: transparent;
-  caret-color: red;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 30px;
   padding: 5px;
+  font-size: 1.1rem;
+  font-family: Consolas, monospace;
+  color: transparent;
+  caret-color: red;
+  background: transparent;
+  overflow: hidden;
+  z-index: 2;
 }
 
-.css-editor__text-input_highlight {
-  font-family: Consolas, monospace;
-  font-size: 1.1rem;
+.css-editor__selector-highlight {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 30px;
-  z-index: 1;
   padding: 5px;
+  font-family: Consolas, monospace;
+  font-size: 1.1rem;
   overflow: hidden;
+  z-index: 1;
 }
 
 #css-hljs {

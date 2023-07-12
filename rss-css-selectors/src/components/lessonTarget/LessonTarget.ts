@@ -1,6 +1,6 @@
 import './style.css';
 import { BaseComponent } from '../baseComponent/BaseComponent';
-import { Store } from '../../store/Store';
+import { Store } from '../../store';
 
 export class LessonTarget extends BaseComponent {
   private readonly heading: BaseComponent;
@@ -10,12 +10,12 @@ export class LessonTarget extends BaseComponent {
     this.heading = new BaseComponent({
       tagName: 'h1',
       classNames: ['lesson-target__title'],
-      text: Store.currentLesson.target,
+      text: Store.currentLevel.target,
       parent: this,
     });
   }
 
   public rerender() {
-    this.heading.setTextContent(Store.currentLesson.target);
+    this.heading.setTextContent(Store.currentLevel.target);
   }
 }

@@ -1,6 +1,6 @@
 import './style.css';
 import { BaseComponent } from '../baseComponent/BaseComponent';
-import { Store } from '../../store/Store';
+import { Store } from '../../store';
 import { LessonSelectorElement } from './lessonSelectorElement/LessonSelectorElement';
 import { ResetProgressButton } from '../gameInfo/ResetProgressButton/ResetProgressButton';
 
@@ -13,11 +13,11 @@ export class LessonSelector extends BaseComponent {
 
     new BaseComponent({ tagName: 'p', classNames: ['lesson-selector__title'], parent: this, text: 'Select level' });
 
-    Store.lessons.forEach((lesson) => {
-      const isCompleted = Store.completed.includes(lesson.id);
-      const isHelped = Store.helped.includes(lesson.id);
+    Store.levels.forEach((level) => {
+      const isCompleted = Store.completed.includes(level.id);
+      const isHelped = Store.helped.includes(level.id);
 
-      const element = new LessonSelectorElement(isCompleted, isHelped, lesson.id, this.elements, this);
+      const element = new LessonSelectorElement(isCompleted, isHelped, level.id, this.elements, this);
 
       this.elements.push(element);
     });
@@ -33,7 +33,7 @@ export class LessonSelector extends BaseComponent {
 
       if (Store.completed.includes(element.id)) element.addClass('completed');
       if (Store.helped.includes(element.id)) element.addClass('helped');
-      if (element.id === Store.currentLesson.id) element.addClass('current');
+      if (element.id === Store.currentLevel.id) element.addClass('current');
     });
   }
 }

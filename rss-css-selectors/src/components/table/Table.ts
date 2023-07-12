@@ -1,8 +1,8 @@
 import './style.css';
 import classNames from '../../classNames';
-import { Store } from '../../store/Store';
+import { Store } from '../../store';
 import { BaseComponent } from '../baseComponent/BaseComponent';
-import { LessonNode } from '../../data/LessonNode';
+import { LevelNode } from '../../levels/level-node/level-node';
 import { TableElement } from './tableElement/TableElement';
 import { setLocalStorage } from '../../localStorage';
 
@@ -27,20 +27,20 @@ export class Table extends BaseComponent {
 
     this.node.addEventListener('win', (event: Event) => {
       if (event instanceof CustomEvent) {
-        const isGameOver = Store.currentLesson.id === Store.lessons.length - 1;
+        const isGameOver = Store.currentLevel.id === Store.levels.length - 1;
 
         if (isGameOver) {
           this.node.innerHTML = '<p class="game-over">Hoooray! You Win!</p>';
           Store.levelSelector.render();
           setLocalStorage({
-            current: Store.currentLesson.id,
+            current: Store.currentLevel.id,
             completed: Store.completed,
             helped: Store.helped,
           });
         } else {
           this.addClass('win');
 
-          const currentId = Store.currentLesson.id + 1;
+          const currentId = Store.currentLevel.id + 1;
 
           setLocalStorage({
             current: currentId,
@@ -52,7 +52,7 @@ export class Table extends BaseComponent {
             Store.app.node.dispatchEvent(
               new CustomEvent('rerender', {
                 detail: {
-                  lesson: Store.lessons.find((lesson) => lesson.id === currentId),
+                  level: Store.levels.find((level) => level.id === currentId),
                 },
               })
             );
@@ -73,7 +73,7 @@ export class Table extends BaseComponent {
     });
   }
 
-  private createTableDom(nodeList: LessonNode[], parent: BaseComponent): void {
+  private createTableDom(nodeList: LevelNode[], parent: BaseComponent): void {
     const nodes: BaseComponent[] = [];
 
     nodeList.forEach((node, index) => {
@@ -92,8 +92,9 @@ export class Table extends BaseComponent {
 
   public render() {
     this.elements.forEach((element) => element.delete());
+    this.elements = [];
     this.node.innerHTML = '';
 
-    this.createTableDom(Store.currentLessonNodes, this);
+    this.createTableDom(Store.currentLevelNodes, this);
   }
 }

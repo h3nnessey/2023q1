@@ -1,6 +1,6 @@
 import './style.css';
 import { BaseComponent } from '../../baseComponent/BaseComponent';
-import { Store } from '../../../store/Store';
+import { Store } from '../../../store';
 
 export class LevelSelectorToggle extends BaseComponent {
   constructor(parent: BaseComponent) {
