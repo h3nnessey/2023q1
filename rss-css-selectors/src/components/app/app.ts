@@ -9,7 +9,7 @@ import { CssEditor } from '../css-editor/css-editor';
 import { Footer } from '../footer/footer';
 import { Level } from '../../types';
 import { Store } from '../../store';
-import { Header } from '../header/Header';
+import { Header } from '../header/header';
 
 export class App extends BaseComponent {
   private readonly header: Header;
