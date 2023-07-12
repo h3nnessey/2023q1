@@ -7,7 +7,7 @@
   color: white;
 }
 
-.footer a {
+.footer .link {
   text-decoration: none;
   cursor: pointer;
 }

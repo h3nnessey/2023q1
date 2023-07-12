@@ -1,4 +1,5 @@
 import './style.css';
+import { classNames } from './class-names';
 import { BaseComponent } from '../baseComponent/BaseComponent';
 
 export class Footer extends BaseComponent {
@@ -7,11 +8,11 @@ export class Footer extends BaseComponent {
   private rssLink: BaseComponent;
 
   constructor() {
-    super({ tagName: 'footer', classNames: ['footer'] });
+    super({ tagName: 'footer', classNames: [classNames.footer] });
 
     this.githubLink = new BaseComponent({
       tagName: 'a',
-      classNames: ['github-link'],
+      classNames: [classNames.githubLInk, classNames.link],
       text: 'Github',
       parent: this,
     });
@@ -21,14 +22,14 @@ export class Footer extends BaseComponent {
 
     this.copyrightText = new BaseComponent({
       tagName: 'p',
-      classNames: ['copyright'],
+      classNames: [classNames.copyright],
       text: 'h3nnessey © 2023',
       parent: this,
     });
 
     this.rssLink = new BaseComponent({
       tagName: 'a',
-      classNames: ['rss-link'],
+      classNames: [classNames.rssLink, classNames.link],
       parent: this,
     });
 

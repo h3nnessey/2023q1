@@ -6,7 +6,7 @@ import { LessonSelector } from '../lessonSelector/LessonSelector';
 import { Table } from '../table/Table';
 import { HtmlViewer } from '../htmlViewer/HtmlViewer';
 import { CssEditor } from '../css-editor/css-editor';
-import { Footer } from '../footer/Footer';
+import { Footer } from '../footer/footer';
 import { Level } from '../../types';
 import { Store } from '../../store';
 import { Header } from '../header/Header';
