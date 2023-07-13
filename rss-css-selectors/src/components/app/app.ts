@@ -19,7 +19,7 @@ import { CUSTOM_EVENTS } from '../../constants';
 export class App extends BaseComponent {
   private readonly firstColumn: Column;
   private readonly secondColumn: Column;
-  private readonly lessonTarget: LevelTarget;
+  private readonly levelTarget: LevelTarget;
   private readonly levelInfoToggle: LevelInfoToggle;
   public readonly levelInfo: LevelInfo;
   private readonly levelSelector: LevelSelector;
@@ -30,22 +30,22 @@ export class App extends BaseComponent {
 
   constructor(private container: HTMLElement) {
     super({ tagName: 'main', classNames: [classNames.game] });
+
     this.levelInfo = new LevelInfo();
     this.levelSelector = new LevelSelector();
+    this.levelInfo.appendChild(this.levelSelector);
 
     this.firstColumn = new Column(this);
     this.secondColumn = new Column(this, this.levelInfo, this.levelSelector);
 
-    this.levelInfo.appendChild(this.levelSelector);
-
-    this.lessonTarget = new LevelTarget();
+    this.levelTarget = new LevelTarget();
     this.cards = new Cards();
     this.cssEditor = new CssEditor();
     this.htmlViewer = new HtmlViewer();
 
     this.firstColumn.append([
       new Header(),
-      this.lessonTarget,
+      this.levelTarget,
       this.cards,
       this.cssEditor,
       this.htmlViewer,
@@ -82,7 +82,7 @@ export class App extends BaseComponent {
 
   public rerender(level: Level): void {
     Store.updateCurrentLevel(level);
-    this.lessonTarget.rerender();
+    this.levelTarget.rerender();
     this.levelSelector.render();
     this.levelInfo.render();
     this.cssEditor.render();

@@ -10,7 +10,7 @@ export class ResetProgress extends BaseComponent {
     this.addEventListener('click', () => this.handleClick());
   }
 
-  private handleClick() {
+  private handleClick(): void {
     const startId = 0;
 
     Store.resetProgress(startId);

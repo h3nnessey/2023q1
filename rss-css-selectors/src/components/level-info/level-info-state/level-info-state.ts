@@ -11,19 +11,19 @@ export class LevelInfoState extends BaseComponent {
       html: `<span class="${classNames.checkmarkIcon}"></span><span class="${classNames.helpIcon}"></span>`,
     });
 
-    const id = Store.currentLevel.id;
-
-    if (Store.completed.includes(id)) this.addClass(classNames.levelCompleted);
-    if (Store.helped.includes(id)) this.addClass(classNames.levelHelped);
+    this.setHelpedAndCompleted();
   }
 
-  public render() {
+  private setHelpedAndCompleted(): void {
     this.removeClass(classNames.levelCompleted);
     this.removeClass(classNames.levelHelped);
-
     const id = Store.currentLevel.id;
 
-    if (Store.completed.includes(id)) this.addClass(classNames.levelCompleted);
-    if (Store.helped.includes(id)) this.addClass(classNames.levelHelped);
+    if (Store.gameState.completed.includes(id)) this.addClass(classNames.levelCompleted);
+    if (Store.gameState.helped.includes(id)) this.addClass(classNames.levelHelped);
+  }
+
+  public render(): void {
+    this.setHelpedAndCompleted();
   }
 }

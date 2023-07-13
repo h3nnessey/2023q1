@@ -37,7 +37,7 @@ export const levels: Level[] = [
       '<span class="text-bold">Example:</span> selector <span class="text-code">#main</span> selects all elements with <span class="text-code">id="main"</span>',
     help: `#${LevelNodeAttributes.Id}`,
     answer:
-      '<jack class="target spades ct" id="corner" data-index="3" data-html="<jack class=&quot;spades&quot; id=&quot;corner&quot; />"></jack>',
+      '<jack class="target spades ct" data-index="3" id="corner" data-html="<jack class=&quot;spades&quot; id=&quot;corner&quot; />"></jack>',
     target: `Select a ${LevelNodeAttributes.Id} card`,
     nodes: [
       new LevelNode(
@@ -164,7 +164,7 @@ export const levels: Level[] = [
       '<span class="text-bold">Example:</span> selector <span class="text-code">button#primary</span> selects all elements of type <span class="text-code">button</span> with id <span class="text-code">primary</span>',
     help: `${CardRanks.King}#${LevelNodeAttributes.Id}`,
     answer:
-      '<king class="target spades ct" id="corner" data-index="2" data-html="<king class=&quot;spades&quot; id=&quot;corner&quot; />"></king>',
+      '<king class="target spades ct" data-index="2" id="corner" data-html="<king class=&quot;spades&quot; id=&quot;corner&quot; />"></king>',
     target: `Select ${LevelNodeAttributes.Id} ${CardRanks.King} card`,
     nodes: [
       new LevelNode(
@@ -196,7 +196,7 @@ export const levels: Level[] = [
     target: `Select all ${LevelNodeAttributes.Id} ${CardRanks.Queen} of ${CardSuits.Spades}`,
     help: `${CardRanks.Queen}.${CardSuits.Spades}#${LevelNodeAttributes.Id}`,
     answer:
-      '<queen class="target spades ct" id="corner" data-index="0" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen><queen class="target spades ct" id="corner" data-index="2" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen>',
+      '<queen class="target spades ct" data-index="0" id="corner" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen><queen class="target spades ct" data-index="2" id="corner" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen>',
     nodes: [
       new LevelNode(
         'cards',

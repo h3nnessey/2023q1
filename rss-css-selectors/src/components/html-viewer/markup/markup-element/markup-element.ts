@@ -53,9 +53,9 @@ export class MarkupElement extends BaseComponent {
 
   public insertText(node: LevelNode): void {
     const { bracket, tag, attr } = {
-      bracket: (isOpen: boolean) => `<span class="${classNames.tagBracket}">${isOpen ? '&lt;' : '&gt;'}</span>`,
-      tag: (name: string) => `<span class="${classNames.tagName}">${name}</span>`,
-      attr: (type: string, value: string) =>
+      bracket: (isOpen: boolean): string => `<span class="${classNames.tagBracket}">${isOpen ? '&lt;' : '&gt;'}</span>`,
+      tag: (name: string): string => `<span class="${classNames.tagName}">${name}</span>`,
+      attr: (type: string, value: string): string =>
         `<span class="${classNames.tagAttr}"> ${type}</span><span class="${classNames.tagAttrValue}">="${value}"</span>`,
     };
 

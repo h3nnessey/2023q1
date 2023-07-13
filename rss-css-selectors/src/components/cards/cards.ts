@@ -5,8 +5,6 @@ import { Store } from '../../store';
 import { BaseComponent } from '../base-component/base-component';
 import { LevelNode } from '../../levels/level-node/level-node';
 import { Card } from './card/card';
-import { setLocalStorage } from '../../local-storage';
-import { GameState } from '../../types';
 
 export class Cards extends BaseComponent {
   private elements: BaseComponent[] = [];
@@ -45,20 +43,16 @@ export class Cards extends BaseComponent {
     if (isGameOver) {
       this.node.innerHTML = `<p class="${classNames.gameOver}">Hoooray! You Win!</p>`;
       Store.levelSelector.render();
-      setLocalStorage<GameState>({
+      Store.saveGameState({
         current: Store.currentLevel.id,
-        completed: Store.completed,
-        helped: Store.helped,
       });
     } else {
       this.addClass(classNames.win);
 
       const currentId = Store.currentLevel.id + 1;
 
-      setLocalStorage<GameState>({
+      Store.saveGameState({
         current: currentId,
-        completed: Store.completed,
-        helped: Store.helped,
       });
 
       setTimeout(() => {

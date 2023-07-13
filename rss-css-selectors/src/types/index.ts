@@ -1,10 +1,23 @@
 import { LevelNode } from '../levels/level-node/level-node';
 import { BaseComponent } from '../components/base-component/base-component';
+import { App } from '../components/app/app';
+import { HtmlViewer } from '../components/html-viewer/html-viewer';
+import { CssEditor } from '../components/css-editor/css-editor';
+import { Cards } from '../components/cards/cards';
+import { LevelSelector } from '../components/level-selector/level-selector';
 
 export interface GameState {
   current: number;
   completed: number[];
   helped: number[];
+}
+
+export interface StoreElements {
+  app: App;
+  htmlViewer: HtmlViewer;
+  cssEditor: CssEditor;
+  cards: Cards;
+  levelSelector: LevelSelector;
 }
 
 export interface Level {

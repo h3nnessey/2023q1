@@ -4,8 +4,7 @@ import { classNames as levelInfoClassNames } from '../../level-info/class-names'
 import { ASIDE_MAX_WIDTH } from '../../../constants';
 import { BaseComponent } from '../../base-component/base-component';
 import { Store } from '../../../store';
-import { GameState, Level } from '../../../types';
-import { setLocalStorage } from '../../../local-storage';
+import { Level } from '../../../types';
 
 export class LevelSelectorItem extends BaseComponent {
   private readonly level: Level;
@@ -22,30 +21,28 @@ export class LevelSelectorItem extends BaseComponent {
       html: `${id + 1}. ${this.level.title}: ${this.level.selector}`,
     });
 
-    this.addEventListener('click', (event: Event) => {
-      if (event instanceof MouseEvent) {
-        const shouldBeHidden = window.matchMedia(`(max-width: ${ASIDE_MAX_WIDTH}px`).matches;
+    this.addEventListener('click', () => this.handleClick());
+  }
 
-        if (shouldBeHidden) Store.app.levelInfo.node.classList.toggle(levelInfoClassNames.levelInfoHidden);
+  private handleClick(): void {
+    const shouldBeHidden = window.matchMedia(`(max-width: ${ASIDE_MAX_WIDTH}px`).matches;
 
-        Store.levelSelector.addClass(classNames.levelSelectorHidden);
+    if (shouldBeHidden) Store.app.levelInfo.node.classList.toggle(levelInfoClassNames.levelInfoHidden);
 
-        const newLevel = Store.levels.find((level) => level.id === this.id)!;
+    Store.levelSelector.addClass(classNames.levelSelectorHidden);
 
-        setLocalStorage<GameState>({
-          current: newLevel.id,
-          completed: Store.completed,
-          helped: Store.helped,
-        });
+    const newLevel = Store.levels.find((level) => level.id === this.id)!;
 
-        Store.app.node.dispatchEvent(
-          new CustomEvent('rerender', {
-            detail: {
-              level: newLevel,
-            },
-          })
-        );
-      }
+    Store.saveGameState({
+      current: newLevel.id,
     });
+
+    Store.app.node.dispatchEvent(
+      new CustomEvent('rerender', {
+        detail: {
+          level: newLevel,
+        },
+      })
+    );
   }
 }

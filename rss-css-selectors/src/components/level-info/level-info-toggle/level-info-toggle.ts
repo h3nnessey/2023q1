@@ -15,14 +15,14 @@ export class LevelInfoToggle extends BaseComponent {
 
     if (this.shouldHideLevelInfo) this.levelInfo.addClass(classNames.levelInfoHidden);
 
-    this.addEventListener('click', (event: Event) => {
-      if (event instanceof MouseEvent) {
-        if (this.levelInfo.node.classList.contains(classNames.levelInfoHidden)) {
-          this.levelInfo.node.classList.remove(classNames.levelInfoHidden);
-        } else {
-          this.levelInfo.node.classList.add(classNames.levelInfoHidden);
-        }
-      }
-    });
+    this.addEventListener('click', () => this.handleClick());
+  }
+
+  private handleClick(): void {
+    if (this.levelInfo.node.classList.contains(classNames.levelInfoHidden)) {
+      this.levelInfo.node.classList.remove(classNames.levelInfoHidden);
+    } else {
+      this.levelInfo.node.classList.add(classNames.levelInfoHidden);
+    }
   }
 }

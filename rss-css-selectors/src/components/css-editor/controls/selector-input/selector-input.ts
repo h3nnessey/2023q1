@@ -13,25 +13,21 @@ export class SelectorInput extends BaseComponent {
   public readonly input: BaseComponent;
   public readonly highlightedInput: BaseComponent;
   private readonly inputNode: HTMLInputElement;
-  private readonly controls: Controls;
 
-  constructor(controls: Controls) {
+  constructor(private readonly controls: Controls) {
     super({
       classNames: [classNames.selector],
       parent: controls,
     });
-
-    this.controls = controls;
 
     this.input = new BaseComponent({
       tagName: 'input',
       classNames: [classNames.selectorInput],
       parent: this,
     });
+    this.input.setAttribute('placeholder', 'Write a CSS selector...');
 
     this.inputNode = this.input.node as HTMLInputElement;
-
-    this.input.setAttribute('placeholder', 'Write a CSS selector...');
 
     this.highlightedInput = new BaseComponent({
       classNames: [classNames.highlightedSelector, classNames.code, classNames.languageCss],

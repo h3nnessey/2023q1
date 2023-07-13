@@ -1,8 +1,6 @@
 import { BaseComponent } from '../../../base-component/base-component';
 import { classNames } from '../../class-names';
 import { Store } from '../../../../store';
-import { setLocalStorage } from '../../../../local-storage';
-import {GameState} from "../../../../types";
 
 export class LevelChangerPrev extends BaseComponent {
   constructor(parent: BaseComponent) {
@@ -13,24 +11,22 @@ export class LevelChangerPrev extends BaseComponent {
       html: '<span>⬅</span>',
     });
 
-    this.addEventListener('click', (event: Event) => {
-      if (event instanceof MouseEvent) {
-        const id = Store.currentLevel.id === 0 ? Store.levels.length - 1 : Store.currentLevel.id - 1;
+    this.addEventListener('click', () => this.handleClick());
+  }
 
-        setLocalStorage<GameState>({
-          current: id,
-          completed: Store.completed,
-          helped: Store.helped,
-        });
+  private handleClick(): void {
+    const id = Store.currentLevel.id === 0 ? Store.levels.length - 1 : Store.currentLevel.id - 1;
 
-        Store.app.node.dispatchEvent(
-          new CustomEvent('rerender', {
-            detail: {
-              level: Store.levels.find((level) => level.id === id),
-            },
-          })
-        );
-      }
+    Store.saveGameState({
+      current: id,
     });
+
+    Store.app.node.dispatchEvent(
+      new CustomEvent('rerender', {
+        detail: {
+          level: Store.levels.find((level) => level.id === id),
+        },
+      })
+    );
   }
 }

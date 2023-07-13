@@ -24,15 +24,15 @@ export class LevelSelector extends BaseComponent {
     this.resetProgressBtn = new ResetProgress(this);
   }
 
-  public render() {
+  public render(): void {
     this.items.forEach((item) => {
       item.removeClass(classNames.current);
       item.removeClass(classNames.completed);
       item.removeClass(classNames.helped);
 
-      if (Store.completed.includes(item.id)) item.addClass(classNames.completed);
-      if (Store.helped.includes(item.id)) item.addClass(classNames.helped);
-      if (item.id === Store.currentLevel.id) item.addClass(classNames.current);
+      if (Store.gameState.completed.includes(item.id)) item.addClass(classNames.completed);
+      if (Store.gameState.helped.includes(item.id)) item.addClass(classNames.helped);
+      if (Store.currentLevel.id === item.id) item.addClass(classNames.current);
     });
   }
 }

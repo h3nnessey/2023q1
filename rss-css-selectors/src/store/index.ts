@@ -1,4 +1,4 @@
-import { GameState, Level } from '../types';
+import { GameState, Level, StoreElements } from '../types';
 import { levels } from '../levels/levels';
 import { LevelNode } from '../levels/level-node/level-node';
 import { HtmlViewer } from '../components/html-viewer/html-viewer';
@@ -8,21 +8,13 @@ import { App } from '../components/app/app';
 import { LevelSelector } from '../components/level-selector/level-selector';
 import { getLocalStorage, setLocalStorage } from '../local-storage';
 
-const { current, completed, helped }: GameState = getLocalStorage<GameState>() ?? {
-  current: 0,
-  completed: [],
-  helped: [],
-};
-
-interface StoreElements {
-  app: App;
-  htmlViewer: HtmlViewer;
-  cssEditor: CssEditor;
-  cards: Cards;
-  levelSelector: LevelSelector;
-}
-
 export class Store {
+  public static gameState: GameState = getLocalStorage<GameState>() ?? {
+    current: 0,
+    completed: [],
+    helped: [],
+  };
+
   public static levels: Level[] = levels;
   public static app: App;
   public static htmlViewer: HtmlViewer;
@@ -30,12 +22,9 @@ export class Store {
   public static cards: Cards;
   public static levelSelector: LevelSelector;
 
-  public static completed: number[] = completed;
-  public static helped: number[] = helped;
-
-  public static currentLevel: Level = levels[current];
-  public static currentLevelNodes: LevelNode[] = levels[current].nodes;
-  public static currentLevelAnswer: string = levels[current].answer;
+  public static currentLevel: Level = levels[Store.gameState.current];
+  public static currentLevelNodes: LevelNode[] = levels[Store.gameState.current].nodes;
+  public static currentLevelAnswer: string = levels[Store.gameState.current].answer;
 
   public static setElements(elements: StoreElements): void {
     Store.app = elements.app;
@@ -46,30 +35,57 @@ export class Store {
   }
 
   public static setHelped(): void {
-    Store.helped.push(Store.currentLevel.id);
+    Store.gameState.helped.push(Store.currentLevel.id);
 
+    Store.saveGameState({
+      ...Store.gameState,
+      helped: Store.gameState.helped,
+    });
+  }
+
+  public static saveGameState({
+    helped = Store.gameState.helped,
+    completed = Store.gameState.completed,
+    current = Store.gameState.current,
+  }: {
+    helped?: number[];
+    completed?: number[];
+    current?: number;
+  }): void {
     setLocalStorage<GameState>({
-      helped: Store.helped,
-      completed: Store.completed,
-      current: Store.currentLevel.id,
+      ...Store.gameState,
+      helped,
+      completed,
+      current,
     });
   }
 
   public static setCompleted(): void {
-    Store.completed.push(Store.currentLevel.id);
+    Store.gameState.completed.push(Store.currentLevel.id);
+    Store.saveGameState({
+      ...Store.gameState,
+      completed: Store.gameState.completed,
+    });
   }
 
   public static resetProgress(id: number): void {
-    Store.completed = [];
-    Store.helped = [];
-    setLocalStorage<GameState>({
-      current: id,
+    Store.gameState = {
+      ...Store.gameState,
       completed: [],
       helped: [],
+    };
+
+    Store.saveGameState({
+      ...Store.gameState,
+      current: id,
     });
   }
 
   public static updateCurrentLevel(level: Level): void {
+    Store.saveGameState({
+      ...Store.gameState,
+      current: level.id,
+    });
     Store.currentLevel = level;
     Store.currentLevelNodes = level.nodes;
     Store.currentLevelAnswer = level.answer;

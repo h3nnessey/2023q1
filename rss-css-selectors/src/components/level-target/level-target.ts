@@ -17,7 +17,7 @@ export class LevelTarget extends BaseComponent {
     });
   }
 
-  public rerender() {
+  public rerender(): void {
     this.title.setTextContent(Store.currentLevel.target);
   }
 }
