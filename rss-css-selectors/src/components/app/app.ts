@@ -4,7 +4,7 @@ import { BaseComponent } from '../base-component/base-component';
 import { LevelTarget } from '../level-target/level-target';
 import { LevelInfo } from '../level-info/level-info';
 import { LevelSelector } from '../level-selector/level-selector';
-import { Table } from '../table/Table';
+import { Cards } from '../cards/cards';
 import { HtmlViewer } from '../htmlViewer/HtmlViewer';
 import { CssEditor } from '../css-editor/css-editor';
 import { Footer } from '../footer/footer';
@@ -22,7 +22,7 @@ export class App extends BaseComponent {
   private readonly levelInfoToggle: LevelInfoToggle;
   public readonly levelInfo: LevelInfo;
   private readonly levelSelector: LevelSelector;
-  private readonly table: Table;
+  private readonly cards: Cards;
   private readonly htmlViewer: HtmlViewer;
   private readonly cssEditor: CssEditor;
   private readonly resizeHandler: ResizeHandler;
@@ -38,14 +38,14 @@ export class App extends BaseComponent {
     this.levelInfo.appendChild(this.levelSelector);
 
     this.lessonTarget = new LevelTarget();
-    this.table = new Table();
+    this.cards = new Cards();
     this.cssEditor = new CssEditor();
     this.htmlViewer = new HtmlViewer();
 
     this.firstColumn.append([
       new Header(),
       this.lessonTarget,
-      this.table,
+      this.cards,
       this.cssEditor,
       this.htmlViewer,
       new Footer(),
@@ -57,7 +57,7 @@ export class App extends BaseComponent {
 
     Store.setElements({
       app: this,
-      cardsTable: this.table,
+      cards: this.cards,
       htmlViewer: this.htmlViewer,
       cssEditor: this.cssEditor,
       levelSelector: this.levelSelector,
@@ -73,7 +73,7 @@ export class App extends BaseComponent {
   }
 
   public render(): void {
-    this.table.render();
+    this.cards.render();
     this.htmlViewer.render();
     this.levelSelector.render();
     this.container.append(this.node);
@@ -85,7 +85,7 @@ export class App extends BaseComponent {
     this.levelSelector.render();
     this.levelInfo.render();
     this.cssEditor.render();
-    this.table.render();
+    this.cards.render();
     this.htmlViewer.render();
   }
 }

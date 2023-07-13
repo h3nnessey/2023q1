@@ -1,9 +1,9 @@
-.table {
+.cards-wrapper {
   display: flex;
   justify-content: center;
 }
 
-.table cards {
+.cards-wrapper cards {
   display: flex;
   position: relative;
   flex-wrap: wrap;
@@ -32,7 +32,7 @@
   }
 }
 
-.table cards > .ct {
+.cards-wrapper cards > .ct {
   position: relative;
   display: flex;
   justify-content: center;
@@ -40,7 +40,7 @@
   background-color: red;
 }
 
-.table cards > .ct > .ct {
+.cards-wrapper cards > .ct > .ct {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +48,7 @@
   transform-origin: bottom;
 }
 
-.table cards > .ct > .ct > .ct {
+.cards-wrapper cards > .ct > .ct > .ct {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,7 +56,7 @@
   transform-origin: bottom;
 }
 
-.table.wrong-answer .ct {
+.cards-wrapper.wrong-answer .ct {
   animation: wrong-answer 0.1s 0s infinite linear;
 }
 
@@ -76,7 +76,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  .table cards {
+  .cards-wrapper cards {
     padding: 40px 2rem;
   }
 }

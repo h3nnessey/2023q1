@@ -1,11 +1,11 @@
-.table cards .ct {
+.cards-wrapper cards .ct {
   height: 145px;
   width: 100px;
   border-radius: 6px;
   position: relative;
 }
 
-.table cards.hovered::before {
+.cards-wrapper cards.hovered::before {
   content: attr(data-html);
   position: absolute;
   display: block;
@@ -21,7 +21,7 @@
   z-index: 999;
 }
 
-.table cards .ct.hovered::before {
+.cards-wrapper cards .ct.hovered::before {
   content: attr(data-html);
   position: absolute;
   display: block;
@@ -36,229 +36,229 @@
   z-index: 999;
 }
 
-.table cards .ct > .ct.hovered::before {
+.cards-wrapper cards .ct > .ct.hovered::before {
   transform: rotate(-10deg);
   top: -65px;
 }
 
-.table cards .ct > .ct > .ct.hovered::before {
+.cards-wrapper cards .ct > .ct > .ct.hovered::before {
   transform: rotate(-20deg);
   top: -75px;
 }
 
-.table cards ace.clubs {
+.cards-wrapper cards ace.clubs {
   background: url('../../../assets/cards/ace_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards ace.diamonds {
+.cards-wrapper cards ace.diamonds {
   background: url('../../../assets/cards/ace_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards ace.hearts {
+.cards-wrapper cards ace.hearts {
   background: url('../../../assets/cards/ace_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards ace.spades {
+.cards-wrapper cards ace.spades {
   background: url('../../../assets/cards/ace_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards jack.clubs {
+.cards-wrapper cards jack.clubs {
   background: url('../../../assets/cards/jack_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards jack.diamonds {
+.cards-wrapper cards jack.diamonds {
   background: url('../../../assets/cards/jack_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards jack.hearts {
+.cards-wrapper cards jack.hearts {
   background: url('../../../assets/cards/jack_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards jack.spades {
+.cards-wrapper cards jack.spades {
   background: url('../../../assets/cards/jack_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards queen.clubs {
+.cards-wrapper cards queen.clubs {
   background: url('../../../assets/cards/queen_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards queen.diamonds {
+.cards-wrapper cards queen.diamonds {
   background: url('../../../assets/cards/queen_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards queen.hearts {
+.cards-wrapper cards queen.hearts {
   background: url('../../../assets/cards/queen_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards queen.spades {
+.cards-wrapper cards queen.spades {
   background: url('../../../assets/cards/queen_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards five.clubs {
+.cards-wrapper cards five.clubs {
   background: url('../../../assets/cards/5_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards five.diamonds {
+.cards-wrapper cards five.diamonds {
   background: url('../../../assets/cards/5_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards five.hearts {
+.cards-wrapper cards five.hearts {
   background: url('../../../assets/cards/5_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards five.spades {
+.cards-wrapper cards five.spades {
   background: url('../../../assets/cards/5_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards four.clubs {
+.cards-wrapper cards four.clubs {
   background: url('../../../assets/cards/4_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards four.diamonds {
+.cards-wrapper cards four.diamonds {
   background: url('../../../assets/cards/4_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards four.hearts {
+.cards-wrapper cards four.hearts {
   background: url('../../../assets/cards/4_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards four.spades {
+.cards-wrapper cards four.spades {
   background: url('../../../assets/cards/4_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards eight.clubs {
+.cards-wrapper cards eight.clubs {
   background: url('../../../assets/cards/8_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards eight.diamonds {
+.cards-wrapper cards eight.diamonds {
   background: url('../../../assets/cards/8_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards eight.hearts {
+.cards-wrapper cards eight.hearts {
   background: url('../../../assets/cards/8_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards eight.spades {
+.cards-wrapper cards eight.spades {
   background: url('../../../assets/cards/8_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards king.clubs {
+.cards-wrapper cards king.clubs {
   background: url('../../../assets/cards/king_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards king.diamonds {
+.cards-wrapper cards king.diamonds {
   background: url('../../../assets/cards/king_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards king.hearts {
+.cards-wrapper cards king.hearts {
   background: url('../../../assets/cards/king_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards king.spades {
+.cards-wrapper cards king.spades {
   background: url('../../../assets/cards/king_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards nine.clubs {
+.cards-wrapper cards nine.clubs {
   background: url('../../../assets/cards/9_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards nine.diamonds {
+.cards-wrapper cards nine.diamonds {
   background: url('../../../assets/cards/9_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards nine.hearts {
+.cards-wrapper cards nine.hearts {
   background: url('../../../assets/cards/9_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards nine.spades {
+.cards-wrapper cards nine.spades {
   background: url('../../../assets/cards/9_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards ten.clubs {
+.cards-wrapper cards ten.clubs {
   background: url('../../../assets/cards/10_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards ten.diamonds {
+.cards-wrapper cards ten.diamonds {
   background: url('../../../assets/cards/10_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards ten.hearts {
+.cards-wrapper cards ten.hearts {
   background: url('../../../assets/cards/10_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards ten.spades {
+.cards-wrapper cards ten.spades {
   background: url('../../../assets/cards/10_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards three.clubs {
+.cards-wrapper cards three.clubs {
   background: url('../../../assets/cards/3_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards three.diamonds {
+.cards-wrapper cards three.diamonds {
   background: url('../../../assets/cards/3_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards three.hearts {
+.cards-wrapper cards three.hearts {
   background: url('../../../assets/cards/3_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards three.spades {
+.cards-wrapper cards three.spades {
   background: url('../../../assets/cards/3_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards two.clubs {
+.cards-wrapper cards two.clubs {
   background: url('../../../assets/cards/2_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards two.diamonds {
+.cards-wrapper cards two.diamonds {
   background: url('../../../assets/cards/2_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards two.hearts {
+.cards-wrapper cards two.hearts {
   background: url('../../../assets/cards/2_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards two.spades {
+.cards-wrapper cards two.spades {
   background: url('../../../assets/cards/2_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards six.clubs {
+.cards-wrapper cards six.clubs {
   background: url('../../../assets/cards/6_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards six.diamonds {
+.cards-wrapper cards six.diamonds {
   background: url('../../../assets/cards/6_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards six.hearts {
+.cards-wrapper cards six.hearts {
   background: url('../../../assets/cards/6_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards six.spades {
+.cards-wrapper cards six.spades {
   background: url('../../../assets/cards/6_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards seven.clubs {
+.cards-wrapper cards seven.clubs {
   background: url('../../../assets/cards/7_of_clubs.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards seven.diamonds {
+.cards-wrapper cards seven.diamonds {
   background: url('../../../assets/cards/7_of_diamonds.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards seven.hearts {
+.cards-wrapper cards seven.hearts {
   background: url('../../../assets/cards/7_of_hearts.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards seven.spades {
+.cards-wrapper cards seven.spades {
   background: url('../../../assets/cards/7_of_spades.svg') 50% 50% / cover no-repeat;
 }
 
-.table cards .ct .border-red {
+.cards-wrapper cards .ct .border-red {
   border: 2px dashed deeppink;
 }
 
-.table.win .target {
+.cards-wrapper.win .target {
   animation: win 1s 0s 1 forwards ease-in-out;
 }
 
@@ -271,7 +271,7 @@
   }
 }
 
-.table cards .target {
+.cards-wrapper cards .target {
   animation: target 1s 0s infinite ease-in-out;
 }
 
@@ -287,12 +287,12 @@
   }
 }
 
-.table cards .hovered {
+.cards-wrapper cards .hovered {
   animation: none;
   box-shadow: 0 0 3px 3px rgba(0, 255, 208, 0.63), 0 0 5px 5px rgba(0, 72, 255, 0.63);
 }
 
-.table cards #corner::after {
+.cards-wrapper cards #corner::after {
   position: absolute;
   content: '';
   display: block;
@@ -306,7 +306,7 @@
 }
 
 @media screen and (max-width: 1300px) {
-  .table cards .ct {
+  .cards-wrapper cards .ct {
     height: 120px;
     width: 84px;
     border-radius: 5px;
@@ -314,7 +314,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .table cards .ct {
+  .cards-wrapper cards .ct {
     height: 120px;
     width: 84px;
     border-radius: 5px;

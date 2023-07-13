@@ -3,7 +3,7 @@ import { levels } from '../levels/levels';
 import { LevelNode } from '../levels/level-node/level-node';
 import { HtmlViewer } from '../components/htmlViewer/HtmlViewer';
 import { CssEditor } from '../components/css-editor/css-editor';
-import { Table } from '../components/table/Table';
+import { Cards } from '../components/cards/cards';
 import { App } from '../components/app/app';
 import { LevelSelector } from '../components/level-selector/level-selector';
 import { getLocalStorage, setLocalStorage } from '../local-storage';
@@ -18,7 +18,7 @@ interface StoreElements {
   app: App;
   htmlViewer: HtmlViewer;
   cssEditor: CssEditor;
-  cardsTable: Table;
+  cards: Cards;
   levelSelector: LevelSelector;
 }
 
@@ -27,7 +27,7 @@ export class Store {
   public static app: App;
   public static htmlViewer: HtmlViewer;
   public static cssEditor: CssEditor;
-  public static cards: Table;
+  public static cards: Cards;
   public static levelSelector: LevelSelector;
 
   public static completed: number[] = completed;
@@ -41,7 +41,7 @@ export class Store {
     Store.app = elements.app;
     Store.htmlViewer = elements.htmlViewer;
     Store.cssEditor = elements.cssEditor;
-    Store.cards = elements.cardsTable;
+    Store.cards = elements.cards;
     Store.levelSelector = elements.levelSelector;
   }
 
