@@ -1,0 +1,24 @@
+.level-selector__toggle {
+  position: relative;
+  font-size: 1.5rem;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #7faf30;
+  cursor: pointer;
+  z-index: 999;
+  transition: transform 0.2s ease-in-out, color 0.2s;
+}
+
+.level-selector__toggle:hover {
+  color: greenyellow;
+}
+
+.level-info:has(.level-selector.hidden) .level-selector__toggle {
+  color: #626262;
+  transform: rotate(90deg);
+}
+
+.level-info:has(.level-selector.hidden) .level-selector__toggle:hover {
+  color: #ffffff;
+}

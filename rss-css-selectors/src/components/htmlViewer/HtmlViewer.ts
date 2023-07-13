@@ -1,8 +1,8 @@
 import './style.css';
 import classNames from '../../classNames';
-import { BaseComponent } from '../baseComponent/BaseComponent';
+import { BaseComponent } from '../base-component/base-component';
 import { HtmlViewerMarkup } from './htmlViewerMarkup/HtmlViewerMarkup';
-import { LineNumbers } from '../lineNumbers/LineNumbers';
+import { LineNumbers } from '../line-numbers/line-numbers';
 
 export class HtmlViewer extends BaseComponent {
   private readonly lineNumbers: LineNumbers;
@@ -10,8 +10,8 @@ export class HtmlViewer extends BaseComponent {
   private readonly htmlViewerRow: BaseComponent;
   public readonly htmlViewerMarkup: HtmlViewerMarkup;
 
-  constructor(parent: BaseComponent) {
-    super({ classNames: [classNames.htmlViewer.root], parent });
+  constructor() {
+    super({ classNames: [classNames.htmlViewer.root] });
 
     this.htmlViewerHeader = new BaseComponent({
       tagName: 'p',

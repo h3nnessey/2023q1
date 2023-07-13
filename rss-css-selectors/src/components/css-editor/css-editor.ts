@@ -1,7 +1,7 @@
 import './style.css';
 import { classNames } from './class-names';
-import { BaseComponent } from '../baseComponent/BaseComponent';
-import { LineNumbers } from '../lineNumbers/LineNumbers';
+import { BaseComponent } from '../base-component/base-component';
+import { LineNumbers } from '../line-numbers/line-numbers';
 import { Controls } from './controls/controls';
 
 export class CssEditor extends BaseComponent {
@@ -10,8 +10,8 @@ export class CssEditor extends BaseComponent {
   private readonly title: BaseComponent;
   private readonly row: BaseComponent;
 
-  constructor(parent: BaseComponent) {
-    super({ classNames: [classNames.cssEditor], parent });
+  constructor() {
+    super({ classNames: [classNames.cssEditor] });
 
     this.title = new BaseComponent({
       tagName: 'p',

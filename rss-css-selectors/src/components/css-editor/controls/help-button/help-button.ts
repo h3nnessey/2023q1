@@ -1,6 +1,6 @@
 import './style.css';
 import { classNames } from '../../class-names';
-import { BaseComponent } from '../../../baseComponent/BaseComponent';
+import { BaseComponent } from '../../../base-component/base-component';
 import { SelectorInput } from '../selector-input/selector-input';
 import { Store } from '../../../../store';
 
@@ -25,7 +25,7 @@ export class HelpButton extends BaseComponent {
       Store.setHelped();
       selectorInput.handleHelp();
       Store.levelSelector.render();
-      Store.app.gameInfo.render();
+      Store.app.levelInfo.render();
     });
   }
 

@@ -1,6 +1,6 @@
 import './style.css';
 import { classNames } from '../class-names';
-import { BaseComponent } from '../../baseComponent/BaseComponent';
+import { BaseComponent } from '../../base-component/base-component';
 import { SelectorInput } from './selector-input/selector-input';
 import { SubmitButton } from './submit-button/submit-button';
 import { HelpButton } from './help-button/help-button';
@@ -43,7 +43,7 @@ export class Controls extends BaseComponent {
   private handleCorrectAnswer(): void {
     const inputNode = this.selectorInput.input.node as HTMLInputElement;
     Store.setCompleted();
-    Store.app.gameInfo.render();
+    Store.app.levelInfo.render();
     Store.cards.node.dispatchEvent(new CustomEvent('win'));
     inputNode.value = '';
     this.selectorInput.highlightedInput.setTextContent('');

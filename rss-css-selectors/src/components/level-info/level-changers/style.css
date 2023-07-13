@@ -1,0 +1,26 @@
+.level-changers {
+  display: flex;
+  gap: 1rem;
+}
+
+.level-changers__prev,
+.level-changers__next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  padding: 0 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 1.2rem;
+  color: yellow;
+  background: #141414;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.level-changers__prev:hover,
+.level-changers__next:hover {
+  opacity: 1;
+}

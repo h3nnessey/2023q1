@@ -1,6 +1,6 @@
 import './styles.css';
 import { classNames } from '../../class-names';
-import { BaseComponent } from '../../../baseComponent/BaseComponent';
+import { BaseComponent } from '../../../base-component/base-component';
 import { Controls } from '../controls';
 
 export class SubmitButton extends BaseComponent {

@@ -1,7 +1,7 @@
 import './style.css';
 import classNames from '../../../classNames';
 import { LevelNode } from '../../../levels/level-node/level-node';
-import { BaseComponent } from '../../baseComponent/BaseComponent';
+import { BaseComponent } from '../../base-component/base-component';
 import { HtmlViewerMarkupElement } from './htmlViewerMarkupElement/HtmlViewerMarkupElement';
 import { Store } from '../../../store';
 

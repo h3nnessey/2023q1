@@ -3,7 +3,7 @@ import { classNames } from '../../class-names';
 import 'highlight.js/styles/github.css';
 import hljs from 'highlight.js/lib/core';
 import css from 'highlight.js/lib/languages/css';
-import { BaseComponent } from '../../../baseComponent/BaseComponent';
+import { BaseComponent } from '../../../base-component/base-component';
 import { Store } from '../../../../store';
 import { Controls } from '../controls';
 

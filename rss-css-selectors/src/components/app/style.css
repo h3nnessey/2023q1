@@ -22,7 +22,7 @@
     z-index: 3;
   }
 
-  .game .game__column:last-child:not(.game .game__column:last-child:has(.game-info.hidden)) {
+  .game .game__column:last-child:not(.game .game__column:last-child:has(.level-info.hidden)) {
     width: 100%;
     background: rgb(90 90 90 / 15%);
     backdrop-filter: blur(5px);

@@ -1,18 +1,23 @@
 import './style.css';
 import { classNames } from './class-names';
 import { BaseComponent } from '../base-component/base-component';
+import { Store } from '../../store';
 
-export class Header extends BaseComponent {
+export class LevelTarget extends BaseComponent {
   private readonly title: BaseComponent;
 
   constructor() {
-    super({ tagName: 'header', classNames: [classNames.header] });
+    super({ classNames: [classNames.target] });
 
     this.title = new BaseComponent({
       tagName: 'h1',
       classNames: [classNames.title],
-      text: 'Cards Selector Game',
+      text: Store.currentLevel.target,
       parent: this,
     });
+  }
+
+  public rerender() {
+    this.title.setTextContent(Store.currentLevel.target);
   }
 }

@@ -1,8 +1,9 @@
 import './style.css';
-import { BaseComponent } from '../baseComponent/BaseComponent';
-import { LessonTarget } from '../lessonTarget/LessonTarget';
-import { GameInfo } from '../gameInfo/GameInfo';
-import { LessonSelector } from '../lessonSelector/LessonSelector';
+import { classNames } from './class-names';
+import { BaseComponent } from '../base-component/base-component';
+import { LevelTarget } from '../level-target/level-target';
+import { LevelInfo } from '../level-info/level-info';
+import { LevelSelector } from '../level-selector/level-selector';
 import { Table } from '../table/Table';
 import { HtmlViewer } from '../htmlViewer/HtmlViewer';
 import { CssEditor } from '../css-editor/css-editor';
@@ -10,90 +11,59 @@ import { Footer } from '../footer/footer';
 import { Level } from '../../types';
 import { Store } from '../../store';
 import { Header } from '../header/header';
+import { LevelInfoToggle } from '../level-info/level-info-toggle/level-info-toggle';
+import { Column } from './app-column/column';
+import { ResizeHandler } from './resize-handler/resize-handler';
 
 export class App extends BaseComponent {
-  private readonly header: Header;
-  private readonly footer: Footer;
-  private readonly firstColumn: BaseComponent;
-  private readonly secondColumn: BaseComponent;
-  private readonly lessonTarget: LessonTarget;
-  public readonly gameInfo: GameInfo;
-  private readonly lessonSelector: LessonSelector;
+  private readonly firstColumn: Column;
+  private readonly secondColumn: Column;
+  private readonly lessonTarget: LevelTarget;
+  private readonly levelInfoToggle: LevelInfoToggle;
+  public readonly levelInfo: LevelInfo;
+  private readonly levelSelector: LevelSelector;
   private readonly table: Table;
   private readonly htmlViewer: HtmlViewer;
   private readonly cssEditor: CssEditor;
+  private readonly resizeHandler: ResizeHandler;
 
   constructor(private container: HTMLElement) {
-    super({ tagName: 'main', classNames: ['game'] });
+    super({ tagName: 'main', classNames: [classNames.game] });
+    this.levelInfo = new LevelInfo();
+    this.levelSelector = new LevelSelector();
 
-    const shouldBeHidden = window.matchMedia('(max-width: 1100px').matches;
+    this.firstColumn = new Column(this);
+    this.secondColumn = new Column(this, this.levelInfo, this.levelSelector);
 
-    const btn = new BaseComponent({
-      tagName: 'button',
-      html: `<span>|||</span>`,
-      classNames: ['game-info__toggle'],
-    });
+    this.levelInfo.appendChild(this.levelSelector);
 
-    this.footer = new Footer();
-    this.header = new Header();
+    this.lessonTarget = new LevelTarget();
+    this.table = new Table();
+    this.cssEditor = new CssEditor();
+    this.htmlViewer = new HtmlViewer();
 
-    this.firstColumn = new BaseComponent({ classNames: ['game__column'], parent: this });
-    this.secondColumn = new BaseComponent({ classNames: ['game__column'], parent: this });
-    this.firstColumn.appendChild(this.header);
-    this.lessonTarget = new LessonTarget(this.firstColumn);
-    this.table = new Table(this.firstColumn);
-    this.cssEditor = new CssEditor(this.firstColumn);
-    this.htmlViewer = new HtmlViewer(this.firstColumn);
-    this.firstColumn.appendChild(this.footer);
+    this.firstColumn.append([
+      new Header(),
+      this.lessonTarget,
+      this.table,
+      this.cssEditor,
+      this.htmlViewer,
+      new Footer(),
+    ]);
 
-    this.secondColumn.appendChild(btn);
+    this.levelInfoToggle = new LevelInfoToggle(this.levelInfo);
 
-    this.gameInfo = new GameInfo(this.secondColumn);
-    this.lessonSelector = new LessonSelector(this.gameInfo);
+    this.secondColumn.append([this.levelInfoToggle, this.levelInfo]);
 
     Store.setElements({
       app: this,
       cardsTable: this.table,
       htmlViewer: this.htmlViewer,
       cssEditor: this.cssEditor,
-      levelSelector: this.lessonSelector,
+      levelSelector: this.levelSelector,
     });
 
-    if (shouldBeHidden) this.gameInfo.node.classList.add('hidden');
-
-    window.addEventListener('resize', (event: Event) => {
-      const target = event.target as Window;
-      const targetWidth = target.screen.width;
-
-      if (targetWidth <= 1100) {
-        if (this.gameInfo.node.classList.contains('hidden')) {
-          return null;
-        } else {
-          this.gameInfo.node.classList.add('hidden');
-          this.lessonSelector.node.classList.add('hidden');
-        }
-      } else this.gameInfo.node.classList.remove('hidden');
-    });
-
-    this.secondColumn.addEventListener('click', (event: Event) => {
-      if (event instanceof MouseEvent) {
-        const target = event.target as HTMLElement;
-        if (target.classList.contains('game__column')) {
-          this.gameInfo.node.classList.toggle('hidden');
-          this.lessonSelector.node.classList.add('hidden');
-        }
-      }
-    });
-
-    btn.addEventListener('click', (event: Event) => {
-      if (event instanceof MouseEvent) {
-        if (this.gameInfo.node.classList.contains('hidden')) {
-          this.gameInfo.node.classList.remove('hidden');
-        } else {
-          this.gameInfo.node.classList.add('hidden');
-        }
-      }
-    });
+    this.resizeHandler = new ResizeHandler(this.levelInfo, this.levelSelector);
 
     this.node.addEventListener('rerender', (event: Event) => {
       if (event instanceof CustomEvent) {
@@ -102,19 +72,18 @@ export class App extends BaseComponent {
     });
   }
 
-  public render() {
+  public render(): void {
     this.table.render();
     this.htmlViewer.render();
-    this.lessonSelector.render();
+    this.levelSelector.render();
     this.container.append(this.node);
   }
 
-  public rerender(level: Level) {
+  public rerender(level: Level): void {
     Store.updateCurrentLevel(level);
-
     this.lessonTarget.rerender();
-    this.lessonSelector.render();
-    this.gameInfo.render();
+    this.levelSelector.render();
+    this.levelInfo.render();
     this.cssEditor.render();
     this.table.render();
     this.htmlViewer.render();

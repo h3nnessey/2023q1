@@ -1,16 +1,17 @@
 import './style.css';
 import classNames from '../../classNames';
 import { Store } from '../../store';
-import { BaseComponent } from '../baseComponent/BaseComponent';
+import { BaseComponent } from '../base-component/base-component';
 import { LevelNode } from '../../levels/level-node/level-node';
 import { TableElement } from './tableElement/TableElement';
-import { setLocalStorage } from '../../localStorage';
+import { setLocalStorage } from '../../local-storage';
+import {GameState} from "../../types";
 
 export class Table extends BaseComponent {
   private elements: BaseComponent[] = [];
 
-  constructor(parent: BaseComponent) {
-    super({ classNames: [classNames.table.root], parent });
+  constructor() {
+    super({ classNames: [classNames.table.root] });
 
     this.node.addEventListener('mouse-in', (event: Event) => {
       if (event instanceof CustomEvent) {
@@ -32,7 +33,7 @@ export class Table extends BaseComponent {
         if (isGameOver) {
           this.node.innerHTML = '<p class="game-over">Hoooray! You Win!</p>';
           Store.levelSelector.render();
-          setLocalStorage({
+          setLocalStorage<GameState>({
             current: Store.currentLevel.id,
             completed: Store.completed,
             helped: Store.helped,
@@ -42,7 +43,7 @@ export class Table extends BaseComponent {
 
           const currentId = Store.currentLevel.id + 1;
 
-          setLocalStorage({
+          setLocalStorage<GameState>({
             current: currentId,
             completed: Store.completed,
             helped: Store.helped,

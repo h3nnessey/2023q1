@@ -1,0 +1,16 @@
+.line-numbers {
+  display: flex;
+  flex-direction: column;
+  padding-top: 6px;
+  list-style: none;
+  background: #164e4b;
+  user-select: none;
+}
+
+.line-numbers__item {
+  padding: 0 10px;
+  font-family: Consolas, monospace;
+  line-height: 120%;
+  color: #6b9f9c;
+  text-align: right;
+}

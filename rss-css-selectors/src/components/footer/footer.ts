@@ -1,6 +1,6 @@
 import './style.css';
 import { classNames } from './class-names';
-import { BaseComponent } from '../baseComponent/BaseComponent';
+import { BaseComponent } from '../base-component/base-component';
 
 export class Footer extends BaseComponent {
   private githubLink: BaseComponent;

@@ -1,0 +1,17 @@
+.level-info__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  font-size: 1.1rem;
+  color: yellowgreen;
+  background: #201d20;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.level-info__toggle:hover {
+  background: #1e1a1a;
+  color: rgb(18, 212, 50);
+}

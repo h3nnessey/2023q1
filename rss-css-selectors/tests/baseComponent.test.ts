@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { BaseComponent } from '../src/components/baseComponent/BaseComponent';
+import { BaseComponent } from '../src/components/base-component/base-component';
 
 describe('BaseComponent: checking correct tagName after instance creation', () => {
   const { div, p, h1, ul }: Record<string, string> = {

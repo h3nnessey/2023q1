@@ -1,6 +1,6 @@
 import './style.css';
 import classNames from '../../../../classNames';
-import { BaseComponent } from '../../../baseComponent/BaseComponent';
+import { BaseComponent } from '../../../base-component/base-component';
 import { LevelNode } from '../../../../levels/level-node/level-node';
 import { LESSON_TARGET_CLASS } from '../../../../constants';
 import { Store } from '../../../../store';

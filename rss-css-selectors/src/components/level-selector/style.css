@@ -1,0 +1,27 @@
+.level-selector {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 20px 10px 10px 10px;
+  background-color: #100b0b;
+  background-image: url('../../assets/black-orchid.png');
+  list-style: none;
+  transition: right 0.2s ease-in-out;
+  overflow: auto;
+}
+
+.level-selector__title {
+  width: 100%;
+  font-size: 1.3rem;
+  text-align: left;
+}
+
+.level-selector.hidden {
+  right: -999px;
+}

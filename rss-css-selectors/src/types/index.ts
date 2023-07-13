@@ -1,5 +1,11 @@
 import { LevelNode } from '../levels/level-node/level-node';
-import { BaseComponent } from '../components/baseComponent/BaseComponent';
+import { BaseComponent } from '../components/base-component/base-component';
+
+export interface GameState {
+  current: number;
+  completed: number[];
+  helped: number[];
+}
 
 export interface Level {
   id: number;

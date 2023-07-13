@@ -1,21 +1,25 @@
-import { Level } from '../types';
+import { GameState, Level } from '../types';
 import { levels } from '../levels/levels';
 import { LevelNode } from '../levels/level-node/level-node';
 import { HtmlViewer } from '../components/htmlViewer/HtmlViewer';
 import { CssEditor } from '../components/css-editor/css-editor';
 import { Table } from '../components/table/Table';
 import { App } from '../components/app/app';
-import { LessonSelector } from '../components/lessonSelector/LessonSelector';
-import { GameState, getLocalStorage, setLocalStorage } from '../localStorage';
+import { LevelSelector } from '../components/level-selector/level-selector';
+import { getLocalStorage, setLocalStorage } from '../local-storage';
 
-const { current, completed, helped }: GameState = getLocalStorage();
+const { current, completed, helped }: GameState = getLocalStorage<GameState>() ?? {
+  current: 0,
+  completed: [],
+  helped: [],
+};
 
 interface StoreElements {
   app: App;
   htmlViewer: HtmlViewer;
   cssEditor: CssEditor;
   cardsTable: Table;
-  levelSelector: LessonSelector;
+  levelSelector: LevelSelector;
 }
 
 export class Store {
@@ -24,7 +28,7 @@ export class Store {
   public static htmlViewer: HtmlViewer;
   public static cssEditor: CssEditor;
   public static cards: Table;
-  public static levelSelector: LessonSelector;
+  public static levelSelector: LevelSelector;
 
   public static completed: number[] = completed;
   public static helped: number[] = helped;
@@ -44,7 +48,7 @@ export class Store {
   public static setHelped(): void {
     Store.helped.push(Store.currentLevel.id);
 
-    setLocalStorage({
+    setLocalStorage<GameState>({
       helped: Store.helped,
       completed: Store.completed,
       current: Store.currentLevel.id,
@@ -58,7 +62,7 @@ export class Store {
   public static resetProgress(id: number): void {
     Store.completed = [];
     Store.helped = [];
-    setLocalStorage({
+    setLocalStorage<GameState>({
       current: id,
       completed: [],
       helped: [],
