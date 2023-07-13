@@ -13,10 +13,6 @@ export class SubmitButton extends BaseComponent {
 
     this.insertTextNodes([['afterbegin', 'Enter']]);
 
-    this.addEventListener('click', (event: Event) => {
-      if (event instanceof MouseEvent) {
-        this.controls.checkAnswer();
-      }
-    });
+    this.addEventListener('click', () => this.controls.checkAnswer());
   }
 }

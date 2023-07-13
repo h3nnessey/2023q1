@@ -1,5 +1,6 @@
 import './style.css';
 import { classNames } from './class-names';
+import { CUSTOM_EVENTS } from '../../constants';
 import { Store } from '../../store';
 import { BaseComponent } from '../base-component/base-component';
 import { LevelNode } from '../../levels/level-node/level-node';
@@ -17,10 +18,10 @@ export class Cards extends BaseComponent {
   }
 
   private attachListeners(): void {
-    this.node.addEventListener('mouse-in', (event: Event) => this.handleMouseIn(event));
-    this.node.addEventListener('mouse-out', () => this.removeHoverClass());
-    this.node.addEventListener('win', () => this.handleWin());
-    this.node.addEventListener('wrong-answer', () => this.handleWrongAnswer());
+    this.node.addEventListener(CUSTOM_EVENTS.MOUSE_IN, (event: Event) => this.handleMouseIn(event));
+    this.node.addEventListener(CUSTOM_EVENTS.MOUSE_OUT, () => this.removeHoverClass());
+    this.node.addEventListener(CUSTOM_EVENTS.WIN, () => this.handleWin());
+    this.node.addEventListener(CUSTOM_EVENTS.WRONG_ANSWER, () => this.handleWrongAnswer());
   }
 
   private handleMouseIn(event: Event): void {
@@ -62,7 +63,7 @@ export class Cards extends BaseComponent {
 
       setTimeout(() => {
         Store.app.node.dispatchEvent(
-          new CustomEvent('rerender', {
+          new CustomEvent(CUSTOM_EVENTS.RERENDER, {
             detail: {
               level: Store.levels.find((level) => level.id === currentId),
             },

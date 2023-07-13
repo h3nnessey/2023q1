@@ -5,7 +5,7 @@ export class BaseComponent {
   private readonly element: HTMLElement;
   private readonly tag: string;
   public readonly parent: BaseComponent | null = null;
-  private classNames: string[] = [];
+  public classNames: string[] = [];
 
   constructor({ tagName = 'div', classNames = [], parent, text, html }: BaseComponentConstructor) {
     this.element = document.createElement(tagName);
@@ -97,6 +97,35 @@ export class BaseComponent {
       return !CSS_CLASSES_TO_EXCLUDE.includes(className);
     });
 
-    return `${classes.length ? '.' + classes.join(' ') : ''}`;
+    return `${classes.length ? '.' + classes.join('.') : ''}`;
+  }
+
+  private getCurrentSelector(): string {
+    return (
+      this.tagName +
+      this.getNodeClassName() +
+      (this.getAttribute('id') ? '#' + this.getAttribute('id') : '') +
+      (this.getAttribute('data-index') ? `[data-index="${this.getAttribute('data-index')}"]` : '')
+    );
+  }
+
+  public getSelector(stopClassName: string): string {
+    let current = this.parentElement;
+
+    let selector = this.getCurrentSelector();
+
+    while (current) {
+      if (current.hasClass(stopClassName)) {
+        break;
+      }
+
+      selector += ` ${current.getCurrentSelector()}`;
+
+      current = current.parentElement;
+    }
+
+    selector = selector.split(' ').reverse().join(' ');
+
+    return selector;
   }
 }

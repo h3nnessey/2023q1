@@ -3,28 +3,14 @@ import { classNames } from '../class-names';
 import { BaseComponent } from '../../base-component/base-component';
 import { LevelNode } from '../../../levels/level-node/level-node';
 import { Store } from '../../../store';
-import { LevelNodeAttributes } from '../../../types';
+import { CUSTOM_EVENTS } from '../../../constants';
 
 export class Card extends BaseComponent {
-  private attributes: {
-    classNames: string[];
-    id: string | null;
-  } = { classNames: [], id: null };
-
   constructor(node: LevelNode, parent: BaseComponent, private readonly cards: BaseComponent[], index: number) {
     super({ tagName: node.tagName, classNames: node.classNames.concat([classNames.customTag]), parent });
 
     this.setNodeData(node, index);
     this.attachListeners();
-  }
-
-  private getSelector(element: BaseComponent): string {
-    return (
-      element.tagName +
-      element.getNodeClassName() +
-      (element.getAttribute('id') ? '#' + element.getAttribute('id') : '') +
-      (element.getAttribute('data-index') ? `[data-index="${element.getAttribute('data-index')}"]` : '')
-    );
   }
 
   private removeHoverClass(): void {
@@ -36,26 +22,10 @@ export class Card extends BaseComponent {
     this.removeHoverClass();
     this.addClass(classNames.cardHovered);
 
-    let current = this.parentElement;
-
-    let selector = this.getSelector(this);
-
-    while (current) {
-      if (current.hasClass(classNames.cardsWrapper)) {
-        break;
-      }
-
-      selector += ` ${this.getSelector(current)}`;
-
-      current = current.parentElement;
-    }
-
-    selector = selector.split(' ').reverse().join(' ');
-
     Store.htmlViewer.htmlViewerMarkup.node.dispatchEvent(
-      new CustomEvent('mouse-in', {
+      new CustomEvent(CUSTOM_EVENTS.MOUSE_IN, {
         detail: {
-          selector: selector,
+          selector: this.getSelector(classNames.cardsWrapper),
         },
       })
     );
@@ -72,15 +42,15 @@ export class Card extends BaseComponent {
   }
 
   private setNodeData(node: LevelNode, index: number): void {
-    this.setNodeAttributes(node.classNames, node.id);
     this.setAttribute('data-index', index.toString());
+    node.id && this.setAttribute('id', node.id);
     this.setDataHtmlValue(node);
   }
 
   private setDataHtmlValue(node: LevelNode): void {
-    const id = this.attributes.id ? ` id="${this.attributes.id}"` : '';
+    const id = this.getAttribute('id') ? ` id="${this.getAttribute('id')}"` : '';
 
-    const classNames = this.attributes.classNames.length ? ` class="${this.attributes.classNames.join(' ')}"` : '';
+    const classNames = this.classNames.length ? ` class="${this.getNodeClassName().replace('.', '')}"` : '';
 
     let dataValue = '';
 
@@ -91,21 +61,5 @@ export class Card extends BaseComponent {
     }
 
     this.setAttribute('data-html', dataValue);
-  }
-
-  private setNodeAttributes(classNames: string[] | null, id: string | null): void {
-    if (classNames) {
-      classNames.forEach((className) => {
-        if (className === LevelNodeAttributes.TargetClass) return;
-
-        this.addClass(className);
-        this.attributes.classNames.push(className);
-      });
-    }
-
-    if (id) {
-      this.setAttribute('id', id);
-      this.attributes.id = id;
-    }
   }
 }

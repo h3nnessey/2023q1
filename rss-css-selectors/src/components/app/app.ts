@@ -5,7 +5,7 @@ import { LevelTarget } from '../level-target/level-target';
 import { LevelInfo } from '../level-info/level-info';
 import { LevelSelector } from '../level-selector/level-selector';
 import { Cards } from '../cards/cards';
-import { HtmlViewer } from '../htmlViewer/HtmlViewer';
+import { HtmlViewer } from '../html-viewer/html-viewer';
 import { CssEditor } from '../css-editor/css-editor';
 import { Footer } from '../footer/footer';
 import { Level } from '../../types';
@@ -14,6 +14,7 @@ import { Header } from '../header/header';
 import { LevelInfoToggle } from '../level-info/level-info-toggle/level-info-toggle';
 import { Column } from './app-column/column';
 import { ResizeHandler } from './resize-handler/resize-handler';
+import { CUSTOM_EVENTS } from '../../constants';
 
 export class App extends BaseComponent {
   private readonly firstColumn: Column;
@@ -65,7 +66,7 @@ export class App extends BaseComponent {
 
     this.resizeHandler = new ResizeHandler(this.levelInfo, this.levelSelector);
 
-    this.node.addEventListener('rerender', (event: Event) => {
+    this.node.addEventListener(CUSTOM_EVENTS.RERENDER, (event: Event) => {
       if (event instanceof CustomEvent) {
         this.rerender(event.detail.level);
       }

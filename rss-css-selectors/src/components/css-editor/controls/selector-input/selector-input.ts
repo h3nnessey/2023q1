@@ -34,7 +34,7 @@ export class SelectorInput extends BaseComponent {
     this.input.setAttribute('placeholder', 'Write a CSS selector...');
 
     this.highlightedInput = new BaseComponent({
-      classNames: [classNames.highlightedSelector, 'code', 'language-css'],
+      classNames: [classNames.highlightedSelector, classNames.code, classNames.languageCss],
       parent: this,
     });
 

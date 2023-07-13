@@ -15,12 +15,16 @@ export const levels: Level[] = [
     answer:
       '<ace class="target clubs ct" data-index="0" data-html="<ace class=&quot;clubs&quot; />"></ace><ace class="target hearts ct" data-index="1" data-html="<ace class=&quot;hearts&quot; />"></ace><ace class="target diamonds ct" data-index="2" data-html="<ace class=&quot;diamonds&quot; />"></ace><ace class="target spades ct" data-index="3" data-html="<ace class=&quot;spades&quot; />"></ace>',
     nodes: [
-      new LevelNode('cards', [
-        new LevelNode(CardRanks.Ace, null, [LevelNodeAttributes.TargetClass, CardSuits.Clubs]),
-        new LevelNode(CardRanks.Ace, null, [LevelNodeAttributes.TargetClass, CardSuits.Hearts]),
-        new LevelNode(CardRanks.Ace, null, [LevelNodeAttributes.TargetClass, CardSuits.Diamonds]),
-        new LevelNode(CardRanks.Ace, null, [LevelNodeAttributes.TargetClass, CardSuits.Spades]),
-      ]),
+      new LevelNode(
+        'cards',
+        [
+          new LevelNode(CardRanks.Ace, null, [LevelNodeAttributes.TargetClass, CardSuits.Clubs]),
+          new LevelNode(CardRanks.Ace, null, [LevelNodeAttributes.TargetClass, CardSuits.Hearts]),
+          new LevelNode(CardRanks.Ace, null, [LevelNodeAttributes.TargetClass, CardSuits.Diamonds]),
+          new LevelNode(CardRanks.Ace, null, [LevelNodeAttributes.TargetClass, CardSuits.Spades]),
+        ],
+        ['cards']
+      ),
     ],
   },
   {
@@ -36,17 +40,21 @@ export const levels: Level[] = [
       '<jack class="target spades ct" id="corner" data-index="3" data-html="<jack class=&quot;spades&quot; id=&quot;corner&quot; />"></jack>',
     target: `Select a ${LevelNodeAttributes.Id} card`,
     nodes: [
-      new LevelNode('cards', [
-        new LevelNode(CardRanks.Ace, null, [CardSuits.Diamonds]),
-        new LevelNode(CardRanks.Jack, null, [CardSuits.Spades]),
-        new LevelNode(CardRanks.Three, null, [CardSuits.Clubs]),
-        new LevelNode(
-          CardRanks.Jack,
-          null,
-          [LevelNodeAttributes.TargetClass, CardSuits.Spades],
-          LevelNodeAttributes.Id
-        ),
-      ]),
+      new LevelNode(
+        'cards',
+        [
+          new LevelNode(CardRanks.Ace, null, [CardSuits.Diamonds]),
+          new LevelNode(CardRanks.Jack, null, [CardSuits.Spades]),
+          new LevelNode(CardRanks.Three, null, [CardSuits.Clubs]),
+          new LevelNode(
+            CardRanks.Jack,
+            null,
+            [LevelNodeAttributes.TargetClass, CardSuits.Spades],
+            LevelNodeAttributes.Id
+          ),
+        ],
+        ['cards']
+      ),
     ],
   },
   {
@@ -62,12 +70,16 @@ export const levels: Level[] = [
     answer:
       '<four class="target clubs ct" data-index="1" data-html="<four class=&quot;clubs&quot; />"></four><nine class="target clubs ct" data-index="2" data-html="<nine class=&quot;clubs&quot; />"></nine>',
     nodes: [
-      new LevelNode('cards', [
-        new LevelNode(CardRanks.Five, null, [CardSuits.Spades]),
-        new LevelNode(CardRanks.Four, null, [LevelNodeAttributes.TargetClass, CardSuits.Clubs]),
-        new LevelNode(CardRanks.Nine, null, [LevelNodeAttributes.TargetClass, CardSuits.Clubs]),
-        new LevelNode(CardRanks.Ace, null, [CardSuits.Spades]),
-      ]),
+      new LevelNode(
+        'cards',
+        [
+          new LevelNode(CardRanks.Five, null, [CardSuits.Spades]),
+          new LevelNode(CardRanks.Four, null, [LevelNodeAttributes.TargetClass, CardSuits.Clubs]),
+          new LevelNode(CardRanks.Nine, null, [LevelNodeAttributes.TargetClass, CardSuits.Clubs]),
+          new LevelNode(CardRanks.Ace, null, [CardSuits.Spades]),
+        ],
+        ['cards']
+      ),
     ],
   },
   {
@@ -84,25 +96,35 @@ export const levels: Level[] = [
       '<ace class="target diamonds ct" data-index="0" data-html="<ace class=&quot;diamonds&quot;></ace>"><ace class="target spades ct" data-index="0" data-html="<ace class=&quot;spades&quot; />"></ace></ace><ace class="target spades ct" data-index="0" data-html="<ace class=&quot;spades&quot; />"></ace>',
     target: `Select all ${CardRanks.Ace} cards inside of ${CardRanks.King}`,
     nodes: [
-      new LevelNode('cards', [
-        new LevelNode(
-          CardRanks.Queen,
-          [new LevelNode(CardRanks.Ace, [new LevelNode(CardRanks.Ace, null, [CardSuits.Spades])], [CardSuits.Hearts])],
-          [CardSuits.Spades]
-        ),
-        new LevelNode(CardRanks.Two, null, [CardSuits.Hearts]),
-        new LevelNode(
-          CardRanks.King,
-          [
-            new LevelNode(
-              CardRanks.Ace,
-              [new LevelNode(CardRanks.Ace, null, [LevelNodeAttributes.TargetClass, CardSuits.Spades])],
-              [LevelNodeAttributes.TargetClass, CardSuits.Diamonds]
-            ),
-          ],
-          [CardSuits.Hearts]
-        ),
-      ]),
+      new LevelNode(
+        'cards',
+        [
+          new LevelNode(
+            CardRanks.Queen,
+            [
+              new LevelNode(
+                CardRanks.Ace,
+                [new LevelNode(CardRanks.Ace, null, [CardSuits.Spades])],
+                [CardSuits.Hearts]
+              ),
+            ],
+            [CardSuits.Spades]
+          ),
+          new LevelNode(CardRanks.Two, null, [CardSuits.Hearts]),
+          new LevelNode(
+            CardRanks.King,
+            [
+              new LevelNode(
+                CardRanks.Ace,
+                [new LevelNode(CardRanks.Ace, null, [LevelNodeAttributes.TargetClass, CardSuits.Spades])],
+                [LevelNodeAttributes.TargetClass, CardSuits.Diamonds]
+              ),
+            ],
+            [CardSuits.Hearts]
+          ),
+        ],
+        ['cards']
+      ),
     ],
   },
   {
@@ -119,12 +141,16 @@ export const levels: Level[] = [
       '<three class="target clubs ct" data-index="1" data-html="<three class=&quot;clubs&quot; />"></three><three class="target clubs ct" data-index="3" data-html="<three class=&quot;clubs&quot; />"></three>',
     target: `Select all ${CardRanks.Three} of ${CardSuits.Clubs} cards`,
     nodes: [
-      new LevelNode('cards', [
-        new LevelNode(CardRanks.Three, null, [CardSuits.Diamonds]),
-        new LevelNode(CardRanks.Three, null, [LevelNodeAttributes.TargetClass, CardSuits.Clubs]),
-        new LevelNode(CardRanks.King, null, [CardSuits.Clubs]),
-        new LevelNode(CardRanks.Three, null, [LevelNodeAttributes.TargetClass, CardSuits.Clubs]),
-      ]),
+      new LevelNode(
+        'cards',
+        [
+          new LevelNode(CardRanks.Three, null, [CardSuits.Diamonds]),
+          new LevelNode(CardRanks.Three, null, [LevelNodeAttributes.TargetClass, CardSuits.Clubs]),
+          new LevelNode(CardRanks.King, null, [CardSuits.Clubs]),
+          new LevelNode(CardRanks.Three, null, [LevelNodeAttributes.TargetClass, CardSuits.Clubs]),
+        ],
+        ['cards']
+      ),
     ],
   },
   {
@@ -141,17 +167,21 @@ export const levels: Level[] = [
       '<king class="target spades ct" id="corner" data-index="2" data-html="<king class=&quot;spades&quot; id=&quot;corner&quot; />"></king>',
     target: `Select ${LevelNodeAttributes.Id} ${CardRanks.King} card`,
     nodes: [
-      new LevelNode('cards', [
-        new LevelNode(CardRanks.King, null, [CardSuits.Spades]),
-        new LevelNode(CardRanks.King, null, [CardSuits.Diamonds]),
-        new LevelNode(
-          CardRanks.King,
-          null,
-          [LevelNodeAttributes.TargetClass, CardSuits.Spades],
-          LevelNodeAttributes.Id
-        ),
-        new LevelNode(CardRanks.Ace, null, [CardSuits.Hearts], LevelNodeAttributes.Id),
-      ]),
+      new LevelNode(
+        'cards',
+        [
+          new LevelNode(CardRanks.King, null, [CardSuits.Spades]),
+          new LevelNode(CardRanks.King, null, [CardSuits.Diamonds]),
+          new LevelNode(
+            CardRanks.King,
+            null,
+            [LevelNodeAttributes.TargetClass, CardSuits.Spades],
+            LevelNodeAttributes.Id
+          ),
+          new LevelNode(CardRanks.Ace, null, [CardSuits.Hearts], LevelNodeAttributes.Id),
+        ],
+        ['cards']
+      ),
     ],
   },
   {
@@ -168,22 +198,26 @@ export const levels: Level[] = [
     answer:
       '<queen class="target spades ct" id="corner" data-index="0" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen><queen class="target spades ct" id="corner" data-index="2" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen>',
     nodes: [
-      new LevelNode('cards', [
-        new LevelNode(
-          CardRanks.Queen,
-          null,
-          [LevelNodeAttributes.TargetClass, CardSuits.Spades],
-          LevelNodeAttributes.Id
-        ),
-        new LevelNode(CardRanks.Queen, null, [CardSuits.Diamonds], LevelNodeAttributes.Id),
-        new LevelNode(
-          CardRanks.Queen,
-          null,
-          [LevelNodeAttributes.TargetClass, CardSuits.Spades],
-          LevelNodeAttributes.Id
-        ),
-        new LevelNode(CardRanks.Queen, null, [CardSuits.Spades]),
-      ]),
+      new LevelNode(
+        'cards',
+        [
+          new LevelNode(
+            CardRanks.Queen,
+            null,
+            [LevelNodeAttributes.TargetClass, CardSuits.Spades],
+            LevelNodeAttributes.Id
+          ),
+          new LevelNode(CardRanks.Queen, null, [CardSuits.Diamonds], LevelNodeAttributes.Id),
+          new LevelNode(
+            CardRanks.Queen,
+            null,
+            [LevelNodeAttributes.TargetClass, CardSuits.Spades],
+            LevelNodeAttributes.Id
+          ),
+          new LevelNode(CardRanks.Queen, null, [CardSuits.Spades]),
+        ],
+        ['cards']
+      ),
     ],
   },
   {
@@ -200,13 +234,17 @@ export const levels: Level[] = [
     answer:
       '<ace class="spades target ct" data-index="0" data-html="<ace class=&quot;spades&quot; />"></ace><four class="clubs target ct" data-index="1" data-html="<four class=&quot;clubs&quot; />"></four><five class="hearts target ct" data-index="2" data-html="<five class=&quot;hearts&quot; />"></five><six class="diamonds target ct" data-index="3" data-html="<six class=&quot;diamonds&quot; />"></six><seven class="spades target ct" data-index="4" data-html="<seven class=&quot;spades&quot; />"></seven>',
     nodes: [
-      new LevelNode('cards', [
-        new LevelNode(CardRanks.Ace, null, [CardSuits.Spades, LevelNodeAttributes.TargetClass]),
-        new LevelNode(CardRanks.Four, null, [CardSuits.Clubs, LevelNodeAttributes.TargetClass]),
-        new LevelNode(CardRanks.Five, null, [CardSuits.Hearts, LevelNodeAttributes.TargetClass]),
-        new LevelNode(CardRanks.Six, null, [CardSuits.Diamonds, LevelNodeAttributes.TargetClass]),
-        new LevelNode(CardRanks.Seven, null, [CardSuits.Spades, LevelNodeAttributes.TargetClass]),
-      ]),
+      new LevelNode(
+        'cards',
+        [
+          new LevelNode(CardRanks.Ace, null, [CardSuits.Spades, LevelNodeAttributes.TargetClass]),
+          new LevelNode(CardRanks.Four, null, [CardSuits.Clubs, LevelNodeAttributes.TargetClass]),
+          new LevelNode(CardRanks.Five, null, [CardSuits.Hearts, LevelNodeAttributes.TargetClass]),
+          new LevelNode(CardRanks.Six, null, [CardSuits.Diamonds, LevelNodeAttributes.TargetClass]),
+          new LevelNode(CardRanks.Seven, null, [CardSuits.Spades, LevelNodeAttributes.TargetClass]),
+        ],
+        ['cards']
+      ),
     ],
   },
   {
@@ -222,24 +260,28 @@ export const levels: Level[] = [
     answer:
       '<jack class="hearts target ct" data-index="0" data-html="<jack class=&quot;hearts&quot; />"></jack><five class="diamonds target ct" data-index="0" data-html="<five class=&quot;diamonds&quot;></five>"><three class="target clubs ct" data-index="0" data-html="<three class=&quot;clubs&quot; />"></three></five><three class="target clubs ct" data-index="0" data-html="<three class=&quot;clubs&quot; />"></three>',
     nodes: [
-      new LevelNode('cards', [
-        new LevelNode(
-          CardRanks.King,
-          [new LevelNode(CardRanks.Jack, null, [CardSuits.Hearts, LevelNodeAttributes.TargetClass])],
-          [CardSuits.Spades]
-        ),
-        new LevelNode(
-          CardRanks.King,
-          [
-            new LevelNode(
-              CardRanks.Five,
-              [new LevelNode(CardRanks.Three, null, [LevelNodeAttributes.TargetClass, CardSuits.Clubs])],
-              [CardSuits.Diamonds, LevelNodeAttributes.TargetClass]
-            ),
-          ],
-          [CardSuits.Clubs]
-        ),
-      ]),
+      new LevelNode(
+        'cards',
+        [
+          new LevelNode(
+            CardRanks.King,
+            [new LevelNode(CardRanks.Jack, null, [CardSuits.Hearts, LevelNodeAttributes.TargetClass])],
+            [CardSuits.Spades]
+          ),
+          new LevelNode(
+            CardRanks.King,
+            [
+              new LevelNode(
+                CardRanks.Five,
+                [new LevelNode(CardRanks.Three, null, [LevelNodeAttributes.TargetClass, CardSuits.Clubs])],
+                [CardSuits.Diamonds, LevelNodeAttributes.TargetClass]
+              ),
+            ],
+            [CardSuits.Clubs]
+          ),
+        ],
+        ['cards']
+      ),
     ],
   },
   {
@@ -255,12 +297,16 @@ export const levels: Level[] = [
     answer:
       '<king class="target spades ct" data-index="1" data-html="<king class=&quot;spades&quot; />"></king><king class="target spades ct" data-index="3" data-html="<king class=&quot;spades&quot; />"></king>',
     nodes: [
-      new LevelNode('cards', [
-        new LevelNode(CardRanks.King, [new LevelNode(CardRanks.Queen, null, [CardSuits.Hearts])], [CardSuits.Spades]),
-        new LevelNode(CardRanks.King, null, [LevelNodeAttributes.TargetClass, CardSuits.Spades]),
-        new LevelNode(CardRanks.King, [new LevelNode(CardRanks.Jack, null, [CardSuits.Clubs])], [CardSuits.Spades]),
-        new LevelNode(CardRanks.King, null, [LevelNodeAttributes.TargetClass, CardSuits.Spades]),
-      ]),
+      new LevelNode(
+        'cards',
+        [
+          new LevelNode(CardRanks.King, [new LevelNode(CardRanks.Queen, null, [CardSuits.Hearts])], [CardSuits.Spades]),
+          new LevelNode(CardRanks.King, null, [LevelNodeAttributes.TargetClass, CardSuits.Spades]),
+          new LevelNode(CardRanks.King, [new LevelNode(CardRanks.Jack, null, [CardSuits.Clubs])], [CardSuits.Spades]),
+          new LevelNode(CardRanks.King, null, [LevelNodeAttributes.TargetClass, CardSuits.Spades]),
+        ],
+        ['cards']
+      ),
     ],
   },
   {
@@ -277,20 +323,24 @@ export const levels: Level[] = [
     answer:
       '<king class="target spades ct" data-index="0" data-html="<king class=&quot;spades&quot;></king>"><queen class="hearts ct" data-index="0" data-html="<queen class=&quot;hearts&quot; />"></queen></king><king class="target spades ct" data-index="2" data-html="<king class=&quot;spades&quot;></king>"><jack class="clubs ct" data-index="0" data-html="<jack class=&quot;clubs&quot; />"></jack></king>',
     nodes: [
-      new LevelNode('cards', [
-        new LevelNode(
-          CardRanks.King,
-          [new LevelNode(CardRanks.Queen, null, [CardSuits.Hearts])],
-          [LevelNodeAttributes.TargetClass, CardSuits.Spades]
-        ),
-        new LevelNode(CardRanks.King, null, [CardSuits.Spades]),
-        new LevelNode(
-          CardRanks.King,
-          [new LevelNode(CardRanks.Jack, null, [CardSuits.Clubs])],
-          [LevelNodeAttributes.TargetClass, CardSuits.Spades]
-        ),
-        new LevelNode(CardRanks.King, null, [CardSuits.Spades]),
-      ]),
+      new LevelNode(
+        'cards',
+        [
+          new LevelNode(
+            CardRanks.King,
+            [new LevelNode(CardRanks.Queen, null, [CardSuits.Hearts])],
+            [LevelNodeAttributes.TargetClass, CardSuits.Spades]
+          ),
+          new LevelNode(CardRanks.King, null, [CardSuits.Spades]),
+          new LevelNode(
+            CardRanks.King,
+            [new LevelNode(CardRanks.Jack, null, [CardSuits.Clubs])],
+            [LevelNodeAttributes.TargetClass, CardSuits.Spades]
+          ),
+          new LevelNode(CardRanks.King, null, [CardSuits.Spades]),
+        ],
+        ['cards']
+      ),
     ],
   },
 ];

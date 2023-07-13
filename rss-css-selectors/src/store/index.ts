@@ -1,7 +1,7 @@
 import { GameState, Level } from '../types';
 import { levels } from '../levels/levels';
 import { LevelNode } from '../levels/level-node/level-node';
-import { HtmlViewer } from '../components/htmlViewer/HtmlViewer';
+import { HtmlViewer } from '../components/html-viewer/html-viewer';
 import { CssEditor } from '../components/css-editor/css-editor';
 import { Cards } from '../components/cards/cards';
 import { App } from '../components/app/app';

@@ -10,4 +10,6 @@ export const classNames = {
   helpBtn: 'css-editor__help-btn',
   helpBtnIcon: 'css-editor__help-btn-icon',
   highlightedSelectorId: 'css-hljs',
+  code: 'code',
+  languageCss: 'language-css',
 };
