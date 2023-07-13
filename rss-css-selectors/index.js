@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 4357:
+/***/ 9787:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -31,7 +31,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 28:
+/***/ 2942:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -41,7 +41,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 1484:
+/***/ 4338:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -51,7 +51,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 5284:
+/***/ 6454:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -61,7 +61,27 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 6138:
+/***/ 345:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ 2999:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ 813:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -81,46 +101,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 4298:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ 9972:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ 2724:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ 454:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ 3161:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -131,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 1055:
+/***/ 3502:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -141,7 +121,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 3946:
+/***/ 5964:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -151,7 +131,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 4412:
+/***/ 8099:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -161,7 +141,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 9209:
+/***/ 7086:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -171,7 +151,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 7608:
+/***/ 5812:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -181,7 +161,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 4271:
+/***/ 6952:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -191,7 +171,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 6797:
+/***/ 6950:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -201,7 +181,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 2194:
+/***/ 4757:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -211,7 +191,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 6665:
+/***/ 6752:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -221,7 +201,37 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 3048:
+/***/ 1738:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ 6231:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ 9601:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ 6096:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -241,46 +251,40 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 3042:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ 8778:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const classNames = {
-    htmlViewer: {
-        root: 'html-viewer',
-        markup: 'html',
-        element: {
-            pl20: 'pl-20',
-            ct: 'ct',
-        },
-        activeElement: 'active',
-    },
-    table: {
-        root: 'table',
-        element: {
-            ct: 'ct',
-            correctAnswer: 'correct-answer',
-        },
-    },
-    lineNumbers: {
-        root: 'line-numbers',
-        element: 'line-numbers__item',
-    },
-    cssEditor: {
-        root: 'css-editor',
-        inputs: 'css-editor__inputs',
-        textInput: 'css-editor__text-input',
-        button: 'css-editor__button',
-    },
-};
-exports["default"] = classNames;
+exports.Column = void 0;
+const base_component_1 = __webpack_require__(9419);
+const class_names_1 = __webpack_require__(2920);
+const class_names_2 = __webpack_require__(6037);
+class Column extends base_component_1.BaseComponent {
+    constructor(parent, levelInfo, levelSelector) {
+        super({ classNames: [class_names_1.classNames.column], parent });
+        this.levelInfo = levelInfo;
+        this.levelSelector = levelSelector;
+        if (levelInfo && levelSelector) {
+            this.addEventListener('click', (event) => {
+                if (event instanceof MouseEvent) {
+                    const target = event.target;
+                    if (target.classList.contains(class_names_1.classNames.column)) {
+                        levelInfo.node.classList.toggle(class_names_2.classNames.levelInfoHidden);
+                        levelSelector.node.classList.add(class_names_2.classNames.levelInfoHidden);
+                    }
+                }
+            });
+        }
+    }
+}
+exports.Column = Column;
 
 
 /***/ }),
 
-/***/ 9265:
+/***/ 1717:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -288,101 +292,71 @@ exports["default"] = classNames;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.App = void 0;
 __webpack_require__(9850);
-const BaseComponent_1 = __webpack_require__(4733);
-const LessonTarget_1 = __webpack_require__(9968);
-const GameInfo_1 = __webpack_require__(3460);
-const LessonSelector_1 = __webpack_require__(7433);
-const Table_1 = __webpack_require__(1639);
-const HtmlViewer_1 = __webpack_require__(2999);
-const CssEditor_1 = __webpack_require__(7066);
-const Footer_1 = __webpack_require__(9561);
-const Store_1 = __webpack_require__(3365);
-const Header_1 = __webpack_require__(1940);
-class App extends BaseComponent_1.BaseComponent {
+const class_names_1 = __webpack_require__(2920);
+const base_component_1 = __webpack_require__(9419);
+const level_target_1 = __webpack_require__(9801);
+const level_info_1 = __webpack_require__(3125);
+const level_selector_1 = __webpack_require__(3973);
+const cards_1 = __webpack_require__(3832);
+const html_viewer_1 = __webpack_require__(1053);
+const css_editor_1 = __webpack_require__(7623);
+const footer_1 = __webpack_require__(2000);
+const store_1 = __webpack_require__(8527);
+const header_1 = __webpack_require__(4977);
+const level_info_toggle_1 = __webpack_require__(679);
+const column_1 = __webpack_require__(8778);
+const resize_handler_1 = __webpack_require__(5900);
+const constants_1 = __webpack_require__(2037);
+class App extends base_component_1.BaseComponent {
     constructor(container) {
-        super({ tagName: 'main', classNames: ['game'] });
+        super({ tagName: 'main', classNames: [class_names_1.classNames.game] });
         this.container = container;
-        const shouldBeHidden = window.matchMedia('(max-width: 1100px').matches;
-        const btn = new BaseComponent_1.BaseComponent({
-            tagName: 'button',
-            html: `<span>|||</span>`,
-            classNames: ['game-info__toggle'],
-        });
-        this.footer = new Footer_1.Footer();
-        this.header = new Header_1.Header();
-        this.firstColumn = new BaseComponent_1.BaseComponent({ classNames: ['game__column'], parent: this });
-        this.secondColumn = new BaseComponent_1.BaseComponent({ classNames: ['game__column'], parent: this });
-        this.firstColumn.appendChild(this.header);
-        this.lessonTarget = new LessonTarget_1.LessonTarget(this.firstColumn);
-        this.table = new Table_1.Table(this.firstColumn);
-        this.cssEditor = new CssEditor_1.CssEditor(this.firstColumn);
-        this.htmlViewer = new HtmlViewer_1.HtmlViewer(this.firstColumn);
-        this.firstColumn.appendChild(this.footer);
-        this.secondColumn.appendChild(btn);
-        this.gameInfo = new GameInfo_1.GameInfo(this.secondColumn);
-        this.lessonSelector = new LessonSelector_1.LessonSelector(this.gameInfo);
-        if (shouldBeHidden)
-            this.gameInfo.node.classList.add('hidden');
-        window.addEventListener('resize', (event) => {
-            const target = event.target;
-            const targetWidth = target.screen.width;
-            if (targetWidth <= 1100) {
-                if (this.gameInfo.node.classList.contains('hidden')) {
-                    return null;
-                }
-                else {
-                    this.gameInfo.node.classList.add('hidden');
-                    this.lessonSelector.node.classList.add('hidden');
-                }
-            }
-            else
-                this.gameInfo.node.classList.remove('hidden');
-        });
-        this.secondColumn.addEventListener('click', (event) => {
-            if (event instanceof MouseEvent) {
-                const target = event.target;
-                if (target.classList.contains('game__column')) {
-                    this.gameInfo.node.classList.toggle('hidden');
-                    this.lessonSelector.node.classList.add('hidden');
-                }
-            }
-        });
-        btn.addEventListener('click', (event) => {
-            if (event instanceof MouseEvent) {
-                if (this.gameInfo.node.classList.contains('hidden')) {
-                    this.gameInfo.node.classList.remove('hidden');
-                }
-                else {
-                    this.gameInfo.node.classList.add('hidden');
-                }
-            }
-        });
-        Store_1.Store.setElements({
+        this.levelInfo = new level_info_1.LevelInfo();
+        this.levelSelector = new level_selector_1.LevelSelector();
+        this.levelInfo.appendChild(this.levelSelector);
+        this.firstColumn = new column_1.Column(this);
+        this.secondColumn = new column_1.Column(this, this.levelInfo, this.levelSelector);
+        this.levelTarget = new level_target_1.LevelTarget();
+        this.cards = new cards_1.Cards();
+        this.cssEditor = new css_editor_1.CssEditor();
+        this.htmlViewer = new html_viewer_1.HtmlViewer();
+        this.firstColumn.append([
+            new header_1.Header(),
+            this.levelTarget,
+            this.cards,
+            this.cssEditor,
+            this.htmlViewer,
+            new footer_1.Footer(),
+        ]);
+        this.levelInfoToggle = new level_info_toggle_1.LevelInfoToggle(this.levelInfo);
+        this.secondColumn.append([this.levelInfoToggle, this.levelInfo]);
+        store_1.Store.setElements({
             app: this,
-            cardsTable: this.table,
+            cards: this.cards,
             htmlViewer: this.htmlViewer,
             cssEditor: this.cssEditor,
-            levelSelector: this.lessonSelector,
+            levelSelector: this.levelSelector,
         });
-        this.node.addEventListener('rerender', (event) => {
+        this.resizeHandler = new resize_handler_1.ResizeHandler(this.levelInfo, this.levelSelector);
+        this.node.addEventListener(constants_1.CUSTOM_EVENTS.RERENDER, (event) => {
             if (event instanceof CustomEvent) {
-                this.rerender(event.detail.lesson);
+                this.rerender(event.detail.level);
             }
         });
     }
     render() {
-        this.table.render();
+        this.cards.render();
         this.htmlViewer.render();
-        this.lessonSelector.render();
+        this.levelSelector.render();
         this.container.append(this.node);
     }
-    rerender(newLesson) {
-        Store_1.Store.updateCurrentLesson(newLesson);
-        this.lessonTarget.rerender();
-        this.lessonSelector.render();
-        this.gameInfo.render();
+    rerender(level) {
+        store_1.Store.updateCurrentLevel(level);
+        this.levelTarget.rerender();
+        this.levelSelector.render();
+        this.levelInfo.render();
         this.cssEditor.render();
-        this.table.render();
+        this.cards.render();
         this.htmlViewer.render();
     }
 }
@@ -391,7 +365,57 @@ exports.App = App;
 
 /***/ }),
 
-/***/ 4733:
+/***/ 2920:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.classNames = void 0;
+exports.classNames = {
+    game: 'game',
+    column: 'game__column',
+};
+
+
+/***/ }),
+
+/***/ 5900:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ResizeHandler = void 0;
+const class_names_1 = __webpack_require__(6037);
+const class_names_2 = __webpack_require__(7389);
+const constants_1 = __webpack_require__(2037);
+class ResizeHandler {
+    constructor(levelInfo, levelSelector) {
+        this.levelInfo = levelInfo;
+        this.levelSelector = levelSelector;
+        window.addEventListener('resize', (event) => this.handleWindowResize(event));
+    }
+    handleWindowResize(event) {
+        const target = event.target;
+        const targetWidth = target.screen.width;
+        if (targetWidth <= constants_1.ASIDE_MAX_WIDTH) {
+            if (!this.levelInfo.node.classList.contains(class_names_1.classNames.levelInfoHidden)) {
+                this.levelInfo.node.classList.add(class_names_1.classNames.levelInfoHidden);
+                this.levelSelector.node.classList.add(class_names_2.classNames.levelSelectorHidden);
+            }
+        }
+        else {
+            this.levelInfo.node.classList.remove(class_names_1.classNames.levelInfoHidden);
+        }
+    }
+}
+exports.ResizeHandler = ResizeHandler;
+
+
+/***/ }),
+
+/***/ 9419:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -405,16 +429,12 @@ class BaseComponent {
         this.classNames = [];
         this.element = document.createElement(tagName);
         this.tag = tagName;
-        this.addClass(...classNames);
+        classNames === null || classNames === void 0 ? void 0 : classNames.forEach((className) => this.addClass(className));
+        text && this.setTextContent(text);
+        html && this.setHtml(html);
         if (parent) {
             this.parent = parent;
             parent.appendChild(this);
-        }
-        if (text) {
-            this.setTextContent(text);
-        }
-        if (html) {
-            this.setHtml(html);
         }
     }
     append(children) {
@@ -435,16 +455,15 @@ class BaseComponent {
     getAttribute(key) {
         return this.element.getAttribute(key);
     }
-    addClass(...classNames) {
-        this.element.classList.add(...classNames);
-        this.classNames.push(...classNames);
-        this.classNames = Array.from(new Set(this.classNames));
+    addClass(className) {
+        !this.classNames.includes(className) && this.classNames.push(className);
+        this.element.classList.add(className);
     }
     hasClass(className) {
         return this.classNames.includes(className);
     }
     removeClass(className) {
-        this.classNames.filter((clName) => clName !== className);
+        this.classNames = this.classNames.filter((clName) => clName !== className);
         this.element.classList.remove(className);
     }
     get tagName() {
@@ -477,7 +496,26 @@ class BaseComponent {
         const classes = this.classNames.filter((className) => {
             return !constants_1.CSS_CLASSES_TO_EXCLUDE.includes(className);
         });
-        return `${classes.length ? '.' + classes.join(' ') : ''}`;
+        return `${classes.length ? '.' + classes.join('.') : ''}`;
+    }
+    getCurrentSelector() {
+        return (this.tagName +
+            this.getNodeClassName() +
+            (this.getAttribute('id') ? '#' + this.getAttribute('id') : '') +
+            (this.getAttribute('data-index') ? `[data-index="${this.getAttribute('data-index')}"]` : ''));
+    }
+    getSelector(stopClassName) {
+        let current = this.parentElement;
+        let selector = this.getCurrentSelector();
+        while (current) {
+            if (current.hasClass(stopClassName)) {
+                break;
+            }
+            selector += ` ${current.getCurrentSelector()}`;
+            current = current.parentElement;
+        }
+        selector = selector.split(' ').reverse().join(' ');
+        return selector;
     }
 }
 exports.BaseComponent = BaseComponent;
@@ -485,7 +523,310 @@ exports.BaseComponent = BaseComponent;
 
 /***/ }),
 
-/***/ 7066:
+/***/ 4720:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Card = void 0;
+__webpack_require__(9787);
+const class_names_1 = __webpack_require__(4029);
+const base_component_1 = __webpack_require__(9419);
+const store_1 = __webpack_require__(8527);
+const constants_1 = __webpack_require__(2037);
+class Card extends base_component_1.BaseComponent {
+    constructor(node, parent, cards, index) {
+        super({ tagName: node.tagName, classNames: node.classNames.concat([class_names_1.classNames.customTag]), parent });
+        this.cards = cards;
+        this.setNodeData(node, index);
+        this.attachListeners();
+    }
+    removeHoverClass() {
+        this.cards.forEach((card) => card.removeClass(class_names_1.classNames.cardHovered));
+    }
+    handleMouseOver(event) {
+        event.stopPropagation();
+        this.removeHoverClass();
+        this.addClass(class_names_1.classNames.cardHovered);
+        store_1.Store.htmlViewer.htmlViewerMarkup.node.dispatchEvent(new CustomEvent(constants_1.CUSTOM_EVENTS.MOUSE_IN, {
+            detail: {
+                selector: this.getSelector(class_names_1.classNames.cardsWrapper),
+            },
+        }));
+    }
+    handleMouseLeave() {
+        this.removeHoverClass();
+        store_1.Store.htmlViewer.htmlViewerMarkup.node.dispatchEvent(new CustomEvent('mouse-out'));
+    }
+    attachListeners() {
+        this.addEventListener('mouseover', (event) => this.handleMouseOver(event));
+        this.addEventListener('mouseleave', () => this.handleMouseLeave());
+    }
+    setNodeData(node, index) {
+        this.setAttribute('data-index', index.toString());
+        node.id && this.setAttribute('id', node.id);
+        this.setDataHtmlValue(node);
+    }
+    setDataHtmlValue(node) {
+        const id = this.getAttribute('id') ? ` id="${this.getAttribute('id')}"` : '';
+        const classNames = this.classNames.length ? ` class="${this.getNodeClassName().replace('.', '')}"` : '';
+        let dataValue = '';
+        if (node.children) {
+            dataValue += `<${node.tagName}${classNames + id}></${node.tagName}>`;
+        }
+        else {
+            dataValue += `<${node.tagName}${classNames + id} />`;
+        }
+        this.setAttribute('data-html', dataValue);
+    }
+}
+exports.Card = Card;
+
+
+/***/ }),
+
+/***/ 3832:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Cards = void 0;
+__webpack_require__(2942);
+const class_names_1 = __webpack_require__(4029);
+const constants_1 = __webpack_require__(2037);
+const store_1 = __webpack_require__(8527);
+const base_component_1 = __webpack_require__(9419);
+const card_1 = __webpack_require__(4720);
+class Cards extends base_component_1.BaseComponent {
+    constructor() {
+        super({ classNames: [class_names_1.classNames.cardsWrapper] });
+        this.elements = [];
+        this.attachListeners();
+    }
+    attachListeners() {
+        this.node.addEventListener(constants_1.CUSTOM_EVENTS.MOUSE_IN, (event) => this.handleMouseIn(event));
+        this.node.addEventListener(constants_1.CUSTOM_EVENTS.MOUSE_OUT, () => this.removeHoverClass());
+        this.node.addEventListener(constants_1.CUSTOM_EVENTS.WIN, () => this.handleWin());
+        this.node.addEventListener(constants_1.CUSTOM_EVENTS.WRONG_ANSWER, () => this.handleWrongAnswer());
+    }
+    handleMouseIn(event) {
+        var _a;
+        if (event instanceof CustomEvent) {
+            this.removeHoverClass();
+            (_a = this.node.querySelector(event.detail.selector)) === null || _a === void 0 ? void 0 : _a.classList.add(class_names_1.classNames.cardHovered);
+        }
+    }
+    handleWrongAnswer() {
+        this.addClass(class_names_1.classNames.wrongAnswer);
+        setTimeout(() => {
+            this.removeClass(class_names_1.classNames.wrongAnswer);
+        }, 500);
+    }
+    handleWin() {
+        const isGameOver = store_1.Store.currentLevel.id === store_1.Store.levels.length - 1;
+        if (isGameOver) {
+            this.node.innerHTML = `<p class="${class_names_1.classNames.gameOver}">Hoooray! You Win!</p>`;
+            store_1.Store.levelSelector.render();
+            store_1.Store.saveGameState({
+                current: store_1.Store.currentLevel.id,
+            });
+        }
+        else {
+            this.addClass(class_names_1.classNames.win);
+            const currentId = store_1.Store.currentLevel.id + 1;
+            store_1.Store.saveGameState({
+                current: currentId,
+            });
+            setTimeout(() => {
+                store_1.Store.app.node.dispatchEvent(new CustomEvent(constants_1.CUSTOM_EVENTS.RERENDER, {
+                    detail: {
+                        level: store_1.Store.levels.find((level) => level.id === currentId),
+                    },
+                }));
+                this.removeClass(class_names_1.classNames.win);
+            }, 500);
+        }
+    }
+    removeHoverClass() {
+        this.elements.forEach((element) => element.removeClass(class_names_1.classNames.cardHovered));
+    }
+    createCards(nodeList, parent) {
+        const nodes = [];
+        nodeList.forEach((node, index) => {
+            const card = new card_1.Card(node, parent, this.elements, index);
+            if (node.children) {
+                this.createCards(node.children, card);
+            }
+            nodes.push(card);
+            this.elements.push(card);
+        });
+        parent.append(nodes);
+    }
+    render() {
+        this.elements.forEach((element) => element.delete());
+        this.elements = [];
+        this.node.innerHTML = '';
+        this.createCards(store_1.Store.currentLevelNodes, this);
+    }
+}
+exports.Cards = Cards;
+
+
+/***/ }),
+
+/***/ 4029:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.classNames = void 0;
+exports.classNames = {
+    cardsWrapper: 'cards-wrapper',
+    cards: 'cards',
+    customTag: 'ct',
+    cardHovered: 'hovered',
+    win: 'win',
+    wrongAnswer: 'wrong-answer',
+    gameOver: 'game-over',
+};
+
+
+/***/ }),
+
+/***/ 478:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.classNames = void 0;
+exports.classNames = {
+    cssEditor: 'css-editor',
+    title: 'css-editor__title',
+    row: 'css-editor__row',
+    controls: 'css-editor__controls',
+    selector: 'css-editor__selector',
+    selectorInput: 'css-editor__selector-input',
+    highlightedSelector: 'css-editor__selector-highlight',
+    submitBtn: 'css-editor__submit-btn',
+    helpBtn: 'css-editor__help-btn',
+    helpBtnIcon: 'css-editor__help-btn-icon',
+    highlightedSelectorId: 'css-hljs',
+    code: 'code',
+    languageCss: 'language-css',
+};
+
+
+/***/ }),
+
+/***/ 5147:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Controls = void 0;
+__webpack_require__(345);
+const class_names_1 = __webpack_require__(478);
+const base_component_1 = __webpack_require__(9419);
+const selector_input_1 = __webpack_require__(8898);
+const submit_button_1 = __webpack_require__(3782);
+const help_button_1 = __webpack_require__(3689);
+const store_1 = __webpack_require__(8527);
+const constants_1 = __webpack_require__(2037);
+class Controls extends base_component_1.BaseComponent {
+    constructor(parent) {
+        super({ classNames: [class_names_1.classNames.controls], parent });
+        this.selectorInput = new selector_input_1.SelectorInput(this);
+        this.submitButton = new submit_button_1.SubmitButton(this);
+        this.helpButton = new help_button_1.HelpButton(this, this.selectorInput);
+    }
+    checkAnswer() {
+        try {
+            const inputNode = this.selectorInput.input.node;
+            const selected = store_1.Store.cards.node.querySelectorAll(`${inputNode.value.trim()}`);
+            const answer = Array.from(selected).reduce((acc, curr) => acc + curr.outerHTML, '');
+            // rewrite level answer for the new one
+            console.log(answer);
+            if (answer === store_1.Store.currentLevelAnswer) {
+                this.handleCorrectAnswer();
+            }
+            else {
+                this.handleWrongAnswer();
+            }
+        }
+        catch (error) {
+            this.handleWrongAnswer();
+        }
+    }
+    handleWrongAnswer() {
+        store_1.Store.cards.node.dispatchEvent(new CustomEvent(constants_1.CUSTOM_EVENTS.WRONG_ANSWER));
+    }
+    handleCorrectAnswer() {
+        const inputNode = this.selectorInput.input.node;
+        store_1.Store.setCompleted();
+        store_1.Store.app.levelInfo.render();
+        store_1.Store.cards.node.dispatchEvent(new CustomEvent(constants_1.CUSTOM_EVENTS.WIN));
+        inputNode.value = '';
+        this.selectorInput.highlightedInput.setTextContent('');
+    }
+    clear() {
+        const input = this.selectorInput.input.node;
+        input.value = '';
+        this.selectorInput.highlightedInput.setTextContent('');
+        this.helpButton.on();
+    }
+}
+exports.Controls = Controls;
+
+
+/***/ }),
+
+/***/ 3689:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.HelpButton = void 0;
+__webpack_require__(4338);
+const class_names_1 = __webpack_require__(478);
+const base_component_1 = __webpack_require__(9419);
+const store_1 = __webpack_require__(8527);
+class HelpButton extends base_component_1.BaseComponent {
+    constructor(parent, selectorInput) {
+        super({
+            tagName: 'button',
+            classNames: [class_names_1.classNames.helpBtn],
+            parent,
+            html: `<span class="${class_names_1.classNames.helpBtnIcon}"></span>`,
+        });
+        this.btnNode = this.node;
+        this.setAttribute('title', 'Help!');
+        this.addEventListener('click', () => {
+            this.off();
+            store_1.Store.setHelped();
+            selectorInput.handleHelp();
+            store_1.Store.levelSelector.render();
+            store_1.Store.app.levelInfo.render();
+        });
+    }
+    on() {
+        this.btnNode.disabled = false;
+    }
+    off() {
+        this.btnNode.disabled = true;
+    }
+}
+exports.HelpButton = HelpButton;
+
+
+/***/ }),
+
+/***/ 8898:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -494,27 +835,117 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SelectorInput = void 0;
+__webpack_require__(6454);
+const class_names_1 = __webpack_require__(478);
+__webpack_require__(3954);
+const core_1 = __importDefault(__webpack_require__(3390));
+const css_1 = __importDefault(__webpack_require__(5064));
+const base_component_1 = __webpack_require__(9419);
+const store_1 = __webpack_require__(8527);
+core_1.default.registerLanguage('css', css_1.default);
+class SelectorInput extends base_component_1.BaseComponent {
+    constructor(controls) {
+        super({
+            classNames: [class_names_1.classNames.selector],
+            parent: controls,
+        });
+        this.controls = controls;
+        this.input = new base_component_1.BaseComponent({
+            tagName: 'input',
+            classNames: [class_names_1.classNames.selectorInput],
+            parent: this,
+        });
+        this.input.setAttribute('placeholder', 'Write a CSS selector...');
+        this.inputNode = this.input.node;
+        this.highlightedInput = new base_component_1.BaseComponent({
+            classNames: [class_names_1.classNames.highlightedSelector, class_names_1.classNames.code, class_names_1.classNames.languageCss],
+            parent: this,
+        });
+        this.highlightedInput.setAttribute('id', class_names_1.classNames.highlightedSelectorId);
+        this.input.addEventListener('input', () => this.handleInput());
+        this.input.addEventListener('keydown', (event) => this.handleKeydown(event));
+    }
+    handleInput() {
+        this.highlightedInput.setTextContent(this.inputNode.value);
+        core_1.default.highlightElement(this.highlightedInput.node);
+    }
+    handleKeydown(event) {
+        if (event instanceof KeyboardEvent && event.key === 'Enter') {
+            this.controls.checkAnswer();
+        }
+    }
+    handleHelp() {
+        const answer = store_1.Store.currentLevel.help;
+        this.input.setTextContent('');
+        this.highlightedInput.setTextContent('');
+        [...answer].forEach((char, index) => {
+            setTimeout(() => {
+                this.inputNode.disabled = true;
+                this.inputNode.value += answer[index];
+                this.highlightedInput.setTextContent(this.inputNode.value);
+                core_1.default.highlightElement(this.highlightedInput.node);
+                this.input.node.focus();
+                this.inputNode.disabled = false;
+            }, index * 100);
+        });
+    }
+}
+exports.SelectorInput = SelectorInput;
+
+
+/***/ }),
+
+/***/ 3782:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SubmitButton = void 0;
+__webpack_require__(2999);
+const class_names_1 = __webpack_require__(478);
+const base_component_1 = __webpack_require__(9419);
+class SubmitButton extends base_component_1.BaseComponent {
+    constructor(controls) {
+        super({ tagName: 'button', classNames: [class_names_1.classNames.submitBtn], parent: controls });
+        this.controls = controls;
+        this.insertTextNodes([['afterbegin', 'Enter']]);
+        this.addEventListener('click', () => this.controls.checkAnswer());
+    }
+}
+exports.SubmitButton = SubmitButton;
+
+
+/***/ }),
+
+/***/ 7623:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CssEditor = void 0;
-__webpack_require__(6138);
-const classNames_1 = __importDefault(__webpack_require__(3042));
-const BaseComponent_1 = __webpack_require__(4733);
-const LineNumbers_1 = __webpack_require__(9236);
-const CssEditorInputs_1 = __webpack_require__(1105);
-class CssEditor extends BaseComponent_1.BaseComponent {
-    constructor(parent) {
-        super({ classNames: [classNames_1.default.cssEditor.root], parent });
-        this.cssEditorHeader = new BaseComponent_1.BaseComponent({
+__webpack_require__(813);
+const class_names_1 = __webpack_require__(478);
+const base_component_1 = __webpack_require__(9419);
+const line_numbers_1 = __webpack_require__(5787);
+const controls_1 = __webpack_require__(5147);
+class CssEditor extends base_component_1.BaseComponent {
+    constructor() {
+        super({ classNames: [class_names_1.classNames.cssEditor] });
+        this.title = new base_component_1.BaseComponent({
             tagName: 'p',
-            classNames: ['css-editor__header'],
+            classNames: [class_names_1.classNames.title],
             parent: this,
             html: '<span>CSS Editor</span><span>style.css</span>',
         });
-        this.cssEditorRow = new BaseComponent_1.BaseComponent({ classNames: ['css-editor__row'], parent: this });
-        this.lineNumbers = new LineNumbers_1.LineNumbers(this.cssEditorRow, 1);
-        this.cssEditorInputs = new CssEditorInputs_1.CssEditorInputs(this.cssEditorRow);
+        this.row = new base_component_1.BaseComponent({ classNames: [class_names_1.classNames.row], parent: this });
+        this.lineNumbers = new line_numbers_1.LineNumbers(this.row, 1);
+        this.controls = new controls_1.Controls(this.row);
     }
     render() {
-        this.cssEditorInputs.node.dispatchEvent(new CustomEvent('clear-inputs'));
+        this.controls.clear();
     }
 }
 exports.CssEditor = CssEditor;
@@ -522,239 +953,25 @@ exports.CssEditor = CssEditor;
 
 /***/ }),
 
-/***/ 1105:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CssEditorInputs = void 0;
-__webpack_require__(5284);
-const classNames_1 = __importDefault(__webpack_require__(3042));
-const BaseComponent_1 = __webpack_require__(4733);
-const CssEditorTextInput_1 = __webpack_require__(1476);
-const cssEditorButton_1 = __webpack_require__(9846);
-const CssEditorHelpButton_1 = __webpack_require__(2973);
-class CssEditorInputs extends BaseComponent_1.BaseComponent {
-    constructor(parent) {
-        super({ classNames: [classNames_1.default.cssEditor.inputs], parent });
-        this.cssEditorTextInput = new CssEditorTextInput_1.CssEditorTextInput(this);
-        this.cssEditorButton = new cssEditorButton_1.CssEditorButton(this.cssEditorTextInput.input.node, this.cssEditorTextInput.code.node, this);
-        this.cssEditorHelpButton = new CssEditorHelpButton_1.CssEditorHelpButton(this, this.cssEditorTextInput);
-        this.node.addEventListener('clear-inputs', () => {
-            const input = this.cssEditorTextInput.input.node;
-            input.value = '';
-            this.cssEditorTextInput.code.setTextContent('');
-            this.cssEditorHelpButton.on();
-        });
-    }
-}
-exports.CssEditorInputs = CssEditorInputs;
-
-
-/***/ }),
-
-/***/ 9846:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CssEditorButton = void 0;
-__webpack_require__(4357);
-const classNames_1 = __importDefault(__webpack_require__(3042));
-const BaseComponent_1 = __webpack_require__(4733);
-const Store_1 = __webpack_require__(3365);
-const localStorage_1 = __webpack_require__(9161);
-class CssEditorButton extends BaseComponent_1.BaseComponent {
-    constructor(input, code, parent) {
-        super({ tagName: 'button', classNames: [classNames_1.default.cssEditor.button], parent });
-        this.input = input;
-        this.code = code;
-        this.insertTextNodes([['afterbegin', 'Enter']]);
-        this.addEventListener('click', (event) => {
-            if (event instanceof MouseEvent) {
-                try {
-                    const input = this.input;
-                    if (input.value.includes('.target'))
-                        throw new Error('Cheating');
-                    const selected = Store_1.Store.cardsTable.node.querySelectorAll(`${input.value.trim()}`);
-                    let answer = '';
-                    Array.from(selected).forEach((el) => {
-                        answer += el.outerHTML;
-                    });
-                    const isWin = answer === Store_1.Store.currentLessonAnswer;
-                    if (isWin) {
-                        Store_1.Store.completed.push(Store_1.Store.currentLesson.id);
-                        (0, localStorage_1.setLocalStorage)({
-                            completed: Store_1.Store.completed,
-                            helped: Store_1.Store.helped,
-                            current: Store_1.Store.currentLesson.id,
-                        });
-                        Store_1.Store.app.gameInfo.render();
-                        Store_1.Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
-                        input.value = '';
-                        code.textContent = '';
-                    }
-                    else {
-                        Store_1.Store.cardsTable.node.dispatchEvent(new CustomEvent('wrong-answer'));
-                    }
-                }
-                catch (err) {
-                    Store_1.Store.cardsTable.node.dispatchEvent(new CustomEvent('wrong-answer'));
-                }
-            }
-        });
-    }
-}
-exports.CssEditorButton = CssEditorButton;
-
-
-/***/ }),
-
 /***/ 2973:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CssEditorHelpButton = void 0;
-__webpack_require__(28);
-const BaseComponent_1 = __webpack_require__(4733);
-const Store_1 = __webpack_require__(3365);
-const localStorage_1 = __webpack_require__(9161);
-class CssEditorHelpButton extends BaseComponent_1.BaseComponent {
-    constructor(parent, cssEditorTextInputs) {
-        super({ tagName: 'button', classNames: ['help'], parent, html: '<span class="help-btn__icon"></span>' });
-        this.setAttribute('title', 'Help!');
-        this.addEventListener('click', () => {
-            this.off();
-            Store_1.Store.helped.push(Store_1.Store.currentLesson.id);
-            (0, localStorage_1.setLocalStorage)({
-                helped: Store_1.Store.helped,
-                completed: Store_1.Store.completed,
-                current: Store_1.Store.currentLesson.id,
-            });
-            cssEditorTextInputs.node.dispatchEvent(new CustomEvent('help'));
-            Store_1.Store.levelSelector.render();
-            Store_1.Store.app.gameInfo.render();
-        });
-    }
-    on() {
-        const node = this.node;
-        node.disabled = false;
-    }
-    off() {
-        const node = this.node;
-        node.disabled = true;
-    }
-}
-exports.CssEditorHelpButton = CssEditorHelpButton;
-
-
-/***/ }),
-
-/***/ 1476:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+exports.classNames = void 0;
+exports.classNames = {
+    footer: 'footer',
+    link: 'link',
+    copyright: 'copyright',
+    githubLInk: 'github-link',
+    rssLink: 'rss-link',
 };
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CssEditorTextInput = void 0;
-__webpack_require__(1484);
-__webpack_require__(3954);
-const core_1 = __importDefault(__webpack_require__(3390));
-const css_1 = __importDefault(__webpack_require__(5064));
-const classNames_1 = __importDefault(__webpack_require__(3042));
-const BaseComponent_1 = __webpack_require__(4733);
-const Store_1 = __webpack_require__(3365);
-core_1.default.registerLanguage('css', css_1.default);
-class CssEditorTextInput extends BaseComponent_1.BaseComponent {
-    constructor(parent) {
-        super({
-            classNames: ['css-editor__text-inputs'],
-            parent,
-        });
-        this.input = new BaseComponent_1.BaseComponent({
-            tagName: 'input',
-            classNames: [classNames_1.default.cssEditor.textInput],
-            parent: this,
-        });
-        this.input.setAttribute('placeholder', 'Write a css selector...');
-        this.code = new BaseComponent_1.BaseComponent({
-            classNames: [classNames_1.default.cssEditor.textInput + '_highlight', 'code', 'language-css'],
-            parent: this,
-        });
-        this.code.setAttribute('id', 'css-hljs');
-        this.setAttribute('type', 'text');
-        this.node.addEventListener('help', (event) => {
-            if (event instanceof CustomEvent) {
-                const helpAnswer = Store_1.Store.currentLesson.help;
-                const node = this.input.node;
-                node.value = '';
-                this.code.setTextContent('');
-                for (let i = 0; i < helpAnswer.length; i += 1) {
-                    setTimeout(() => {
-                        node.disabled = true;
-                        node.value += helpAnswer[i];
-                        this.code.setTextContent(node.value);
-                        core_1.default.highlightElement(this.code.node);
-                        this.input.node.focus();
-                        node.disabled = false;
-                    }, i * 100);
-                }
-            }
-        });
-        this.input.addEventListener('input', () => {
-            const node = this.input.node;
-            this.code.setTextContent(node.value);
-            core_1.default.highlightElement(this.code.node);
-        });
-        this.input.addEventListener('keydown', (event) => {
-            if (event instanceof KeyboardEvent && event.key === 'Enter') {
-                try {
-                    const node = this.input.node;
-                    if (node.value.includes('.target'))
-                        throw new Error('Cheating');
-                    const selected = Store_1.Store.cardsTable.node.querySelectorAll(`${node.value.trim()}`);
-                    let answer = '';
-                    Array.from(selected).forEach((el) => {
-                        answer += el.outerHTML;
-                    });
-                    const isWin = answer === Store_1.Store.currentLessonAnswer;
-                    if (isWin) {
-                        Store_1.Store.completed.push(Store_1.Store.currentLesson.id);
-                        Store_1.Store.app.gameInfo.render();
-                        Store_1.Store.cardsTable.node.dispatchEvent(new CustomEvent('win'));
-                        node.value = '';
-                        this.code.setTextContent('');
-                    }
-                    else {
-                        Store_1.Store.cardsTable.node.dispatchEvent(new CustomEvent('wrong-answer'));
-                    }
-                }
-                catch (err) {
-                    Store_1.Store.cardsTable.node.dispatchEvent(new CustomEvent('wrong-answer'));
-                }
-            }
-        });
-    }
-}
-exports.CssEditorTextInput = CssEditorTextInput;
 
 
 /***/ }),
 
-/***/ 9561:
+/***/ 2000:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -762,27 +979,28 @@ exports.CssEditorTextInput = CssEditorTextInput;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Footer = void 0;
 __webpack_require__(119);
-const BaseComponent_1 = __webpack_require__(4733);
-class Footer extends BaseComponent_1.BaseComponent {
+const class_names_1 = __webpack_require__(2973);
+const base_component_1 = __webpack_require__(9419);
+class Footer extends base_component_1.BaseComponent {
     constructor() {
-        super({ tagName: 'footer', classNames: ['footer'] });
-        this.githubLink = new BaseComponent_1.BaseComponent({
+        super({ tagName: 'footer', classNames: [class_names_1.classNames.footer] });
+        this.githubLink = new base_component_1.BaseComponent({
             tagName: 'a',
-            classNames: ['github-link'],
+            classNames: [class_names_1.classNames.githubLInk, class_names_1.classNames.link],
             text: 'Github',
             parent: this,
         });
         this.githubLink.setAttribute('href', 'https://github.com/h3nnessey');
         this.githubLink.setAttribute('title', 'My Github');
-        this.copyrightText = new BaseComponent_1.BaseComponent({
+        this.copyrightText = new base_component_1.BaseComponent({
             tagName: 'p',
-            classNames: ['copyright'],
+            classNames: [class_names_1.classNames.copyright],
             text: 'h3nnessey © 2023',
             parent: this,
         });
-        this.rssLink = new BaseComponent_1.BaseComponent({
+        this.rssLink = new base_component_1.BaseComponent({
             tagName: 'a',
-            classNames: ['rss-link'],
+            classNames: [class_names_1.classNames.rssLink, class_names_1.classNames.link],
             parent: this,
         });
         this.rssLink.setAttribute('href', 'https://rs.school/js/');
@@ -794,213 +1012,22 @@ exports.Footer = Footer;
 
 /***/ }),
 
-/***/ 3460:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ 5402:
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.GameInfo = void 0;
-__webpack_require__(454);
-const BaseComponent_1 = __webpack_require__(4733);
-const Store_1 = __webpack_require__(3365);
-const LevelSelectorToggle_1 = __webpack_require__(9246);
-const ChangeLessonButtons_1 = __webpack_require__(2392);
-const GameInfoLessonState_1 = __webpack_require__(9429);
-class GameInfo extends BaseComponent_1.BaseComponent {
-    constructor(parent) {
-        super({ classNames: ['game-info'], parent });
-        this.gameInfoRow = new BaseComponent_1.BaseComponent({ classNames: ['game-info__row'], parent: this });
-        this.lessonNumber = new BaseComponent_1.BaseComponent({
-            tagName: 'p',
-            classNames: ['game-info__lesson-number'],
-            parent: this.gameInfoRow,
-            html: `Lesson ${Store_1.Store.currentLesson.id + 1} of ${Store_1.Store.lessons.length}`,
-        });
-        this.gameInfoLessonState = new GameInfoLessonState_1.GameInfoLessonState(this.gameInfoRow);
-        this.changeLessonButtons = new ChangeLessonButtons_1.ChangeLessonButtons(this.gameInfoRow);
-        this.levelSelectorToggle = new LevelSelectorToggle_1.LevelSelectorToggle(this.gameInfoRow);
-        this.title = new BaseComponent_1.BaseComponent({
-            tagName: 'h2',
-            classNames: ['game-info__title'],
-            parent: this,
-            text: Store_1.Store.currentLesson.title,
-        });
-        this.subtitle = new BaseComponent_1.BaseComponent({
-            tagName: 'h3',
-            classNames: ['game-info__subtitle'],
-            parent: this,
-            text: Store_1.Store.currentLesson.subtitle,
-        });
-        this.selector = new BaseComponent_1.BaseComponent({
-            tagName: 'p',
-            classNames: ['game-info__selector'],
-            parent: this,
-            html: `Syntax: ${Store_1.Store.currentLesson.selector}`,
-        });
-        this.description = new BaseComponent_1.BaseComponent({
-            tagName: 'p',
-            classNames: ['game-info__description'],
-            parent: this,
-            html: Store_1.Store.currentLesson.description,
-        });
-        this.example = new BaseComponent_1.BaseComponent({
-            tagName: 'p',
-            classNames: ['game-info__example'],
-            parent: this,
-            html: Store_1.Store.currentLesson.example,
-        });
-    }
-    render() {
-        this.lessonNumber.setHtml(`Lesson ${Store_1.Store.currentLesson.id + 1} of ${Store_1.Store.lessons.length}`);
-        this.gameInfoLessonState.render();
-        this.title.setTextContent(Store_1.Store.currentLesson.title);
-        this.subtitle.setTextContent(Store_1.Store.currentLesson.subtitle);
-        this.selector.setHtml(`Syntax: ${Store_1.Store.currentLesson.selector}`);
-        this.description.setHtml(Store_1.Store.currentLesson.description);
-        this.example.setHtml(Store_1.Store.currentLesson.example);
-        this.levelSelectorToggle.removeClass('opened');
-    }
-}
-exports.GameInfo = GameInfo;
+exports.classNames = void 0;
+exports.classNames = {
+    header: 'header',
+    title: 'header__title',
+};
 
 
 /***/ }),
 
-/***/ 1760:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ResetProgressButton = void 0;
-__webpack_require__(4298);
-const BaseComponent_1 = __webpack_require__(4733);
-const Store_1 = __webpack_require__(3365);
-class ResetProgressButton extends BaseComponent_1.BaseComponent {
-    constructor(parent) {
-        super({ tagName: 'button', classNames: ['reset-progress'], parent, html: '<span>Reset Progress</span>' });
-        this.addEventListener('click', () => {
-            const newStartId = 0;
-            Store_1.Store.resetCompleted(newStartId);
-            Store_1.Store.app.node.dispatchEvent(new CustomEvent('rerender', {
-                detail: {
-                    lesson: Store_1.Store.lessons[newStartId],
-                },
-            }));
-        });
-    }
-}
-exports.ResetProgressButton = ResetProgressButton;
-
-
-/***/ }),
-
-/***/ 2392:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ChangeLessonButtons = void 0;
-__webpack_require__(9972);
-const BaseComponent_1 = __webpack_require__(4733);
-const Store_1 = __webpack_require__(3365);
-const localStorage_1 = __webpack_require__(9161);
-class ChangeLessonButtons extends BaseComponent_1.BaseComponent {
-    constructor(parent) {
-        super({
-            classNames: ['lesson-changers'],
-            parent,
-        });
-        this.prevButton = new BaseComponent_1.BaseComponent({
-            tagName: 'button',
-            classNames: ['prev-btn'],
-            parent: this,
-            html: '<span>⬅</span>',
-        });
-        this.nextButton = new BaseComponent_1.BaseComponent({
-            tagName: 'button',
-            classNames: ['next-btn'],
-            parent: this,
-            html: '<span>➡</span>',
-        });
-        this.nextButton.addEventListener('click', (event) => {
-            if (event instanceof MouseEvent) {
-                const id = Store_1.Store.currentLesson.id === Store_1.Store.lessons.length - 1 ? 0 : Store_1.Store.currentLesson.id + 1;
-                (0, localStorage_1.setLocalStorage)({
-                    current: id,
-                    completed: Store_1.Store.completed,
-                    helped: Store_1.Store.helped,
-                });
-                Store_1.Store.app.node.dispatchEvent(new CustomEvent('rerender', {
-                    detail: {
-                        lesson: Store_1.Store.lessons.find((lesson) => lesson.id === id),
-                    },
-                }));
-            }
-        });
-        this.prevButton.addEventListener('click', (event) => {
-            if (event instanceof MouseEvent) {
-                const id = Store_1.Store.currentLesson.id === 0 ? Store_1.Store.lessons.length - 1 : Store_1.Store.currentLesson.id - 1;
-                (0, localStorage_1.setLocalStorage)({
-                    current: id,
-                    completed: Store_1.Store.completed,
-                    helped: Store_1.Store.helped,
-                });
-                Store_1.Store.app.node.dispatchEvent(new CustomEvent('rerender', {
-                    detail: {
-                        lesson: Store_1.Store.lessons.find((lesson) => lesson.id === id),
-                    },
-                }));
-            }
-        });
-    }
-}
-exports.ChangeLessonButtons = ChangeLessonButtons;
-
-
-/***/ }),
-
-/***/ 9429:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.GameInfoLessonState = void 0;
-__webpack_require__(2724);
-const BaseComponent_1 = __webpack_require__(4733);
-const Store_1 = __webpack_require__(3365);
-class GameInfoLessonState extends BaseComponent_1.BaseComponent {
-    constructor(parent) {
-        super({
-            classNames: ['game-info__state'],
-            parent,
-            html: '<span class="checkmark-icon"></span><span class="help-icon"></span>',
-        });
-        const id = Store_1.Store.currentLesson.id;
-        if (Store_1.Store.completed.includes(id))
-            this.addClass('completed');
-        if (Store_1.Store.helped.includes(id))
-            this.addClass('help-used');
-    }
-    render() {
-        this.removeClass('completed');
-        this.removeClass('help-used');
-        const id = Store_1.Store.currentLesson.id;
-        if (Store_1.Store.completed.includes(id))
-            this.addClass('completed');
-        if (Store_1.Store.helped.includes(id))
-            this.addClass('help-used');
-    }
-}
-exports.GameInfoLessonState = GameInfoLessonState;
-
-
-/***/ }),
-
-/***/ 1940:
+/***/ 4977:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -1008,10 +1035,17 @@ exports.GameInfoLessonState = GameInfoLessonState;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Header = void 0;
 __webpack_require__(3161);
-const BaseComponent_1 = __webpack_require__(4733);
-class Header extends BaseComponent_1.BaseComponent {
+const class_names_1 = __webpack_require__(5402);
+const base_component_1 = __webpack_require__(9419);
+class Header extends base_component_1.BaseComponent {
     constructor() {
-        super({ tagName: 'header', classNames: ['header'], html: '<h1 class="header__title">Cards Selector Game</h1>' });
+        super({ tagName: 'header', classNames: [class_names_1.classNames.header] });
+        this.title = new base_component_1.BaseComponent({
+            tagName: 'h1',
+            classNames: [class_names_1.classNames.title],
+            text: 'Cards Selector Game',
+            parent: this,
+        });
     }
 }
 exports.Header = Header;
@@ -1019,33 +1053,54 @@ exports.Header = Header;
 
 /***/ }),
 
-/***/ 2999:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ 844:
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.classNames = void 0;
+exports.classNames = {
+    htmlViewer: 'html-viewer',
+    markup: 'html',
+    header: 'html-viewer__header',
+    row: 'html-viewer__row',
+    pl20: 'pl-20',
+    customTag: 'ct',
+    active: 'active',
+    tagBracket: 'tag-bracket',
+    tagName: 'tag-name',
+    tagAttr: 'tag-attr',
+    tagAttrValue: 'tag-attr-value',
 };
+
+
+/***/ }),
+
+/***/ 1053:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.HtmlViewer = void 0;
-__webpack_require__(4412);
-const classNames_1 = __importDefault(__webpack_require__(3042));
-const BaseComponent_1 = __webpack_require__(4733);
-const HtmlViewerMarkup_1 = __webpack_require__(7261);
-const LineNumbers_1 = __webpack_require__(9236);
-class HtmlViewer extends BaseComponent_1.BaseComponent {
-    constructor(parent) {
-        super({ classNames: [classNames_1.default.htmlViewer.root], parent });
-        this.htmlViewerHeader = new BaseComponent_1.BaseComponent({
+__webpack_require__(8099);
+const class_names_1 = __webpack_require__(844);
+const base_component_1 = __webpack_require__(9419);
+const markup_1 = __webpack_require__(3089);
+const line_numbers_1 = __webpack_require__(5787);
+class HtmlViewer extends base_component_1.BaseComponent {
+    constructor() {
+        super({ classNames: [class_names_1.classNames.htmlViewer] });
+        this.htmlViewerHeader = new base_component_1.BaseComponent({
             tagName: 'p',
-            classNames: ['html-viewer__header'],
+            classNames: [class_names_1.classNames.header],
             parent: this,
             html: '<span>HTML Viewer</span><span>cards.html</span>',
         });
-        this.htmlViewerRow = new BaseComponent_1.BaseComponent({ classNames: ['html-viewer__row'], parent: this });
-        this.lineNumbers = new LineNumbers_1.LineNumbers(this.htmlViewerRow);
-        this.htmlViewerMarkup = new HtmlViewerMarkup_1.HtmlViewerMarkup(this.htmlViewerRow);
+        this.htmlViewerRow = new base_component_1.BaseComponent({ classNames: [class_names_1.classNames.row], parent: this });
+        this.lineNumbers = new line_numbers_1.LineNumbers(this.htmlViewerRow);
+        this.htmlViewerMarkup = new markup_1.Markup(this.htmlViewerRow);
     }
     render() {
         this.htmlViewerMarkup.render();
@@ -1056,299 +1111,514 @@ exports.HtmlViewer = HtmlViewer;
 
 /***/ }),
 
-/***/ 7261:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ 8978:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.HtmlViewerMarkup = void 0;
-__webpack_require__(3946);
-const classNames_1 = __importDefault(__webpack_require__(3042));
-const BaseComponent_1 = __webpack_require__(4733);
-const HtmlViewerMarkupElement_1 = __webpack_require__(6918);
-const Store_1 = __webpack_require__(3365);
-class HtmlViewerMarkup extends BaseComponent_1.BaseComponent {
-    constructor(parent) {
-        super({
-            classNames: [classNames_1.default.htmlViewer.markup],
-            parent,
-        });
-        this.elements = [];
-        this.node.addEventListener('mouse-in', (event) => {
-            var _a;
-            if (event instanceof CustomEvent) {
-                this.elements.forEach((element) => element.removeClass('active'));
-                (_a = this.node.querySelector(event.detail.selector)) === null || _a === void 0 ? void 0 : _a.classList.add('active');
-            }
-        });
-        this.node.addEventListener('mouse-out', (event) => {
-            if (event instanceof CustomEvent) {
-                this.elements.forEach((element) => element.removeClass('active'));
-            }
-        });
-    }
-    createHtmlViewerDom(nodeList, parent) {
-        const nodes = [];
-        nodeList.forEach((node, index) => {
-            const htmlViewerItem = new HtmlViewerMarkupElement_1.HtmlViewerMarkupElement(node, parent, this.elements, index);
-            if (node.children) {
-                this.createHtmlViewerDom(node.children, htmlViewerItem);
-            }
-            htmlViewerItem.insertText(node);
-            nodes.push(htmlViewerItem);
-            this.elements.push(htmlViewerItem);
-        });
-        parent.append(nodes);
-    }
-    render() {
-        this.node.innerHTML = '';
-        this.elements.forEach((element) => element.delete());
-        this.createHtmlViewerDom(Store_1.Store.currentLessonNodes, this);
-    }
-}
-exports.HtmlViewerMarkup = HtmlViewerMarkup;
-
-
-/***/ }),
-
-/***/ 6918:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.HtmlViewerMarkupElement = void 0;
-__webpack_require__(1055);
-const classNames_1 = __importDefault(__webpack_require__(3042));
-const BaseComponent_1 = __webpack_require__(4733);
+exports.MarkupElement = void 0;
+__webpack_require__(3502);
+const class_names_1 = __webpack_require__(844);
 const constants_1 = __webpack_require__(2037);
-const Store_1 = __webpack_require__(3365);
-class HtmlViewerMarkupElement extends BaseComponent_1.BaseComponent {
+const base_component_1 = __webpack_require__(9419);
+const types_1 = __webpack_require__(1230);
+const store_1 = __webpack_require__(8527);
+class MarkupElement extends base_component_1.BaseComponent {
     constructor(node, parent, htmlViewerElements, index) {
         super({
             tagName: node.tagName,
             classNames: node.classNames
-                .filter((className) => className !== constants_1.LESSON_TARGET_CLASS)
-                .concat(Object.values(classNames_1.default.htmlViewer.element)),
+                .filter((className) => className !== types_1.LevelNodeAttributes.TargetClass)
+                .concat([class_names_1.classNames.pl20, class_names_1.classNames.customTag]),
             parent,
         });
         this.htmlViewerElements = htmlViewerElements;
         this.index = index;
-        this.attributes = { classNames: [], id: null };
-        this.setNodeAttributes(node.classNames, node.id);
-        this.setAttribute('data-index', index.toString());
-        this.setHoverHandler();
+        this.setElementData(node.id, index);
+        this.attachListeners();
     }
-    setHoverHandler() {
+    setElementData(id, index) {
+        this.setAttribute('data-index', index.toString());
+        id && this.setAttribute('id', id);
+    }
+    attachListeners() {
         this.addEventListener('mouseover', (event) => {
             event.stopPropagation();
-            this.htmlViewerElements.forEach((el) => el.removeClass(classNames_1.default.htmlViewer.activeElement));
-            this.addClass(classNames_1.default.htmlViewer.activeElement);
-            let current = this.parentElement;
-            let selector = this.tagName +
-                this.getNodeClassName() +
-                (this.getAttribute('id') ? '#' + this.getAttribute('id') : '') +
-                (this.getAttribute('data-index') ? `[data-index="${this.getAttribute('data-index')}"]` : '');
-            while (current) {
-                if (current.hasClass(classNames_1.default.htmlViewer.markup)) {
-                    break;
-                }
-                selector +=
-                    ' ' +
-                        current.tagName +
-                        (current.getAttribute('id') ? '#' + current.getAttribute('id') : '') +
-                        (current.getAttribute('data-index') ? `[data-index="${current.getAttribute('data-index')}"]` : '');
-                current = current.parentElement;
-            }
-            selector = selector.split(' ').reverse().join(' ');
-            Store_1.Store.cardsTable.node.dispatchEvent(new CustomEvent('mouse-in', {
+            this.removeActiveClass();
+            this.addClass(class_names_1.classNames.active);
+            store_1.Store.cards.node.dispatchEvent(new CustomEvent(constants_1.CUSTOM_EVENTS.MOUSE_IN, {
                 detail: {
-                    selector: selector,
+                    selector: this.getSelector(class_names_1.classNames.markup),
                 },
             }));
         });
         this.addEventListener('mouseleave', () => {
-            this.htmlViewerElements.forEach((el) => el.removeClass(classNames_1.default.htmlViewer.activeElement));
-            Store_1.Store.cardsTable.node.dispatchEvent(new CustomEvent('mouse-out'));
+            this.removeActiveClass();
+            store_1.Store.cards.node.dispatchEvent(new CustomEvent(constants_1.CUSTOM_EVENTS.MOUSE_OUT));
         });
     }
     insertText(node) {
-        const id = this.attributes.id
-            ? `<span class="tag-attr"> id</span><span class="tag-attr-value">="${this.attributes.id}"</span>`
-            : '';
-        const classNames = this.attributes.classNames.length
-            ? `<span class="tag-attr"> class</span><span class="tag-attr-value">="${this.attributes.classNames.join(' ')}"</span>`
-            : '';
+        const { bracket, tag, attr } = {
+            bracket: (isOpen) => `<span class="${class_names_1.classNames.tagBracket}">${isOpen ? '&lt;' : '&gt;'}</span>`,
+            tag: (name) => `<span class="${class_names_1.classNames.tagName}">${name}</span>`,
+            attr: (type, value) => `<span class="${class_names_1.classNames.tagAttr}"> ${type}</span><span class="${class_names_1.classNames.tagAttrValue}">="${value}"</span>`,
+        };
+        let id = this.getAttribute('id') || '';
+        if (id)
+            id = attr('id', id);
+        const classes = this.classNames.length ? attr('class', this.getNodeClassName().replace('.', '')) : '';
         if (node.children) {
             this.insertHtml([
-                [
-                    'afterbegin',
-                    `<span class="tag-bracket">&lt;</span><span class="tag-name">${node.tagName}</span>${classNames + id}<span class="tag-bracket">&gt;</span>`,
-                ],
-                [
-                    'beforeend',
-                    `<span class="tag-bracket">&lt;/</span><span class="tag-name">${node.tagName}</span><span class="tag-bracket">&gt;</span>`,
-                ],
+                ['afterbegin', `${bracket(true)}${tag(node.tagName)}${classes + id}${bracket(false)}`],
+                ['beforeend', `${bracket(true) + '/'}${tag(node.tagName)}${bracket(false)}`],
             ]);
         }
         else {
-            this.insertHtml([
-                [
-                    'afterbegin',
-                    `<span class="tag-bracket">&lt;</span><span class="tag-name">${node.tagName}</span>${classNames + id}<span class="tag-bracket"> /&gt;</span>`,
-                ],
-            ]);
+            this.insertHtml([['afterbegin', `${bracket(true)}${tag(node.tagName)}${classes + id}${' /' + bracket(false)}`]]);
         }
     }
-    setNodeAttributes(classNames, id) {
-        if (classNames) {
-            classNames.forEach((className) => {
-                if (className === constants_1.LESSON_TARGET_CLASS)
-                    return;
-                this.addClass(className);
-                this.attributes.classNames.push(className);
-            });
-        }
-        if (id) {
-            this.setAttribute('id', id);
-            this.attributes.id = id;
-        }
+    removeActiveClass() {
+        this.htmlViewerElements.forEach((el) => el.removeClass(class_names_1.classNames.active));
     }
 }
-exports.HtmlViewerMarkupElement = HtmlViewerMarkupElement;
+exports.MarkupElement = MarkupElement;
 
 
 /***/ }),
 
-/***/ 7433:
+/***/ 3089:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LessonSelector = void 0;
-__webpack_require__(4271);
-const BaseComponent_1 = __webpack_require__(4733);
-const Store_1 = __webpack_require__(3365);
-const LessonSelectorElement_1 = __webpack_require__(8419);
-const ResetProgressButton_1 = __webpack_require__(1760);
-class LessonSelector extends BaseComponent_1.BaseComponent {
+exports.Markup = void 0;
+__webpack_require__(5964);
+const class_names_1 = __webpack_require__(844);
+const base_component_1 = __webpack_require__(9419);
+const markup_element_1 = __webpack_require__(8978);
+const store_1 = __webpack_require__(8527);
+const constants_1 = __webpack_require__(2037);
+class Markup extends base_component_1.BaseComponent {
     constructor(parent) {
-        super({ tagName: 'ul', classNames: ['lesson-selector', 'hidden'], parent });
+        super({
+            classNames: [class_names_1.classNames.markup],
+            parent,
+        });
         this.elements = [];
-        new BaseComponent_1.BaseComponent({ tagName: 'p', classNames: ['lesson-selector__title'], parent: this, text: 'Select level' });
-        Store_1.Store.lessons.forEach((lesson) => {
-            const isCompleted = Store_1.Store.completed.includes(lesson.id);
-            const isHelped = Store_1.Store.helped.includes(lesson.id);
-            const element = new LessonSelectorElement_1.LessonSelectorElement(isCompleted, isHelped, lesson.id, this.elements, this);
-            this.elements.push(element);
-        });
-        this.resetProgressBtn = new ResetProgressButton_1.ResetProgressButton(this);
+        this.attachListeners();
     }
-    render() {
-        this.elements.forEach((element) => {
-            element.removeClass('current');
-            element.removeClass('completed');
-            element.removeClass('helped');
-            if (Store_1.Store.completed.includes(element.id))
-                element.addClass('completed');
-            if (Store_1.Store.helped.includes(element.id))
-                element.addClass('helped');
-            if (element.id === Store_1.Store.currentLesson.id)
-                element.addClass('current');
-        });
-    }
-}
-exports.LessonSelector = LessonSelector;
-
-
-/***/ }),
-
-/***/ 8419:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LessonSelectorElement = void 0;
-__webpack_require__(9209);
-const BaseComponent_1 = __webpack_require__(4733);
-const Store_1 = __webpack_require__(3365);
-const localStorage_1 = __webpack_require__(9161);
-class LessonSelectorElement extends BaseComponent_1.BaseComponent {
-    constructor(completed, helped, id, lessonSelectorElements, parent) {
-        super({ tagName: 'li', classNames: ['lesson-selector__item'], parent });
-        this.completed = completed;
-        this.helped = helped;
-        this.id = id;
-        this.lessonSelectorElements = lessonSelectorElements;
-        if (completed)
-            this.addClass('completed');
-        if (helped)
-            this.addClass('helped');
-        this.lesson = Store_1.Store.lessons.find((lesson) => lesson.id === id);
-        new BaseComponent_1.BaseComponent({
-            tagName: 'span',
-            classNames: ['lesson-selector__item_text'],
-            parent: this,
-            html: `${id + 1}. ${this.lesson.title}: ${this.lesson.selector}`,
-        });
-        this.addEventListener('click', (event) => {
-            if (event instanceof MouseEvent) {
-                const shouldBeHidden = window.matchMedia('(max-width: 1100px').matches;
-                if (shouldBeHidden)
-                    Store_1.Store.app.gameInfo.node.classList.toggle('hidden');
-                Store_1.Store.levelSelector.addClass('hidden');
-                const selectedLesson = Store_1.Store.lessons.find((lesson) => lesson.id === this.id);
-                (0, localStorage_1.setLocalStorage)({
-                    current: selectedLesson.id,
-                    completed: Store_1.Store.completed,
-                    helped: Store_1.Store.helped,
-                });
-                Store_1.Store.app.node.dispatchEvent(new CustomEvent('rerender', {
-                    detail: {
-                        lesson: selectedLesson,
-                    },
-                }));
+    attachListeners() {
+        this.node.addEventListener(constants_1.CUSTOM_EVENTS.MOUSE_IN, (event) => {
+            var _a;
+            if (event instanceof CustomEvent) {
+                this.removeActiveClass();
+                (_a = this.node.querySelector(event.detail.selector)) === null || _a === void 0 ? void 0 : _a.classList.add(class_names_1.classNames.active);
             }
         });
+        this.node.addEventListener(constants_1.CUSTOM_EVENTS.MOUSE_OUT, () => this.removeActiveClass());
+    }
+    removeActiveClass() {
+        this.elements.forEach((element) => element.removeClass(class_names_1.classNames.active));
+    }
+    createMarkup(nodeList, parent) {
+        const nodes = [];
+        nodeList.forEach((node, index) => {
+            const markupElement = new markup_element_1.MarkupElement(node, parent, this.elements, index);
+            if (node.children) {
+                this.createMarkup(node.children, markupElement);
+            }
+            markupElement.insertText(node);
+            nodes.push(markupElement);
+            this.elements.push(markupElement);
+        });
+        parent.append(nodes);
+    }
+    render() {
+        this.elements.forEach((element) => element.delete());
+        this.elements = [];
+        this.node.innerHTML = '';
+        this.createMarkup(store_1.Store.currentLevelNodes, this);
     }
 }
-exports.LessonSelectorElement = LessonSelectorElement;
+exports.Markup = Markup;
 
 
 /***/ }),
 
-/***/ 9246:
+/***/ 6037:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.classNames = void 0;
+exports.classNames = {
+    levelInfo: 'level-info',
+    levelInfoHidden: 'hidden',
+    row: 'level-info__row',
+    levelNumber: 'level-info__level-number',
+    title: 'level-info__title',
+    subtitle: 'level-info__subtitle',
+    selector: 'level-info__selector',
+    description: 'level-info__description',
+    example: 'level-info__example',
+    levelChangers: 'level-changers',
+    levelChangersPrev: 'level-changers__prev',
+    levelChangersNext: 'level-changers__next',
+    levelInfoState: 'level-info__state',
+    levelCompleted: 'completed',
+    levelHelped: 'help-used',
+    checkmarkIcon: 'checkmark-icon',
+    helpIcon: 'help-icon',
+    levelInfoToggle: 'level-info__toggle',
+};
+
+
+/***/ }),
+
+/***/ 6693:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LevelChangerNext = void 0;
+const base_component_1 = __webpack_require__(9419);
+const class_names_1 = __webpack_require__(6037);
+const store_1 = __webpack_require__(8527);
+class LevelChangerNext extends base_component_1.BaseComponent {
+    constructor(parent) {
+        super({
+            tagName: 'button',
+            classNames: [class_names_1.classNames.levelChangersNext],
+            parent,
+            html: '<span>➡</span>',
+        });
+        this.addEventListener('click', () => this.handleClick());
+    }
+    handleClick() {
+        const id = store_1.Store.currentLevel.id === store_1.Store.levels.length - 1 ? 0 : store_1.Store.currentLevel.id + 1;
+        store_1.Store.saveGameState({
+            current: id,
+        });
+        store_1.Store.app.node.dispatchEvent(new CustomEvent('rerender', {
+            detail: {
+                level: store_1.Store.levels.find((level) => level.id === id),
+            },
+        }));
+    }
+}
+exports.LevelChangerNext = LevelChangerNext;
+
+
+/***/ }),
+
+/***/ 7732:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LevelChangerPrev = void 0;
+const base_component_1 = __webpack_require__(9419);
+const class_names_1 = __webpack_require__(6037);
+const store_1 = __webpack_require__(8527);
+class LevelChangerPrev extends base_component_1.BaseComponent {
+    constructor(parent) {
+        super({
+            tagName: 'button',
+            classNames: [class_names_1.classNames.levelChangersPrev],
+            parent,
+            html: '<span>⬅</span>',
+        });
+        this.addEventListener('click', () => this.handleClick());
+    }
+    handleClick() {
+        const id = store_1.Store.currentLevel.id === 0 ? store_1.Store.levels.length - 1 : store_1.Store.currentLevel.id - 1;
+        store_1.Store.saveGameState({
+            current: id,
+        });
+        store_1.Store.app.node.dispatchEvent(new CustomEvent('rerender', {
+            detail: {
+                level: store_1.Store.levels.find((level) => level.id === id),
+            },
+        }));
+    }
+}
+exports.LevelChangerPrev = LevelChangerPrev;
+
+
+/***/ }),
+
+/***/ 5729:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LevelChangers = void 0;
+__webpack_require__(7086);
+const class_names_1 = __webpack_require__(6037);
+const base_component_1 = __webpack_require__(9419);
+const level_changer_next_1 = __webpack_require__(6693);
+const level_changer_prev_1 = __webpack_require__(7732);
+class LevelChangers extends base_component_1.BaseComponent {
+    constructor(parent) {
+        super({
+            classNames: [class_names_1.classNames.levelChangers],
+            parent,
+        });
+        this.prevButton = new level_changer_prev_1.LevelChangerPrev(this);
+        this.nextButton = new level_changer_next_1.LevelChangerNext(this);
+    }
+}
+exports.LevelChangers = LevelChangers;
+
+
+/***/ }),
+
+/***/ 9368:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LevelInfoState = void 0;
+__webpack_require__(5812);
+const class_names_1 = __webpack_require__(6037);
+const base_component_1 = __webpack_require__(9419);
+const store_1 = __webpack_require__(8527);
+class LevelInfoState extends base_component_1.BaseComponent {
+    constructor(parent) {
+        super({
+            classNames: [class_names_1.classNames.levelInfoState],
+            parent,
+            html: `<span class="${class_names_1.classNames.checkmarkIcon}"></span><span class="${class_names_1.classNames.helpIcon}"></span>`,
+        });
+        this.setHelpedAndCompleted();
+    }
+    setHelpedAndCompleted() {
+        this.removeClass(class_names_1.classNames.levelCompleted);
+        this.removeClass(class_names_1.classNames.levelHelped);
+        const id = store_1.Store.currentLevel.id;
+        if (store_1.Store.gameState.completed.includes(id))
+            this.addClass(class_names_1.classNames.levelCompleted);
+        if (store_1.Store.gameState.helped.includes(id))
+            this.addClass(class_names_1.classNames.levelHelped);
+    }
+    render() {
+        this.setHelpedAndCompleted();
+    }
+}
+exports.LevelInfoState = LevelInfoState;
+
+
+/***/ }),
+
+/***/ 679:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LevelInfoToggle = void 0;
+__webpack_require__(6952);
+const class_names_1 = __webpack_require__(6037);
+const base_component_1 = __webpack_require__(9419);
+class LevelInfoToggle extends base_component_1.BaseComponent {
+    constructor(levelInfo) {
+        super({ tagName: 'button', classNames: [class_names_1.classNames.levelInfoToggle], html: '<span>|||</span>' });
+        this.shouldHideLevelInfo = window.matchMedia('(max-width: 1100px').matches;
+        this.levelInfo = levelInfo;
+        if (this.shouldHideLevelInfo)
+            this.levelInfo.addClass(class_names_1.classNames.levelInfoHidden);
+        this.addEventListener('click', () => this.handleClick());
+    }
+    handleClick() {
+        if (this.levelInfo.node.classList.contains(class_names_1.classNames.levelInfoHidden)) {
+            this.levelInfo.node.classList.remove(class_names_1.classNames.levelInfoHidden);
+        }
+        else {
+            this.levelInfo.node.classList.add(class_names_1.classNames.levelInfoHidden);
+        }
+    }
+}
+exports.LevelInfoToggle = LevelInfoToggle;
+
+
+/***/ }),
+
+/***/ 3125:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LevelInfo = void 0;
+__webpack_require__(6950);
+const class_names_1 = __webpack_require__(6037);
+const class_names_2 = __webpack_require__(7389);
+const base_component_1 = __webpack_require__(9419);
+const store_1 = __webpack_require__(8527);
+const level_selector_toggle_1 = __webpack_require__(9503);
+const level_changers_1 = __webpack_require__(5729);
+const level_info_state_1 = __webpack_require__(9368);
+class LevelInfo extends base_component_1.BaseComponent {
+    constructor() {
+        super({ classNames: [class_names_1.classNames.levelInfo] });
+        this.levelInfoRow = new base_component_1.BaseComponent({ classNames: [class_names_1.classNames.row], parent: this });
+        this.levelNumber = new base_component_1.BaseComponent({
+            tagName: 'p',
+            classNames: [class_names_1.classNames.levelNumber],
+            parent: this.levelInfoRow,
+            html: `Level ${store_1.Store.currentLevel.id + 1} of ${store_1.Store.levels.length}`,
+        });
+        this.levelInfoState = new level_info_state_1.LevelInfoState(this.levelInfoRow);
+        this.levelChangers = new level_changers_1.LevelChangers(this.levelInfoRow);
+        this.levelSelectorToggle = new level_selector_toggle_1.LevelSelectorToggle(this.levelInfoRow);
+        this.title = new base_component_1.BaseComponent({
+            tagName: 'h2',
+            classNames: [class_names_1.classNames.title],
+            parent: this,
+            text: store_1.Store.currentLevel.title,
+        });
+        this.subtitle = new base_component_1.BaseComponent({
+            tagName: 'h3',
+            classNames: [class_names_1.classNames.subtitle],
+            parent: this,
+            text: store_1.Store.currentLevel.subtitle,
+        });
+        this.selector = new base_component_1.BaseComponent({
+            tagName: 'p',
+            classNames: [class_names_1.classNames.selector],
+            parent: this,
+            html: `Syntax: ${store_1.Store.currentLevel.selector}`,
+        });
+        this.description = new base_component_1.BaseComponent({
+            tagName: 'p',
+            classNames: [class_names_1.classNames.description],
+            parent: this,
+            html: store_1.Store.currentLevel.description,
+        });
+        this.example = new base_component_1.BaseComponent({
+            tagName: 'p',
+            classNames: [class_names_1.classNames.example],
+            parent: this,
+            html: store_1.Store.currentLevel.example,
+        });
+    }
+    render() {
+        this.levelNumber.setHtml(`Level ${store_1.Store.currentLevel.id + 1} of ${store_1.Store.levels.length}`);
+        this.levelInfoState.render();
+        this.title.setTextContent(store_1.Store.currentLevel.title);
+        this.subtitle.setTextContent(store_1.Store.currentLevel.subtitle);
+        this.selector.setHtml(`Syntax: ${store_1.Store.currentLevel.selector}`);
+        this.description.setHtml(store_1.Store.currentLevel.description);
+        this.example.setHtml(store_1.Store.currentLevel.example);
+        this.levelSelectorToggle.removeClass(class_names_2.classNames.levelSelectorOpened);
+    }
+}
+exports.LevelInfo = LevelInfo;
+
+
+/***/ }),
+
+/***/ 7389:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.classNames = void 0;
+exports.classNames = {
+    levelSelector: 'level-selector',
+    levelSelectorTitle: 'level-selector__title',
+    levelSelectorOpened: 'opened',
+    levelSelectorHidden: 'hidden',
+    levelSelectorItem: 'level-selector__item',
+    levelSelectorItemTitle: 'level-selector__item-title',
+    levelSelectorToggle: 'level-selector__toggle',
+    resetProgress: 'reset-progress',
+    completed: 'completed',
+    helped: 'helped',
+    current: 'current',
+};
+
+
+/***/ }),
+
+/***/ 8930:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LevelSelectorItem = void 0;
+__webpack_require__(4757);
+const class_names_1 = __webpack_require__(7389);
+const class_names_2 = __webpack_require__(6037);
+const constants_1 = __webpack_require__(2037);
+const base_component_1 = __webpack_require__(9419);
+const store_1 = __webpack_require__(8527);
+class LevelSelectorItem extends base_component_1.BaseComponent {
+    constructor(id, parent) {
+        super({ tagName: 'li', classNames: [class_names_1.classNames.levelSelectorItem], parent });
+        this.id = id;
+        this.level = store_1.Store.levels.find((level) => level.id === id);
+        new base_component_1.BaseComponent({
+            tagName: 'span',
+            classNames: [class_names_1.classNames.levelSelectorItemTitle],
+            parent: this,
+            html: `${id + 1}. ${this.level.title}: ${this.level.selector}`,
+        });
+        this.addEventListener('click', () => this.handleClick());
+    }
+    handleClick() {
+        const shouldBeHidden = window.matchMedia(`(max-width: ${constants_1.ASIDE_MAX_WIDTH}px`).matches;
+        if (shouldBeHidden)
+            store_1.Store.app.levelInfo.node.classList.toggle(class_names_2.classNames.levelInfoHidden);
+        store_1.Store.levelSelector.addClass(class_names_1.classNames.levelSelectorHidden);
+        const newLevel = store_1.Store.levels.find((level) => level.id === this.id);
+        store_1.Store.saveGameState({
+            current: newLevel.id,
+        });
+        store_1.Store.app.node.dispatchEvent(new CustomEvent('rerender', {
+            detail: {
+                level: newLevel,
+            },
+        }));
+    }
+}
+exports.LevelSelectorItem = LevelSelectorItem;
+
+
+/***/ }),
+
+/***/ 9503:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.LevelSelectorToggle = void 0;
-__webpack_require__(7608);
-const BaseComponent_1 = __webpack_require__(4733);
-const Store_1 = __webpack_require__(3365);
-class LevelSelectorToggle extends BaseComponent_1.BaseComponent {
+__webpack_require__(6752);
+const class_names_1 = __webpack_require__(7389);
+const base_component_1 = __webpack_require__(9419);
+const store_1 = __webpack_require__(8527);
+class LevelSelectorToggle extends base_component_1.BaseComponent {
     constructor(parent) {
         super({
             tagName: 'button',
-            classNames: ['level-selector__toggle'],
+            classNames: [class_names_1.classNames.levelSelectorToggle],
             parent,
             text: '⫼',
         });
-        this.addEventListener('click', (event) => {
-            if (event instanceof MouseEvent) {
-                Store_1.Store.levelSelector.node.classList.toggle('hidden');
-            }
-        });
+        this.addEventListener('click', () => this.handleClick());
+    }
+    handleClick() {
+        store_1.Store.levelSelector.node.classList.toggle(class_names_1.classNames.levelSelectorHidden);
     }
 }
 exports.LevelSelectorToggle = LevelSelectorToggle;
@@ -1356,245 +1626,163 @@ exports.LevelSelectorToggle = LevelSelectorToggle;
 
 /***/ }),
 
-/***/ 9968:
+/***/ 3973:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LessonTarget = void 0;
-__webpack_require__(6797);
-const BaseComponent_1 = __webpack_require__(4733);
-const Store_1 = __webpack_require__(3365);
-class LessonTarget extends BaseComponent_1.BaseComponent {
-    constructor(parent) {
-        super({ classNames: ['lesson-target'], parent });
-        this.heading = new BaseComponent_1.BaseComponent({
-            tagName: 'h1',
-            classNames: ['lesson-target__title'],
-            text: Store_1.Store.currentLesson.target,
+exports.LevelSelector = void 0;
+__webpack_require__(6231);
+const class_names_1 = __webpack_require__(7389);
+const base_component_1 = __webpack_require__(9419);
+const store_1 = __webpack_require__(8527);
+const level_selector_item_1 = __webpack_require__(8930);
+const reset_progress_1 = __webpack_require__(2368);
+class LevelSelector extends base_component_1.BaseComponent {
+    constructor() {
+        super({ tagName: 'ul', classNames: [class_names_1.classNames.levelSelector, class_names_1.classNames.levelSelectorHidden] });
+        this.items = [];
+        new base_component_1.BaseComponent({
+            tagName: 'p',
+            classNames: [class_names_1.classNames.levelSelectorTitle],
             parent: this,
+            text: 'Select level',
+        });
+        store_1.Store.levels.forEach((level) => this.items.push(new level_selector_item_1.LevelSelectorItem(level.id, this)));
+        this.resetProgressBtn = new reset_progress_1.ResetProgress(this);
+    }
+    render() {
+        this.items.forEach((item) => {
+            item.removeClass(class_names_1.classNames.current);
+            item.removeClass(class_names_1.classNames.completed);
+            item.removeClass(class_names_1.classNames.helped);
+            if (store_1.Store.gameState.completed.includes(item.id))
+                item.addClass(class_names_1.classNames.completed);
+            if (store_1.Store.gameState.helped.includes(item.id))
+                item.addClass(class_names_1.classNames.helped);
+            if (store_1.Store.currentLevel.id === item.id)
+                item.addClass(class_names_1.classNames.current);
         });
     }
-    rerender() {
-        this.heading.setTextContent(Store_1.Store.currentLesson.target);
-    }
 }
-exports.LessonTarget = LessonTarget;
+exports.LevelSelector = LevelSelector;
 
 
 /***/ }),
 
-/***/ 9236:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ 2368:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ResetProgress = void 0;
+__webpack_require__(1738);
+const class_names_1 = __webpack_require__(7389);
+const base_component_1 = __webpack_require__(9419);
+const store_1 = __webpack_require__(8527);
+class ResetProgress extends base_component_1.BaseComponent {
+    constructor(parent) {
+        super({ tagName: 'button', classNames: [class_names_1.classNames.resetProgress], parent, html: '<span>Reset Progress</span>' });
+        this.addEventListener('click', () => this.handleClick());
+    }
+    handleClick() {
+        const startId = 0;
+        store_1.Store.resetProgress(startId);
+        store_1.Store.app.node.dispatchEvent(new CustomEvent('rerender', {
+            detail: {
+                level: store_1.Store.levels[startId],
+            },
+        }));
+    }
+}
+exports.ResetProgress = ResetProgress;
+
+
+/***/ }),
+
+/***/ 4983:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.classNames = void 0;
+exports.classNames = {
+    target: 'level-target',
+    title: 'level-target__title',
 };
+
+
+/***/ }),
+
+/***/ 9801:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LevelTarget = void 0;
+__webpack_require__(9601);
+const class_names_1 = __webpack_require__(4983);
+const base_component_1 = __webpack_require__(9419);
+const store_1 = __webpack_require__(8527);
+class LevelTarget extends base_component_1.BaseComponent {
+    constructor() {
+        super({ classNames: [class_names_1.classNames.target] });
+        this.title = new base_component_1.BaseComponent({
+            tagName: 'h1',
+            classNames: [class_names_1.classNames.title],
+            text: store_1.Store.currentLevel.target,
+            parent: this,
+        });
+    }
+    rerender() {
+        this.title.setTextContent(store_1.Store.currentLevel.target);
+    }
+}
+exports.LevelTarget = LevelTarget;
+
+
+/***/ }),
+
+/***/ 9854:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.classNames = void 0;
+exports.classNames = {
+    lineNumbers: 'line-numbers',
+    lineNumbersItem: 'line-numbers__item',
+};
+
+
+/***/ }),
+
+/***/ 5787:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.LineNumbers = void 0;
-__webpack_require__(2194);
-const classNames_1 = __importDefault(__webpack_require__(3042));
-const BaseComponent_1 = __webpack_require__(4733);
+__webpack_require__(6096);
+const class_names_1 = __webpack_require__(9854);
+const base_component_1 = __webpack_require__(9419);
 const constants_1 = __webpack_require__(2037);
-class LineNumbers extends BaseComponent_1.BaseComponent {
+class LineNumbers extends base_component_1.BaseComponent {
     constructor(parent, count = constants_1.LINE_NUMBERS_COUNT) {
-        super({ tagName: 'ul', classNames: [classNames_1.default.lineNumbers.root], parent });
+        super({ tagName: 'ul', classNames: [class_names_1.classNames.lineNumbers], parent });
         for (let i = 0; i < count; i += 1) {
-            const li = new BaseComponent_1.BaseComponent({ tagName: 'li', classNames: [classNames_1.default.lineNumbers.element], parent: this });
+            const li = new base_component_1.BaseComponent({ tagName: 'li', classNames: [class_names_1.classNames.lineNumbersItem], parent: this });
             li.insertTextNodes([['afterbegin', `${i + 1}`]]);
         }
     }
 }
 exports.LineNumbers = LineNumbers;
-
-
-/***/ }),
-
-/***/ 1639:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Table = void 0;
-__webpack_require__(6665);
-const classNames_1 = __importDefault(__webpack_require__(3042));
-const Store_1 = __webpack_require__(3365);
-const BaseComponent_1 = __webpack_require__(4733);
-const TableElement_1 = __webpack_require__(2198);
-const localStorage_1 = __webpack_require__(9161);
-class Table extends BaseComponent_1.BaseComponent {
-    constructor(parent) {
-        super({ classNames: [classNames_1.default.table.root], parent });
-        this.elements = [];
-        this.node.addEventListener('mouse-in', (event) => {
-            var _a;
-            if (event instanceof CustomEvent) {
-                this.elements.forEach((element) => element.removeClass('hovered'));
-                (_a = this.node.querySelector(event.detail.selector)) === null || _a === void 0 ? void 0 : _a.classList.add('hovered');
-            }
-        });
-        this.node.addEventListener('mouse-out', (event) => {
-            if (event instanceof CustomEvent) {
-                this.elements.forEach((element) => element.removeClass('hovered'));
-            }
-        });
-        this.node.addEventListener('win', (event) => {
-            if (event instanceof CustomEvent) {
-                const isGameOver = Store_1.Store.currentLesson.id === Store_1.Store.lessons.length - 1;
-                if (isGameOver) {
-                    this.node.innerHTML = '<p class="game-over">Hoooray! You Win!</p>';
-                    Store_1.Store.levelSelector.render();
-                    (0, localStorage_1.setLocalStorage)({
-                        current: Store_1.Store.currentLesson.id,
-                        completed: Store_1.Store.completed,
-                        helped: Store_1.Store.helped,
-                    });
-                }
-                else {
-                    this.addClass('win');
-                    const currentId = Store_1.Store.currentLesson.id + 1;
-                    (0, localStorage_1.setLocalStorage)({
-                        current: currentId,
-                        completed: Store_1.Store.completed,
-                        helped: Store_1.Store.helped,
-                    });
-                    setTimeout(() => {
-                        Store_1.Store.app.node.dispatchEvent(new CustomEvent('rerender', {
-                            detail: {
-                                lesson: Store_1.Store.lessons.find((lesson) => lesson.id === currentId),
-                            },
-                        }));
-                        this.removeClass('win');
-                    }, 1000);
-                }
-            }
-        });
-        this.node.addEventListener('wrong-answer', (event) => {
-            if (event instanceof CustomEvent) {
-                this.addClass('wrong-answer');
-                setTimeout(() => {
-                    this.removeClass('wrong-answer');
-                }, 500);
-            }
-        });
-    }
-    createTableDom(nodeList, parent) {
-        const nodes = [];
-        nodeList.forEach((node, index) => {
-            const tableElement = new TableElement_1.TableElement(node, parent, this.elements, index);
-            if (node.children) {
-                this.createTableDom(node.children, tableElement);
-            }
-            nodes.push(tableElement);
-            this.elements.push(tableElement);
-        });
-        parent.append(nodes);
-    }
-    render() {
-        this.elements.forEach((element) => element.delete());
-        this.node.innerHTML = '';
-        this.createTableDom(Store_1.Store.currentLessonNodes, this);
-    }
-}
-exports.Table = Table;
-
-
-/***/ }),
-
-/***/ 2198:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.TableElement = void 0;
-__webpack_require__(3048);
-const classNames_1 = __importDefault(__webpack_require__(3042));
-const BaseComponent_1 = __webpack_require__(4733);
-const constants_1 = __webpack_require__(2037);
-const Store_1 = __webpack_require__(3365);
-class TableElement extends BaseComponent_1.BaseComponent {
-    constructor(node, parent, tableElements, index) {
-        super({ tagName: node.tagName, classNames: node.classNames.concat([classNames_1.default.table.element.ct]), parent });
-        this.tableElements = tableElements;
-        this.index = index;
-        this.attributes = { classNames: [], id: null };
-        this.setNodeAttributes(node.classNames, node.id);
-        this.setAttribute('data-index', index.toString());
-        this.setDataHtmlValue(node);
-        this.setHoverHandler();
-    }
-    setDataHtmlValue(node) {
-        const id = this.attributes.id ? ` id="${this.attributes.id}"` : '';
-        const classNames = this.attributes.classNames.length ? ` class="${this.attributes.classNames.join(' ')}"` : '';
-        let dataValue = '';
-        if (node.children) {
-            dataValue += `<${node.tagName}${classNames + id}></${node.tagName}>`;
-        }
-        else {
-            dataValue += `<${node.tagName}${classNames + id} />`;
-        }
-        this.setAttribute('data-html', dataValue);
-    }
-    setNodeAttributes(classNames, id) {
-        if (classNames) {
-            classNames.forEach((className) => {
-                if (className === constants_1.LESSON_TARGET_CLASS)
-                    return;
-                this.addClass(className);
-                this.attributes.classNames.push(className);
-            });
-        }
-        if (id) {
-            this.setAttribute('id', id);
-            this.attributes.id = id;
-        }
-    }
-    setHoverHandler() {
-        this.addEventListener('mouseover', (event) => {
-            event.stopPropagation();
-            this.tableElements.forEach((el) => el.removeClass('hovered'));
-            this.addClass('hovered');
-            let current = this.parentElement;
-            let selector = this.tagName +
-                this.getNodeClassName() +
-                (this.getAttribute('id') ? '#' + this.getAttribute('id') : '') +
-                (this.getAttribute('data-index') ? `[data-index="${this.getAttribute('data-index')}"]` : '');
-            while (current) {
-                if (current.hasClass('table')) {
-                    break;
-                }
-                selector +=
-                    ' ' +
-                        current.tagName +
-                        (current.getAttribute('id') ? '#' + current.getAttribute('id') : '') +
-                        (current.getAttribute('data-index') ? `[data-index="${current.getAttribute('data-index')}"]` : '');
-                current = current.parentElement;
-            }
-            selector = selector.split(' ').reverse().join(' ');
-            Store_1.Store.htmlViewer.htmlViewerMarkup.node.dispatchEvent(new CustomEvent('mouse-in', {
-                detail: {
-                    selector: selector,
-                },
-            }));
-        });
-        this.addEventListener('mouseleave', () => {
-            this.tableElements.forEach((el) => el.removeClass('hovered'));
-            Store_1.Store.htmlViewer.htmlViewerMarkup.node.dispatchEvent(new CustomEvent('mouse-out'));
-        });
-    }
-}
-exports.TableElement = TableElement;
 
 
 /***/ }),
@@ -1605,22 +1793,30 @@ exports.TableElement = TableElement;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LINE_NUMBERS_COUNT = exports.LESSON_TARGET_CLASS = exports.CSS_CLASSES_TO_EXCLUDE = void 0;
+exports.CUSTOM_EVENTS = exports.LOCAL_STORAGE_PREFIX = exports.LINE_NUMBERS_COUNT = exports.ASIDE_MAX_WIDTH = exports.CSS_CLASSES_TO_EXCLUDE = void 0;
 exports.CSS_CLASSES_TO_EXCLUDE = ['active', 'pl-20', 'ct', 'hovered', 'target'];
-exports.LESSON_TARGET_CLASS = 'target';
+exports.ASIDE_MAX_WIDTH = 1100;
 exports.LINE_NUMBERS_COUNT = 15;
+exports.LOCAL_STORAGE_PREFIX = 'h3nnessey';
+exports.CUSTOM_EVENTS = {
+    RERENDER: 'rerender',
+    WIN: 'win',
+    MOUSE_OUT: 'mouse-out',
+    MOUSE_IN: 'mouse-in',
+    WRONG_ANSWER: 'wrong-answer',
+};
 
 
 /***/ }),
 
-/***/ 8924:
+/***/ 9693:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LessonNode = void 0;
-class LessonNode {
+exports.LevelNode = void 0;
+class LevelNode {
     constructor(tagName, children = null, classNames = [], id = null) {
         this.tagName = tagName;
         this.children = children;
@@ -1628,21 +1824,21 @@ class LessonNode {
         this.id = id;
     }
 }
-exports.LessonNode = LessonNode;
+exports.LevelNode = LevelNode;
 
 
 /***/ }),
 
-/***/ 5000:
+/***/ 9010:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.lessons = void 0;
+exports.levels = void 0;
 const types_1 = __webpack_require__(1230);
-const LessonNode_1 = __webpack_require__(8924);
-exports.lessons = [
+const level_node_1 = __webpack_require__(9693);
+exports.levels = [
     {
         id: 0,
         title: 'Type Selector',
@@ -1654,12 +1850,12 @@ exports.lessons = [
         help: types_1.CardRanks.Ace,
         answer: '<ace class="target clubs ct" data-index="0" data-html="<ace class=&quot;clubs&quot; />"></ace><ace class="target hearts ct" data-index="1" data-html="<ace class=&quot;hearts&quot; />"></ace><ace class="target diamonds ct" data-index="2" data-html="<ace class=&quot;diamonds&quot; />"></ace><ace class="target spades ct" data-index="3" data-html="<ace class=&quot;spades&quot; />"></ace>',
         nodes: [
-            new LessonNode_1.LessonNode('cards', [
-                new LessonNode_1.LessonNode(types_1.CardRanks.Ace, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Clubs]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Ace, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Hearts]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Ace, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Diamonds]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Ace, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Spades]),
-            ]),
+            new level_node_1.LevelNode('cards', [
+                new level_node_1.LevelNode(types_1.CardRanks.Ace, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Clubs]),
+                new level_node_1.LevelNode(types_1.CardRanks.Ace, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Hearts]),
+                new level_node_1.LevelNode(types_1.CardRanks.Ace, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Diamonds]),
+                new level_node_1.LevelNode(types_1.CardRanks.Ace, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Spades]),
+            ], ['cards']),
         ],
     },
     {
@@ -1669,16 +1865,16 @@ exports.lessons = [
         selector: '<span class="text-code">#T</span>',
         description: 'Selects all elements with <span class="text-code">id="T"</span>',
         example: '<span class="text-bold">Example:</span> selector <span class="text-code">#main</span> selects all elements with <span class="text-code">id="main"</span>',
-        help: `#${types_1.LessonNodeAttributes.Id}`,
-        answer: '<jack class="target spades ct" id="corner" data-index="3" data-html="<jack class=&quot;spades&quot; id=&quot;corner&quot; />"></jack>',
-        target: `Select a ${types_1.LessonNodeAttributes.Id} card`,
+        help: `#${types_1.LevelNodeAttributes.Id}`,
+        answer: '<jack class="target spades ct" data-index="3" id="corner" data-html="<jack class=&quot;spades&quot; id=&quot;corner&quot; />"></jack>',
+        target: `Select a ${types_1.LevelNodeAttributes.Id} card`,
         nodes: [
-            new LessonNode_1.LessonNode('cards', [
-                new LessonNode_1.LessonNode(types_1.CardRanks.Ace, null, [types_1.CardSuits.Diamonds]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Jack, null, [types_1.CardSuits.Spades]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Three, null, [types_1.CardSuits.Clubs]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Jack, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Spades], types_1.LessonNodeAttributes.Id),
-            ]),
+            new level_node_1.LevelNode('cards', [
+                new level_node_1.LevelNode(types_1.CardRanks.Ace, null, [types_1.CardSuits.Diamonds]),
+                new level_node_1.LevelNode(types_1.CardRanks.Jack, null, [types_1.CardSuits.Spades]),
+                new level_node_1.LevelNode(types_1.CardRanks.Three, null, [types_1.CardSuits.Clubs]),
+                new level_node_1.LevelNode(types_1.CardRanks.Jack, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Spades], types_1.LevelNodeAttributes.Id),
+            ], ['cards']),
         ],
     },
     {
@@ -1692,12 +1888,12 @@ exports.lessons = [
         help: `.${types_1.CardSuits.Clubs}`,
         answer: '<four class="target clubs ct" data-index="1" data-html="<four class=&quot;clubs&quot; />"></four><nine class="target clubs ct" data-index="2" data-html="<nine class=&quot;clubs&quot; />"></nine>',
         nodes: [
-            new LessonNode_1.LessonNode('cards', [
-                new LessonNode_1.LessonNode(types_1.CardRanks.Five, null, [types_1.CardSuits.Spades]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Four, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Clubs]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Nine, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Clubs]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Ace, null, [types_1.CardSuits.Spades]),
-            ]),
+            new level_node_1.LevelNode('cards', [
+                new level_node_1.LevelNode(types_1.CardRanks.Five, null, [types_1.CardSuits.Spades]),
+                new level_node_1.LevelNode(types_1.CardRanks.Four, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Clubs]),
+                new level_node_1.LevelNode(types_1.CardRanks.Nine, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Clubs]),
+                new level_node_1.LevelNode(types_1.CardRanks.Ace, null, [types_1.CardSuits.Spades]),
+            ], ['cards']),
         ],
     },
     {
@@ -1711,15 +1907,15 @@ exports.lessons = [
         answer: '<ace class="target diamonds ct" data-index="0" data-html="<ace class=&quot;diamonds&quot;></ace>"><ace class="target spades ct" data-index="0" data-html="<ace class=&quot;spades&quot; />"></ace></ace><ace class="target spades ct" data-index="0" data-html="<ace class=&quot;spades&quot; />"></ace>',
         target: `Select all ${types_1.CardRanks.Ace} cards inside of ${types_1.CardRanks.King}`,
         nodes: [
-            new LessonNode_1.LessonNode('cards', [
-                new LessonNode_1.LessonNode(types_1.CardRanks.Queen, [
-                    new LessonNode_1.LessonNode(types_1.CardRanks.Ace, [new LessonNode_1.LessonNode(types_1.CardRanks.Ace, null, [types_1.CardSuits.Spades])], [types_1.CardSuits.Hearts]),
+            new level_node_1.LevelNode('cards', [
+                new level_node_1.LevelNode(types_1.CardRanks.Queen, [
+                    new level_node_1.LevelNode(types_1.CardRanks.Ace, [new level_node_1.LevelNode(types_1.CardRanks.Ace, null, [types_1.CardSuits.Spades])], [types_1.CardSuits.Hearts]),
                 ], [types_1.CardSuits.Spades]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Two, null, [types_1.CardSuits.Hearts]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, [
-                    new LessonNode_1.LessonNode(types_1.CardRanks.Ace, [new LessonNode_1.LessonNode(types_1.CardRanks.Ace, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Spades])], [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Diamonds]),
+                new level_node_1.LevelNode(types_1.CardRanks.Two, null, [types_1.CardSuits.Hearts]),
+                new level_node_1.LevelNode(types_1.CardRanks.King, [
+                    new level_node_1.LevelNode(types_1.CardRanks.Ace, [new level_node_1.LevelNode(types_1.CardRanks.Ace, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Spades])], [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Diamonds]),
                 ], [types_1.CardSuits.Hearts]),
-            ]),
+            ], ['cards']),
         ],
     },
     {
@@ -1733,12 +1929,12 @@ exports.lessons = [
         answer: '<three class="target clubs ct" data-index="1" data-html="<three class=&quot;clubs&quot; />"></three><three class="target clubs ct" data-index="3" data-html="<three class=&quot;clubs&quot; />"></three>',
         target: `Select all ${types_1.CardRanks.Three} of ${types_1.CardSuits.Clubs} cards`,
         nodes: [
-            new LessonNode_1.LessonNode('cards', [
-                new LessonNode_1.LessonNode(types_1.CardRanks.Three, null, [types_1.CardSuits.Diamonds]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Three, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Clubs]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, null, [types_1.CardSuits.Clubs]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Three, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Clubs]),
-            ]),
+            new level_node_1.LevelNode('cards', [
+                new level_node_1.LevelNode(types_1.CardRanks.Three, null, [types_1.CardSuits.Diamonds]),
+                new level_node_1.LevelNode(types_1.CardRanks.Three, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Clubs]),
+                new level_node_1.LevelNode(types_1.CardRanks.King, null, [types_1.CardSuits.Clubs]),
+                new level_node_1.LevelNode(types_1.CardRanks.Three, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Clubs]),
+            ], ['cards']),
         ],
     },
     {
@@ -1748,16 +1944,16 @@ exports.lessons = [
         selector: '<span class="text-code">T#K</span>',
         description: 'Selects all elements of type <span class="text-code">T</span> with id <span class="text-code">K</span>',
         example: '<span class="text-bold">Example:</span> selector <span class="text-code">button#primary</span> selects all elements of type <span class="text-code">button</span> with id <span class="text-code">primary</span>',
-        help: `${types_1.CardRanks.King}#${types_1.LessonNodeAttributes.Id}`,
-        answer: '<king class="target spades ct" id="corner" data-index="2" data-html="<king class=&quot;spades&quot; id=&quot;corner&quot; />"></king>',
-        target: `Select ${types_1.LessonNodeAttributes.Id} ${types_1.CardRanks.King} card`,
+        help: `${types_1.CardRanks.King}#${types_1.LevelNodeAttributes.Id}`,
+        answer: '<king class="target spades ct" data-index="2" id="corner" data-html="<king class=&quot;spades&quot; id=&quot;corner&quot; />"></king>',
+        target: `Select ${types_1.LevelNodeAttributes.Id} ${types_1.CardRanks.King} card`,
         nodes: [
-            new LessonNode_1.LessonNode('cards', [
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, null, [types_1.CardSuits.Spades]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, null, [types_1.CardSuits.Diamonds]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Spades], types_1.LessonNodeAttributes.Id),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Ace, null, [types_1.CardSuits.Hearts], types_1.LessonNodeAttributes.Id),
-            ]),
+            new level_node_1.LevelNode('cards', [
+                new level_node_1.LevelNode(types_1.CardRanks.King, null, [types_1.CardSuits.Spades]),
+                new level_node_1.LevelNode(types_1.CardRanks.King, null, [types_1.CardSuits.Diamonds]),
+                new level_node_1.LevelNode(types_1.CardRanks.King, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Spades], types_1.LevelNodeAttributes.Id),
+                new level_node_1.LevelNode(types_1.CardRanks.Ace, null, [types_1.CardSuits.Hearts], types_1.LevelNodeAttributes.Id),
+            ], ['cards']),
         ],
     },
     {
@@ -1767,16 +1963,16 @@ exports.lessons = [
         selector: '<span class="text-code">T#K.V</span>',
         description: 'Selects all elements of type <span class="text-code">T</span> with id <span class="text-code">K</span> and class <span class="text-code">V</span>',
         example: '<span class="text-bold">Example:</span> selector <span class="text-code">div#target.container</span> selects all elements of type <span class="text-code">div</span> with id <span class="text-code">target</span> and class <span class="text-code">container</span>',
-        target: `Select all ${types_1.LessonNodeAttributes.Id} ${types_1.CardRanks.Queen} of ${types_1.CardSuits.Spades}`,
-        help: `${types_1.CardRanks.Queen}.${types_1.CardSuits.Spades}#${types_1.LessonNodeAttributes.Id}`,
-        answer: '<queen class="target spades ct" id="corner" data-index="0" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen><queen class="target spades ct" id="corner" data-index="2" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen>',
+        target: `Select all ${types_1.LevelNodeAttributes.Id} ${types_1.CardRanks.Queen} of ${types_1.CardSuits.Spades}`,
+        help: `${types_1.CardRanks.Queen}.${types_1.CardSuits.Spades}#${types_1.LevelNodeAttributes.Id}`,
+        answer: '<queen class="target spades ct" data-index="0" id="corner" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen><queen class="target spades ct" data-index="2" id="corner" data-html="<queen class=&quot;spades&quot; id=&quot;corner&quot; />"></queen>',
         nodes: [
-            new LessonNode_1.LessonNode('cards', [
-                new LessonNode_1.LessonNode(types_1.CardRanks.Queen, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Spades], types_1.LessonNodeAttributes.Id),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Queen, null, [types_1.CardSuits.Diamonds], types_1.LessonNodeAttributes.Id),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Queen, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Spades], types_1.LessonNodeAttributes.Id),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Queen, null, [types_1.CardSuits.Spades]),
-            ]),
+            new level_node_1.LevelNode('cards', [
+                new level_node_1.LevelNode(types_1.CardRanks.Queen, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Spades], types_1.LevelNodeAttributes.Id),
+                new level_node_1.LevelNode(types_1.CardRanks.Queen, null, [types_1.CardSuits.Diamonds], types_1.LevelNodeAttributes.Id),
+                new level_node_1.LevelNode(types_1.CardRanks.Queen, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Spades], types_1.LevelNodeAttributes.Id),
+                new level_node_1.LevelNode(types_1.CardRanks.Queen, null, [types_1.CardSuits.Spades]),
+            ], ['cards']),
         ],
     },
     {
@@ -1790,13 +1986,13 @@ exports.lessons = [
         help: `${types_1.CardRanks.Ace}, ${types_1.CardRanks.Four}, ${types_1.CardRanks.Five}, ${types_1.CardRanks.Six}, ${types_1.CardRanks.Seven}`,
         answer: '<ace class="spades target ct" data-index="0" data-html="<ace class=&quot;spades&quot; />"></ace><four class="clubs target ct" data-index="1" data-html="<four class=&quot;clubs&quot; />"></four><five class="hearts target ct" data-index="2" data-html="<five class=&quot;hearts&quot; />"></five><six class="diamonds target ct" data-index="3" data-html="<six class=&quot;diamonds&quot; />"></six><seven class="spades target ct" data-index="4" data-html="<seven class=&quot;spades&quot; />"></seven>',
         nodes: [
-            new LessonNode_1.LessonNode('cards', [
-                new LessonNode_1.LessonNode(types_1.CardRanks.Ace, null, [types_1.CardSuits.Spades, types_1.LessonNodeAttributes.TargetClass]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Four, null, [types_1.CardSuits.Clubs, types_1.LessonNodeAttributes.TargetClass]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Five, null, [types_1.CardSuits.Hearts, types_1.LessonNodeAttributes.TargetClass]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Six, null, [types_1.CardSuits.Diamonds, types_1.LessonNodeAttributes.TargetClass]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.Seven, null, [types_1.CardSuits.Spades, types_1.LessonNodeAttributes.TargetClass]),
-            ]),
+            new level_node_1.LevelNode('cards', [
+                new level_node_1.LevelNode(types_1.CardRanks.Ace, null, [types_1.CardSuits.Spades, types_1.LevelNodeAttributes.TargetClass]),
+                new level_node_1.LevelNode(types_1.CardRanks.Four, null, [types_1.CardSuits.Clubs, types_1.LevelNodeAttributes.TargetClass]),
+                new level_node_1.LevelNode(types_1.CardRanks.Five, null, [types_1.CardSuits.Hearts, types_1.LevelNodeAttributes.TargetClass]),
+                new level_node_1.LevelNode(types_1.CardRanks.Six, null, [types_1.CardSuits.Diamonds, types_1.LevelNodeAttributes.TargetClass]),
+                new level_node_1.LevelNode(types_1.CardRanks.Seven, null, [types_1.CardSuits.Spades, types_1.LevelNodeAttributes.TargetClass]),
+            ], ['cards']),
         ],
     },
     {
@@ -1810,12 +2006,12 @@ exports.lessons = [
         help: `${types_1.CardRanks.King} *`,
         answer: '<jack class="hearts target ct" data-index="0" data-html="<jack class=&quot;hearts&quot; />"></jack><five class="diamonds target ct" data-index="0" data-html="<five class=&quot;diamonds&quot;></five>"><three class="target clubs ct" data-index="0" data-html="<three class=&quot;clubs&quot; />"></three></five><three class="target clubs ct" data-index="0" data-html="<three class=&quot;clubs&quot; />"></three>',
         nodes: [
-            new LessonNode_1.LessonNode('cards', [
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, [new LessonNode_1.LessonNode(types_1.CardRanks.Jack, null, [types_1.CardSuits.Hearts, types_1.LessonNodeAttributes.TargetClass])], [types_1.CardSuits.Spades]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, [
-                    new LessonNode_1.LessonNode(types_1.CardRanks.Five, [new LessonNode_1.LessonNode(types_1.CardRanks.Three, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Clubs])], [types_1.CardSuits.Diamonds, types_1.LessonNodeAttributes.TargetClass]),
+            new level_node_1.LevelNode('cards', [
+                new level_node_1.LevelNode(types_1.CardRanks.King, [new level_node_1.LevelNode(types_1.CardRanks.Jack, null, [types_1.CardSuits.Hearts, types_1.LevelNodeAttributes.TargetClass])], [types_1.CardSuits.Spades]),
+                new level_node_1.LevelNode(types_1.CardRanks.King, [
+                    new level_node_1.LevelNode(types_1.CardRanks.Five, [new level_node_1.LevelNode(types_1.CardRanks.Three, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Clubs])], [types_1.CardSuits.Diamonds, types_1.LevelNodeAttributes.TargetClass]),
                 ], [types_1.CardSuits.Clubs]),
-            ]),
+            ], ['cards']),
         ],
     },
     {
@@ -1829,12 +2025,12 @@ exports.lessons = [
         help: `${types_1.CardRanks.King}:empty`,
         answer: '<king class="target spades ct" data-index="1" data-html="<king class=&quot;spades&quot; />"></king><king class="target spades ct" data-index="3" data-html="<king class=&quot;spades&quot; />"></king>',
         nodes: [
-            new LessonNode_1.LessonNode('cards', [
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, [new LessonNode_1.LessonNode(types_1.CardRanks.Queen, null, [types_1.CardSuits.Hearts])], [types_1.CardSuits.Spades]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Spades]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, [new LessonNode_1.LessonNode(types_1.CardRanks.Jack, null, [types_1.CardSuits.Clubs])], [types_1.CardSuits.Spades]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, null, [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Spades]),
-            ]),
+            new level_node_1.LevelNode('cards', [
+                new level_node_1.LevelNode(types_1.CardRanks.King, [new level_node_1.LevelNode(types_1.CardRanks.Queen, null, [types_1.CardSuits.Hearts])], [types_1.CardSuits.Spades]),
+                new level_node_1.LevelNode(types_1.CardRanks.King, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Spades]),
+                new level_node_1.LevelNode(types_1.CardRanks.King, [new level_node_1.LevelNode(types_1.CardRanks.Jack, null, [types_1.CardSuits.Clubs])], [types_1.CardSuits.Spades]),
+                new level_node_1.LevelNode(types_1.CardRanks.King, null, [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Spades]),
+            ], ['cards']),
         ],
     },
     {
@@ -1848,12 +2044,12 @@ exports.lessons = [
         help: `${types_1.CardRanks.King}:not(${types_1.CardRanks.King}:empty)`,
         answer: '<king class="target spades ct" data-index="0" data-html="<king class=&quot;spades&quot;></king>"><queen class="hearts ct" data-index="0" data-html="<queen class=&quot;hearts&quot; />"></queen></king><king class="target spades ct" data-index="2" data-html="<king class=&quot;spades&quot;></king>"><jack class="clubs ct" data-index="0" data-html="<jack class=&quot;clubs&quot; />"></jack></king>',
         nodes: [
-            new LessonNode_1.LessonNode('cards', [
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, [new LessonNode_1.LessonNode(types_1.CardRanks.Queen, null, [types_1.CardSuits.Hearts])], [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Spades]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, null, [types_1.CardSuits.Spades]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, [new LessonNode_1.LessonNode(types_1.CardRanks.Jack, null, [types_1.CardSuits.Clubs])], [types_1.LessonNodeAttributes.TargetClass, types_1.CardSuits.Spades]),
-                new LessonNode_1.LessonNode(types_1.CardRanks.King, null, [types_1.CardSuits.Spades]),
-            ]),
+            new level_node_1.LevelNode('cards', [
+                new level_node_1.LevelNode(types_1.CardRanks.King, [new level_node_1.LevelNode(types_1.CardRanks.Queen, null, [types_1.CardSuits.Hearts])], [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Spades]),
+                new level_node_1.LevelNode(types_1.CardRanks.King, null, [types_1.CardSuits.Spades]),
+                new level_node_1.LevelNode(types_1.CardRanks.King, [new level_node_1.LevelNode(types_1.CardRanks.Jack, null, [types_1.CardSuits.Clubs])], [types_1.LevelNodeAttributes.TargetClass, types_1.CardSuits.Spades]),
+                new level_node_1.LevelNode(types_1.CardRanks.King, null, [types_1.CardSuits.Spades]),
+            ], ['cards']),
         ],
     },
 ];
@@ -1861,71 +2057,78 @@ exports.lessons = [
 
 /***/ }),
 
-/***/ 9161:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ 1574:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getLocalStorage = exports.setLocalStorage = void 0;
-const setLocalStorage = (gameState) => {
-    localStorage.setItem('h3nnessey', JSON.stringify(gameState));
+const constants_1 = __webpack_require__(2037);
+const setLocalStorage = (obj) => {
+    localStorage.setItem(constants_1.LOCAL_STORAGE_PREFIX, JSON.stringify(obj));
 };
 exports.setLocalStorage = setLocalStorage;
 const getLocalStorage = () => {
-    const json = localStorage.getItem('h3nnessey');
-    return json
-        ? JSON.parse(json)
-        : {
-            current: 0,
-            completed: [],
-            helped: [],
-        };
+    const json = localStorage.getItem(constants_1.LOCAL_STORAGE_PREFIX);
+    return json ? JSON.parse(json) : null;
 };
 exports.getLocalStorage = getLocalStorage;
 
 
 /***/ }),
 
-/***/ 3365:
+/***/ 8527:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
+var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Store = void 0;
-const lessons_1 = __webpack_require__(5000);
-const localStorage_1 = __webpack_require__(9161);
-const { current, completed, helped } = (0, localStorage_1.getLocalStorage)();
+const levels_1 = __webpack_require__(9010);
+const local_storage_1 = __webpack_require__(1574);
 class Store {
-    static resetCompleted(id) {
-        Store.completed = [];
-        Store.helped = [];
-        (0, localStorage_1.setLocalStorage)({
-            current: id,
-            completed: [],
-            helped: [],
-        });
+    static setElements(elements) {
+        Store.app = elements.app;
+        Store.htmlViewer = elements.htmlViewer;
+        Store.cssEditor = elements.cssEditor;
+        Store.cards = elements.cards;
+        Store.levelSelector = elements.levelSelector;
     }
-    static setElements({ app, htmlViewer, cssEditor, cardsTable, levelSelector, }) {
-        Store.app = app;
-        Store.htmlViewer = htmlViewer;
-        Store.cssEditor = cssEditor;
-        Store.cardsTable = cardsTable;
-        Store.levelSelector = levelSelector;
+    static setHelped() {
+        Store.gameState.helped.push(Store.currentLevel.id);
+        Store.saveGameState(Object.assign(Object.assign({}, Store.gameState), { helped: Store.gameState.helped }));
     }
-    static updateCurrentLesson(newLesson) {
-        Store.currentLesson = newLesson;
-        Store.currentLessonNodes = newLesson.nodes;
-        Store.currentLessonAnswer = newLesson.answer;
+    static saveGameState({ helped = Store.gameState.helped, completed = Store.gameState.completed, current = Store.gameState.current, }) {
+        (0, local_storage_1.setLocalStorage)(Object.assign(Object.assign({}, Store.gameState), { helped,
+            completed,
+            current }));
+    }
+    static setCompleted() {
+        Store.gameState.completed.push(Store.currentLevel.id);
+        Store.saveGameState(Object.assign(Object.assign({}, Store.gameState), { completed: Store.gameState.completed }));
+    }
+    static resetProgress(id) {
+        Store.gameState = Object.assign(Object.assign({}, Store.gameState), { completed: [], helped: [] });
+        Store.saveGameState(Object.assign(Object.assign({}, Store.gameState), { current: id }));
+    }
+    static updateCurrentLevel(level) {
+        Store.saveGameState(Object.assign(Object.assign({}, Store.gameState), { current: level.id }));
+        Store.currentLevel = level;
+        Store.currentLevelNodes = level.nodes;
+        Store.currentLevelAnswer = level.answer;
     }
 }
-Store.lessons = lessons_1.lessons;
-Store.completed = completed;
-Store.helped = helped;
-Store.currentLesson = lessons_1.lessons[current];
-Store.currentLessonNodes = lessons_1.lessons[current].nodes;
-Store.currentLessonAnswer = lessons_1.lessons[current].answer;
+Store.gameState = (_a = (0, local_storage_1.getLocalStorage)()) !== null && _a !== void 0 ? _a : {
+    current: 0,
+    completed: [],
+    helped: [],
+};
+Store.levels = levels_1.levels;
+Store.currentLevel = levels_1.levels[Store.gameState.current];
+Store.currentLevelNodes = levels_1.levels[Store.gameState.current].nodes;
+Store.currentLevelAnswer = levels_1.levels[Store.gameState.current].answer;
 exports.Store = Store;
 
 
@@ -1937,7 +2140,7 @@ exports.Store = Store;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LessonNodeAttributes = exports.CardSuits = exports.CardRanks = void 0;
+exports.LevelNodeAttributes = exports.CardSuits = exports.CardRanks = void 0;
 var CardRanks;
 (function (CardRanks) {
     CardRanks["Ace"] = "ace";
@@ -1961,11 +2164,11 @@ var CardSuits;
     CardSuits["Spades"] = "spades";
     CardSuits["Diamonds"] = "diamonds";
 })(CardSuits = exports.CardSuits || (exports.CardSuits = {}));
-var LessonNodeAttributes;
-(function (LessonNodeAttributes) {
-    LessonNodeAttributes["Id"] = "corner";
-    LessonNodeAttributes["TargetClass"] = "target";
-})(LessonNodeAttributes = exports.LessonNodeAttributes || (exports.LessonNodeAttributes = {}));
+var LevelNodeAttributes;
+(function (LevelNodeAttributes) {
+    LevelNodeAttributes["Id"] = "corner";
+    LevelNodeAttributes["TargetClass"] = "target";
+})(LevelNodeAttributes = exports.LevelNodeAttributes || (exports.LevelNodeAttributes = {}));
 
 
 /***/ }),
@@ -5369,8 +5572,8 @@ var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 __webpack_require__(1307);
-const App_1 = __webpack_require__(9265);
-const app = new App_1.App(document.body);
+const app_1 = __webpack_require__(1717);
+const app = new app_1.App(document.body);
 app.render();
 
 })();
