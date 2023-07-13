@@ -6,4 +6,8 @@ export const classNames = {
   pl20: 'pl-20',
   customTag: 'ct',
   active: 'active',
+  tagBracket: 'tag-bracket',
+  tagName: 'tag-name',
+  tagAttr: 'tag-attr',
+  tagAttrValue: 'tag-attr-value',
 };

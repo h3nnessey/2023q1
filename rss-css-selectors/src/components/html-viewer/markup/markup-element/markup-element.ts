@@ -52,39 +52,25 @@ export class MarkupElement extends BaseComponent {
   }
 
   public insertText(node: LevelNode): void {
-    const id = this.getAttribute('id')
-      ? `<span class="tag-attr"> id</span><span class="tag-attr-value">="${this.getAttribute('id')}"</span>`
-      : '';
+    const { bracket, tag, attr } = {
+      bracket: (isOpen: boolean) => `<span class="${classNames.tagBracket}">${isOpen ? '&lt;' : '&gt;'}</span>`,
+      tag: (name: string) => `<span class="${classNames.tagName}">${name}</span>`,
+      attr: (type: string, value: string) =>
+        `<span class="${classNames.tagAttr}"> ${type}</span><span class="${classNames.tagAttrValue}">="${value}"</span>`,
+    };
 
-    const classNames = this.classNames.length
-      ? `<span class="tag-attr"> class</span><span class="tag-attr-value">="${this.getNodeClassName().replace(
-          '.',
-          ''
-        )}"</span>`
-      : '';
+    let id = this.getAttribute('id') || '';
+    if (id) id = attr('id', id);
+
+    const classes = this.classNames.length ? attr('class', this.getNodeClassName().replace('.', '')) : '';
 
     if (node.children) {
       this.insertHtml([
-        [
-          'afterbegin',
-          `<span class="tag-bracket">&lt;</span><span class="tag-name">${node.tagName}</span>${
-            classNames + id
-          }<span class="tag-bracket">&gt;</span>`,
-        ],
-        [
-          'beforeend',
-          `<span class="tag-bracket">&lt;/</span><span class="tag-name">${node.tagName}</span><span class="tag-bracket">&gt;</span>`,
-        ],
+        ['afterbegin', `${bracket(true)}${tag(node.tagName)}${classes + id}${bracket(false)}`],
+        ['beforeend', `${bracket(true) + '/'}${tag(node.tagName)}${bracket(false)}`],
       ]);
     } else {
-      this.insertHtml([
-        [
-          'afterbegin',
-          `<span class="tag-bracket">&lt;</span><span class="tag-name">${node.tagName}</span>${
-            classNames + id
-          }<span class="tag-bracket"> /&gt;</span>`,
-        ],
-      ]);
+      this.insertHtml([['afterbegin', `${bracket(true)}${tag(node.tagName)}${classes + id}${' /' + bracket(false)}`]]);
     }
   }
 
