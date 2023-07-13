@@ -37,15 +37,15 @@ export class Markup extends BaseComponent {
     const nodes: BaseComponent[] = [];
 
     nodeList.forEach((node: LevelNode, index) => {
-      const htmlViewerItem = new MarkupElement(node, parent, this.elements, index);
+      const markupElement = new MarkupElement(node, parent, this.elements, index);
 
       if (node.children) {
-        this.createMarkup(node.children, htmlViewerItem);
+        this.createMarkup(node.children, markupElement);
       }
 
-      htmlViewerItem.insertText(node);
-      nodes.push(htmlViewerItem);
-      this.elements.push(htmlViewerItem);
+      markupElement.insertText(node);
+      nodes.push(markupElement);
+      this.elements.push(markupElement);
     });
 
     parent.append(nodes);

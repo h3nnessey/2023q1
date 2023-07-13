@@ -77,14 +77,14 @@ export class Cards extends BaseComponent {
     const nodes: BaseComponent[] = [];
 
     nodeList.forEach((node, index) => {
-      const tableElement = new Card(node, parent, this.elements, index);
+      const card = new Card(node, parent, this.elements, index);
 
       if (node.children) {
-        this.createCards(node.children, tableElement);
+        this.createCards(node.children, card);
       }
 
-      nodes.push(tableElement);
-      this.elements.push(tableElement);
+      nodes.push(card);
+      this.elements.push(card);
     });
 
     parent.append(nodes);
