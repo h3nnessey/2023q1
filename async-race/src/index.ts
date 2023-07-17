@@ -1,3 +1,3 @@
-console.log('jjjjjjjjjjjjjjjjjj');
-console.log('1');
-console.log('213123');
+import { Api } from './api';
+
+await Api.getCars();
