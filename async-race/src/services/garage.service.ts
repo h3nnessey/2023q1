@@ -26,7 +26,7 @@ export class GarageService {
 
   public static async createCar({ name, color }: Omit<CarResponse, 'id'>) {
     const response: Response = await fetch(getUrl(`${PATHS.GARAGE}`), {
-      method: 'POST',
+      method: FetchMethods.Post,
       body: JSON.stringify({ name, color }),
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ export class GarageService {
 
   public static async updateCar(id: number, { name, color }: Omit<CarResponse, 'id'>) {
     const response: Response = await fetch(getUrl(`${PATHS.GARAGE}/${id}`), {
-      method: 'PUT',
+      method: FetchMethods.Put,
       body: JSON.stringify({ name, color }),
       headers: {
         'Content-Type': 'application/json',

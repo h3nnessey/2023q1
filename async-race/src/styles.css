@@ -11,3 +11,12 @@ body {
   min-height: 100vh;
   background-color: #181818;
 }
+
+@keyframes start {
+  0% {
+    width: 100px;
+  }
+  100% {
+    width: 100%;
+  }
+}
