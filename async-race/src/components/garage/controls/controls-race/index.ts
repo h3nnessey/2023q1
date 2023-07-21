@@ -8,7 +8,7 @@ export class ControlsRace extends Component {
   private readonly generateBtn: Button;
 
   constructor(parent: Component) {
-    super({ tagName: 'div', classNames: ['garage-controls__row'], parent });
+    super({ classNames: ['garage-controls__row'], parent });
 
     this.raceBtn = new Button({
       parent: this,
@@ -32,7 +32,7 @@ export class ControlsRace extends Component {
       Store.garage.carTracks.node.dispatchEvent(
         new CustomEvent('race-start', {
           detail: {
-            enableResetBtn: this.enableResetBtn(),
+            enableResetBtn: this.resetBtn.on.bind(this.resetBtn),
           },
         })
       );
@@ -43,22 +43,10 @@ export class ControlsRace extends Component {
       Store.garage.carTracks.node.dispatchEvent(
         new CustomEvent('race-reset', {
           detail: {
-            enableRaceBtn: this.enableRaceBtn(),
+            enableRaceBtn: this.raceBtn.on.bind(this.raceBtn),
           },
         })
       );
     });
-  }
-
-  private enableRaceBtn() {
-    return this.raceBtn.on.bind(this.raceBtn);
-  }
-
-  private enableResetBtn() {
-    return this.resetBtn.on.bind(this.resetBtn);
-  }
-
-  private disableResetBtn() {
-    return this.resetBtn.off.bind(this.resetBtn);
   }
 }
