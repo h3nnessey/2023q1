@@ -20,3 +20,12 @@ body {
     width: 100%;
   }
 }
+
+*:disabled {
+  cursor: not-allowed;
+}
+
+input[type='color']:not(input[type='color']:disabled),
+button:not(button:disabled) {
+  cursor: pointer;
+}
