@@ -9,14 +9,7 @@ export class CarTracks extends Component {
   constructor(parent: Component) {
     super({ classNames: ['garage__car-tracks'], parent });
 
-    Store.cars.forEach((car) => {
-      this.tracks.push(
-        new CarTrack({
-          parent: this,
-          carInfo: car,
-        })
-      );
-    });
+    this.createCarTracks();
 
     this.node.addEventListener('race-start', (event: Event) => {
       if (event instanceof CustomEvent) {
@@ -49,6 +42,10 @@ export class CarTracks extends Component {
     this.tracks = [];
     this.node.innerHTML = '';
 
+    this.createCarTracks();
+  }
+
+  private createCarTracks(): void {
     Store.cars.forEach((car) => {
       this.tracks.push(
         new CarTrack({

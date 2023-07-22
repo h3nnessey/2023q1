@@ -5,7 +5,7 @@ import { ControlsRace } from './controls-race';
 
 export class Controls extends Component {
   private readonly controlsCreate: ControlsCreate;
-  private readonly controlsUpdate: ControlsUpdate;
+  public readonly controlsUpdate: ControlsUpdate;
   private readonly controlsRace: ControlsRace;
 
   constructor(parent: Component) {

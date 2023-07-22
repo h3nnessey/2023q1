@@ -6,7 +6,7 @@ import { CarTracks } from './car-tracks';
 import { Store } from '../../store';
 
 export class Garage extends Component {
-  private readonly controls: Controls;
+  public readonly controls: Controls;
   private readonly carsCount: CarsCount;
   private readonly pagination: Pagination;
   public readonly carTracks: CarTracks;
