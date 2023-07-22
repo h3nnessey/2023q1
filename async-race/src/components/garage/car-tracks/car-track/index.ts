@@ -6,7 +6,7 @@ export class CarTrack extends Component {
   public readonly car: Car;
 
   constructor({ parent, carInfo }: { parent: Component; carInfo: ICar }) {
-    super({ classNames: ['garage__car-tracks'], parent });
+    super({ classNames: ['garage__car-track'], parent });
 
     this.car = new Car(this, carInfo);
   }

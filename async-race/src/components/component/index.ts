@@ -7,12 +7,14 @@ export class Component {
 
   private readonly parent: Component | null = null;
 
-  constructor({ tagName = 'div', classNames = [], parent = null, text }: ComponentConstructor) {
+  constructor({ tagName = 'div', classNames = [], parent = null, text, html }: ComponentConstructor) {
     this.element = document.createElement(tagName);
 
     classNames.forEach((className) => this.addClass(className));
 
     if (text) this.setTextContent(text);
+
+    if (html) this.setHtml(html);
 
     if (parent) {
       this.parent = parent;
@@ -60,6 +62,11 @@ export class Component {
 
   public setTextContent(text: string): void {
     this.element.textContent = text;
+  }
+
+  public setHtml(html: string): void {
+    this.element.innerHTML = '';
+    this.element.insertAdjacentHTML('afterbegin', html);
   }
 
   public setAttribute(attribute: string, value: string): void {

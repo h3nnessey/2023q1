@@ -40,6 +40,7 @@ export interface ComponentConstructor {
   classNames?: string[];
   parent?: Component | null;
   text?: string;
+  html?: string;
 }
 
 export type InputType = 'color' | 'text';

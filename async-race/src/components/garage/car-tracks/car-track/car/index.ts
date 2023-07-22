@@ -1,22 +1,19 @@
 import { ICar } from '../../../../../types';
 import { EngineService } from '../../../../../services/engine.service';
 import { Component } from '../../../../component';
+import { svgContent } from './svg-content';
 
 export class Car extends Component {
   public readonly id: number;
   public readonly name: string;
-  public readonly color: string;
 
   constructor(parent: Component, { id, name, color }: ICar) {
-    super({ classNames: ['car'], parent });
+    super({ classNames: ['car'], parent, html: svgContent });
 
     this.id = id;
     this.name = name;
-    this.color = color;
 
-    this.node.style.background = color;
-    this.node.style.width = '100px';
-    this.node.textContent = name;
+    this.node.style.fill = color;
   }
 
   public async start() {
@@ -43,6 +40,5 @@ export class Car extends Component {
 
   public reset() {
     this.node.style.animation = '';
-    this.node.textContent = this.name;
   }
 }

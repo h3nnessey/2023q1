@@ -1,3 +1,7 @@
+:root {
+  --carWidth: 100px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -12,12 +16,18 @@ body {
   background-color: #181818;
 }
 
+.car > svg {
+  display: block;
+  width: var(--carWidth);
+  transform: scale(-1, 1);
+}
+
 @keyframes start {
   0% {
-    width: 100px;
+    margin-left: 0;
   }
   100% {
-    width: 100%;
+    margin-left: calc(100% - var(--carWidth));
   }
 }
 
@@ -35,4 +45,8 @@ button:not(button:disabled) {
   font-size: 5rem;
   text-align: center;
   color: #ff0000;
+}
+
+.garage__car-track {
+  border-bottom: 2px dashed #444444;
 }
