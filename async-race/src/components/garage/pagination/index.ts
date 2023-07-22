@@ -17,7 +17,39 @@ export class Pagination extends Component {
       parent: this,
     });
 
-    this.prevBtn = new Button({ parent: this, text: 'Prev', disabled: true });
-    this.nextBtn = new Button({ parent: this, text: 'Next' });
+    this.prevBtn = new Button({ parent: this, text: 'Prev', disabled: true, onClick: () => this.handlePrevClick() });
+
+    this.nextBtn = new Button({
+      parent: this,
+      text: 'Next',
+      disabled: Store.currentPage === Store.pagesCount,
+      onClick: () => this.handleNextClick(),
+    });
+  }
+
+  public update(): void {
+    if (Store.currentPage < Store.pagesCount) this.nextBtn.on();
+    this.currentPage.setTextContent(`Page #${Store.currentPage}`);
+  }
+
+  private handlePrevClick(): void {
+    Store.currentPage -= 1;
+
+    if (Store.currentPage === 1) {
+      this.prevBtn.off();
+    }
+
+    Store.updateGarage().then(() => Store.garage.update());
+  }
+
+  private handleNextClick(): void {
+    Store.currentPage += 1;
+    this.prevBtn.on();
+
+    if (Store.currentPage === Store.pagesCount) {
+      this.nextBtn.off();
+    }
+
+    Store.updateGarage().then(() => Store.garage.update());
   }
 }

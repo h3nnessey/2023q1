@@ -3,11 +3,11 @@ import { PATHS } from '../constants';
 import { getUrl } from '../utils';
 
 export class GarageService {
-  public static async getCars(page = '1', limit = '7'): Promise<GetCarsResponse> {
+  public static async getCars(page = 1, limit = 7): Promise<GetCarsResponse> {
     const response: Response = await fetch(
       getUrl(`${PATHS.GARAGE}`, [
-        ['_page', page],
-        ['_limit', limit],
+        ['_page', page.toString()],
+        ['_limit', limit.toString()],
       ])
     );
 

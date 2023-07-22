@@ -7,4 +7,8 @@ export class CarsCount extends Component {
 
     this.setTextContent(`Garage (${Store.carsCount})`);
   }
+
+  public update(): void {
+    this.setTextContent(`Garage (${Store.carsCount})`);
+  }
 }

@@ -21,4 +21,10 @@ export class Garage extends Component {
     this.pagination = new Pagination(this);
     this.carTracks = new CarTracks(this);
   }
+
+  public update() {
+    this.carTracks.update();
+    this.pagination.update();
+    this.carsCount.update();
+  }
 }

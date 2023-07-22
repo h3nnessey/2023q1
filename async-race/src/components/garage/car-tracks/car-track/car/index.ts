@@ -19,10 +19,6 @@ export class Car extends Component {
     this.node.textContent = name;
   }
 
-  public changeColor(color: string) {
-    this.node.style.background = color;
-  }
-
   public async start() {
     const specs = await EngineService.start(this.id);
     const time = specs.distance / specs.velocity;

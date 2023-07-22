@@ -2,6 +2,7 @@ import { Component } from '../../../component';
 import { Input } from '../../../input';
 import { Button } from '../../../button';
 import { GarageService } from '../../../../services/garage.service';
+import { Store } from '../../../../store';
 
 export class ControlsCreate extends Component {
   private readonly textInput: Input;
@@ -21,14 +22,17 @@ export class ControlsCreate extends Component {
         GarageService.createCar({
           name: this.textInput.value,
           color: this.colorInput.value,
-        }).then((data) => {
-          this.submitBtn.on();
-          this.textInput.value = '';
-          this.colorInput.value = '#000000';
-
-          console.log(data);
+        }).then(() => {
+          this.resetInputs();
+          Store.updateGarage().then(() => Store.garage.update());
         });
       },
     });
+  }
+
+  private resetInputs(): void {
+    this.submitBtn.on();
+    this.textInput.value = '';
+    this.colorInput.value = '#000000';
   }
 }

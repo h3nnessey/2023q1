@@ -29,3 +29,10 @@ input[type='color']:not(input[type='color']:disabled),
 button:not(button:disabled) {
   cursor: pointer;
 }
+
+.error {
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 5rem;
+  text-align: center;
+  color: #ff0000;
+}

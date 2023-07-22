@@ -4,7 +4,7 @@ import { CarTrack } from './car-track';
 import { EngineService } from '../../../services/engine.service';
 
 export class CarTracks extends Component {
-  private readonly tracks: CarTrack[] = [];
+  private tracks: CarTrack[] = [];
 
   constructor(parent: Component) {
     super({ classNames: ['garage__car-tracks'], parent });
@@ -41,6 +41,21 @@ export class CarTracks extends Component {
           event.detail.enableRaceBtn();
         });
       }
+    });
+  }
+
+  public update(): void {
+    this.tracks.forEach((track) => track.delete());
+    this.tracks = [];
+    this.node.innerHTML = '';
+
+    Store.cars.forEach((car) => {
+      this.tracks.push(
+        new CarTrack({
+          parent: this,
+          carInfo: car,
+        })
+      );
     });
   }
 }
