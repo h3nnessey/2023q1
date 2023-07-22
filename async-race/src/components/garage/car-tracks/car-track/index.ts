@@ -3,12 +3,14 @@ import { Car } from './car';
 import { ICar } from '../../../../types';
 import { Button } from '../../../button';
 import { Store } from '../../../../store';
+import { GarageService } from '../../../../services/garage.service';
 
 export class CarTrack extends Component {
   public readonly car: Car;
   private readonly carTrackRow: Component;
   private readonly carName: Component;
   private readonly selectCar: Button;
+  private readonly deleteCar: Button;
 
   constructor({ parent, carInfo }: { parent: Component; carInfo: ICar }) {
     super({ classNames: ['garage__car-track'], parent });
@@ -19,6 +21,13 @@ export class CarTrack extends Component {
       parent: this.carTrackRow,
       text: 'Select',
       onClick: () => Store.garage.controls.controlsUpdate.focusWith(carInfo),
+    });
+
+    this.deleteCar = new Button({
+      parent: this.carTrackRow,
+      text: 'Delete',
+      onClick: () =>
+        GarageService.deleteCar(carInfo.id).then(() => Store.updateGarage().then(() => Store.garage.update())),
     });
 
     this.carName = new Component({
