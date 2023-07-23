@@ -22,13 +22,15 @@ export class Pagination extends Component {
     this.nextBtn = new Button({
       parent: this,
       text: 'Next',
-      disabled: Store.currentPage === Store.pagesCount,
+      disabled: Store.currentPage === 1,
       onClick: () => this.handleNextClick(),
     });
   }
 
   public update(): void {
     if (Store.currentPage < Store.pagesCount) this.nextBtn.on();
+    if (Store.currentPage === 1) this.prevBtn.off();
+
     this.currentPage.setTextContent(`Page #${Store.currentPage}`);
   }
 
