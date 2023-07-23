@@ -21,7 +21,7 @@ export class Store {
     return GarageService.getCars(Store.currentPage).then(({ total, items }: GetCarsResponse) => {
       Store.cars = items;
       Store.carsCount = total;
-      Store.pagesCount = Math.ceil(total / 7);
+      Store.pagesCount = Math.ceil(total / 7) || 1;
     });
   }
 }

@@ -38,10 +38,10 @@ export class Car extends Component {
     this.node.style.animationPlayState = 'paused';
   }
 
-  public drive(): Promise<{ name: string }> {
+  public drive(): Promise<ICar> {
     return new Promise((resolve, reject) => {
       EngineService.drive(this.id)
-        .then(() => resolve({ name: this.name }))
+        .then(() => resolve({ id: this.id, name: this.name, color: this.color }))
         .catch(() => {
           this.pause();
           reject();

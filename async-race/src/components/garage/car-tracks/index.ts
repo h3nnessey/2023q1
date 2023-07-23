@@ -18,7 +18,9 @@ export class CarTracks extends Component {
   }
 
   public startRace() {
-    return Promise.any(this.tracks.map((track) => track.car.start().then(() => track.car.drive().catch(() => null))));
+    return Promise.any(this.tracks.map(({ car }) => car.start().then(() => car.drive()))).then((winner) => {
+      console.log(winner);
+    });
   }
 
   public update(): void {

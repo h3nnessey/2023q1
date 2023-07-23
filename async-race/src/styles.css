@@ -82,6 +82,10 @@ button:not(button:disabled) {
   transition: background-color 0.2s;
 }
 
+.view-changers button.active {
+  outline: 2px solid peru;
+}
+
 .view-changers button:hover {
   background-color: rgba(255, 255, 255, 0.7);
 }

@@ -56,11 +56,11 @@ export class Garage extends Component {
     if (Store.currentPage > 1 && !Store.cars.length) {
       Store.currentPage -= 1;
       Store.updateGarage().then(() => this.update());
+    } else {
+      this.carTracks.update();
+      this.pagination.update();
+      this.carsCount.update();
+      this.controls.update();
     }
-
-    this.carTracks.update();
-    this.pagination.update();
-    this.carsCount.update();
-    this.controls.update();
   }
 }

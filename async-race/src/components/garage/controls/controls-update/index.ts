@@ -24,9 +24,8 @@ export class ControlsUpdate extends Component {
       text: 'Update',
       disabled: true,
       onClick: () => {
-        this.disable();
         GarageService.updateCar(this.id, { name: this.textInput.value, color: this.colorInput.value }).then(() => {
-          this.reset();
+          this.disable();
           Store.updateGarage().then(() => Store.garage.update());
         });
       },

@@ -8,13 +8,15 @@ export class Button extends Component {
     text,
     disabled,
     onClick,
+    classNames = [],
   }: {
     parent: Component;
     text?: string;
     disabled?: boolean;
     onClick?: () => void;
+    classNames?: string[];
   }) {
-    super({ tagName: 'button', parent, text });
+    super({ tagName: 'button', parent, text, classNames });
 
     this.button = this.node as HTMLButtonElement;
 
