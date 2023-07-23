@@ -52,4 +52,22 @@ export class Pagination extends Component {
 
     Store.updateGarage().then(() => Store.garage.update());
   }
+
+  public disable(): void {
+    this.prevBtn.off();
+    this.nextBtn.off();
+  }
+
+  public enable(): void {
+    if (Store.currentPage === 1) {
+      this.prevBtn.off();
+    } else {
+      this.prevBtn.on();
+    }
+    if (Store.currentPage === Store.pagesCount) {
+      this.nextBtn.off();
+    } else {
+      this.nextBtn.on();
+    }
+  }
 }

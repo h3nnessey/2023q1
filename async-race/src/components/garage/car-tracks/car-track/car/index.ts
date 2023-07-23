@@ -6,12 +6,14 @@ import { svgContent } from './svg-content';
 export class Car extends Component {
   public readonly id: number;
   public readonly name: string;
+  public readonly color: string;
 
   constructor(parent: Component, { id, name, color }: ICar) {
     super({ classNames: ['car'], parent, html: svgContent });
 
     this.id = id;
     this.name = name;
+    this.color = color;
 
     this.node.style.fill = color;
   }
@@ -27,14 +29,23 @@ export class Car extends Component {
   }
 
   public stop() {
+    return EngineService.stop(this.id).then(() => {
+      this.reset();
+    });
+  }
+
+  public pause() {
     this.node.style.animationPlayState = 'paused';
   }
 
-  public async drive(): Promise<{ message: string }> {
-    return new Promise((resolve) => {
+  public drive(): Promise<{ name: string }> {
+    return new Promise((resolve, reject) => {
       EngineService.drive(this.id)
-        .then(() => resolve({ message: `Car ${this.name} has finished` }))
-        .catch(() => this.stop());
+        .then(() => resolve({ name: this.name }))
+        .catch(() => {
+          this.pause();
+          reject();
+        });
     });
   }
 

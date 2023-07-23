@@ -37,25 +37,26 @@ export class ControlsRace extends Component {
     });
 
     this.raceBtn.addEventListener('click', () => {
-      this.raceBtn.off();
-      Store.garage.carTracks.node.dispatchEvent(
-        new CustomEvent('race-start', {
-          detail: {
-            enableResetBtn: this.resetBtn.on.bind(this.resetBtn),
-          },
-        })
-      );
+      Store.garage.startRace();
     });
 
     this.resetBtn.addEventListener('click', () => {
-      this.resetBtn.off();
-      Store.garage.carTracks.node.dispatchEvent(
-        new CustomEvent('race-reset', {
-          detail: {
-            enableRaceBtn: this.raceBtn.on.bind(this.raceBtn),
-          },
-        })
-      );
+      Store.garage.resetRace();
     });
+  }
+
+  public handleRaceEnd(): void {
+    this.resetBtn.on();
+  }
+
+  public enable(): void {
+    this.raceBtn.on();
+    this.generateBtn.on();
+  }
+
+  public disable(): void {
+    this.raceBtn.off();
+    this.resetBtn.off();
+    this.generateBtn.off();
   }
 }

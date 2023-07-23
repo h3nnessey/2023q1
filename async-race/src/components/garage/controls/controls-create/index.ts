@@ -12,7 +12,7 @@ export class ControlsCreate extends Component {
   constructor(parent: Component) {
     super({ classNames: ['garage-controls__row'], parent });
 
-    this.textInput = new Input({ parent: this });
+    this.textInput = new Input({ parent: this, placeholder: 'Enter car name' });
     this.colorInput = new Input({ parent: this, type: 'color' });
 
     this.submitBtn = new Button({
@@ -23,15 +23,27 @@ export class ControlsCreate extends Component {
           name: this.textInput.value,
           color: this.colorInput.value,
         }).then(() => {
-          this.resetInputs();
+          this.reset();
           Store.updateGarage().then(() => Store.garage.update());
         });
       },
     });
   }
 
-  private resetInputs(): void {
+  public disable(): void {
+    this.reset();
+    this.textInput.off();
+    this.colorInput.off();
+    this.submitBtn.off();
+  }
+
+  public enable(): void {
+    this.textInput.on();
+    this.colorInput.on();
     this.submitBtn.on();
+  }
+
+  private reset(): void {
     this.textInput.value = '';
     this.colorInput.value = '#000000';
   }

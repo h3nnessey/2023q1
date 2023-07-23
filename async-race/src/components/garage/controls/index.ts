@@ -15,4 +15,23 @@ export class Controls extends Component {
     this.controlsUpdate = new ControlsUpdate(this);
     this.controlsRace = new ControlsRace(this);
   }
+
+  public disable(): void {
+    this.controlsCreate.disable();
+    this.controlsUpdate.disable();
+    this.controlsRace.disable();
+  }
+
+  public enable(): void {
+    this.controlsRace.enable();
+    this.controlsCreate.enable();
+  }
+
+  public handleRaceEnd(): void {
+    this.controlsRace.handleRaceEnd();
+  }
+
+  public update(): void {
+    this.controlsUpdate.disable();
+  }
 }

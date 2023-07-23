@@ -22,9 +22,40 @@ export class Garage extends Component {
     this.carTracks = new CarTracks(this);
   }
 
+  public startRace() {
+    this.disableControls();
+
+    this.carTracks
+      .startRace()
+      .then(() => this.handleRaceEnd())
+      .catch(() => this.handleRaceEnd());
+  }
+
+  public resetRace() {
+    this.controls.disable();
+    this.carTracks.resetRace().then(() => this.enableControls());
+  }
+
+  public disableControls() {
+    this.controls.disable();
+    this.pagination.disable();
+    this.carTracks.disable();
+  }
+
+  private handleRaceEnd() {
+    this.controls.handleRaceEnd();
+  }
+
+  public enableControls() {
+    this.controls.enable();
+    this.pagination.enable();
+    this.carTracks.enable();
+  }
+
   public update() {
     this.carTracks.update();
     this.pagination.update();
     this.carsCount.update();
+    this.controls.update();
   }
 }

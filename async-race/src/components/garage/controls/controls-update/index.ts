@@ -24,9 +24,9 @@ export class ControlsUpdate extends Component {
       text: 'Update',
       disabled: true,
       onClick: () => {
-        this.disableInputs();
+        this.disable();
         GarageService.updateCar(this.id, { name: this.textInput.value, color: this.colorInput.value }).then(() => {
-          this.resetInputs();
+          this.reset();
           Store.updateGarage().then(() => Store.garage.update());
         });
       },
@@ -44,20 +44,19 @@ export class ControlsUpdate extends Component {
     this.colorInput.value = color;
   }
 
-  private resetInputs(): void {
-    this.disableInputs();
-
-    this.textInput.value = '';
-    this.colorInput.value = '#000000';
-  }
-
   private enableInputs(): void {
     this.textInput.on();
     this.colorInput.on();
     this.submitBtn.on();
   }
 
-  private disableInputs(): void {
+  private reset(): void {
+    this.textInput.value = '';
+    this.colorInput.value = '#000000';
+  }
+
+  public disable(): void {
+    this.reset();
     this.textInput.off();
     this.colorInput.off();
     this.submitBtn.off();

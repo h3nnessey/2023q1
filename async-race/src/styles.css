@@ -23,6 +23,12 @@ body {
   padding: 10px;
 }
 
+.car {
+  display: inline-block;
+  position: relative;
+  top: 5px;
+}
+
 .car > svg {
   display: block;
   width: var(--carWidth);
@@ -34,7 +40,7 @@ body {
     margin-left: 0;
   }
   100% {
-    margin-left: calc(100% - var(--carWidth));
+    margin-left: calc(100% - var(--carWidth) - 50px);
   }
 }
 
@@ -124,4 +130,10 @@ button:not(button:disabled) {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
+
+.car-track__row:nth-child(2) {
+  display: inline-flex;
+  vertical-align: top;
+  width: 50px;
 }
