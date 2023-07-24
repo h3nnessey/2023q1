@@ -48,4 +48,16 @@ export class WinnersService {
       items: await response.json(),
     };
   }
+
+  public static async deleteWinner(id: number) {
+    const response: Response = await fetch(getUrl(`${PATHS.WINNERS}/${id}`), {
+      method: FetchMethods.Delete,
+    });
+
+    if (response.status === 404) {
+      return null;
+    }
+
+    return {};
+  }
 }

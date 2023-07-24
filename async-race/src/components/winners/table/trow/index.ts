@@ -10,10 +10,10 @@ export class Trow extends Component {
   private readonly wins: Component;
   private readonly bestTime: Component;
 
-  constructor(number: number, winner: CarWinner, parent: Component) {
+  constructor(public readonly index: number, winner: CarWinner, parent: Component) {
     super({ classNames: ['winners-table__row'], parent });
 
-    this.number = new Component({ text: number.toString(), classNames: ['winners-table__number'], parent: this });
+    this.number = new Component({ text: index.toString(), classNames: ['winners-table__number'], parent: this });
     this.car = new Component({ html: svgContent, classNames: ['winners-table__car-img'], parent: this });
     this.name = new Component({ text: '-', parent: this, classNames: ['winners-table__name'] });
     this.wins = new Component({ text: `${winner.wins}`, classNames: ['winners-table__wins'], parent: this });

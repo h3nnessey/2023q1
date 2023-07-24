@@ -19,8 +19,12 @@ export class Winners extends Component {
   }
 
   public update(): void {
+    if (Store.winnersCurrentPage > 1 && !Store.winnersItems.length) {
+      Store.winnersCurrentPage -= 1;
+      Store.updateWinners().then(() => this.update());
+    }
     this.winnersCount.update();
-    this.pagination.update();
     this.table.update();
+    this.pagination.update();
   }
 }

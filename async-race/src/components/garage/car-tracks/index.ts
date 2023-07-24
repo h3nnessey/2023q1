@@ -36,7 +36,6 @@ export class CarTracks extends Component {
   }
 
   private handleWin(winner: ICar & { time: number }) {
-    console.log(winner);
     WinnersService.getWinner(winner.id).then((data) => {
       if (data) {
         const payload = { id: winner.id, time: winner.time < data.time ? winner.time : data.time, wins: data.wins + 1 };

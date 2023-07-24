@@ -3,6 +3,7 @@ import { Button } from '../../../../button';
 import { Store } from '../../../../../store';
 import { GarageService } from '../../../../../services/garage.service';
 import type { Car } from '../car';
+import { WinnersService } from '../../../../../services/winners.service';
 
 export class CarControls extends Component {
   public readonly selectBtn: Button;
@@ -87,6 +88,12 @@ export class CarControls extends Component {
         Store.garage.carTracks.onDelete(this.car.id);
         Store.garage.update(true);
       });
+    });
+
+    WinnersService.deleteWinner(this.car.id).then((success) => {
+      if (success) {
+        Store.updateWinners().then(() => Store.winners.update());
+      }
     });
   }
 
