@@ -24,9 +24,12 @@ export class CarTracks extends Component {
   }
 
   public startRace() {
-    return Promise.any(
-      this.tracks.map(({ car }) => car.start().then((startTime) => car.drive(startTime)))
-    ).then((winner) => this.handleWin(winner));
+    return Promise.any(this.tracks.map(({ car }) => car.start().then((startTime) => car.drive(startTime)))).then(
+      (winner) => {
+        Store.modal.show(winner.name, winner.time);
+        this.handleWin(winner);
+      }
+    );
   }
 
   public update(): void {
@@ -43,12 +46,10 @@ export class CarTracks extends Component {
         const payload = { id: winner.id, time: winner.time < data.time ? winner.time : data.time, wins: data.wins + 1 };
         WinnersService.updateWinner(payload).then(() => {
           Store.updateWinners().then(() => Store.winners.update());
-          Store.modal.show(winner.name, winner.time);
         });
       } else {
         WinnersService.createWinner({ id: winner.id, time: winner.time, wins: 1 }).then(() => {
           Store.updateWinners().then(() => Store.winners.update());
-          Store.modal.show(winner.name, winner.time);
         });
       }
     });

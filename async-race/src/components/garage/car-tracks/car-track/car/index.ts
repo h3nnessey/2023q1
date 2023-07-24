@@ -40,6 +40,7 @@ export class Car extends Component {
     this.node.style.animationDuration = `${time}ms`;
     this.node.style.animationFillMode = 'forwards';
     this.node.style.animationPlayState = 'running';
+    this.node.style.animationTimingFunction = 'linear';
   }
 
   public updateCar(name: string, color: string) {
