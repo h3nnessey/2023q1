@@ -32,7 +32,10 @@ export class ControlsRace extends Component {
     this.generateBtn.addEventListener('click', () => {
       const cars = getRandomCars();
       Promise.all(cars.map((car) => GarageService.createCar(car))).then(() =>
-        Store.updateGarage().then(() => Store.garage.update())
+        Store.updateGarage().then(() => {
+          Store.garage.carTracks.onGenerate();
+          Store.garage.update(true);
+        })
       );
     });
 

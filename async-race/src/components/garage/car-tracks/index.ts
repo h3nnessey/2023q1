@@ -48,15 +48,23 @@ export class CarTracks extends Component {
     }
   }
 
-  public onCreate(): void {
+  public onCreate(car: ICar): void {
     if (this.tracks.length < 7) {
       this.tracks.push(
         new CarTrack({
           parent: this,
-          carInfo: Store.cars[Store.cars.length - 1],
+          carInfo: car,
         })
       );
     }
+  }
+
+  public onGenerate(): void {
+    const cars = [...Store.cars];
+
+    cars.reverse().forEach((car) => {
+      this.onCreate(car);
+    });
   }
 
   private createCarTracks(): void {

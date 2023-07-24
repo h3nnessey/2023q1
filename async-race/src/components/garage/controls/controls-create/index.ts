@@ -46,9 +46,9 @@ export class ControlsCreate extends Component {
 
     this.disable();
 
-    GarageService.createCar({ name, color }).then(() => {
+    GarageService.createCar({ name, color }).then((car) => {
       Store.updateGarage().then(() => {
-        Store.garage.carTracks.onCreate();
+        Store.garage.carTracks.onCreate(car);
         Store.garage.update(true);
         this.enable();
       });
