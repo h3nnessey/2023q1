@@ -2,6 +2,7 @@ import { Component } from '../../component';
 import { Store } from '../../../store';
 import { CarTrack } from './car-track';
 import { ICar } from '../../../types';
+import { WinnersService } from '../../../services/winners.service';
 
 export class CarTracks extends Component {
   public tracks: CarTrack[] = [];
@@ -13,18 +14,17 @@ export class CarTracks extends Component {
   }
 
   public resetRace() {
-    Store.resetEmitted = true;
-    return Promise.all(this.tracks.map(({ car }) => car.stop())).then(() =>
+    Store.garageResetEmitted = true;
+
+    return Promise.all(this.tracks.filter((track) => track.car.started).map(({ car }) => car.stop())).then(() =>
       this.tracks.forEach((track) => track.carControls.enable())
     );
   }
 
   public startRace() {
-    return Promise.any(this.tracks.map(({ car }) => car.start().then((startTime) => car.drive(startTime)))).then(
-      (winner) => {
-        console.log(winner);
-      }
-    );
+    return Promise.any(
+      this.tracks.map(({ car }) => car.start().then((startTime) => car.drive(startTime)))
+    ).then((winner) => this.handleWin(winner));
   }
 
   public update(): void {
@@ -35,17 +35,33 @@ export class CarTracks extends Component {
     this.createCarTracks();
   }
 
+  private handleWin(winner: ICar & { time: number }) {
+    console.log(winner);
+    WinnersService.getWinner(winner.id).then((data) => {
+      if (data) {
+        const payload = { id: winner.id, time: winner.time < data.time ? winner.time : data.time, wins: data.wins + 1 };
+        WinnersService.updateWinner(payload).then(() => {
+          Store.updateWinners().then(() => Store.winners.update());
+        });
+      } else {
+        WinnersService.createWinner({ id: winner.id, time: winner.time, wins: 1 }).then(() => {
+          Store.updateWinners().then(() => Store.winners.update());
+        });
+      }
+    });
+  }
+
   public onDelete(id: number): void {
     const toDelete = this.tracks.find((track) => track.car.id === id);
     if (toDelete) toDelete.delete();
 
     this.tracks = this.tracks.filter((track) => track.car.id !== id);
 
-    if (Store.cars.length > 6) {
+    if (Store.garageCars.length > 6) {
       this.tracks.push(
         new CarTrack({
           parent: this,
-          carInfo: Store.cars[Store.cars.length - 1],
+          carInfo: Store.garageCars[Store.garageCars.length - 1],
         })
       );
     }
@@ -63,7 +79,7 @@ export class CarTracks extends Component {
   }
 
   public onGenerate(): void {
-    const cars = [...Store.cars];
+    const cars = [...Store.garageCars];
 
     cars.reverse().forEach((car) => {
       this.onCreate(car);
@@ -71,7 +87,7 @@ export class CarTracks extends Component {
   }
 
   private createCarTracks(): void {
-    this.tracks = Store.cars.map(
+    this.tracks = Store.garageCars.map(
       (car) =>
         new CarTrack({
           parent: this,

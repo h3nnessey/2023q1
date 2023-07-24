@@ -8,41 +8,41 @@ export class Pagination extends Component {
   private readonly nextBtn: Button;
 
   constructor(parent: Component) {
-    super({ tagName: 'div', classNames: ['garage__pagination'], parent });
+    super({ classNames: ['garage__pagination'], parent });
+
+    this.prevBtn = new Button({ parent: this, text: 'Prev', disabled: true, onClick: () => this.handlePrevClick() });
 
     this.currentPage = new Component({
       tagName: 'h2',
       classNames: ['garage__current-page'],
-      text: `Page #${Store.currentPage}`,
+      text: `Page #${Store.garageCurrentPage}`,
       parent: this,
     });
-
-    this.prevBtn = new Button({ parent: this, text: 'Prev', disabled: true, onClick: () => this.handlePrevClick() });
 
     this.nextBtn = new Button({
       parent: this,
       text: 'Next',
-      disabled: Store.currentPage === Store.pagesCount,
+      disabled: Store.garageCurrentPage === Store.garagePagesCount,
       onClick: () => this.handleNextClick(),
     });
   }
 
   public update(): void {
-    if (Store.currentPage < Store.pagesCount) {
+    if (Store.garageCurrentPage < Store.garagePagesCount) {
       this.nextBtn.on();
     } else {
       this.nextBtn.off();
     }
 
-    if (Store.currentPage === 1) this.prevBtn.off();
+    if (Store.garageCurrentPage === 1) this.prevBtn.off();
 
-    this.currentPage.setTextContent(`Page #${Store.currentPage}`);
+    this.currentPage.setTextContent(`Page #${Store.garageCurrentPage}`);
   }
 
   private handlePrevClick(): void {
-    Store.currentPage -= 1;
+    Store.garageCurrentPage -= 1;
 
-    if (Store.currentPage === 1) {
+    if (Store.garageCurrentPage === 1) {
       this.prevBtn.off();
     }
 
@@ -51,7 +51,7 @@ export class Pagination extends Component {
 
   private handleClickWithStartedCars() {
     const startedCars = Store.garage.carTracks.tracks.filter((track) => track.car.started);
-    Store.paginationEmitted = true;
+    Store.garagePaginationEmitted = true;
     if (startedCars.length) {
       this.disable();
       Store.garage.disableControls();
@@ -62,23 +62,23 @@ export class Pagination extends Component {
 
           Store.garage.enableControls();
           this.enable();
-          Store.paginationEmitted = false;
+          Store.garagePaginationEmitted = false;
         })
       );
     } else {
       Store.updateGarage().then(() => {
         Store.garage.update();
         this.enable();
-        Store.paginationEmitted = false;
+        Store.garagePaginationEmitted = false;
       });
     }
   }
 
   private handleNextClick(): void {
-    Store.currentPage += 1;
+    Store.garageCurrentPage += 1;
     this.prevBtn.on();
 
-    if (Store.currentPage === Store.pagesCount) {
+    if (Store.garageCurrentPage === Store.garagePagesCount) {
       this.nextBtn.off();
     }
 
@@ -91,12 +91,12 @@ export class Pagination extends Component {
   }
 
   public enable(): void {
-    if (Store.currentPage === 1) {
+    if (Store.garageCurrentPage === 1) {
       this.prevBtn.off();
     } else {
       this.prevBtn.on();
     }
-    if (Store.currentPage === Store.pagesCount) {
+    if (Store.garageCurrentPage === Store.garagePagesCount) {
       this.nextBtn.off();
     } else {
       this.nextBtn.on();

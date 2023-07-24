@@ -3,7 +3,6 @@ import { Button } from '../../../../button';
 import { Store } from '../../../../../store';
 import { GarageService } from '../../../../../services/garage.service';
 import type { Car } from '../car';
-import { SourceCode } from 'eslint';
 
 export class CarControls extends Component {
   public readonly selectBtn: Button;
@@ -42,9 +41,16 @@ export class CarControls extends Component {
 
   private onReset() {
     this.resetBtn.off();
+    Store.garage.controls.controlsRace.resetBtn.off();
 
     this.car.stop().then(() => {
       this.enable();
+      if (Store.garage.carTracks.tracks.filter((track) => track.car.started).length) {
+        Store.garage.controls.controlsRace.resetBtn.on();
+      } else {
+        Store.garage.controls.controlsRace.resetBtn.off();
+        Store.garage.controls.controlsRace.raceBtn.on();
+      }
     });
   }
 
@@ -58,7 +64,7 @@ export class CarControls extends Component {
     Store.garage.controls.controlsRace.resetBtn.off();
 
     this.car.start().then(() => {
-      if (!Store.resetEmitted && !Store.paginationEmitted) {
+      if (!Store.garageResetEmitted && !Store.garagePaginationEmitted) {
         this.resetBtn.on();
         Store.garage.controls.controlsRace.resetBtn.on();
         Store.garage.pagination.enable();

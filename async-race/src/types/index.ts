@@ -17,9 +17,20 @@ export enum FetchMethods {
   Delete = 'DELETE',
 }
 
+export interface CarWinner {
+  id: number;
+  wins: number;
+  time: number;
+}
+
 export interface GetCarsResponse {
   total: number;
   items: ICar[];
+}
+
+export interface GetWinnersResponse {
+  total: number;
+  items: CarWinner[];
 }
 
 export interface EngineSpecs {

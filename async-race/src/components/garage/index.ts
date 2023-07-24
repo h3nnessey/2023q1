@@ -36,7 +36,7 @@ export class Garage extends Component {
     Store.garage.pagination.disable();
     this.carTracks.resetRace().then(() => {
       this.enableControls();
-      Store.resetEmitted = false;
+      Store.garageResetEmitted = false;
     });
   }
 
@@ -57,8 +57,8 @@ export class Garage extends Component {
   }
 
   public update(isDelete?: boolean) {
-    if (Store.currentPage > 1 && !Store.cars.length) {
-      Store.currentPage -= 1;
+    if (Store.garageCurrentPage > 1 && !Store.garageCars.length) {
+      Store.garageCurrentPage -= 1;
       Store.updateGarage().then(() => this.update());
     } else {
       if (!isDelete) this.carTracks.update();

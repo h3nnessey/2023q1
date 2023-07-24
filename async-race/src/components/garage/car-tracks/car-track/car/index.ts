@@ -1,7 +1,7 @@
 import { ICar } from '../../../../../types';
 import { EngineService } from '../../../../../services/engine.service';
 import { Component } from '../../../../component';
-import { svgContent } from './svg-content';
+import { svgContent } from '../../../../../data/svg-content';
 import { Store } from '../../../../../store';
 
 export class Car extends Component {
@@ -56,7 +56,7 @@ export class Car extends Component {
     this.node.style.animationPlayState = 'paused';
   }
 
-  public drive(startTime?: number): Promise<ICar & { time: string | null }> {
+  public drive(startTime?: number): Promise<ICar & { time: number }> {
     return new Promise((resolve, reject) => {
       EngineService.drive(this.id)
         .then(() =>
@@ -64,7 +64,7 @@ export class Car extends Component {
             id: this.id,
             name: this.name,
             color: this.color,
-            time: startTime ? ((Date.now() - startTime) / 1000).toFixed(2) : null,
+            time: startTime ? +((Date.now() - startTime) / 1000).toFixed(2) : 0,
           })
         )
         .catch(() => {

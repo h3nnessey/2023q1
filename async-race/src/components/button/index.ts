@@ -10,7 +10,7 @@ export class Button extends Component {
     onClick,
     classNames = [],
   }: {
-    parent: Component;
+    parent?: Component;
     text?: string;
     disabled?: boolean;
     onClick?: () => void;

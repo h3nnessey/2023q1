@@ -1,31 +1,51 @@
-import type { GetCarsResponse, ICar } from '../types';
+import type { CarWinner, GetCarsResponse, GetWinnersResponse, ICar } from '../types';
 import { GarageService } from '../services/garage.service';
 import type { Garage } from '../components/garage';
 import type { Winners } from '../components/winners';
+import { WinnersService } from '../services/winners.service';
 
 export class Store {
-  public static carsCount: number = 0;
-  public static cars: ICar[] = [];
-  public static currentPage: number = 1;
-  public static pagesCount: number = 1;
+  public static garageCarsCount: number = 0;
+  public static garageCars: ICar[] = [];
+  public static garageCurrentPage: number = 1;
+  public static garagePagesCount: number = 1;
   public static garage: Garage;
-  public static winners: Winners;
-  public static resetEmitted: boolean = false;
-  public static paginationEmitted: boolean = false;
 
-  public static async initGarage(): Promise<void> {
+  public static garageResetEmitted: boolean = false;
+  public static garagePaginationEmitted: boolean = false;
+
+  public static winners: Winners;
+  public static winnersItems: CarWinner[] = [];
+  public static winnersCount: number = 0;
+  public static winnersPagesCount: number = 1;
+  public static winnersCurrentPage: number = 1;
+
+  public static async init(): Promise<void> {
     await Store.getGarageData();
+    await Store.getWinnersData();
   }
 
   public static async updateGarage(): Promise<void> {
     await Store.getGarageData();
   }
 
+  public static async updateWinners(): Promise<void> {
+    await Store.getWinnersData();
+  }
+
+  private static async getWinnersData(): Promise<void> {
+    return WinnersService.getWinners(Store.winnersCurrentPage).then(({ total, items }: GetWinnersResponse) => {
+      Store.winnersItems = items;
+      Store.winnersCount = total;
+      Store.winnersPagesCount = Math.ceil(total / 10) || 1;
+    });
+  }
+
   private static async getGarageData(): Promise<void> {
-    return GarageService.getCars(Store.currentPage).then(({ total, items }: GetCarsResponse) => {
-      Store.cars = items;
-      Store.carsCount = total;
-      Store.pagesCount = Math.ceil(total / 7) || 1;
+    return GarageService.getCars(Store.garageCurrentPage).then(({ total, items }: GetCarsResponse) => {
+      Store.garageCars = items;
+      Store.garageCarsCount = total;
+      Store.garagePagesCount = Math.ceil(total / 7) || 1;
     });
   }
 }

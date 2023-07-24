@@ -3,7 +3,7 @@ import { Store } from './store';
 import { App } from './components/app';
 import { ErrorMessage } from './components/error-message';
 
-Store.initGarage()
+Store.init()
   .then(() => {
     const app = new App(document.body);
     app.render();

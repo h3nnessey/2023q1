@@ -66,6 +66,12 @@ button:not(button:disabled) {
   color: #ff0000;
 }
 
+.garage__pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .garage__car-track {
   border-bottom: 2px dashed #444444;
 }
@@ -123,7 +129,6 @@ button:not(button:disabled) {
 .garage__current-page {
   color: #ffffff;
   font-size: 1.2rem;
-  margin-bottom: 1rem;
 }
 
 .car__title {
@@ -146,4 +151,93 @@ button:not(button:disabled) {
   display: inline-flex;
   vertical-align: top;
   width: 50px;
+}
+
+.winners__count {
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+
+.winners__table {
+  width: fit-content;
+}
+
+.winners-table__row,
+.winners-table__head {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.winners-table__number {
+  width: 80px;
+}
+
+.winners-table__car {
+  width: 100px;
+}
+
+.winners-table__car-img {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.winners-table__name {
+  width: 150px;
+}
+
+.winners-table__wins {
+  width: 70px;
+}
+
+.winners-table__time-sort {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #ffffff;
+  width: 80px;
+}
+
+.winners-table__time-sort:hover,
+.winners-table__wins-sort:hover {
+  color: orangered;
+  transition: color 0.2s;
+}
+
+.winners-table__time {
+  width: 80px;
+}
+
+.winners-table__wins-sort {
+  border: none;
+  outline: none;
+  width: 70px;
+  background: transparent;
+  color: #ffffff;
+}
+
+.winners-table__car-img > svg {
+  display: block;
+  width: 70px;
+  transform: scale(-1, 1);
+}
+
+.winners-table__number,
+.winners-table__car,
+.winners-table__car-img,
+.winners-table__name,
+.winners-table__wins,
+.winners-table__wins-sort {
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.winners__pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
