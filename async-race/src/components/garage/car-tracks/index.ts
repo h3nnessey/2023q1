@@ -1,7 +1,6 @@
 import { Component } from '../../component';
 import { Store } from '../../../store';
 import { CarTrack } from './car-track';
-import { Car } from './car-track/car';
 
 export class CarTracks extends Component {
   public tracks: CarTrack[] = [];

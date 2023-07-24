@@ -53,9 +53,11 @@ export class CarControls extends Component {
     this.startBtn.off();
 
     Store.garage.controls.controlsUpdate.disable();
+    Store.garage.pagination.disable();
 
     this.car.start().then(() => {
       this.resetBtn.on();
+      Store.garage.pagination.enable();
       this.car.drive().catch(() => null);
     });
   }

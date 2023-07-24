@@ -7,6 +7,7 @@ export class Car extends Component {
   public readonly id: number;
   public name: string;
   public color: string;
+  public started: boolean = false;
 
   constructor(parent: Component, { id, name, color }: ICar) {
     super({ classNames: ['car'], parent, html: svgContent });
@@ -22,6 +23,8 @@ export class Car extends Component {
     const specs = await EngineService.start(this.id);
     const time = specs.distance / specs.velocity;
 
+    this.started = true;
+
     this.node.style.animationName = 'start';
     this.node.style.animationDuration = `${time}ms`;
     this.node.style.animationFillMode = 'forwards';
@@ -36,11 +39,13 @@ export class Car extends Component {
 
   public stop() {
     return EngineService.stop(this.id).then(() => {
+      this.started = false;
       this.reset();
     });
   }
 
   public pause() {
+    this.started = false;
     this.node.style.animationPlayState = 'paused';
   }
 
@@ -57,5 +62,6 @@ export class Car extends Component {
 
   public reset() {
     this.node.style.animation = '';
+    this.started = false;
   }
 }

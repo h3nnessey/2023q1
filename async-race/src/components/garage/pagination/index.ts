@@ -46,7 +46,27 @@ export class Pagination extends Component {
       this.prevBtn.off();
     }
 
-    Store.updateGarage().then(() => Store.garage.update());
+    this.handleClickWithStartedCars();
+  }
+
+  private handleClickWithStartedCars() {
+    this.disable();
+
+    const startedCars = Store.garage.carTracks.tracks.filter((track) => track.car.started);
+
+    if (startedCars.length) {
+      Promise.all(startedCars.map((track) => track.car.stop())).then(() =>
+        Store.updateGarage().then(() => {
+          Store.garage.update();
+          this.enable();
+        })
+      );
+    } else {
+      Store.updateGarage().then(() => {
+        Store.garage.update();
+        this.enable();
+      });
+    }
   }
 
   private handleNextClick(): void {
@@ -57,7 +77,7 @@ export class Pagination extends Component {
       this.nextBtn.off();
     }
 
-    Store.updateGarage().then(() => Store.garage.update());
+    this.handleClickWithStartedCars();
   }
 
   public disable(): void {
