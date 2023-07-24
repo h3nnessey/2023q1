@@ -3,6 +3,7 @@ import { Input } from '../../../input';
 import { Button } from '../../../button';
 import { GarageService } from '../../../../services/garage.service';
 import type { Car } from '../../car-tracks/car-track/car';
+import { Store } from '../../../../store';
 
 export class ControlsUpdate extends Component {
   private readonly textInput: Input;
@@ -26,7 +27,11 @@ export class ControlsUpdate extends Component {
 
           this.car.updateCar(name, color);
 
-          GarageService.updateCar(this.car.id, { name, color }).then(() => this.disable());
+          GarageService.updateCar(this.car.id, { name, color }).then(() => {
+            this.disable();
+            const carInWinners = Store.winnersItems.find((car) => this.car && car.id === this.car.id);
+            if (carInWinners) Store.updateWinners().then(() => Store.winners.update());
+          });
         }
       },
     });
