@@ -1,18 +1,15 @@
 import { Component } from '../../../component';
 import { Input } from '../../../input';
 import { Button } from '../../../button';
-import { ICar } from '../../../../types';
 import { GarageService } from '../../../../services/garage.service';
 import { Store } from '../../../../store';
+import type { Car } from '../../car-tracks/car-track/car';
 
 export class ControlsUpdate extends Component {
   private readonly textInput: Input;
   private readonly colorInput: Input;
   private readonly submitBtn: Button;
-
-  private id: number = 1;
-  private color: string = '';
-  private name: string = '';
+  private car: Car | null = null;
 
   constructor(parent: Component) {
     super({ tagName: 'div', classNames: ['garage-controls__row'], parent });
@@ -24,23 +21,25 @@ export class ControlsUpdate extends Component {
       text: 'Update',
       disabled: true,
       onClick: () => {
-        GarageService.updateCar(this.id, { name: this.textInput.value, color: this.colorInput.value }).then(() => {
-          this.disable();
-          Store.updateGarage().then(() => Store.garage.update());
-        });
+        if (this.car) {
+          const name = this.textInput.value;
+          const color = this.colorInput.value;
+
+          this.car.updateCar(name, color);
+
+          GarageService.updateCar(this.car.id, { name, color }).then(() => this.disable());
+        }
       },
     });
   }
 
-  public focusWith({ id, name, color }: ICar): void {
+  public focusWith(car: Car): void {
     this.enableInputs();
 
-    this.id = id;
-    this.name = name;
-    this.color = color;
+    this.car = car;
 
-    this.textInput.value = name;
-    this.colorInput.value = color;
+    this.textInput.value = car.name;
+    this.colorInput.value = car.color;
   }
 
   private enableInputs(): void {

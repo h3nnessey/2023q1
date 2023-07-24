@@ -5,8 +5,8 @@ import { svgContent } from './svg-content';
 
 export class Car extends Component {
   public readonly id: number;
-  public readonly name: string;
-  public readonly color: string;
+  public name: string;
+  public color: string;
 
   constructor(parent: Component, { id, name, color }: ICar) {
     super({ classNames: ['car'], parent, html: svgContent });
@@ -26,6 +26,12 @@ export class Car extends Component {
     this.node.style.animationDuration = `${time}ms`;
     this.node.style.animationFillMode = 'forwards';
     this.node.style.animationPlayState = 'running';
+  }
+
+  public updateCar(name: string, color: string) {
+    this.color = color;
+    this.name = name;
+    this.node.style.fill = color;
   }
 
   public stop() {

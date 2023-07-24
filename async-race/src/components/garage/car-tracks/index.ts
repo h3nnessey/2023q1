@@ -1,9 +1,10 @@
 import { Component } from '../../component';
 import { Store } from '../../../store';
 import { CarTrack } from './car-track';
+import { Car } from './car-track/car';
 
 export class CarTracks extends Component {
-  private tracks: CarTrack[] = [];
+  public tracks: CarTrack[] = [];
 
   constructor(parent: Component) {
     super({ classNames: ['garage__car-tracks'], parent });
@@ -29,6 +30,22 @@ export class CarTracks extends Component {
     this.node.innerHTML = '';
 
     this.createCarTracks();
+  }
+
+  public onDelete(id: number): void {
+    const toDelete = this.tracks.find((track) => track.car.id === id);
+    if (toDelete) toDelete.delete();
+
+    this.tracks = this.tracks.filter((track) => track.car.id !== id);
+
+    if (Store.cars.length > 6) {
+      this.tracks.push(
+        new CarTrack({
+          parent: this,
+          carInfo: Store.cars[Store.cars.length - 1],
+        })
+      );
+    }
   }
 
   private createCarTracks(): void {

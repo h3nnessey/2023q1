@@ -8,7 +8,7 @@ import { Store } from '../../store';
 export class Garage extends Component {
   public readonly controls: Controls;
   private readonly carsCount: CarsCount;
-  private readonly pagination: Pagination;
+  public readonly pagination: Pagination;
   public readonly carTracks: CarTracks;
 
   constructor(parent: Component) {
@@ -52,12 +52,13 @@ export class Garage extends Component {
     this.carTracks.enable();
   }
 
-  public update() {
+  public update(isDelete?: boolean) {
     if (Store.currentPage > 1 && !Store.cars.length) {
       Store.currentPage -= 1;
       Store.updateGarage().then(() => this.update());
     } else {
-      this.carTracks.update();
+      if (!isDelete) this.carTracks.update();
+
       this.pagination.update();
       this.carsCount.update();
       this.controls.update();

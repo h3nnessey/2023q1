@@ -3,6 +3,9 @@ import { Button } from '../../../../button';
 import { Store } from '../../../../../store';
 import { GarageService } from '../../../../../services/garage.service';
 import type { Car } from '../car';
+import { Garage } from '../../../index';
+import { CarTrack } from '../index';
+import { LogLevel } from 'ts-loader/dist/logger';
 
 export class CarControls extends Component {
   public readonly selectBtn: Button;
@@ -45,7 +48,12 @@ export class CarControls extends Component {
   }
 
   private onStart() {
-    Store.garage.disableControls();
+    this.selectBtn.off();
+    this.deleteBtn.off();
+    this.startBtn.off();
+
+    Store.garage.controls.controlsUpdate.disable();
+
     this.car.start().then(() => {
       this.resetBtn.on();
       this.car.drive().catch(() => null);
@@ -57,7 +65,12 @@ export class CarControls extends Component {
   }
 
   private onDelete() {
-    return GarageService.deleteCar(this.car.id).then(() => Store.updateGarage().then(() => Store.garage.update()));
+    GarageService.deleteCar(this.car.id).then(() => {
+      Store.updateGarage().then(() => {
+        Store.garage.carTracks.onDelete(this.car.id);
+        Store.garage.update(true);
+      });
+    });
   }
 
   public disable() {
