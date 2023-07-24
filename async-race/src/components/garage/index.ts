@@ -25,10 +25,26 @@ export class Garage extends Component {
   public startRace() {
     this.disableControls();
 
-    this.carTracks
-      .startRace()
-      .then(() => this.handleRaceEnd())
-      .catch(() => this.handleRaceEnd());
+    const startedTracks = this.carTracks.tracks.filter((track) => track.car.started);
+
+    if (startedTracks.length) {
+      Promise.all(
+        startedTracks.map((track) => {
+          this.disableControls();
+          return track.car.stop();
+        })
+      ).then(() => {
+        this.carTracks
+          .startRace()
+          .then(() => this.handleRaceEnd())
+          .catch(() => this.handleRaceEnd());
+      });
+    } else {
+      this.carTracks
+        .startRace()
+        .then(() => this.handleRaceEnd())
+        .catch(() => this.handleRaceEnd());
+    }
   }
 
   public resetRace() {

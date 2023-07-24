@@ -1,6 +1,7 @@
 import { Component } from '../../component';
 import { Store } from '../../../store';
 import { CarTrack } from './car-track';
+import { ICar } from '../../../types';
 
 export class CarTracks extends Component {
   public tracks: CarTrack[] = [];
@@ -38,6 +39,17 @@ export class CarTracks extends Component {
     this.tracks = this.tracks.filter((track) => track.car.id !== id);
 
     if (Store.cars.length > 6) {
+      this.tracks.push(
+        new CarTrack({
+          parent: this,
+          carInfo: Store.cars[Store.cars.length - 1],
+        })
+      );
+    }
+  }
+
+  public onCreate(): void {
+    if (this.tracks.length < 7) {
       this.tracks.push(
         new CarTrack({
           parent: this,

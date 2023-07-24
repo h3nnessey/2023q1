@@ -50,11 +50,11 @@ export class Pagination extends Component {
   }
 
   private handleClickWithStartedCars() {
-    this.disable();
-
     const startedCars = Store.garage.carTracks.tracks.filter((track) => track.car.started);
 
     if (startedCars.length) {
+      this.disable();
+
       Promise.all(startedCars.map((track) => track.car.stop())).then(() =>
         Store.updateGarage().then(() => {
           Store.garage.update();

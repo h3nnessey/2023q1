@@ -3,9 +3,6 @@ import { Button } from '../../../../button';
 import { Store } from '../../../../../store';
 import { GarageService } from '../../../../../services/garage.service';
 import type { Car } from '../car';
-import { Garage } from '../../../index';
-import { CarTrack } from '../index';
-import { LogLevel } from 'ts-loader/dist/logger';
 
 export class CarControls extends Component {
   public readonly selectBtn: Button;
@@ -44,7 +41,10 @@ export class CarControls extends Component {
 
   private onReset() {
     this.resetBtn.off();
-    return this.car.stop().then(() => Store.garage.enableControls());
+
+    this.car.stop().then(() => {
+      this.enable();
+    });
   }
 
   private onStart() {
@@ -79,6 +79,8 @@ export class CarControls extends Component {
     this.selectBtn.off();
     this.startBtn.off();
     this.deleteBtn.off();
+
+    this.resetBtn.off();
   }
 
   public enable() {

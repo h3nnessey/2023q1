@@ -18,15 +18,7 @@ export class ControlsCreate extends Component {
     this.submitBtn = new Button({
       parent: this,
       text: 'Create',
-      onClick: () => {
-        GarageService.createCar({
-          name: this.textInput.value,
-          color: this.colorInput.value,
-        }).then(() => {
-          this.reset();
-          Store.updateGarage().then(() => Store.garage.update());
-        });
-      },
+      onClick: () => this.onCreate(),
     });
   }
 
@@ -46,5 +38,20 @@ export class ControlsCreate extends Component {
   private reset(): void {
     this.textInput.value = '';
     this.colorInput.value = '#000000';
+  }
+
+  private onCreate(): void {
+    const name = this.textInput.value;
+    const color = this.colorInput.value;
+
+    this.disable();
+
+    GarageService.createCar({ name, color }).then(() => {
+      Store.updateGarage().then(() => {
+        Store.garage.carTracks.onCreate();
+        Store.garage.update(true);
+        this.enable();
+      });
+    });
   }
 }

@@ -19,6 +19,10 @@ export class Store {
 
   private static async getGarageData(): Promise<void> {
     return GarageService.getCars(Store.currentPage).then(({ total, items }: GetCarsResponse) => {
+      console.log(
+        items.map((car) => car.id),
+        Array.from(new Set(items.map((car) => car.id))).length
+      );
       Store.cars = items;
       Store.carsCount = total;
       Store.pagesCount = Math.ceil(total / 7) || 1;
