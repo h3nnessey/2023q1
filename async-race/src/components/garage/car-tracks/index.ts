@@ -13,15 +13,18 @@ export class CarTracks extends Component {
   }
 
   public resetRace() {
+    Store.resetEmitted = true;
     return Promise.all(this.tracks.map(({ car }) => car.stop())).then(() =>
       this.tracks.forEach((track) => track.carControls.enable())
     );
   }
 
   public startRace() {
-    return Promise.any(this.tracks.map(({ car }) => car.start().then(() => car.drive()))).then((winner) => {
-      console.log(winner);
-    });
+    return Promise.any(this.tracks.map(({ car }) => car.start().then((startTime) => car.drive(startTime)))).then(
+      (winner) => {
+        console.log(winner);
+      }
+    );
   }
 
   public update(): void {

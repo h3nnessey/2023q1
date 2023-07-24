@@ -5,8 +5,8 @@ import { getRandomCars } from '../../../../utils';
 import { GarageService } from '../../../../services/garage.service';
 
 export class ControlsRace extends Component {
-  private readonly raceBtn: Button;
-  private readonly resetBtn: Button;
+  public readonly raceBtn: Button;
+  public readonly resetBtn: Button;
   private readonly generateBtn: Button;
 
   constructor(parent: Component) {

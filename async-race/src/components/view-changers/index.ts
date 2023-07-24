@@ -1,5 +1,6 @@
 import { Component } from '../component';
 import { Button } from '../button';
+import { Store } from '../../store';
 
 export class ViewChangers extends Component {
   private toGarageBtn: Button;
@@ -10,19 +11,27 @@ export class ViewChangers extends Component {
 
     this.toGarageBtn = new Button({
       parent: this,
-      text: 'To Garage',
+      text: 'Garage',
       classNames: ['active'],
       onClick: () => {
         this.toWinnersBtn.removeClass('active');
+
+        Store.winners.addClass('hidden');
+        Store.garage.removeClass('hidden');
+
         this.toGarageBtn.addClass('active');
       },
     });
 
     this.toWinnersBtn = new Button({
       parent: this,
-      text: 'To Winners',
+      text: 'Winners',
       onClick: () => {
         this.toGarageBtn.removeClass('active');
+
+        Store.garage.addClass('hidden');
+        Store.winners.removeClass('hidden');
+
         this.toWinnersBtn.addClass('active');
       },
     });

@@ -1,6 +1,7 @@
 import type { GetCarsResponse, ICar } from '../types';
 import { GarageService } from '../services/garage.service';
 import type { Garage } from '../components/garage';
+import type { Winners } from '../components/winners';
 
 export class Store {
   public static carsCount: number = 0;
@@ -8,6 +9,9 @@ export class Store {
   public static currentPage: number = 1;
   public static pagesCount: number = 1;
   public static garage: Garage;
+  public static winners: Winners;
+  public static resetEmitted: boolean = false;
+  public static paginationEmitted: boolean = false;
 
   public static async initGarage(): Promise<void> {
     await Store.getGarageData();

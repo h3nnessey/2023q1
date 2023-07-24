@@ -51,20 +51,25 @@ export class Pagination extends Component {
 
   private handleClickWithStartedCars() {
     const startedCars = Store.garage.carTracks.tracks.filter((track) => track.car.started);
-
+    Store.paginationEmitted = true;
     if (startedCars.length) {
       this.disable();
+      Store.garage.disableControls();
 
       Promise.all(startedCars.map((track) => track.car.stop())).then(() =>
         Store.updateGarage().then(() => {
           Store.garage.update();
+
+          Store.garage.enableControls();
           this.enable();
+          Store.paginationEmitted = false;
         })
       );
     } else {
       Store.updateGarage().then(() => {
         Store.garage.update();
         this.enable();
+        Store.paginationEmitted = false;
       });
     }
   }

@@ -23,6 +23,12 @@ body {
   padding: 10px;
 }
 
+.hidden {
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+
 .car {
   display: inline-block;
   position: relative;

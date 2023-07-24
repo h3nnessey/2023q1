@@ -2,6 +2,7 @@ import { ICar } from '../../../../../types';
 import { EngineService } from '../../../../../services/engine.service';
 import { Component } from '../../../../component';
 import { svgContent } from './svg-content';
+import { Store } from '../../../../../store';
 
 export class Car extends Component {
   public readonly id: number;
@@ -19,16 +20,23 @@ export class Car extends Component {
     this.node.style.fill = color;
   }
 
-  public async start() {
-    const specs = await EngineService.start(this.id);
-    const time = specs.distance / specs.velocity;
+  public async start(): Promise<number> {
+    return new Promise((resolve) => {
+      EngineService.start(this.id).then((specs) => {
+        this.reset();
+        this.started = true;
 
-    this.started = true;
+        const startTime = Date.now();
+        const time = specs.distance / specs.velocity;
 
-    this.node.style.animationName = 'start';
-    this.node.style.animationDuration = `${time}ms`;
-    this.node.style.animationFillMode = 'forwards';
-    this.node.style.animationPlayState = 'running';
+        this.node.style.animationName = 'start';
+        this.node.style.animationDuration = `${time}ms`;
+        this.node.style.animationFillMode = 'forwards';
+        this.node.style.animationPlayState = 'running';
+
+        resolve(startTime);
+      });
+    });
   }
 
   public updateCar(name: string, color: string) {
@@ -45,14 +53,20 @@ export class Car extends Component {
   }
 
   public pause() {
-    this.started = false;
     this.node.style.animationPlayState = 'paused';
   }
 
-  public drive(): Promise<ICar> {
+  public drive(startTime?: number): Promise<ICar & { time: string | null }> {
     return new Promise((resolve, reject) => {
       EngineService.drive(this.id)
-        .then(() => resolve({ id: this.id, name: this.name, color: this.color }))
+        .then(() =>
+          resolve({
+            id: this.id,
+            name: this.name,
+            color: this.color,
+            time: startTime ? ((Date.now() - startTime) / 1000).toFixed(2) : null,
+          })
+        )
         .catch(() => {
           this.pause();
           reject();

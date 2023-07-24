@@ -2,11 +2,12 @@ import { Component } from '../../component';
 import { ControlsCreate } from './controls-create';
 import { ControlsUpdate } from './controls-update';
 import { ControlsRace } from './controls-race';
+import { Store } from '../../../store';
 
 export class Controls extends Component {
   private readonly controlsCreate: ControlsCreate;
   public readonly controlsUpdate: ControlsUpdate;
-  private readonly controlsRace: ControlsRace;
+  public readonly controlsRace: ControlsRace;
 
   constructor(parent: Component) {
     super({ tagName: 'div', classNames: ['garage__controls'], parent });
@@ -20,6 +21,7 @@ export class Controls extends Component {
     this.controlsCreate.disable();
     this.controlsUpdate.disable();
     this.controlsRace.disable();
+    Store.garage.carTracks.disable();
   }
 
   public enable(): void {

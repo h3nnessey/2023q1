@@ -3,6 +3,7 @@ import { Button } from '../../../../button';
 import { Store } from '../../../../../store';
 import { GarageService } from '../../../../../services/garage.service';
 import type { Car } from '../car';
+import { SourceCode } from 'eslint';
 
 export class CarControls extends Component {
   public readonly selectBtn: Button;
@@ -47,17 +48,25 @@ export class CarControls extends Component {
     });
   }
 
-  private onStart() {
+  private async onStart() {
     this.selectBtn.off();
     this.deleteBtn.off();
     this.startBtn.off();
-
     Store.garage.controls.controlsUpdate.disable();
     Store.garage.pagination.disable();
+    Store.garage.controls.controlsRace.raceBtn.off();
+    Store.garage.controls.controlsRace.resetBtn.off();
 
     this.car.start().then(() => {
-      this.resetBtn.on();
-      Store.garage.pagination.enable();
+      if (!Store.resetEmitted && !Store.paginationEmitted) {
+        this.resetBtn.on();
+        Store.garage.controls.controlsRace.resetBtn.on();
+        Store.garage.pagination.enable();
+      } else {
+        Store.garage.controls.controlsRace.resetBtn.off();
+        Store.garage.pagination.disable();
+      }
+
       this.car.drive().catch(() => null);
     });
   }
@@ -79,11 +88,11 @@ export class CarControls extends Component {
     this.selectBtn.off();
     this.startBtn.off();
     this.deleteBtn.off();
-
     this.resetBtn.off();
   }
 
   public enable() {
+    this.resetBtn.off();
     this.startBtn.on();
     this.selectBtn.on();
     this.deleteBtn.on();
