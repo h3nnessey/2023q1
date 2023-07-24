@@ -79,6 +79,19 @@ button:not(button:disabled) {
   border-bottom: 2px dashed #444444;
 }
 
+.garage__car-track {
+  position: relative;
+}
+
+.garage__car-track::after {
+  content: '🏁';
+  font-size: 2rem;
+  position: absolute;
+  right: 100px;
+  bottom: 0;
+  display: block;
+}
+
 .view-changers {
   display: flex;
   justify-content: center;
