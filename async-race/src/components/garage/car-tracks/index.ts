@@ -38,18 +38,15 @@ export class CarTracks extends Component {
   }
 
   private handleWin(winner: ICar & { time: number }) {
-    let finishTime = winner.time;
-    if (finishTime > 10) finishTime = Math.floor(finishTime);
-
     WinnersService.getWinner(winner.id).then((data) => {
       if (data) {
-        const payload = { id: winner.id, time: finishTime < data.time ? finishTime : data.time, wins: data.wins + 1 };
+        const payload = { id: winner.id, time: winner.time < data.time ? winner.time : data.time, wins: data.wins + 1 };
         WinnersService.updateWinner(payload).then(() => {
           Store.updateWinners().then(() => Store.winners.update());
           Store.modal.show(winner.name, winner.time);
         });
       } else {
-        WinnersService.createWinner({ id: winner.id, time: finishTime, wins: 1 }).then(() => {
+        WinnersService.createWinner({ id: winner.id, time: winner.time, wins: 1 }).then(() => {
           Store.updateWinners().then(() => Store.winners.update());
           Store.modal.show(winner.name, winner.time);
         });

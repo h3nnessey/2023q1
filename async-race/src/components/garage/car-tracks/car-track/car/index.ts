@@ -27,16 +27,19 @@ export class Car extends Component {
         this.started = true;
 
         const startTime = Date.now();
-        const time = specs.distance / specs.velocity;
 
-        this.node.style.animationName = 'start';
-        this.node.style.animationDuration = `${time}ms`;
-        this.node.style.animationFillMode = 'forwards';
-        this.node.style.animationPlayState = 'running';
+        this.setAnimation(specs.distance / specs.velocity);
 
         resolve(startTime);
       });
     });
+  }
+
+  private setAnimation(time: number): void {
+    this.node.style.animationName = 'start';
+    this.node.style.animationDuration = `${time}ms`;
+    this.node.style.animationFillMode = 'forwards';
+    this.node.style.animationPlayState = 'running';
   }
 
   public updateCar(name: string, color: string) {
@@ -53,20 +56,23 @@ export class Car extends Component {
   }
 
   public pause() {
+    this.addClass('broken');
     this.node.style.animationPlayState = 'paused';
   }
 
   public drive(startTime?: number): Promise<ICar & { time: number }> {
     return new Promise((resolve, reject) => {
       EngineService.drive(this.id)
-        .then(() =>
+        .then(() => {
+          let time = startTime ? +((Date.now() - startTime) / 1000).toFixed(2) : 0;
+          if (time.toString().length >= 5) time = Math.floor(time);
           resolve({
             id: this.id,
             name: this.name,
             color: this.color,
-            time: startTime ? +((Date.now() - startTime) / 1000).toFixed(2) : 0,
-          })
-        )
+            time,
+          });
+        })
         .catch(() => {
           this.pause();
           reject();
@@ -75,6 +81,7 @@ export class Car extends Component {
   }
 
   public reset() {
+    this.removeClass('broken');
     this.node.style.animation = '';
     this.started = false;
   }

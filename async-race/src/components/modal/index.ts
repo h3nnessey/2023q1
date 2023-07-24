@@ -3,7 +3,7 @@ import { Store } from '../../store';
 
 export class Modal extends Component {
   constructor(parent: Component) {
-    super({ classNames: ['modal'], parent });
+    super({ classNames: ['modal', 'modal-hidden'], parent });
 
     Store.modal = this;
   }

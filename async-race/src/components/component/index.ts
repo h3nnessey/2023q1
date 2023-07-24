@@ -27,10 +27,6 @@ export class Component {
     this.element.classList.add(className);
   }
 
-  public hasClass(className: string): boolean {
-    return this.classes.includes(className);
-  }
-
   public removeClass(className: string): void {
     this.classes = this.classes.filter((clName) => clName !== className);
     this.element.classList.remove(className);
@@ -48,14 +44,6 @@ export class Component {
     return this.element;
   }
 
-  public get parentElement(): Component | null {
-    return this.parent;
-  }
-
-  public get tag(): string {
-    return this.element.tagName;
-  }
-
   public delete(): void {
     this.element.remove();
   }
@@ -65,16 +53,11 @@ export class Component {
   }
 
   public setHtml(html: string): void {
-    this.element.innerHTML = '';
-    this.element.insertAdjacentHTML('afterbegin', html);
+    this.element.innerHTML = html;
   }
 
   public setAttribute(attribute: string, value: string): void {
     this.element.setAttribute(attribute, value);
-  }
-
-  public removeAttribute(attribute: string): void {
-    this.element.removeAttribute(attribute);
   }
 
   public addEventListener(eventType: keyof GlobalEventHandlersEventMap, callback: (event: Event) => void): void {
