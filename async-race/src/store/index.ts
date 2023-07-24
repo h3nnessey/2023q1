@@ -30,6 +30,10 @@ export class Store {
     await Store.getWinnersData();
   }
 
+  public static setModal(modal: Modal) {
+    Store.modal = modal;
+  }
+
   public static async updateGarage(): Promise<void> {
     await Store.getGarageData();
   }

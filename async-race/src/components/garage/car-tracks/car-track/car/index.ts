@@ -2,7 +2,6 @@ import { ICar } from '../../../../../types';
 import { EngineService } from '../../../../../services/engine.service';
 import { Component } from '../../../../component';
 import { svgContent } from '../../../../../data/svg-content';
-import { Store } from '../../../../../store';
 
 export class Car extends Component {
   public readonly id: number;

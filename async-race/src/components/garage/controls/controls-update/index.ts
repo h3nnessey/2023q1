@@ -2,7 +2,6 @@ import { Component } from '../../../component';
 import { Input } from '../../../input';
 import { Button } from '../../../button';
 import { GarageService } from '../../../../services/garage.service';
-import { Store } from '../../../../store';
 import type { Car } from '../../car-tracks/car-track/car';
 
 export class ControlsUpdate extends Component {

@@ -1,7 +1,6 @@
 import { Component } from '../../component';
 import { Button } from '../../button';
 import { Store } from '../../../store';
-import { Winners } from '../index';
 
 export class Pagination extends Component {
   private readonly currentPage: Component;
