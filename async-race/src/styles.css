@@ -235,7 +235,7 @@ button:not(button:disabled) {
 }
 
 .winners-table__wins {
-  width: 70px;
+  width: 80px;
 }
 
 .winners-table__time-sort {
@@ -253,7 +253,7 @@ button:not(button:disabled) {
 }
 
 .winners-table__time {
-  width: 80px;
+  width: 100px;
 }
 
 .winners-table__wins-sort {
