@@ -445,6 +445,7 @@ class ControlsCreate extends Component {
 
 
 
+
 class ControlsUpdate extends Component {
     textInput;
     colorInput;
@@ -463,7 +464,12 @@ class ControlsUpdate extends Component {
                     const name = this.textInput.value;
                     const color = this.colorInput.value;
                     this.car.updateCar(name, color);
-                    GarageService.updateCar(this.car.id, { name, color }).then(() => this.disable());
+                    GarageService.updateCar(this.car.id, { name, color }).then(() => {
+                        this.disable();
+                        const carInWinners = Store.winnersItems.find((car) => this.car && car.id === this.car.id);
+                        if (carInWinners)
+                            Store.updateWinners().then(() => Store.winners.update());
+                    });
                 }
             },
         });
