@@ -16,6 +16,8 @@ export class CarTracks extends Component {
   public resetRace() {
     Store.garageResetEmitted = true;
 
+    Store.modal.hide();
+
     return Promise.all(this.tracks.filter((track) => track.car.started).map(({ car }) => car.stop())).then(() =>
       this.tracks.forEach((track) => track.carControls.enable())
     );
@@ -41,10 +43,12 @@ export class CarTracks extends Component {
         const payload = { id: winner.id, time: winner.time < data.time ? winner.time : data.time, wins: data.wins + 1 };
         WinnersService.updateWinner(payload).then(() => {
           Store.updateWinners().then(() => Store.winners.update());
+          Store.modal.show(winner.name, winner.time);
         });
       } else {
         WinnersService.createWinner({ id: winner.id, time: winner.time, wins: 1 }).then(() => {
           Store.updateWinners().then(() => Store.winners.update());
+          Store.modal.show(winner.name, winner.time);
         });
       }
     });

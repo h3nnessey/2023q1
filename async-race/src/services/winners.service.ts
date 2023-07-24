@@ -19,7 +19,7 @@ export class WinnersService {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ wins: wins + 1, time }),
+      body: JSON.stringify({ wins, time }),
     });
   }
 
@@ -35,11 +35,17 @@ export class WinnersService {
     return data;
   }
 
-  public static async getWinners(page = 1, limit = 10): Promise<GetWinnersResponse> {
+  public static async getWinners(
+    page: number,
+    sort: 'id' | 'wins' | 'time',
+    order: 'ASC' | 'DESC'
+  ): Promise<GetWinnersResponse> {
     const response: Response = await fetch(
       getUrl(`${PATHS.WINNERS}`, [
         ['_page', page.toString()],
-        ['_limit', limit.toString()],
+        ['_limit', (10).toString()],
+        ['_order', order],
+        ['_sort', sort],
       ])
     );
 

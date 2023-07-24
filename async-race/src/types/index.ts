@@ -38,7 +38,7 @@ export interface EngineSpecs {
   distance: number;
 }
 
-export type ServiceOptions = '_page' | '_limit' | 'id' | 'status';
+export type ServiceOptions = '_page' | '_limit' | 'id' | 'status' | '_order' | '_sort';
 
 export interface ICar {
   id: number;

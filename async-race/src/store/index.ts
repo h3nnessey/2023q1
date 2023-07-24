@@ -3,6 +3,7 @@ import { GarageService } from '../services/garage.service';
 import type { Garage } from '../components/garage';
 import type { Winners } from '../components/winners';
 import { WinnersService } from '../services/winners.service';
+import { Modal } from '../components/modal';
 
 export class Store {
   public static garageCarsCount: number = 0;
@@ -19,6 +20,10 @@ export class Store {
   public static winnersCount: number = 0;
   public static winnersPagesCount: number = 1;
   public static winnersCurrentPage: number = 1;
+  public static winnersOrder: 'ASC' | 'DESC' = 'ASC';
+  public static winnersSort: 'id' | 'wins' | 'time' = 'id';
+
+  public static modal: Modal;
 
   public static async init(): Promise<void> {
     await Store.getGarageData();
@@ -34,11 +39,13 @@ export class Store {
   }
 
   private static async getWinnersData(): Promise<void> {
-    return WinnersService.getWinners(Store.winnersCurrentPage).then(({ total, items }: GetWinnersResponse) => {
-      Store.winnersItems = items;
-      Store.winnersCount = total;
-      Store.winnersPagesCount = Math.ceil(total / 10) || 1;
-    });
+    return WinnersService.getWinners(Store.winnersCurrentPage, Store.winnersSort, Store.winnersOrder).then(
+      ({ total, items }: GetWinnersResponse) => {
+        Store.winnersItems = items;
+        Store.winnersCount = total;
+        Store.winnersPagesCount = Math.ceil(total / 10) || 1;
+      }
+    );
   }
 
   private static async getGarageData(): Promise<void> {
