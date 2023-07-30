@@ -17,7 +17,7 @@ export class Table extends Component {
 
   private createTable(): void {
     Store.winnersItems.forEach((winner, index) => {
-      this.trows.push(new Trow(index + 1, winner, this));
+      this.trows.push(new Trow((Store.winnersCurrentPage - 1) * 10 + index + 1, winner, this));
     });
   }
 

@@ -3,7 +3,7 @@ import { GarageService } from '../services/garage.service';
 import type { Garage } from '../components/garage';
 import type { Winners } from '../components/winners';
 import { WinnersService } from '../services/winners.service';
-import { Modal } from '../components/modal';
+import type { Modal } from '../components/modal';
 
 export class Store {
   public static garageCarsCount: number = 0;
@@ -28,10 +28,6 @@ export class Store {
   public static async init(): Promise<void> {
     await Store.getGarageData();
     await Store.getWinnersData();
-  }
-
-  public static setModal(modal: Modal) {
-    Store.modal = modal;
   }
 
   public static async updateGarage(): Promise<void> {

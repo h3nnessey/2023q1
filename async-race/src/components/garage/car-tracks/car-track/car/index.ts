@@ -2,6 +2,7 @@ import { ICar } from '../../../../../types';
 import { EngineService } from '../../../../../services/engine.service';
 import { Component } from '../../../../component';
 import { svgContent } from '../../../../../data/svg-content';
+import { Store } from '../../../../../store';
 
 export class Car extends Component {
   public readonly id: number;
@@ -46,6 +47,18 @@ export class Car extends Component {
     this.color = color;
     this.name = name;
     this.node.style.fill = color;
+
+    const carInStore = Store.garageCars.find((car) => car.id === this.id);
+    const carInTracks = Store.garage.carTracks.tracks.find(({ car }) => car.id === this.id);
+
+    if (carInStore) {
+      carInStore.name = this.name;
+      carInStore.color = this.color;
+    }
+
+    if (carInTracks) {
+      carInTracks.carName.setTextContent(this.name);
+    }
   }
 
   public stop() {
@@ -74,7 +87,11 @@ export class Car extends Component {
           });
         })
         .catch(() => {
-          this.pause();
+          if (!this.started) {
+            this.reset();
+          } else {
+            this.pause();
+          }
           reject();
         });
     });

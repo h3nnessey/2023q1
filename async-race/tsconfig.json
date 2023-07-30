@@ -3,11 +3,17 @@
     "target": "ES2022",
     "module": "ES2022",
     "esModuleInterop": true,
-    // "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
-    // "skipLibCheck": true,
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "NodeNext",
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "camelCase"
+        }
+      }
+    ]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

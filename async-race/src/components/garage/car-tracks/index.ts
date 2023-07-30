@@ -18,9 +18,9 @@ export class CarTracks extends Component {
 
     Store.modal.hide();
 
-    return Promise.all(this.tracks.filter((track) => track.car.started).map(({ car }) => car.stop())).then(() =>
-      this.tracks.forEach((track) => track.carControls.enable())
-    );
+    return Promise.all(this.tracks.map(({ car }) => car.stop()))
+      .then(() => this.tracks.forEach((track) => track.carControls.enable()))
+      .then(() => Store.garage.update());
   }
 
   public startRace() {

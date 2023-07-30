@@ -5,6 +5,7 @@ import { CarControls } from './car-controls';
 
 export class CarTrack extends Component {
   public readonly car: Car;
+  public carName: Component;
   public readonly carControls: CarControls;
 
   private readonly firstRow: Component;
@@ -18,18 +19,15 @@ export class CarTrack extends Component {
 
     this.car = new Car(this, carInfo);
 
+    this.carName = new Component({
+      tagName: 'h3',
+      classNames: ['car__title'],
+      text: carInfo.name,
+    });
+
     this.carControls = new CarControls(this.car);
 
-    this.firstRow.append([
-      this.carControls.selectBtn,
-      this.carControls.deleteBtn,
-      new Component({
-        tagName: 'h3',
-        classNames: ['car__title'],
-        parent: this.firstRow,
-        text: carInfo.name,
-      }),
-    ]);
+    this.firstRow.append([this.carControls.selectBtn, this.carControls.deleteBtn, this.carName]);
 
     this.secondRow.append([this.carControls.startBtn, this.carControls.resetBtn]);
   }
