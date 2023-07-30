@@ -4,6 +4,7 @@ import { Button } from '../../../button';
 import { GarageService } from '../../../../services/garage.service';
 import type { Car } from '../../car-tracks/car-track/car';
 import { Store } from '../../../../store';
+import classes from '../styles.module.css';
 
 export class ControlsUpdate extends Component {
   private readonly textInput: Input;
@@ -12,7 +13,7 @@ export class ControlsUpdate extends Component {
   private car: Car | null = null;
 
   constructor(parent: Component) {
-    super({ tagName: 'div', classNames: ['garage-controls__row'], parent });
+    super({ classNames: [classes.garageControlsRow], parent });
 
     this.textInput = new Input({ parent: this, disabled: true });
     this.colorInput = new Input({ parent: this, type: 'color', disabled: true });

@@ -1,0 +1,29 @@
+.garageCarTrack {
+  position: relative;
+  border-bottom: 2px dashed #444444;
+}
+
+.garageCarTrack::after {
+  content: '🏁';
+  font-size: 2rem;
+  position: absolute;
+  right: 100px;
+  bottom: 0;
+  display: block;
+}
+
+.carTrackRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.carTrackRow:nth-child(2) {
+  display: inline-flex;
+  vertical-align: top;
+  width: 50px;
+}
+
+.carTitle {
+  color: #ffffff;
+}

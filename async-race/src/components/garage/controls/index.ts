@@ -3,6 +3,7 @@ import { ControlsCreate } from './controls-create';
 import { ControlsUpdate } from './controls-update';
 import { ControlsRace } from './controls-race';
 import { Store } from '../../../store';
+import classes from './styles.module.css';
 
 export class Controls extends Component {
   private readonly controlsCreate: ControlsCreate;
@@ -10,7 +11,7 @@ export class Controls extends Component {
   public readonly controlsRace: ControlsRace;
 
   constructor(parent: Component) {
-    super({ tagName: 'div', classNames: ['garage__controls'], parent });
+    super({ classNames: [classes.garageControls], parent });
 
     this.controlsCreate = new ControlsCreate(this);
     this.controlsUpdate = new ControlsUpdate(this);

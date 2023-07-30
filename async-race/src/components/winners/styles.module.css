@@ -1,0 +1,13 @@
+.winners {
+  position: absolute;
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding: 10px;
+}
+
+.winners.hidden {
+  visibility: hidden;
+}

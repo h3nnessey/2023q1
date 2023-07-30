@@ -1,0 +1,10 @@
+.winnersPagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.winnersCurrentPage {
+  font-size: 1.2rem;
+  color: #ffffff;
+}

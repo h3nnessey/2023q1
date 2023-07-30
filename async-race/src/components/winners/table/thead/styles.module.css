@@ -1,0 +1,54 @@
+.winnersTableHead {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #ffffff;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.winnersTableNumber {
+  width: 80px;
+}
+
+.winnersTableCar {
+  width: 100px;
+}
+
+.winnersTableName {
+  width: 150px;
+}
+
+.winnersTableTimeSort {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #ffffff;
+  width: 100px;
+}
+
+.winnersTableTimeSort:hover,
+.winnersTableWinsSort:hover {
+  color: orangered;
+  transition: color 0.2s;
+}
+
+.winnersTableWinsSort {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 80px;
+  color: #ffffff;
+}
+
+.winnersTableWinsSort {
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.winnersTableNumber,
+.winnersTableCar,
+.winnersTableName,
+.winnersTableWins {
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+}

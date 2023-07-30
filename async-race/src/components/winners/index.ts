@@ -3,6 +3,7 @@ import { Store } from '../../store';
 import { WinnersCount } from './winners-count';
 import { Table } from './table';
 import { Pagination } from './pagination';
+import classes from './styles.module.css';
 
 export class Winners extends Component {
   private readonly winnersCount: WinnersCount;
@@ -10,7 +11,7 @@ export class Winners extends Component {
   private readonly pagination: Pagination;
 
   constructor(parent: Component) {
-    super({ parent, classNames: ['winners', 'hidden'] });
+    super({ parent, classNames: [classes.winners, classes.hidden] });
 
     Store.winners = this;
     this.winnersCount = new WinnersCount(this);
@@ -26,5 +27,13 @@ export class Winners extends Component {
     this.winnersCount.update();
     this.table.update();
     this.pagination.update();
+  }
+
+  public hide(): void {
+    this.addClass(classes.hidden);
+  }
+
+  public show(): void {
+    this.removeClass(classes.hidden);
   }
 }

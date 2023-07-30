@@ -3,6 +3,7 @@ import { Input } from '../../../input';
 import { Button } from '../../../button';
 import { GarageService } from '../../../../services/garage.service';
 import { Store } from '../../../../store';
+import classes from '../styles.module.css';
 
 export class ControlsCreate extends Component {
   private readonly textInput: Input;
@@ -10,7 +11,7 @@ export class ControlsCreate extends Component {
   private readonly submitBtn: Button;
 
   constructor(parent: Component) {
-    super({ classNames: ['garage-controls__row'], parent });
+    super({ classNames: [classes.garageControlsRow], parent });
 
     this.textInput = new Input({ parent: this, placeholder: 'Enter car name' });
     this.colorInput = new Input({ parent: this, type: 'color' });

@@ -3,6 +3,7 @@ import { Button } from '../../../button';
 import { Store } from '../../../../store';
 import { getRandomCars } from '../../../../utils';
 import { GarageService } from '../../../../services/garage.service';
+import classes from '../styles.module.css';
 
 export class ControlsRace extends Component {
   public readonly raceBtn: Button;
@@ -10,7 +11,7 @@ export class ControlsRace extends Component {
   private readonly generateBtn: Button;
 
   constructor(parent: Component) {
-    super({ classNames: ['garage-controls__row'], parent });
+    super({ classNames: [classes.garageControlsRow], parent });
 
     this.raceBtn = new Button({
       parent: this,

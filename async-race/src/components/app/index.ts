@@ -2,6 +2,7 @@ import { Component } from '../component';
 import { ViewChangers } from '../view-changers';
 import { Garage } from '../garage';
 import { Winners } from '../winners';
+import classes from './styles.module.css';
 
 export class App extends Component {
   private readonly viewChangers: ViewChangers;
@@ -9,7 +10,7 @@ export class App extends Component {
   private readonly winners: Winners;
 
   constructor(private readonly container: HTMLElement) {
-    super({ tagName: 'main', classNames: ['app'] });
+    super({ tagName: 'main', classNames: [classes.app] });
 
     this.viewChangers = new ViewChangers(this);
     this.garage = new Garage(this);

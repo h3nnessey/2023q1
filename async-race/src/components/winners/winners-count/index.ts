@@ -1,9 +1,10 @@
 import { Component } from '../../component';
 import { Store } from '../../../store';
+import classes from './style.module.css';
 
 export class WinnersCount extends Component {
   constructor(parent: Component) {
-    super({ tagName: 'h2', classNames: ['winners__count'], parent });
+    super({ tagName: 'h2', classNames: [classes.winnersCount], parent });
 
     this.update();
   }

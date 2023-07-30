@@ -1,8 +1,9 @@
 import { ICar } from '../../../../../types';
 import { EngineService } from '../../../../../services/engine.service';
 import { Component } from '../../../../component';
-import { svgContent } from '../../../../../data/svg-content';
 import { Store } from '../../../../../store';
+import content from '../../../../../assets/car.svg';
+import classes from './styles.module.css';
 
 export class Car extends Component {
   public readonly id: number;
@@ -11,7 +12,7 @@ export class Car extends Component {
   public started: boolean = false;
 
   constructor(parent: Component, { id, name, color }: ICar) {
-    super({ classNames: ['car'], parent, html: svgContent });
+    super({ classNames: [classes.car], parent, html: content });
 
     this.id = id;
     this.name = name;
@@ -36,7 +37,7 @@ export class Car extends Component {
   }
 
   private setAnimation(time: number): void {
-    this.node.style.animationName = 'start';
+    this.node.style.animationName = classes.start;
     this.node.style.animationDuration = `${time}ms`;
     this.node.style.animationFillMode = 'forwards';
     this.node.style.animationPlayState = 'running';
@@ -62,14 +63,11 @@ export class Car extends Component {
   }
 
   public stop() {
-    return EngineService.stop(this.id).then(() => {
-      this.started = false;
-      this.reset();
-    });
+    return EngineService.stop(this.id).then(() => this.reset());
   }
 
   public pause() {
-    this.addClass('broken');
+    this.addClass(classes.broken);
     this.node.style.animationPlayState = 'paused';
   }
 
@@ -77,13 +75,11 @@ export class Car extends Component {
     return new Promise((resolve, reject) => {
       EngineService.drive(this.id)
         .then(() => {
-          let time = startTime ? +((Date.now() - startTime) / 1000).toFixed(2) : 0;
-          if (time.toString().length >= 5) time = Math.floor(time);
           resolve({
             id: this.id,
             name: this.name,
             color: this.color,
-            time,
+            time: startTime ? +((Date.now() - startTime) / 1000).toFixed(2) : 0,
           });
         })
         .catch(() => {
@@ -98,7 +94,7 @@ export class Car extends Component {
   }
 
   public reset() {
-    this.removeClass('broken');
+    this.removeClass(classes.broken);
     this.node.style.animation = '';
     this.started = false;
   }

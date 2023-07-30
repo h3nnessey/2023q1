@@ -1,6 +1,7 @@
 import { Component } from '../../../component';
 import { Button } from '../../../button';
 import { Store } from '../../../../store';
+import classes from './styles.module.css';
 
 export class Thead extends Component {
   private readonly number: Component;
@@ -10,21 +11,23 @@ export class Thead extends Component {
   private readonly bestTimeBtn: Button;
 
   constructor(parent: Component) {
-    super({ classNames: ['winners-table__head'], parent });
+    super({ classNames: [classes.winnersTableHead], parent });
 
     this.winsBtn = new Button({
       text: 'Wins',
-      classNames: ['winners-table__wins-sort'],
+      classNames: [classes.winnersTableWinsSort],
       onClick: () => this.handleWinsClick(),
     });
+
     this.bestTimeBtn = new Button({
       text: 'Best Time',
-      classNames: ['winners-table__time-sort'],
+      classNames: [classes.winnersTableTimeSort],
       onClick: () => this.handleTimeClick(),
     });
-    this.number = new Component({ text: 'Number', classNames: ['winners-table__number'] });
-    this.car = new Component({ text: 'Car', classNames: ['winners-table__car'] });
-    this.name = new Component({ text: 'Name', classNames: ['winners-table__name'] });
+
+    this.number = new Component({ text: 'Number', classNames: [classes.winnersTableNumber] });
+    this.car = new Component({ text: 'Car', classNames: [classes.winnersTableCar] });
+    this.name = new Component({ text: 'Name', classNames: [classes.winnersTableName] });
 
     this.append([this.number, this.car, this.name, this.winsBtn, this.bestTimeBtn]);
   }

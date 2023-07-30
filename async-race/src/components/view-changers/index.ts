@@ -1,39 +1,46 @@
 import { Component } from '../component';
 import { Button } from '../button';
 import { Store } from '../../store';
+import classes from './styles.module.css';
 
 export class ViewChangers extends Component {
   private toGarageBtn: Button;
   private toWinnersBtn: Button;
 
   constructor(parent: Component) {
-    super({ tagName: 'div', classNames: ['view-changers'], parent });
+    super({ classNames: [classes.viewChangers], parent });
 
     this.toGarageBtn = new Button({
       parent: this,
       text: 'Garage',
-      classNames: ['active'],
+      classNames: [classes.viewChangersButton, classes.active],
       onClick: () => {
-        this.toWinnersBtn.removeClass('active');
+        this.toWinnersBtn.removeClass(classes.active);
+        this.toGarageBtn.addClass(classes.active);
 
-        Store.winners.addClass('hidden');
-        Store.garage.removeClass('hidden');
-
-        this.toGarageBtn.addClass('active');
+        this.showGarage();
       },
     });
 
     this.toWinnersBtn = new Button({
       parent: this,
       text: 'Winners',
+      classNames: [classes.viewChangersButton],
       onClick: () => {
-        this.toGarageBtn.removeClass('active');
-
-        Store.garage.addClass('hidden');
-        Store.winners.removeClass('hidden');
-
-        this.toWinnersBtn.addClass('active');
+        this.toGarageBtn.removeClass(classes.active);
+        this.toWinnersBtn.addClass(classes.active);
+        this.showWinners();
       },
     });
+  }
+
+  private showGarage(): void {
+    Store.garage.show();
+    Store.winners.hide();
+  }
+
+  private showWinners(): void {
+    Store.winners.show();
+    Store.garage.hide();
   }
 }

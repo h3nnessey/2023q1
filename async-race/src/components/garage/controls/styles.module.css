@@ -1,0 +1,11 @@
+.garageControls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.garageControlsRow {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}

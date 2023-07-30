@@ -1,6 +1,7 @@
 import { Component } from '../../component';
 import { Button } from '../../button';
 import { Store } from '../../../store';
+import classes from './styles.module.css';
 
 export class Pagination extends Component {
   private readonly currentPage: Component;
@@ -8,13 +9,13 @@ export class Pagination extends Component {
   private readonly nextBtn: Button;
 
   constructor(parent: Component) {
-    super({ classNames: ['winners__pagination'], parent });
+    super({ classNames: [classes.winnersPagination], parent });
 
     this.prevBtn = new Button({ parent: this, text: 'Prev', disabled: true, onClick: () => this.handlePrevClick() });
 
     this.currentPage = new Component({
       tagName: 'h2',
-      classNames: ['garage__current-page'],
+      classNames: [classes.winnersCurrentPage],
       text: `Page #${Store.winnersCurrentPage}`,
       parent: this,
     });

@@ -1,0 +1,46 @@
+.winnersTableRow {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #ffffff;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.winnersTableNumber {
+  width: 80px;
+}
+
+.winnersTableName {
+  width: 150px;
+}
+
+.winnersTableWins {
+  width: 80px;
+}
+
+.winnersTableTime {
+  width: 100px;
+}
+
+.winnersTableCarImg {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.winnersTableCarImg > svg {
+  display: block;
+  width: 70px;
+  transform: scale(-1, 1);
+}
+
+.winnersTableNumber,
+.winnersTableCar,
+.winnersTableCarImg,
+.winnersTableName,
+.winnersTableWins {
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+}

@@ -5,6 +5,7 @@ import { Pagination } from './pagination';
 import { CarTracks } from './car-tracks';
 import { Store } from '../../store';
 import { Modal } from '../modal';
+import classes from './styles.module.css';
 
 export class Garage extends Component {
   public readonly controls: Controls;
@@ -14,7 +15,7 @@ export class Garage extends Component {
   private readonly modal: Modal;
 
   constructor(parent: Component) {
-    super({ tagName: 'div', parent, classNames: ['garage'] });
+    super({ parent, classNames: [classes.garage] });
 
     Store.garage = this;
 
@@ -58,6 +59,14 @@ export class Garage extends Component {
     this.controls.enable();
     this.pagination.enable();
     this.carTracks.enable();
+  }
+
+  public hide(): void {
+    this.addClass(classes.hidden);
+  }
+
+  public show(): void {
+    this.removeClass(classes.hidden);
   }
 
   public update(isDelete?: boolean) {

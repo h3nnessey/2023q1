@@ -12,6 +12,6 @@
   text-shadow: 0 0 10px #ff008a;
 }
 
-.modal-hidden {
+.modal.hidden {
   display: none;
 }

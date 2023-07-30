@@ -1,0 +1,26 @@
+.viewChangers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  gap: 1rem;
+}
+
+.viewChangersButton {
+  outline: none;
+  border: none;
+  min-width: fit-content;
+  padding: 5px 10px;
+  font-weight: 700;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.35);
+  transition: background-color 0.2s;
+}
+
+.viewChangersButton.active {
+  outline: 2px solid peru;
+}
+
+.viewChangersButton:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}

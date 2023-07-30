@@ -3,12 +3,13 @@ import { Store } from '../../../store';
 import { CarTrack } from './car-track';
 import { ICar } from '../../../types';
 import { WinnersService } from '../../../services/winners.service';
+import classes from './styles.module.css';
 
 export class CarTracks extends Component {
   public tracks: CarTrack[] = [];
 
   constructor(parent: Component) {
-    super({ classNames: ['garage__car-tracks'], parent });
+    super({ classNames: [classes.garageCarTracks], parent });
 
     this.createCarTracks();
   }

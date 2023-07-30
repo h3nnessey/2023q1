@@ -2,13 +2,14 @@ import { Component } from '../../component';
 import { Thead } from './thead';
 import { Trow } from './trow';
 import { Store } from '../../../store';
+import classes from './styles.module.css';
 
 export class Table extends Component {
   private readonly tableHead: Thead;
   private trows: Trow[] = [];
 
   constructor(parent: Component) {
-    super({ classNames: ['winners__table'], parent });
+    super({ classNames: [classes.winnersTable], parent });
 
     this.tableHead = new Thead(this);
 
