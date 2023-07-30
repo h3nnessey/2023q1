@@ -1,9 +1,9 @@
 import { getUrl } from '../utils';
-import { PATHS } from '../constants';
+import { PATHS, WINNERS_LIMIT } from '../constants';
 import { CarWinner, FetchMethods, GetWinnersResponse } from '../types';
 
 export class WinnersService {
-  public static async createWinner(winner: CarWinner) {
+  public static async createWinner(winner: CarWinner): Promise<void> {
     await fetch(getUrl(`${PATHS.WINNERS}`), {
       method: FetchMethods.Post,
       headers: {
@@ -13,7 +13,7 @@ export class WinnersService {
     });
   }
 
-  public static async updateWinner({ id, time, wins }: CarWinner) {
+  public static async updateWinner({ id, time, wins }: CarWinner): Promise<void> {
     await fetch(getUrl(`${PATHS.WINNERS}/${id}`), {
       method: FetchMethods.Put,
       headers: {
@@ -43,7 +43,7 @@ export class WinnersService {
     const response: Response = await fetch(
       getUrl(`${PATHS.WINNERS}`, [
         ['_page', page.toString()],
-        ['_limit', (10).toString()],
+        ['_limit', WINNERS_LIMIT.toString()],
         ['_order', order],
         ['_sort', sort],
       ])
@@ -55,15 +55,11 @@ export class WinnersService {
     };
   }
 
-  public static async deleteWinner(id: number) {
+  public static async deleteWinner(id: number): Promise<boolean> {
     const response: Response = await fetch(getUrl(`${PATHS.WINNERS}/${id}`), {
       method: FetchMethods.Delete,
     });
 
-    if (response.status === 404) {
-      return null;
-    }
-
-    return {};
+    return response.status !== 404;
   }
 }

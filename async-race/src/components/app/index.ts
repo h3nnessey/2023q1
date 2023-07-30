@@ -12,9 +12,11 @@ export class App extends Component {
   constructor(private readonly container: HTMLElement) {
     super({ tagName: 'main', classNames: [classes.app] });
 
-    this.viewChangers = new ViewChangers(this);
-    this.garage = new Garage(this);
-    this.winners = new Winners(this);
+    this.viewChangers = new ViewChangers();
+    this.garage = new Garage();
+    this.winners = new Winners();
+
+    this.append([this.viewChangers, this.garage, this.winners]);
   }
 
   public render(): void {

@@ -1,6 +1,26 @@
 import { ICar } from '../types';
-import { shuffleArray } from './shuffleArray';
-import { getRandomColor } from './get-random-color';
+
+const getRandomHexValue = () =>
+  Math.floor(Math.random() * 255)
+    .toString(16)
+    .padStart(2, '0');
+
+const getRandomColor = (): string => {
+  const r = getRandomHexValue();
+  const g = getRandomHexValue();
+  const b = getRandomHexValue();
+
+  return `#${r}${g}${b}`;
+};
+
+const shuffleArray = (array: string[]): string[] => {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+};
 
 const brands: string[] = [
   'Tesla',
@@ -31,13 +51,13 @@ export const getRandomCars = (): Omit<ICar, 'id'>[] => {
   const shuffledBrands: string[] = shuffleArray(
     Array(100)
       .fill(null)
-      .map(() => brands[Math.floor(Math.random() * brands.length)])
+      .map((_, index) => brands[index % brands.length])
   );
 
   const shuffledModels: string[] = shuffleArray(
     Array(100)
       .fill(null)
-      .map(() => models[Math.floor(Math.random() * models.length)])
+      .map((_, index) => models[index % models.length])
   );
 
   const initial: Omit<ICar, 'id'>[] = [];

@@ -8,24 +8,24 @@ export class Pagination extends Component {
   private readonly prevBtn: Button;
   private readonly nextBtn: Button;
 
-  constructor(parent: Component) {
-    super({ classNames: [classes.winnersPagination], parent });
+  constructor() {
+    super({ classNames: [classes.winnersPagination] });
 
-    this.prevBtn = new Button({ parent: this, text: 'Prev', disabled: true, onClick: () => this.handlePrevClick() });
+    this.prevBtn = new Button({ text: 'Prev', onClick: () => this.handlePrevClick(), disabled: true });
 
     this.currentPage = new Component({
       tagName: 'h2',
       classNames: [classes.winnersCurrentPage],
       text: `Page #${Store.winnersCurrentPage}`,
-      parent: this,
     });
 
     this.nextBtn = new Button({
-      parent: this,
       text: 'Next',
-      disabled: Store.winnersCurrentPage === Store.winnersPagesCount,
       onClick: () => this.handleNextClick(),
+      disabled: Store.winnersCurrentPage === Store.winnersPagesCount,
     });
+
+    this.append([this.prevBtn, this.currentPage, this.nextBtn]);
   }
 
   private handlePrevClick(): void {
@@ -38,10 +38,8 @@ export class Pagination extends Component {
     this.updateOnClick();
   }
 
-  private updateOnClick() {
-    Store.updateWinners().then(() => {
-      Store.winners.update();
-    });
+  private updateOnClick(): void {
+    Store.winners.update();
   }
 
   private handleNextClick(): void {

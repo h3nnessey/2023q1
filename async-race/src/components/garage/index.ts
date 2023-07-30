@@ -14,20 +14,21 @@ export class Garage extends Component {
   public readonly carTracks: CarTracks;
   private readonly modal: Modal;
 
-  constructor(parent: Component) {
-    super({ parent, classNames: [classes.garage] });
+  constructor() {
+    super({ classNames: [classes.garage] });
 
     Store.garage = this;
 
-    this.controls = new Controls(this);
-    this.carsCount = new CarsCount(this);
-    this.pagination = new Pagination(this);
-    this.carTracks = new CarTracks(this);
+    this.controls = new Controls();
+    this.carsCount = new CarsCount();
+    this.pagination = new Pagination();
+    this.carTracks = new CarTracks();
+    this.modal = new Modal();
 
-    this.modal = new Modal(this);
+    this.append([this.controls, this.carsCount, this.pagination, this.carTracks, this.modal]);
   }
 
-  public startRace() {
+  public startRace(): void {
     this.disableControls();
 
     this.carTracks
@@ -36,26 +37,27 @@ export class Garage extends Component {
       .catch(() => this.handleRaceEnd());
   }
 
-  public resetRace() {
+  public resetRace(): void {
     this.controls.disable();
     Store.garage.pagination.disable();
+
     this.carTracks.resetRace().then(() => {
-      this.enableControls();
       Store.garageResetEmitted = false;
+      this.enableControls();
     });
   }
 
-  public disableControls() {
+  public disableControls(): void {
     this.controls.disable();
     this.pagination.disable();
     this.carTracks.disable();
   }
 
-  private handleRaceEnd() {
+  private handleRaceEnd(): void {
     this.controls.handleRaceEnd();
   }
 
-  public enableControls() {
+  public enableControls(): void {
     this.controls.enable();
     this.pagination.enable();
     this.carTracks.enable();
@@ -69,12 +71,12 @@ export class Garage extends Component {
     this.removeClass(classes.hidden);
   }
 
-  public update(isDelete?: boolean) {
+  public update(preventFullRerender?: boolean): void {
     if (Store.garageCurrentPage > 1 && !Store.garageCars.length) {
       Store.garageCurrentPage -= 1;
       Store.updateGarage().then(() => this.update());
     } else {
-      if (!isDelete) this.carTracks.update();
+      if (!preventFullRerender) this.carTracks.update();
 
       this.pagination.update();
       this.carsCount.update();

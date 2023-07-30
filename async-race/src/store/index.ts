@@ -1,9 +1,10 @@
-import type { CarWinner, GetCarsResponse, GetWinnersResponse, ICar } from '../types';
+import type { CarWinner, GetCarsResponse, GetWinnersResponse, ICar, SortType, SortOrder } from '../types';
 import { GarageService } from '../services/garage.service';
 import type { Garage } from '../components/garage';
 import type { Winners } from '../components/winners';
 import { WinnersService } from '../services/winners.service';
 import type { Modal } from '../components/modal';
+import { GARAGE_LIMIT, WINNERS_LIMIT } from '../constants';
 
 export class Store {
   public static garageCarsCount: number = 0;
@@ -20,8 +21,11 @@ export class Store {
   public static winnersCount: number = 0;
   public static winnersPagesCount: number = 1;
   public static winnersCurrentPage: number = 1;
-  public static winnersOrder: 'ASC' | 'DESC' = 'ASC';
-  public static winnersSort: 'id' | 'wins' | 'time' = 'id';
+
+  public static winnersSort: { order: SortOrder; type: SortType } = {
+    order: 'ASC',
+    type: 'id',
+  };
 
   public static modal: Modal;
 
@@ -39,11 +43,11 @@ export class Store {
   }
 
   private static async getWinnersData(): Promise<void> {
-    return WinnersService.getWinners(Store.winnersCurrentPage, Store.winnersSort, Store.winnersOrder).then(
+    return WinnersService.getWinners(Store.winnersCurrentPage, Store.winnersSort.type, Store.winnersSort.order).then(
       ({ total, items }: GetWinnersResponse) => {
         Store.winnersItems = items;
         Store.winnersCount = total;
-        Store.winnersPagesCount = Math.ceil(total / 10) || 1;
+        Store.winnersPagesCount = Math.ceil(total / WINNERS_LIMIT) || 1;
       }
     );
   }
@@ -52,7 +56,16 @@ export class Store {
     return GarageService.getCars(Store.garageCurrentPage).then(({ total, items }: GetCarsResponse) => {
       Store.garageCars = items;
       Store.garageCarsCount = total;
-      Store.garagePagesCount = Math.ceil(total / 7) || 1;
+      Store.garagePagesCount = Math.ceil(total / GARAGE_LIMIT) || 1;
     });
+  }
+
+  public static setSort(type: SortType): void {
+    Store.winnersSort.type = type;
+    if (Store.winnersSort.order === 'ASC') {
+      Store.winnersSort.order = 'DESC';
+    } else {
+      Store.winnersSort.order = 'ASC';
+    }
   }
 }

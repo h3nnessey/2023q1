@@ -17,6 +17,10 @@ export enum FetchMethods {
   Delete = 'DELETE',
 }
 
+export type SortOrder = 'ASC' | 'DESC';
+
+export type SortType = 'id' | 'wins' | 'time';
+
 export interface CarWinner {
   id: number;
   wins: number;

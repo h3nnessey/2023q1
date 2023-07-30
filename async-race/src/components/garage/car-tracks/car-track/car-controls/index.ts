@@ -15,32 +15,30 @@ export class CarControls extends Component {
     super({});
 
     this.selectBtn = new Button({
-      parent: this,
       text: 'Select',
       onClick: () => this.onSelect(),
     });
 
     this.deleteBtn = new Button({
-      parent: this,
       text: 'Delete',
       onClick: () => this.onDelete(),
     });
 
     this.startBtn = new Button({
-      parent: this,
       text: 'A',
       onClick: () => this.onStart(),
     });
 
     this.resetBtn = new Button({
-      parent: this,
       text: 'B',
       onClick: () => this.onReset(),
       disabled: true,
     });
+
+    this.append([this.selectBtn, this.deleteBtn, this.startBtn, this.resetBtn]);
   }
 
-  private onReset() {
+  private onReset(): void {
     this.resetBtn.off();
     Store.garage.controls.controlsRace.resetBtn.off();
 
@@ -55,34 +53,28 @@ export class CarControls extends Component {
     });
   }
 
-  private async onStart() {
-    this.selectBtn.off();
-    this.deleteBtn.off();
-    this.startBtn.off();
-    Store.garage.controls.controlsUpdate.disable();
-    Store.garage.pagination.disable();
-    Store.garage.controls.controlsRace.raceBtn.off();
-    Store.garage.controls.controlsRace.resetBtn.off();
+  private async onStart(): Promise<void> {
+    this.disableControlsOnStart();
 
     this.car.start().then(() => {
       if (!Store.garageResetEmitted && !Store.garagePaginationEmitted) {
-        this.resetBtn.on();
-        Store.garage.controls.controlsRace.resetBtn.on();
         Store.garage.pagination.enable();
+        Store.garage.controls.controlsRace.resetBtn.on();
+        this.resetBtn.on();
       } else {
-        Store.garage.controls.controlsRace.resetBtn.off();
         Store.garage.pagination.disable();
+        Store.garage.controls.controlsRace.resetBtn.off();
       }
 
-      this.car.drive().catch(() => null);
+      this.car.drive().then();
     });
   }
 
-  private onSelect() {
-    return Store.garage.controls.controlsUpdate.focusWith(this.car);
+  private onSelect(): void {
+    return Store.garage.controls.controlsUpdate.focus(this.car);
   }
 
-  private onDelete() {
+  private onDelete(): void {
     GarageService.deleteCar(this.car.id).then(() => {
       Store.updateGarage().then(() => {
         Store.garage.carTracks.onDelete(this.car.id);
@@ -92,19 +84,29 @@ export class CarControls extends Component {
 
     WinnersService.deleteWinner(this.car.id).then((success) => {
       if (success) {
-        Store.updateWinners().then(() => Store.winners.update());
+        Store.winners.update();
       }
     });
   }
 
-  public disable() {
+  private disableControlsOnStart(): void {
+    this.selectBtn.off();
+    this.deleteBtn.off();
+    this.startBtn.off();
+    Store.garage.controls.controlsUpdate.disable();
+    Store.garage.pagination.disable();
+    Store.garage.controls.controlsRace.raceBtn.off();
+    Store.garage.controls.controlsRace.resetBtn.off();
+  }
+
+  public disable(): void {
     this.selectBtn.off();
     this.startBtn.off();
     this.deleteBtn.off();
     this.resetBtn.off();
   }
 
-  public enable() {
+  public enable(): void {
     this.resetBtn.off();
     this.startBtn.on();
     this.selectBtn.on();

@@ -8,24 +8,24 @@ export class Pagination extends Component {
   private readonly prevBtn: Button;
   private readonly nextBtn: Button;
 
-  constructor(parent: Component) {
-    super({ classNames: [classes.pagination], parent });
+  constructor() {
+    super({ classNames: [classes.pagination] });
 
-    this.prevBtn = new Button({ parent: this, text: 'Prev', disabled: true, onClick: () => this.handlePrevClick() });
+    this.prevBtn = new Button({ text: 'Prev', onClick: () => this.handlePrevClick(), disabled: true });
 
     this.currentPage = new Component({
       tagName: 'h2',
       classNames: [classes.currentPage],
       text: `Page #${Store.garageCurrentPage}`,
-      parent: this,
     });
 
     this.nextBtn = new Button({
-      parent: this,
       text: 'Next',
-      disabled: Store.garageCurrentPage === Store.garagePagesCount,
       onClick: () => this.handleNextClick(),
+      disabled: Store.garageCurrentPage === Store.garagePagesCount,
     });
+
+    this.append([this.prevBtn, this.currentPage, this.nextBtn]);
   }
 
   public update(): void {
@@ -52,27 +52,28 @@ export class Pagination extends Component {
 
   private handleClickWithStartedCars() {
     const startedCars = Store.garage.carTracks.tracks.filter((track) => track.car.started);
+
     Store.garagePaginationEmitted = true;
+
     if (startedCars.length) {
       this.disable();
       Store.garage.disableControls();
 
-      Promise.all(startedCars.map((track) => track.car.stop())).then(() =>
-        Store.updateGarage().then(() => {
-          Store.garage.update();
-
-          Store.garage.enableControls();
-          this.enable();
-          Store.garagePaginationEmitted = false;
-        })
-      );
-    } else {
-      Store.updateGarage().then(() => {
-        Store.garage.update();
-        this.enable();
-        Store.garagePaginationEmitted = false;
+      Promise.all(startedCars.map((track) => track.car.stop())).then(() => {
+        this.updateGarageOnPagination();
+        Store.garage.enableControls();
       });
+    } else {
+      this.updateGarageOnPagination();
     }
+  }
+
+  private updateGarageOnPagination(): void {
+    Store.updateGarage().then(() => {
+      Store.garagePaginationEmitted = false;
+      this.enable();
+      Store.garage.update();
+    });
   }
 
   private handleNextClick(): void {
@@ -97,6 +98,7 @@ export class Pagination extends Component {
     } else {
       this.prevBtn.on();
     }
+
     if (Store.garageCurrentPage === Store.garagePagesCount) {
       this.nextBtn.off();
     } else {

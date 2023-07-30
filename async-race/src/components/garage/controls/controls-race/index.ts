@@ -10,43 +10,32 @@ export class ControlsRace extends Component {
   public readonly resetBtn: Button;
   private readonly generateBtn: Button;
 
-  constructor(parent: Component) {
-    super({ classNames: [classes.controlsRow], parent });
+  constructor() {
+    super({ classNames: [classes.controlsRow] });
 
     this.raceBtn = new Button({
-      parent: this,
       text: 'Race',
+      onClick: () => Store.garage.startRace(),
     });
 
     this.resetBtn = new Button({
-      parent: this,
       text: 'Reset',
+      onClick: () => Store.garage.resetRace(),
       disabled: true,
     });
 
-    this.generateBtn = new Button({ parent: this, text: 'Generate cars' });
+    this.generateBtn = new Button({ text: 'Generate cars', onClick: () => this.handleGenerateCarsClick() });
 
-    this.attachListeners();
+    this.append([this.raceBtn, this.resetBtn, this.generateBtn]);
   }
 
-  private attachListeners(): void {
-    this.generateBtn.addEventListener('click', () => {
-      const cars = getRandomCars();
-      Promise.all(cars.map((car) => GarageService.createCar(car))).then(() =>
-        Store.updateGarage().then(() => {
-          Store.garage.carTracks.onGenerate();
-          Store.garage.update(true);
-        })
-      );
-    });
-
-    this.raceBtn.addEventListener('click', () => {
-      Store.garage.startRace();
-    });
-
-    this.resetBtn.addEventListener('click', () => {
-      Store.garage.resetRace();
-    });
+  private handleGenerateCarsClick(): void {
+    Promise.all(getRandomCars().map((car) => GarageService.createCar(car))).then(() =>
+      Store.updateGarage().then(() => {
+        Store.garage.carTracks.onGenerate();
+        Store.garage.update(true);
+      })
+    );
   }
 
   public handleRaceEnd(): void {

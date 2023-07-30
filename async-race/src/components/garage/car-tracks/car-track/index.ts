@@ -15,10 +15,10 @@ export class CarTrack extends Component {
   constructor({ parent, carInfo }: { parent: Component; carInfo: ICar }) {
     super({ classNames: [classes.carTrack], parent });
 
-    this.firstRow = new Component({ classNames: [classes.carTrackRow], parent: this });
-    this.secondRow = new Component({ classNames: [classes.carTrackRow], parent: this });
+    this.firstRow = new Component({ classNames: [classes.carTrackRow] });
+    this.secondRow = new Component({ classNames: [classes.carTrackRow] });
 
-    this.car = new Car(this, carInfo);
+    this.car = new Car(carInfo);
 
     this.carName = new Component({
       tagName: 'h3',
@@ -28,8 +28,8 @@ export class CarTrack extends Component {
 
     this.carControls = new CarControls(this.car);
 
+    this.append([this.firstRow, this.secondRow, this.car]);
     this.firstRow.append([this.carControls.selectBtn, this.carControls.deleteBtn, this.carName]);
-
     this.secondRow.append([this.carControls.startBtn, this.carControls.resetBtn]);
   }
 

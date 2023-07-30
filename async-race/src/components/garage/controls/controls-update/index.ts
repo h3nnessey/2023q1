@@ -12,37 +12,40 @@ export class ControlsUpdate extends Component {
   private readonly submitBtn: Button;
   private car: Car | null = null;
 
-  constructor(parent: Component) {
-    super({ classNames: [classes.controlsRow], parent });
+  constructor() {
+    super({ classNames: [classes.controlsRow] });
 
-    this.textInput = new Input({ parent: this, disabled: true });
-    this.colorInput = new Input({ parent: this, type: 'color', disabled: true });
+    this.textInput = new Input({ disabled: true });
+
+    this.colorInput = new Input({ type: 'color', disabled: true });
+
     this.submitBtn = new Button({
-      parent: this,
       text: 'Update',
+      onClick: () => this.handleSubmitClick(),
       disabled: true,
-      onClick: () => {
-        if (this.car) {
-          const name = this.textInput.value;
-          const color = this.colorInput.value;
-
-          this.car.updateCar(name, color);
-
-          GarageService.updateCar(this.car.id, { name, color }).then(() => {
-            this.disable();
-            const carInWinners = Store.winnersItems.find((car) => this.car && car.id === this.car.id);
-            if (carInWinners) Store.updateWinners().then(() => Store.winners.update());
-          });
-        }
-      },
     });
+
+    this.append([this.textInput, this.colorInput, this.submitBtn]);
   }
 
-  public focusWith(car: Car): void {
+  private handleSubmitClick(): void {
+    if (this.car) {
+      const name = this.textInput.value;
+      const color = this.colorInput.value;
+
+      this.car.updateCar(name, color);
+
+      GarageService.updateCar(this.car.id, { name, color }).then(() => {
+        this.disable();
+        const carInWinners = Store.winnersItems.find((car) => this.car && this.car.id === car.id);
+        if (carInWinners) Store.winners.update();
+      });
+    }
+  }
+
+  public focus(car: Car): void {
     this.enableInputs();
-
     this.car = car;
-
     this.textInput.value = car.name;
     this.colorInput.value = car.color;
   }

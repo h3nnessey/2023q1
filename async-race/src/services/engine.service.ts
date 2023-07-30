@@ -19,8 +19,8 @@ export class EngineService {
     return data;
   }
 
-  public static async stop(id: number): Promise<EngineSpecs> {
-    const response: Response = await fetch(
+  public static async stop(id: number): Promise<Response> {
+    return fetch(
       getUrl(`${PATHS.ENGINE}`, [
         ['id', `${id}`],
         ['status', EngineStatus.Stop],
@@ -29,25 +29,27 @@ export class EngineService {
         method: FetchMethods.Patch,
       }
     );
-
-    const data: EngineSpecs = await response.json();
-
-    return data;
   }
 
   public static async drive(id: number): Promise<DriveResponse> {
-    const response: Response = await fetch(
-      getUrl(`${PATHS.ENGINE}`, [
-        ['id', `${id}`],
-        ['status', EngineStatus.Drive],
-      ]),
-      {
-        method: FetchMethods.Patch,
-      }
-    );
+    try {
+      const response: Response = await fetch(
+        getUrl(`${PATHS.ENGINE}`, [
+          ['id', `${id}`],
+          ['status', EngineStatus.Drive],
+        ]),
+        {
+          method: FetchMethods.Patch,
+        }
+      );
 
-    const data: DriveResponse = await response.json();
+      const data: DriveResponse = await response.json();
 
-    return data;
+      return data;
+    } catch {
+      return {
+        success: false,
+      };
+    }
   }
 }

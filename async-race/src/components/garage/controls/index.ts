@@ -10,12 +10,14 @@ export class Controls extends Component {
   public readonly controlsUpdate: ControlsUpdate;
   public readonly controlsRace: ControlsRace;
 
-  constructor(parent: Component) {
-    super({ classNames: [classes.controls], parent });
+  constructor() {
+    super({ classNames: [classes.controls] });
 
-    this.controlsCreate = new ControlsCreate(this);
-    this.controlsUpdate = new ControlsUpdate(this);
-    this.controlsRace = new ControlsRace(this);
+    this.controlsCreate = new ControlsCreate();
+    this.controlsUpdate = new ControlsUpdate();
+    this.controlsRace = new ControlsRace();
+
+    this.append([this.controlsCreate, this.controlsUpdate, this.controlsRace]);
   }
 
   public disable(): void {

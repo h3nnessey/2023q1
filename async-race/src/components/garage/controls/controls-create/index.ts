@@ -10,17 +10,18 @@ export class ControlsCreate extends Component {
   private readonly colorInput: Input;
   private readonly submitBtn: Button;
 
-  constructor(parent: Component) {
-    super({ classNames: [classes.controlsRow], parent });
+  constructor() {
+    super({ classNames: [classes.controlsRow] });
 
-    this.textInput = new Input({ parent: this, placeholder: 'Enter car name' });
-    this.colorInput = new Input({ parent: this, type: 'color' });
+    this.textInput = new Input({ placeholder: 'Enter car name' });
+    this.colorInput = new Input({ type: 'color' });
 
     this.submitBtn = new Button({
-      parent: this,
       text: 'Create',
       onClick: () => this.onCreate(),
     });
+
+    this.append([this.textInput, this.colorInput, this.submitBtn]);
   }
 
   public disable(): void {

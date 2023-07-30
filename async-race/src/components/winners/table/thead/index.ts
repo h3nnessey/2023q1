@@ -2,6 +2,7 @@ import { Component } from '../../../component';
 import { Button } from '../../../button';
 import { Store } from '../../../../store';
 import classes from './styles.module.css';
+import { SortType } from '../../../../types';
 
 export class Thead extends Component {
   private readonly number: Component;
@@ -16,13 +17,13 @@ export class Thead extends Component {
     this.winsBtn = new Button({
       text: 'Wins',
       classNames: [classes.winsSort],
-      onClick: () => this.handleWinsClick(),
+      onClick: () => this.handleClick('wins'),
     });
 
     this.bestTimeBtn = new Button({
       text: 'Best Time',
       classNames: [classes.timeSort],
-      onClick: () => this.handleTimeClick(),
+      onClick: () => this.handleClick('time'),
     });
 
     this.number = new Component({ text: 'Number', classNames: [classes.number] });
@@ -32,37 +33,25 @@ export class Thead extends Component {
     this.append([this.number, this.car, this.name, this.winsBtn, this.bestTimeBtn]);
   }
 
-  private handleWinsClick(): void {
-    Store.winnersSort = 'wins';
+  private handleClick(type: SortType): void {
+    Store.setSort(type);
 
-    this.bestTimeBtn.setTextContent('Best Time');
-
-    if (Store.winnersOrder === 'ASC') {
-      Store.winnersOrder = 'DESC';
-      this.winsBtn.setTextContent('Wins ↓');
-    } else {
-      Store.winnersOrder = 'ASC';
-      this.winsBtn.setTextContent('Wins ↑');
+    switch (type) {
+      case 'wins': {
+        this.bestTimeBtn.setTextContent('Best Time');
+        this.winsBtn.setTextContent(Store.winnersSort.order === 'ASC' ? 'Wins ↓' : 'Wins ↑');
+        break;
+      }
+      case 'time': {
+        this.winsBtn.setTextContent('Wins');
+        this.bestTimeBtn.setTextContent(Store.winnersSort.order === 'ASC' ? 'Best Time ↓' : 'Best Time ↑');
+        break;
+      }
+      default: {
+        return;
+      }
     }
 
-    Store.updateWinners().then(() => {
-      Store.winners.update();
-    });
-  }
-
-  private handleTimeClick(): void {
-    Store.winnersSort = 'time';
-    this.winsBtn.setTextContent('Wins');
-    if (Store.winnersOrder === 'ASC') {
-      Store.winnersOrder = 'DESC';
-      this.bestTimeBtn.setTextContent('Best Time ↓');
-    } else {
-      Store.winnersOrder = 'ASC';
-      this.bestTimeBtn.setTextContent('Best Time ↑');
-    }
-
-    Store.updateWinners().then(() => {
-      Store.winners.update();
-    });
+    Store.winners.update();
   }
 }

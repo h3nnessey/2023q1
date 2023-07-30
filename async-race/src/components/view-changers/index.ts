@@ -4,34 +4,37 @@ import { Store } from '../../store';
 import classes from './styles.module.css';
 
 export class ViewChangers extends Component {
-  private toGarageBtn: Button;
-  private toWinnersBtn: Button;
+  private readonly toGarageBtn: Button;
+  private readonly toWinnersBtn: Button;
 
-  constructor(parent: Component) {
-    super({ classNames: [classes.container], parent });
+  constructor() {
+    super({ classNames: [classes.container] });
 
     this.toGarageBtn = new Button({
-      parent: this,
       text: 'Garage',
       classNames: [classes.button, classes.active],
-      onClick: () => {
-        this.toWinnersBtn.removeClass(classes.active);
-        this.toGarageBtn.addClass(classes.active);
-
-        this.showGarage();
-      },
+      onClick: () => this.handleToGarageClick(),
     });
 
     this.toWinnersBtn = new Button({
-      parent: this,
       text: 'Winners',
       classNames: [classes.button],
-      onClick: () => {
-        this.toGarageBtn.removeClass(classes.active);
-        this.toWinnersBtn.addClass(classes.active);
-        this.showWinners();
-      },
+      onClick: () => this.handleToWinnersClick(),
     });
+
+    this.append([this.toGarageBtn, this.toWinnersBtn]);
+  }
+
+  private handleToWinnersClick(): void {
+    this.toGarageBtn.removeClass(classes.active);
+    this.toWinnersBtn.addClass(classes.active);
+    this.showWinners();
+  }
+
+  private handleToGarageClick(): void {
+    this.toWinnersBtn.removeClass(classes.active);
+    this.toGarageBtn.addClass(classes.active);
+    this.showGarage();
   }
 
   private showGarage(): void {

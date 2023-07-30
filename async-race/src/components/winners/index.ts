@@ -10,13 +10,16 @@ export class Winners extends Component {
   private readonly table: Table;
   private readonly pagination: Pagination;
 
-  constructor(parent: Component) {
-    super({ parent, classNames: [classes.winners, classes.hidden] });
+  constructor() {
+    super({ classNames: [classes.winners, classes.hidden] });
 
     Store.winners = this;
-    this.winnersCount = new WinnersCount(this);
-    this.pagination = new Pagination(this);
-    this.table = new Table(this);
+
+    this.winnersCount = new WinnersCount();
+    this.pagination = new Pagination();
+    this.table = new Table();
+
+    this.append([this.winnersCount, this.pagination, this.table]);
   }
 
   public update(): void {
@@ -24,9 +27,12 @@ export class Winners extends Component {
       Store.winnersCurrentPage -= 1;
       Store.updateWinners().then(() => this.update());
     }
-    this.winnersCount.update();
-    this.table.update();
-    this.pagination.update();
+
+    Store.updateWinners().then(() => {
+      this.winnersCount.update();
+      this.table.update();
+      this.pagination.update();
+    });
   }
 
   public hide(): void {

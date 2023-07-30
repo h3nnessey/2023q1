@@ -3,20 +3,20 @@ import { Store } from '../../../store';
 import { CarTrack } from './car-track';
 import { ICar } from '../../../types';
 import { WinnersService } from '../../../services/winners.service';
+import { GARAGE_LIMIT } from '../../../constants';
 import classes from './styles.module.css';
 
 export class CarTracks extends Component {
   public tracks: CarTrack[] = [];
 
-  constructor(parent: Component) {
-    super({ classNames: [classes.carTracks], parent });
+  constructor() {
+    super({ classNames: [classes.carTracks] });
 
     this.createCarTracks();
   }
 
-  public resetRace() {
+  public resetRace(): Promise<void> {
     Store.garageResetEmitted = true;
-
     Store.modal.hide();
 
     return Promise.all(this.tracks.map(({ car }) => car.stop()))
@@ -24,13 +24,10 @@ export class CarTracks extends Component {
       .then(() => Store.garage.update());
   }
 
-  public startRace() {
-    return Promise.any(this.tracks.map(({ car }) => car.start().then((startTime) => car.drive(startTime)))).then(
-      (winner) => {
-        Store.modal.show(winner.name, winner.time);
-        this.handleWin(winner);
-      }
-    );
+  public startRace(): Promise<void> {
+    return Promise.any(
+      this.tracks.map(({ car }) => car.start().then((startTime) => car.drive(startTime)))
+    ).then((winner) => this.handleWin(winner));
   }
 
   public update(): void {
@@ -41,17 +38,15 @@ export class CarTracks extends Component {
     this.createCarTracks();
   }
 
-  private handleWin(winner: ICar & { time: number }) {
+  private handleWin(winner: ICar & { time: number }): void {
+    Store.modal.show(winner.name, winner.time);
+
     WinnersService.getWinner(winner.id).then((data) => {
       if (data) {
         const payload = { id: winner.id, time: winner.time < data.time ? winner.time : data.time, wins: data.wins + 1 };
-        WinnersService.updateWinner(payload).then(() => {
-          Store.updateWinners().then(() => Store.winners.update());
-        });
+        WinnersService.updateWinner(payload).then(() => Store.winners.update());
       } else {
-        WinnersService.createWinner({ id: winner.id, time: winner.time, wins: 1 }).then(() => {
-          Store.updateWinners().then(() => Store.winners.update());
-        });
+        WinnersService.createWinner({ id: winner.id, time: winner.time, wins: 1 }).then(() => Store.winners.update());
       }
     });
   }
@@ -62,7 +57,7 @@ export class CarTracks extends Component {
 
     this.tracks = this.tracks.filter((track) => track.car.id !== id);
 
-    if (Store.garageCars.length > 6) {
+    if (Store.garageCars.length > GARAGE_LIMIT - 1) {
       this.tracks.push(
         new CarTrack({
           parent: this,
@@ -73,7 +68,7 @@ export class CarTracks extends Component {
   }
 
   public onCreate(car: ICar): void {
-    if (this.tracks.length < 7) {
+    if (this.tracks.length < GARAGE_LIMIT) {
       this.tracks.push(
         new CarTrack({
           parent: this,

@@ -11,7 +11,7 @@ export class Input extends Component {
     disabled,
     placeholder = '',
   }: {
-    parent: Component;
+    parent?: Component;
     type?: InputType;
     disabled?: boolean;
     placeholder?: string;

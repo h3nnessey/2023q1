@@ -1,4 +1,4 @@
-import './styles.css';
+import './styles.module.css';
 import { Store } from './store';
 import { App } from './components/app';
 import { ErrorMessage } from './components/error-message';
