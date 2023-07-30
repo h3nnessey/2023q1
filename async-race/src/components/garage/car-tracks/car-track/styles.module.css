@@ -1,9 +1,9 @@
-.garageCarTrack {
+.carTrack {
   position: relative;
   border-bottom: 2px dashed #444444;
 }
 
-.garageCarTrack::after {
+.carTrack::after {
   content: '🏁';
   font-size: 2rem;
   position: absolute;

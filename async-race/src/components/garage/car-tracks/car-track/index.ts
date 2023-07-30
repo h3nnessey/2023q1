@@ -13,7 +13,7 @@ export class CarTrack extends Component {
   private readonly secondRow: Component;
 
   constructor({ parent, carInfo }: { parent: Component; carInfo: ICar }) {
-    super({ classNames: [classes.garageCarTrack], parent });
+    super({ classNames: [classes.carTrack], parent });
 
     this.firstRow = new Component({ classNames: [classes.carTrackRow], parent: this });
     this.secondRow = new Component({ classNames: [classes.carTrackRow], parent: this });

@@ -1,10 +1,10 @@
-.garageControls {
+.controls {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
 }
 
-.garageControlsRow {
+.controlsRow {
   display: flex;
   align-items: center;
   gap: 0.3rem;

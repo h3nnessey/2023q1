@@ -1,4 +1,4 @@
-.winnersTableRow {
+.tr {
   text-align: center;
   display: flex;
   align-items: center;
@@ -8,39 +8,38 @@
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.winnersTableNumber {
+.number {
   width: 80px;
 }
 
-.winnersTableName {
+.name {
   width: 150px;
 }
 
-.winnersTableWins {
+.wins {
   width: 80px;
 }
 
-.winnersTableTime {
+.time {
   width: 100px;
 }
 
-.winnersTableCarImg {
+.car {
   width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.winnersTableCarImg > svg {
+.car > svg {
   display: block;
   width: 70px;
   transform: scale(-1, 1);
 }
 
-.winnersTableNumber,
-.winnersTableCar,
-.winnersTableCarImg,
-.winnersTableName,
-.winnersTableWins {
+.number,
+.car,
+.name,
+.wins {
   border-right: 1px solid rgba(255, 255, 255, 0.25);
 }

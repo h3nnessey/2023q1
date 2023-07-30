@@ -1,4 +1,4 @@
-.viewChangers {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   gap: 1rem;
 }
 
-.viewChangersButton {
+.button {
   outline: none;
   border: none;
   min-width: fit-content;
@@ -17,10 +17,10 @@
   transition: background-color 0.2s;
 }
 
-.viewChangersButton.active {
+.button.active {
   outline: 2px solid peru;
 }
 
-.viewChangersButton:hover {
+.button:hover {
   background-color: rgba(255, 255, 255, 0.7);
 }

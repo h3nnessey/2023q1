@@ -9,7 +9,7 @@ export class Table extends Component {
   private trows: Trow[] = [];
 
   constructor(parent: Component) {
-    super({ classNames: [classes.winnersTable], parent });
+    super({ classNames: [classes.table], parent });
 
     this.tableHead = new Thead(this);
 

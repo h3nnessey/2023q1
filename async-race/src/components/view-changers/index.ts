@@ -8,12 +8,12 @@ export class ViewChangers extends Component {
   private toWinnersBtn: Button;
 
   constructor(parent: Component) {
-    super({ classNames: [classes.viewChangers], parent });
+    super({ classNames: [classes.container], parent });
 
     this.toGarageBtn = new Button({
       parent: this,
       text: 'Garage',
-      classNames: [classes.viewChangersButton, classes.active],
+      classNames: [classes.button, classes.active],
       onClick: () => {
         this.toWinnersBtn.removeClass(classes.active);
         this.toGarageBtn.addClass(classes.active);
@@ -25,7 +25,7 @@ export class ViewChangers extends Component {
     this.toWinnersBtn = new Button({
       parent: this,
       text: 'Winners',
-      classNames: [classes.viewChangersButton],
+      classNames: [classes.button],
       onClick: () => {
         this.toGarageBtn.removeClass(classes.active);
         this.toWinnersBtn.addClass(classes.active);

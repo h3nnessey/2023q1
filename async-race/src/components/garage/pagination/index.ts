@@ -9,13 +9,13 @@ export class Pagination extends Component {
   private readonly nextBtn: Button;
 
   constructor(parent: Component) {
-    super({ classNames: [classes.garagePagination], parent });
+    super({ classNames: [classes.pagination], parent });
 
     this.prevBtn = new Button({ parent: this, text: 'Prev', disabled: true, onClick: () => this.handlePrevClick() });
 
     this.currentPage = new Component({
       tagName: 'h2',
-      classNames: [classes.garageCurrentPage],
+      classNames: [classes.currentPage],
       text: `Page #${Store.garageCurrentPage}`,
       parent: this,
     });

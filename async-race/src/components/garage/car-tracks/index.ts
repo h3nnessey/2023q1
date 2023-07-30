@@ -9,7 +9,7 @@ export class CarTracks extends Component {
   public tracks: CarTrack[] = [];
 
   constructor(parent: Component) {
-    super({ classNames: [classes.garageCarTracks], parent });
+    super({ classNames: [classes.carTracks], parent });
 
     this.createCarTracks();
   }

@@ -13,7 +13,7 @@ export class ControlsUpdate extends Component {
   private car: Car | null = null;
 
   constructor(parent: Component) {
-    super({ classNames: [classes.garageControlsRow], parent });
+    super({ classNames: [classes.controlsRow], parent });
 
     this.textInput = new Input({ parent: this, disabled: true });
     this.colorInput = new Input({ parent: this, type: 'color', disabled: true });

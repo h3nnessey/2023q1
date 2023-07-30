@@ -11,7 +11,7 @@ export class Controls extends Component {
   public readonly controlsRace: ControlsRace;
 
   constructor(parent: Component) {
-    super({ classNames: [classes.garageControls], parent });
+    super({ classNames: [classes.controls], parent });
 
     this.controlsCreate = new ControlsCreate(this);
     this.controlsUpdate = new ControlsUpdate(this);

@@ -4,7 +4,7 @@ import classes from './styles.module.css';
 
 export class CarsCount extends Component {
   constructor(parent: Component) {
-    super({ tagName: 'h1', classNames: [classes.garageCarsCount], parent });
+    super({ tagName: 'h1', classNames: [classes.carsCount], parent });
 
     this.update();
   }

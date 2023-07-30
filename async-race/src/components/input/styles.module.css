@@ -1,0 +1,8 @@
+input:disabled,
+input[type='color']:disabled {
+  cursor: not-allowed;
+}
+
+input[type='color'] {
+  cursor: pointer;
+}

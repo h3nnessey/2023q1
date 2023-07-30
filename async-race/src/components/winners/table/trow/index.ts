@@ -12,13 +12,13 @@ export class Trow extends Component {
   private readonly bestTime: Component;
 
   constructor(public readonly index: number, winner: CarWinner, parent: Component) {
-    super({ classNames: [classes.winnersTableRow], parent });
+    super({ classNames: [classes.tr], parent });
 
-    this.number = new Component({ text: index.toString(), classNames: [classes.winnersTableNumber], parent: this });
-    this.car = new Component({ html: content, classNames: [classes.winnersTableCarImg], parent: this });
-    this.name = new Component({ text: '-', parent: this, classNames: [classes.winnersTableName] });
-    this.wins = new Component({ text: `${winner.wins}`, classNames: [classes.winnersTableWins], parent: this });
-    this.bestTime = new Component({ text: `${winner.time}s`, classNames: [classes.winnersTableTime], parent: this });
+    this.number = new Component({ text: index.toString(), classNames: [classes.number], parent: this });
+    this.car = new Component({ html: content, classNames: [classes.car], parent: this });
+    this.name = new Component({ text: '-', parent: this, classNames: [classes.name] });
+    this.wins = new Component({ text: `${winner.wins}`, classNames: [classes.wins], parent: this });
+    this.bestTime = new Component({ text: `${winner.time}s`, classNames: [classes.time], parent: this });
 
     GarageService.getCar(winner.id).then((car) => {
       this.car.node.style.fill = car.color;

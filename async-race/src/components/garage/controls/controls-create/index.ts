@@ -11,7 +11,7 @@ export class ControlsCreate extends Component {
   private readonly submitBtn: Button;
 
   constructor(parent: Component) {
-    super({ classNames: [classes.garageControlsRow], parent });
+    super({ classNames: [classes.controlsRow], parent });
 
     this.textInput = new Input({ parent: this, placeholder: 'Enter car name' });
     this.colorInput = new Input({ parent: this, type: 'color' });

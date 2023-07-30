@@ -11,7 +11,7 @@ export class ControlsRace extends Component {
   private readonly generateBtn: Button;
 
   constructor(parent: Component) {
-    super({ classNames: [classes.garageControlsRow], parent });
+    super({ classNames: [classes.controlsRow], parent });
 
     this.raceBtn = new Button({
       parent: this,

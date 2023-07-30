@@ -1,4 +1,5 @@
 import { Component } from '../component';
+import './styles.module.css';
 
 export class Button extends Component {
   private button: HTMLButtonElement;

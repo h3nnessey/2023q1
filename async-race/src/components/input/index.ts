@@ -1,5 +1,6 @@
 import { Component } from '../component';
 import { InputType } from '../../types';
+import './styles.module.css';
 
 export class Input extends Component {
   private readonly input: HTMLInputElement;

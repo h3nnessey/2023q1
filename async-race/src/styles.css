@@ -11,12 +11,3 @@ body {
   font-family: Consolas, monospace;
   background-color: #181818;
 }
-
-*:disabled {
-  cursor: not-allowed;
-}
-
-input[type='color']:not(input[type='color']:disabled),
-button:not(button:disabled) {
-  cursor: pointer;
-}

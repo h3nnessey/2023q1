@@ -11,23 +11,23 @@ export class Thead extends Component {
   private readonly bestTimeBtn: Button;
 
   constructor(parent: Component) {
-    super({ classNames: [classes.winnersTableHead], parent });
+    super({ classNames: [classes.thead], parent });
 
     this.winsBtn = new Button({
       text: 'Wins',
-      classNames: [classes.winnersTableWinsSort],
+      classNames: [classes.winsSort],
       onClick: () => this.handleWinsClick(),
     });
 
     this.bestTimeBtn = new Button({
       text: 'Best Time',
-      classNames: [classes.winnersTableTimeSort],
+      classNames: [classes.timeSort],
       onClick: () => this.handleTimeClick(),
     });
 
-    this.number = new Component({ text: 'Number', classNames: [classes.winnersTableNumber] });
-    this.car = new Component({ text: 'Car', classNames: [classes.winnersTableCar] });
-    this.name = new Component({ text: 'Name', classNames: [classes.winnersTableName] });
+    this.number = new Component({ text: 'Number', classNames: [classes.number] });
+    this.car = new Component({ text: 'Car', classNames: [classes.car] });
+    this.name = new Component({ text: 'Name', classNames: [classes.name] });
 
     this.append([this.number, this.car, this.name, this.winsBtn, this.bestTimeBtn]);
   }
